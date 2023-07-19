@@ -24,7 +24,6 @@ void screenSetup()
   Serial.println("Screen setup done!");
 }
 
-
 void setup() {
   Serial.begin(115200);
   screenObjects.registerScreenSetup(&screenSetup);
@@ -43,4 +42,3 @@ void loop() {
   }
   delay(1);
 }
-
