@@ -4,10 +4,14 @@
 BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
 ScreenButton screenButton1;
+const int ledPin = 2;
+bool ledIsON = false;
 
 void buttonClicked1()
 {
   Serial.println("button1 has been clicked!");
+  ledIsON = !ledIsON;
+  digitalWrite(ledPin, ledIsON);
 }
 
 void screenSetup()
@@ -24,8 +28,10 @@ void screenSetup()
   Serial.println("Screen setup done!");
 }
 
+
 void setup() {
   Serial.begin(115200);
+  pinMode(ledPin, OUTPUT);
   screenObjects.registerScreenSetup(&screenSetup);
   screenButton1.setCallback(&buttonClicked1);
   screenObjects.registerButton(&screenButton1);
