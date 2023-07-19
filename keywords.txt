@@ -1,0 +1,27 @@
+#######################################
+# Syntax Coloring Map For UIduino
+#######################################
+# Class
+#######################################
+
+ScreenObjects	KEYWORD1
+ScreenButton	KEYWORD1
+
+#######################################
+# Methods and Functions
+#######################################
+
+registerScreenSetup	KEYWORD2
+registerButton	KEYWORD2
+setCallback	KEYWORD2
+sendScreenStream	KEYWORD2
+updateScreen	KEYWORD2
+setlabel	KEYWORD2
+
+#######################################
+# Constants
+#######################################
+
+ENABLE_CMD	LITERAL1
+BLACK	LITERAL1
+YELLOW	LITERAL1
