@@ -55,23 +55,28 @@ class JoystickHandler {
 
 class ColorPickerHandler {
   private:
+    void (*clickCallback)(uint8_t, uint8_t, uint8_t);
     uint8_t * red = NULL;
     uint8_t * green = NULL;
     uint8_t * blue = NULL;
   public:
     ColorPickerHandler() {
-      ColorPickerHandler(NULL, NULL, NULL);
+      ColorPickerHandler(NULL, NULL, NULL, NULL);
     }
-    ColorPickerHandler(uint8_t *r, uint8_t *g, uint8_t *b) {
+    ColorPickerHandler(uint8_t *r, uint8_t *g, uint8_t *b, void (*_clickCallback)(uint8_t, uint8_t, uint8_t)) {
       red = r;
       green = g;
       blue = b;
+	  clickCallback = _clickCallback;
     }
     void update(uint8_t r, uint8_t g, uint8_t b) {
       if (red != NULL && green != NULL && blue != NULL) {
         *red = r;
         *green = g;
         *blue = b;
+      }
+	  if (*clickCallback != NULL) {
+        clickCallback(r, g ,b);
       }
     }
 };
@@ -746,7 +751,7 @@ class ScreenObjects {
     void updateSeekBar(uint8_t tag, int16_t val);
     void registerJoystick(ScreenJoystick *screenJoystick);
     void updateJoystick(uint8_t tag, int16_t valX, int16_t valY);
-    void registerColorPicker(ScreenColorPicker *screenColorPicker);
+    void registerColorPicker(ScreenColorPicker *screenColorPicker, void (*_clickCallback)(uint8_t, uint8_t, uint8_t));
     void updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);
 };
 
