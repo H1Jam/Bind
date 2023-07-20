@@ -47,10 +47,10 @@ void sendScreenStream(ScreenStream *obj, Stream *stream) {
 }
 
 
-void ScreenObjects::registerButton(ScreenButton * screenButton) {
+void ScreenObjects::registerButton(ScreenButton * screenButton, void (*_clickCallback)(void)) {
   if (buttonIndex < maxObjects) {
     screenButton->tag = buttonIndex++;
-    buttons[screenButton->tag] = Button(screenButton->clickCallback);
+    buttons[screenButton->tag] = Button(_clickCallback);
   }
 }
 
@@ -126,10 +126,10 @@ void ScreenObjects::clickButton(uint8_t tag) {
   }
 }
 
-void ScreenObjects::registerSwitch(ScreenSwitch * screenSwitch) {
+void ScreenObjects::registerSwitch(ScreenSwitch * screenSwitch, void (*_clickCallback)(bool)) {
   if (switchIndex < maxObjects) {
     screenSwitch->tag = switchIndex++;
-    switchs[screenSwitch->tag] = Switch(&screenSwitch->switchValue);
+    switchs[screenSwitch->tag] = Switch(&screenSwitch->switchValue, _clickCallback);
   }
 }
 
