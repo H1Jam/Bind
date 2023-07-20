@@ -17,13 +17,13 @@ void buttonClicked1()
 void screenSetup()
 {
   Serial.println("Screen setup started!");
-  screenButton1.x = 60;
-  screenButton1.y = 220;
-  screenButton1.color = BLACK;
-  screenButton1.backColor = YELLOW;
+  screenButton1.x = 60; // location on android screen
+  screenButton1.y = 220; // location on android screen
+  screenButton1.color = BLACK; // Text color
+  screenButton1.backColor = YELLOW; // button color
+  screenButton1.setlabel("Button1"); // button label
+  screenButton1.fontSize = 23; // button label font size
   screenButton1.cmdId = ENABLE_CMD;
-  screenButton1.setlabel("Button1");
-  screenButton1.fontSize = 23;
   sendScreenStream(&screenButton1, &SerialBT);
   Serial.println("Screen setup done!");
 }
