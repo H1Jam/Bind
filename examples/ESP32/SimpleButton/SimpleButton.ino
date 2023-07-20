@@ -28,7 +28,6 @@ void screenSetup()
   Serial.println("Screen setup done!");
 }
 
-
 void setup() {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
