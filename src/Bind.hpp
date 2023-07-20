@@ -135,10 +135,6 @@ class ScreenButton: public ScreenStream {
     int16_t fontSize;
     int32_t color;
     int32_t backColor;
-    void (*clickCallback)(void);
-    void setCallback(void (*_clickCallback)(void)) {
-      clickCallback = _clickCallback;
-    }
     void setlabel(const char *cstr) {
       str = cstr;
     }
@@ -738,13 +734,13 @@ class ScreenObjects {
       buttonIndex = 1;
     }
     void registerScreenSetup(void (*_setupCallback)(void));
-    void registerButton(ScreenButton *screenButton);
+    void registerButton(ScreenButton *screenButton, void (*_clickCallback)(void));
     void registerDialKnob(ScreenKnob *screenKnob);
     int updateScreen(uint8_t inp);
     int updateScreenInternal(uint8_t *dataFrame);
     void knobChanged(int8_t tag, int val);
     void clickButton(uint8_t tag);
-    void registerSwitch(ScreenSwitch *screenSwitch);
+    void registerSwitch(ScreenSwitch *screenSwitch, void (*_clickCallback)(bool));
     void updateSwitch(uint8_t tag, bool val);
     void registerSeekBar(ScreenSeekBar *screenSeekBar);
     void updateSeekBar(uint8_t tag, int16_t val);
