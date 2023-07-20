@@ -19,7 +19,7 @@ void addSwitch() {
   screenSwitch.cmdId = ENABLE_CMD;
   screenSwitch.switchValue = false;
   screenSwitch.fontSize = 30;
-  screenSwitch.textColor = MAGENTA;
+  screenSwitch.textColor = YELLOW;
   screenSwitch.setlabel("SwitchFromBind");
   sendScreenStream(&screenSwitch, &SerialBT);
 }
@@ -47,4 +47,5 @@ void loop() {
   while (SerialBT.available()) {
   screenObjects.updateScreen(SerialBT.read());
   delay(1);
+  }
 }
