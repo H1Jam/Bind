@@ -4,15 +4,13 @@
 BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
 ScreenSwitch screenSwitch;
-int result =0;
 const int ledPin = 2;
-bool ledIsON = false;
 
-void buttonClicked1()
+void screenSwitchChanged1(bool ischecked)
 {
-  Serial.println("button1 has been clicked!");
-  ledIsON = !ledIsON;
-  digitalWrite(ledPin, ledIsON);
+  Serial.print("ScreenSwitch has been changed:");
+  Serial.println(ischecked);
+  digitalWrite(ledPin, ischecked);
 }
 
 void addSwitch() {
@@ -22,14 +20,14 @@ void addSwitch() {
   screenSwitch.switchValue = false;
   screenSwitch.fontSize = 30;
   screenSwitch.textColor = MAGENTA;
-  screenSwitch.setlabel( "SwitchFromBind");
+  screenSwitch.setlabel("SwitchFromBind");
   sendScreenStream(&screenSwitch, &SerialBT);
 }
 
 void screenSetup()
 {
   Serial.println("Screen setup started!");
-  addSwitch()
+  addSwitch();
   Serial.println("Screen setup done!");
 }
 
@@ -37,7 +35,7 @@ void setup() {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
   screenObjects.registerScreenSetup(&screenSetup);
-  screenObjects.registerSwitch(&screenSwitch);
+  screenObjects.registerSwitch(&screenSwitch, &screenSwitchChanged1);
   String devName = "ESP32testB";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
@@ -47,8 +45,6 @@ void setup() {
 
 void loop() {
   while (SerialBT.available()) {
-  result = screenObjects.updateScreen(SerialBT.read());
-  
-  }
+  screenObjects.updateScreen(SerialBT.read());
   delay(1);
 }
