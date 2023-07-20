@@ -1,5 +1,7 @@
 #include "DataProtocol.h"
+#include "Arduino.h"
 #include "crc16.h"
+//#define DEBUG_MSG 0
 uint16_t crcCalc;
 uint16_t crcRcv;
 
@@ -44,6 +46,7 @@ int DataParser::update(uint8_t inp) {
   }
   return 0;
 }
+
 bool isTimedOut() {
   if ((millis() - mLastDigitTimeStamp) > 100) {
     mLastDigitTimeStamp = millis();
@@ -61,11 +64,13 @@ bool checkCRC(uint8_t const *buffer, size_t len) {
   if (crcCalc == crcRcv) {
     return true;
   } else {
-/*     Serial.print("\nBad CRC! CALC =") ;
+#ifdef DEBUG_MSG
+    Serial.print("\nBad CRC! CALC =") ;
     Serial.print(crcCalc) ;
     Serial.print(", Rcv =") ;
-    Serial.println(crcRcv) ; */
+    Serial.println(crcRcv) ;
     // printArray(buffer, len);
+#endif
     return false;
   }
 }
@@ -86,11 +91,13 @@ int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len) {
   return len + 8;
 }
 
-/* void printArray(uint8_t const *buffer, size_t len) {
+void printArray(uint8_t const *buffer, size_t len) {
+#ifdef DEBUG_MSG
   Serial.print("\n------------\n[");
   for (int i = 0; i < (len); i++) {
     Serial.print(buffer[i]);
     Serial.print(", ");
   }
   Serial.print("]\n------------\n");
-} */
+#endif
+}
