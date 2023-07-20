@@ -1,5 +1,5 @@
-#ifndef __UIDUINOSWITCH_H
-#define __UIDUINOSWITCH_H
+#ifndef __BINDDSWITCH_H
+#define __BINDDSWITCH_H
 class Switch {
   private:
     bool * value = NULL;
@@ -16,4 +16,4 @@ class Switch {
       }
     }
 };
-#endif /* __UIDUINOSWITCH_H */
+#endif /* __BINDDSWITCH_H */

@@ -1,5 +1,5 @@
-#ifndef __UIDUINOBUTTON_H
-#define __UIDUINOBUTTON_H
+#ifndef __BINDBUTTON_H
+#define __BINDBUTTON_H
 class Button {
   private:
     void (*clickCallback)(void);
@@ -12,4 +12,4 @@ class Button {
     }
     void clicked();
 };
-#endif /* __UIDUINOBUTTON_H */
+#endif /* __BINDBUTTON_H */

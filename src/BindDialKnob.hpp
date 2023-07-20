@@ -1,5 +1,5 @@
-#ifndef __UIDUINODIALKNOB_H
-#define __UIDUINODIALKNOB_H
+#ifndef __BINDDIALKNOB_H
+#define __BINDDIALKNOB_H
 class DialKnob {
   private:
     int16_t * value = NULL;
@@ -12,4 +12,4 @@ class DialKnob {
     }
     void changed(int16_t val);
 };
-#endif /* __UIDUINODIALKNOB_H */
+#endif /* __BINDDIALKNOB_H */

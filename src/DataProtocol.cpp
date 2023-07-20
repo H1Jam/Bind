@@ -1,6 +1,5 @@
 #include "DataProtocol.h"
 #include "crc16.h"
-#include <Arduino.h> // Just for Serial.print! Remove it!!!
 uint16_t crcCalc;
 uint16_t crcRcv;
 
@@ -62,10 +61,10 @@ bool checkCRC(uint8_t const *buffer, size_t len) {
   if (crcCalc == crcRcv) {
     return true;
   } else {
-    Serial.print("\nBad CRC! CALC =") ;
+/*     Serial.print("\nBad CRC! CALC =") ;
     Serial.print(crcCalc) ;
     Serial.print(", Rcv =") ;
-    Serial.println(crcRcv) ;
+    Serial.println(crcRcv) ; */
     // printArray(buffer, len);
     return false;
   }
@@ -87,11 +86,11 @@ int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len) {
   return len + 8;
 }
 
-void printArray(uint8_t const *buffer, size_t len) {
+/* void printArray(uint8_t const *buffer, size_t len) {
   Serial.print("\n------------\n[");
   for (int i = 0; i < (len); i++) {
     Serial.print(buffer[i]);
     Serial.print(", ");
   }
   Serial.print("]\n------------\n");
-}
+} */

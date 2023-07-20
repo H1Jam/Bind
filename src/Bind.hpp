@@ -1,11 +1,11 @@
-#ifndef __UIDUINO_H
-#define __UIDUINO_H
+#ifndef __BIND_H
+#define __BIND_H
 #include <stdint.h>
 #include "Stream.h"
 #include "DataProtocol.h"
-#include "UIduinoButton.hpp"
-#include "UIduinoDialKnob.hpp"
-#include "UIduinoSwitch.hpp"
+#include "BindButton.hpp"
+#include "BindDialKnob.hpp"
+#include "BindSwitch.hpp"
 
 #define maxObjects  8
 #define MAX_SINK_OBJECTS  100
@@ -760,4 +760,4 @@ void ScreenTerminalPrint(const char *str, int32_t textColor, bool autoScroll, bo
 void ScreenTerminalPrint(const char *str, ScreenTerminal *obj, Stream *stream);
 void ScreenTerminalPrintln(const char *str, ScreenTerminal *obj, Stream *stream);
 
-#endif /* __UIDUINO_H */
+#endif /* __BIND_H */
