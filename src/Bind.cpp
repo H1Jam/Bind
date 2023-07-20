@@ -165,10 +165,10 @@ void ScreenObjects::updateJoystick(uint8_t tag, int16_t valX, int16_t valY) {
   }
 }
 
-void ScreenObjects::registerColorPicker(ScreenColorPicker * screenColorPicker) {
+void ScreenObjects::registerColorPicker(ScreenColorPicker * screenColorPicker, void (*_clickCallback)(uint8_t, uint8_t, uint8_t)) {
   if (ColorPickerHandlerIndex < maxObjects) {
     screenColorPicker->tag = ColorPickerHandlerIndex++;
-    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue);
+    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, _clickCallback);
   }
 }
 
