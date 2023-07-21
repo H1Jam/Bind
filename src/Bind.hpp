@@ -42,10 +42,10 @@ class JoystickHandler {
   private:
     int16_t * valueX = NULL;
     int16_t * valueY = NULL;
-	void (*changeCallback)(int16_t, int16_t)
+	void (*changeCallback)(int16_t, int16_t);
   public:
     JoystickHandler() {
-      JoystickHandler(NULL, NULL);
+      JoystickHandler(NULL, NULL, NULL);
     }
     JoystickHandler(int16_t *valX, int16_t *valY, void (*_changeCallback)(int16_t, int16_t)) {
       valueX = valX;
@@ -57,7 +57,7 @@ class JoystickHandler {
         *valueX = valX;
         *valueY = valY;
       }
-	  if (changeCallback != NUL){
+	  if (changeCallback != NULL){
 		  changeCallback(valX, valY);
 	  }
     }
