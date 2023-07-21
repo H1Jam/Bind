@@ -42,19 +42,24 @@ class JoystickHandler {
   private:
     int16_t * valueX = NULL;
     int16_t * valueY = NULL;
+	void (*changeCallback)(int16_t, int16_t)
   public:
     JoystickHandler() {
       JoystickHandler(NULL, NULL);
     }
-    JoystickHandler(int16_t *valX, int16_t *valY) {
+    JoystickHandler(int16_t *valX, int16_t *valY, void (*_changeCallback)(int16_t, int16_t)) {
       valueX = valX;
       valueY = valY;
+	  changeCallback = _changeCallback;
     }
     void update(int16_t valX, int16_t valY) {
       if (valueX != NULL && valueY != NULL) {
         *valueX = valX;
         *valueY = valY;
       }
+	  if (changeCallback != NUL){
+		  changeCallback(valX, valY);
+	  }
     }
 };
 
@@ -743,20 +748,20 @@ class ScreenObjects {
       dialKnobIndex = 1;
       buttonIndex = 1;
     }
-    void registerScreenSetup(void (*_setupCallback)(void));
-    void registerButton(ScreenButton *screenButton, void (*_clickCallback)(void));
-    void registerDialKnob(ScreenKnob *screenKnob, void (*_changeCallback)(int16_t));
+    void registerScreenSetup(void (*setupCallback)(void));
+    void registerButton(ScreenButton *screenButton, void (*clickCallback)(void));
+    void registerDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t));
     int updateScreen(uint8_t inp);
     int updateScreenInternal(uint8_t *dataFrame);
     void knobChanged(int8_t tag, int val);
     void clickButton(uint8_t tag);
-    void registerSwitch(ScreenSwitch *screenSwitch, void (*_clickCallback)(bool));
+    void registerSwitch(ScreenSwitch *screenSwitch, void (*clickCallback)(bool));
     void updateSwitch(uint8_t tag, bool val);
-    void registerSeekBar(ScreenSeekBar *screenSeekBar, void (*_changeCallback)(int16_t));
+    void registerSeekBar(ScreenSeekBar *screenSeekBar, void (*changeCallback)(int16_t));
     void updateSeekBar(uint8_t tag, int16_t val);
-    void registerJoystick(ScreenJoystick *screenJoystick);
+    void registerJoystick(ScreenJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t));
     void updateJoystick(uint8_t tag, int16_t valX, int16_t valY);
-    void registerColorPicker(ScreenColorPicker *screenColorPicker, void (*_clickCallback)(uint8_t, uint8_t, uint8_t));
+    void registerColorPicker(ScreenColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t));
     void updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);
 };
 
