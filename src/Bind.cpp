@@ -47,17 +47,17 @@ void sendScreenStream(ScreenStream *obj, Stream *stream) {
 }
 
 
-void ScreenObjects::registerButton(ScreenButton * screenButton, void (*_clickCallback)(void)) {
+void ScreenObjects::registerButton(ScreenButton * screenButton, void (*clickCallback)(void)) {
   if (buttonIndex < maxObjects) {
     screenButton->tag = buttonIndex++;
-    buttons[screenButton->tag] = Button(_clickCallback);
+    buttons[screenButton->tag] = Button(clickCallback);
   }
 }
 
-void ScreenObjects::registerDialKnob(ScreenKnob * screenKnob, void (*_changeCallback)(int16_t)) {
+void ScreenObjects::registerDialKnob(ScreenKnob * screenKnob, void (*changeCallback)(int16_t)) {
   if (dialKnobIndex < maxObjects) {
     screenKnob->tag = dialKnobIndex++;
-    dialKnobs[screenKnob->tag] = DialKnob(&screenKnob->value, _changeCallback);
+    dialKnobs[screenKnob->tag] = DialKnob(&screenKnob->value, changeCallback);
   }
 }
 
@@ -126,10 +126,10 @@ void ScreenObjects::clickButton(uint8_t tag) {
   }
 }
 
-void ScreenObjects::registerSwitch(ScreenSwitch * screenSwitch, void (*_clickCallback)(bool)) {
+void ScreenObjects::registerSwitch(ScreenSwitch * screenSwitch, void (*clickCallback)(bool)) {
   if (switchIndex < maxObjects) {
     screenSwitch->tag = switchIndex++;
-    switchs[screenSwitch->tag] = Switch(&screenSwitch->switchValue, _clickCallback);
+    switchs[screenSwitch->tag] = Switch(&screenSwitch->switchValue, clickCallback);
   }
 }
 
@@ -139,10 +139,10 @@ void ScreenObjects::updateSwitch(uint8_t tag, bool val) {
   }
 }
 
-void ScreenObjects::registerSeekBar(ScreenSeekBar * screenSeekBar, void (*_changeCallback)(int16_t)) {
+void ScreenObjects::registerSeekBar(ScreenSeekBar * screenSeekBar, void (*changeCallback)(int16_t)) {
   if (SeekBarIndex < maxObjects) {
     screenSeekBar->tag = SeekBarIndex++;
-    seekBars[screenSeekBar->tag] = SeekBar(&screenSeekBar->seekValue, _changeCallback);
+    seekBars[screenSeekBar->tag] = SeekBar(&screenSeekBar->seekValue, changeCallback);
   }
 }
 
@@ -152,10 +152,10 @@ void ScreenObjects::updateSeekBar(uint8_t tag, int16_t val) {
   }
 }
 
-void ScreenObjects::registerJoystick(ScreenJoystick * screenJoystick) {
+void ScreenObjects::registerJoystick(ScreenJoystick * screenJoystick, void (*changeCallback)(int16_t, int16_t)) {
   if (JoystickHandlerIndex < maxObjects) {
     screenJoystick->tag = JoystickHandlerIndex++;
-    joystickHandlers[screenJoystick->tag] = JoystickHandler(&screenJoystick->sX, &screenJoystick->sY);
+    joystickHandlers[screenJoystick->tag] = JoystickHandler(&screenJoystick->sX, &screenJoystick->sY, changeCallback);
   }
 }
 
@@ -165,10 +165,10 @@ void ScreenObjects::updateJoystick(uint8_t tag, int16_t valX, int16_t valY) {
   }
 }
 
-void ScreenObjects::registerColorPicker(ScreenColorPicker * screenColorPicker, void (*_clickCallback)(uint8_t, uint8_t, uint8_t)) {
+void ScreenObjects::registerColorPicker(ScreenColorPicker * screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t)) {
   if (ColorPickerHandlerIndex < maxObjects) {
     screenColorPicker->tag = ColorPickerHandlerIndex++;
-    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, _clickCallback);
+    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, clickCallback);
   }
 }
 
