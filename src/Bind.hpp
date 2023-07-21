@@ -19,16 +19,21 @@
 class SeekBar {
   private:
     int16_t * value = NULL;
+	void (*changeCallback)(int16_t);
   public:
     SeekBar() {
-      SeekBar(NULL);
+      SeekBar(NULL, NULL);
     }
-    SeekBar(int16_t *val) {
+    SeekBar(int16_t *val , void (*_changeCallback)(int16_t)) {
       value = val;
+	  changeCallback = _changeCallback;
     }
     void update(int16_t val) {
       if (value != NULL) {
         *value = val;
+      }
+	  if (changeCallback != NULL) {
+        changeCallback(val);
       }
     }
 };
@@ -747,7 +752,7 @@ class ScreenObjects {
     void clickButton(uint8_t tag);
     void registerSwitch(ScreenSwitch *screenSwitch, void (*_clickCallback)(bool));
     void updateSwitch(uint8_t tag, bool val);
-    void registerSeekBar(ScreenSeekBar *screenSeekBar);
+    void registerSeekBar(ScreenSeekBar *screenSeekBar, void (*_changeCallback)(int16_t));
     void updateSeekBar(uint8_t tag, int16_t val);
     void registerJoystick(ScreenJoystick *screenJoystick);
     void updateJoystick(uint8_t tag, int16_t valX, int16_t valY);
