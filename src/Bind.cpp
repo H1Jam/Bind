@@ -139,10 +139,10 @@ void ScreenObjects::updateSwitch(uint8_t tag, bool val) {
   }
 }
 
-void ScreenObjects::registerSeekBar(ScreenSeekBar * screenSeekBar) {
+void ScreenObjects::registerSeekBar(ScreenSeekBar * screenSeekBar, void (*_changeCallback)(int16_t)) {
   if (SeekBarIndex < maxObjects) {
     screenSeekBar->tag = SeekBarIndex++;
-    seekBars[screenSeekBar->tag] = SeekBar(&screenSeekBar->seekValue);
+    seekBars[screenSeekBar->tag] = SeekBar(&screenSeekBar->seekValue, _changeCallback);
   }
 }
 
