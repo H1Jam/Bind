@@ -54,10 +54,10 @@ void ScreenObjects::registerButton(ScreenButton * screenButton, void (*_clickCal
   }
 }
 
-void ScreenObjects::registerDialKnob(ScreenKnob * screenKnob) {
+void ScreenObjects::registerDialKnob(ScreenKnob * screenKnob, void (*_changeCallback)(int16_t)) {
   if (dialKnobIndex < maxObjects) {
     screenKnob->tag = dialKnobIndex++;
-    dialKnobs[screenKnob->tag] = DialKnob(&screenKnob->value);
+    dialKnobs[screenKnob->tag] = DialKnob(&screenKnob->value, _changeCallback);
   }
 }
 
