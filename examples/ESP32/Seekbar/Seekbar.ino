@@ -15,7 +15,7 @@ void screenSeekbar1Changed(int16_t val)
 void addSeekBar(){
   screenSeekBar1.x = 40;
   screenSeekBar1.y = 340;
-  screenSeekBar1.cmdId = ENABLE_CMD;
+  screenSeekBar1.cmdId = ADD_OR_REFRESH_CMD;
   screenSeekBar1.seekValue = 0;
   screenSeekBar1.maxValue = 300;
   screenSeekBar1.width = 290;
