@@ -16,7 +16,7 @@ void addKnob()
 {
   screenknob1.x = 20;
   screenknob1.y = 40;
-  screenknob1.cmdId = ENABLE_CMD;
+  screenknob1.cmdId = ADD_OR_REFRESH_CMD;
   screenknob1.dimSize = 150;
   screenknob1.minValue = -500;
   screenknob1.maxValue = 500;
