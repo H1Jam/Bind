@@ -16,7 +16,6 @@ void joystick1_Callback(int16_t x, int16_t y)
 void addJoystick() {
   joystick1.x = 50;
   joystick1.y = 80;
-  joystick1.cmdId = REMOVE_CMD;
   joystick1.cmdId = ADD_OR_REFRESH_CMD;
   joystick1.dimSize = 200;
   sendScreenStream(&joystick1, &SerialBT);
