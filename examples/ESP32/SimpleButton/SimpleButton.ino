@@ -21,7 +21,7 @@ void addButton1() {
   screenButton1.backColor = YELLOW; // button color
   screenButton1.setlabel("Button1"); // button label
   screenButton1.fontSize = 23; // button label font size
-  screenButton1.cmdId = ENABLE_CMD;
+  screenButton1.cmdId = ADD_OR_REFRESH_CMD;
   
   sendScreenStream(&screenButton1, &SerialBT);
 }
