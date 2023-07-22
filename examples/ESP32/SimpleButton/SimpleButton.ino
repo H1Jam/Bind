@@ -50,5 +50,6 @@ void loop() {
   while (SerialBT.available()) {
     screenObjects.updateScreen(SerialBT.read());
   }
-  delay(1);
+  delay(10);
 }
+
