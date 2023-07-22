@@ -35,7 +35,7 @@ void addBoxes() {
   screenRectangle3.cmdId = ADD_OR_REFRESH_CMD;
   screenRectangle3.width = 280;
   screenRectangle3.height = 50;
-  screenRectangle3.fillColor = UBUNTU;
+  screenRectangle3.fillColor = BLACK;
   screenRectangle3.strokeColor = YELLOW;
   screenRectangle3.strokeWidth = 2;
   screenRectangle3.cornersRadius = 50;
