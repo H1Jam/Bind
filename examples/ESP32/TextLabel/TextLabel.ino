@@ -8,12 +8,6 @@ ScreenTextLabel textLabel2;
 int counter = 0;
 char buffer[10];
 
-void screenSwitchChanged1(bool ischecked)
-{
-  Serial.print("ScreenSwitch has been changed:");
-  Serial.println(ischecked);
-}
-
 void addtTextlabel() {
   textLabel1.x = 20;
   textLabel1.y = 20;
