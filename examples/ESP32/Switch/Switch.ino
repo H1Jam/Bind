@@ -16,7 +16,7 @@ void screenSwitchChanged1(bool ischecked)
 void addSwitch() {
   screenSwitch.x = 60;
   screenSwitch.y = 160;
-  screenSwitch.cmdId = ENABLE_CMD;
+  screenSwitch.cmdId = ADD_OR_REFRESH_CMD;
   screenSwitch.switchValue = false;
   screenSwitch.fontSize = 30;
   screenSwitch.textColor = YELLOW;
