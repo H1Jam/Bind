@@ -7,21 +7,21 @@ ScreenAttitudeIndicator screenAttitudeIndicator;
 ScreenHeadingIndicator screenHeadingIndicator;
 int counter = 0;
 
-void addAttitudeIndicator() {
+void setAttitudeIndicator(int roll, int pitch) {
   screenAttitudeIndicator.x = 10;
   screenAttitudeIndicator.y = 10;
   screenAttitudeIndicator.cmdId = ADD_OR_REFRESH_CMD;
-  screenAttitudeIndicator.roll = 0;
-  screenAttitudeIndicator.pitch = 0;
+  screenAttitudeIndicator.roll = roll;
+  screenAttitudeIndicator.pitch = pitch;
   screenAttitudeIndicator.dimSize = 100;
   sendScreenStream(&screenAttitudeIndicator, &SerialBT);
 }
 
-void addHeadingIndicator() {
+void setHeadingIndicator(int heading) {
   screenHeadingIndicator.x = 120;
   screenHeadingIndicator.y = 10;
   screenHeadingIndicator.cmdId = ADD_OR_REFRESH_CMD;
-  screenHeadingIndicator.heading =  gVal;
+  screenHeadingIndicator.heading =  heading;
   screenHeadingIndicator.dimSize = 100;
   sendScreenStream(&screenHeadingIndicator, &SerialBT);
 }
@@ -29,8 +29,8 @@ void addHeadingIndicator() {
 void screenSetup()
 {
   Serial.println("Screen setup started!");
-  addAttitudeIndicator();
-  addHeadingIndicator();
+  setAttitudeIndicator(0, 0);
+  setHeadingIndicator(0);
   Serial.println("Screen setup done!");
 }
 
