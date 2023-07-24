@@ -6,6 +6,9 @@ ScreenObjects screenObjects;
 ScreenAttitudeIndicator screenAttitudeIndicator;
 ScreenHeadingIndicator screenHeadingIndicator;
 int counter = 0;
+float rollC = 0
+float pitchC = 0
+float headingC = 0
 
 void setAttitudeIndicator(float roll, float pitch) {
   screenAttitudeIndicator.x = 10;
@@ -52,7 +55,10 @@ void loop() {
   counter++;
   if(counter>100){
     counter=0;
-    snprintf(buffer, 10, "%d", millis());
+    rollC++;
+	pitchC++;
+	headingC++;
+	
     textLabel2.setlabel(buffer);
     textLabel2.cmdId = ADD_OR_REFRESH_CMD;
     sendScreenStream(&textLabel2, &SerialBT);
