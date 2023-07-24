@@ -8,6 +8,10 @@ ScreenHeadingIndicator screenHeadingIndicator;
 int counter = 0;
 float rollC = 0;
 float pitchC = 0;
+
+float rollDelta = 2;
+float pitchDelta = 1;
+
 float headingC = 0;
 
 void setAttitudeIndicator(float roll, float pitch) {
@@ -54,15 +58,16 @@ void loop() {
   counter++;
   if (counter > 20) {
     counter = 0;
-    rollC++;
-    pitchC++;
+    rollC += rollDelta;
+    pitchC += pitchDelta;
     headingC += 5;
-    if (rollC > 45) {
-      rollC = -45.0f;
+
+    if (rollC > 20 || rollC < -20) {
+      rollDelta = -1 * rollDelta;
     }
 
-    if (pitchC > 45) {
-      pitchC = -45.0f;
+    if (pitchC > 20 || pitchC < -20) {
+      pitchDelta = -1 * pitchDelta;
     }
 
     if (headingC > 360) {
