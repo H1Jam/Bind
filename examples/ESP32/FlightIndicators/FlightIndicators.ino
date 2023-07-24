@@ -6,9 +6,9 @@ ScreenObjects screenObjects;
 ScreenAttitudeIndicator screenAttitudeIndicator;
 ScreenHeadingIndicator screenHeadingIndicator;
 int counter = 0;
-float rollC = 0
-float pitchC = 0
-float headingC = 0
+float rollC = 0;
+float pitchC = 0;
+float headingC = 0;
 
 void setAttitudeIndicator(float roll, float pitch) {
   screenAttitudeIndicator.x = 10;
@@ -16,21 +16,20 @@ void setAttitudeIndicator(float roll, float pitch) {
   screenAttitudeIndicator.cmdId = ADD_OR_REFRESH_CMD;
   screenAttitudeIndicator.roll = roll;
   screenAttitudeIndicator.pitch = pitch;
-  screenAttitudeIndicator.dimSize = 100;
+  screenAttitudeIndicator.dimSize = 150;
   sendScreenStream(&screenAttitudeIndicator, &SerialBT);
 }
 
 void setHeadingIndicator(float heading) {
-  screenHeadingIndicator.x = 120;
+  screenHeadingIndicator.x = 190;
   screenHeadingIndicator.y = 10;
   screenHeadingIndicator.cmdId = ADD_OR_REFRESH_CMD;
-  screenHeadingIndicator.heading =  heading;
-  screenHeadingIndicator.dimSize = 100;
+  screenHeadingIndicator.heading = heading;
+  screenHeadingIndicator.dimSize = 150;
   sendScreenStream(&screenHeadingIndicator, &SerialBT);
 }
 
-void screenSetup()
-{
+void screenSetup() {
   Serial.println("Screen setup started!");
   setAttitudeIndicator(0.0f, 0.0f);
   setHeadingIndicator(0.0f);
@@ -53,15 +52,23 @@ void loop() {
   }
   delay(10);
   counter++;
-  if(counter>100){
-    counter=0;
+  if (counter > 20) {
+    counter = 0;
     rollC++;
-	pitchC++;
-	headingC++;
-	
-    textLabel2.setlabel(buffer);
-    textLabel2.cmdId = ADD_OR_REFRESH_CMD;
-    sendScreenStream(&textLabel2, &SerialBT);
+    pitchC++;
+    headingC += 5;
+    if (rollC > 45) {
+      rollC = -45.0f;
+    }
+
+    if (pitchC > 45) {
+      pitchC = -45.0f;
+    }
+
+    if (headingC > 360) {
+      headingC = 0.0f;
+    }
+    setAttitudeIndicator(rollC, pitchC);
+    setHeadingIndicator(headingC);
   }
 }
-
