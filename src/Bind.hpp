@@ -147,6 +147,9 @@ class ScreenButton: public ScreenStream {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenButton(){
+		setlabel("Button");
+	}
     int16_t x;
     int16_t y;
     uint8_t cmdId = 0;
