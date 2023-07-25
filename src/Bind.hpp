@@ -491,6 +491,12 @@ class ScreenGaugeSimple: public ScreenStreamAutoTag  {
     int strLength = 0;
     const char *str;
   public:
+	ScreenGaugeSimple(const char *cstr){
+		setlabel(cstr);
+	}
+	ScreenGaugeSimple(){
+		setlabel("Gauge");
+	}
     int16_t x = 0;
     int16_t y = 0;
     uint8_t cmdId = 0;
@@ -681,6 +687,9 @@ class ScreenSettings: public ScreenStream  {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenSettings(){
+		setlabel("BindApp");
+	}
     int8_t screenOrientation = 0;
     int32_t backColor;
     int32_t actionBarColor;
