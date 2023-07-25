@@ -147,6 +147,9 @@ class ScreenButton: public ScreenStream {
     int strLength = 0;
     const char *str;
   public:
+    ScreenButton(const char *cstr){
+		setlabel(cstr);
+	}
   	ScreenButton(){
 		setlabel("Button");
 	}
@@ -225,6 +228,9 @@ class ScreenGauge: public ScreenStreamAutoTag {
     int strLength = 0;
     const char *str;
   public:
+    ScreenGauge(const char *cstr){
+		setlabel(cstr);
+	}
   	ScreenGauge(){
 		setlabel("Gauge");
 	}
@@ -271,6 +277,9 @@ class ScreenGaugeCompact: public ScreenStreamAutoTag {
     int strLength = 0;
     const char *str;
   public:
+    ScreenGaugeCompact(const char *cstr){
+		setlabel(cstr);
+	}
   	ScreenGaugeCompact(){
 		setlabel("Gauge");
 	}
@@ -373,6 +382,9 @@ class ScreenSwitch: public ScreenStream  {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenSwitch(const char *cstr){
+		setlabel(cstr);
+	}
   	ScreenSwitch(){
 		setlabel("Switch");
 	}
