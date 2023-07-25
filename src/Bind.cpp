@@ -107,6 +107,7 @@ int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
 void ScreenObjects::screenInit() {
   if (*setupCallback != NULL) {
     setupCallback();
+	init = true;
   }
 }
 
