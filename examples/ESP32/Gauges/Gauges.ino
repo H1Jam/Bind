@@ -14,8 +14,7 @@ float g2 = 0.0f;
 float gDelta = 1.0f;
 
 
-void addGauge(float value)
-{
+void addGauge(float value) {
   screenGauge.x = 120;
   screenGauge.y = 500;
   screenGauge.dimSize = 120;
@@ -25,13 +24,12 @@ void addGauge(float value)
   screenGauge.arcGreenMaxVal = 100.0f;
   screenGauge.arcYellowMaxVal = 150.0f;
   screenGauge.arcRedMaxVal = 180.0f;
-  screenGauge.setlabel("Celcesius");
+  //screenGauge.setlabel("Celcesius");
   screenGauge.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenGauge, &SerialBT);
 }
 
-void updateGauge(float value)
-{
+void updateGauge(float value) {
   screenGauge.value = value;
   screenGauge.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenGauge, &SerialBT);
@@ -111,9 +109,10 @@ void loop() {
     if (g1 > 20.0f || g1 < -20.0f) {
       gDelta = -1 * gDelta;
     }
-
-  addGauge(g1);
-  addGaugeCompact(g2);
-  updateGaugeSimple(g1);
+    if (screenObjects.isReady()) {
+      updateGauge(g1);
+      updateGaugeCompact(g2);
+      updateGaugeSimple(g1);
+    }
   }
 }
