@@ -185,6 +185,9 @@ class ScreenKnob: public ScreenStream {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenKnob(){
+		setlabel("Knob");
+	}
     int16_t x;
     int16_t y;
     uint8_t cmdId = 0;
@@ -222,6 +225,9 @@ class ScreenGauge: public ScreenStreamAutoTag {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenGauge(){
+		setlabel("Gauge");
+	}
     int16_t x;
     int16_t y;
     uint8_t cmdId = 0;
