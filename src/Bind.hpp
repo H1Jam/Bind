@@ -271,6 +271,9 @@ class ScreenGaugeCompact: public ScreenStreamAutoTag {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenGaugeCompact(){
+		setlabel("Gauge");
+	}
     int16_t x;
     int16_t y;
     uint8_t cmdId = 0;
