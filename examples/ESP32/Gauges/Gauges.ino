@@ -13,9 +13,9 @@ float gDelta = 1.0f;
 float speedDelta = 5.0f;
 
 void addGauge(float value) {
-  screenGauge.x = 120;
-  screenGauge.y = 500;
-  screenGauge.dimSize = 120;
+  screenGauge.x = 10;
+  screenGauge.y = 10;
+  screenGauge.dimSize = 200;
   screenGauge.value = value;
   screenGauge.maxValue = 200.0f;
   screenGauge.drawArc = 100;
@@ -34,9 +34,9 @@ void updateGauge(float value) {
 }
 
 void addGaugeCompact(float value) {
-  screenGaugeCompact.x = 20;
-  screenGaugeCompact.y = 270;
-  screenGaugeCompact.dimSize = 120;
+  screenGaugeCompact.x = 10;
+  screenGaugeCompact.y = 230;
+  screenGaugeCompact.dimSize = 200;
   screenGaugeCompact.value = value;
   screenGaugeCompact.maxValue = 200.0f;
   screenGaugeCompact.drawArc = 100;
@@ -55,9 +55,9 @@ void updateGaugeCompact(float value) {
 }
 
 void addGaugeSimple(float value) {
-  screenGaugeSimple.x = 129;
-  screenGaugeSimple.y = 150;
-  screenGaugeSimple.dimSize = 153;
+  screenGaugeSimple.x = 10;
+  screenGaugeSimple.y = 360;
+  screenGaugeSimple.dimSize = 200;
   screenGaugeSimple.value = value;
   screenGaugeSimple.maxValue = 20;
   screenGaugeSimple.minValue = -20;
@@ -103,11 +103,11 @@ void loop() {
     counter = 0;
     g1 += gDelta;
     speed += speedDelta;
-    if (g1 > 20.0f || g1 < -20.0f) {
+    if (g1 >= 20.0f || g1 <= -20.0f) {
       gDelta = -1 * gDelta;
     }
 
-    if (speed > 200.0f || speed < -0.0f) {
+    if (speed >= 200.0f || speed <= -0.0f) {
       speedDelta = -1 * speedDelta;
     }
 
