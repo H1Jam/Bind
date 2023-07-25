@@ -111,6 +111,9 @@ class ScreenTextLabel: public ScreenStreamAutoTag {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenTextLabel(){
+		setlabel("TextLabel");
+	}
     void setlabel(const char *cstr) {
       str = cstr;
     }
