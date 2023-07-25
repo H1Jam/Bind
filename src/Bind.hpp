@@ -373,6 +373,9 @@ class ScreenSwitch: public ScreenStream  {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenSwitch(){
+		setlabel("Switch");
+	}
     int16_t x;
     int16_t y;
     uint8_t cmdId = 0;
