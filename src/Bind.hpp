@@ -111,6 +111,9 @@ class ScreenTextLabel: public ScreenStreamAutoTag {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenTextLabel(const char *cstr){
+		setlabel(cstr);
+	}
   	ScreenTextLabel(){
 		setlabel("TextLabel");
 	}
@@ -188,6 +191,9 @@ class ScreenKnob: public ScreenStream {
     int strLength = 0;
     const char *str;
   public:
+  	ScreenKnob(const char *cstr){
+		setlabel(cstr);
+	}
   	ScreenKnob(){
 		setlabel("Knob");
 	}
