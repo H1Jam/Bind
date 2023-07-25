@@ -6,13 +6,11 @@ ScreenObjects screenObjects;
 ScreenGauge screenGauge;
 ScreenGaugeSimple screenGaugeSimple;
 ScreenGaugeCompact screenGaugeCompact;
-
 int counter = 0;
 float g1 = 0.0f;
-float g2 = 0.0f;
-
+float speed = 0.0f;
 float gDelta = 1.0f;
-
+float speedDelta = 5.0f;
 
 void addGauge(float value) {
   screenGauge.x = 120;
@@ -24,7 +22,7 @@ void addGauge(float value) {
   screenGauge.arcGreenMaxVal = 100.0f;
   screenGauge.arcYellowMaxVal = 150.0f;
   screenGauge.arcRedMaxVal = 180.0f;
-  //screenGauge.setlabel("Celcesius");
+  screenGauge.setlabel("Speed mph");
   screenGauge.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenGauge, &SerialBT);
 }
@@ -45,7 +43,7 @@ void addGaugeCompact(float value) {
   screenGaugeCompact.arcGreenMaxVal = 100.0f;
   screenGaugeCompact.arcYellowMaxVal = 150.0f;
   screenGaugeCompact.arcRedMaxVal = 180.0f;
-  screenGaugeCompact.setlabel("Temp Celcesius");
+  screenGaugeCompact.setlabel("Speed Km/h");
   screenGaugeCompact.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenGaugeCompact, &SerialBT);
 }
@@ -104,14 +102,18 @@ void loop() {
   if (counter > 20) {
     counter = 0;
     g1 += gDelta;
-    g2 -= gDelta;
-
+    speed += speedDelta;
     if (g1 > 20.0f || g1 < -20.0f) {
       gDelta = -1 * gDelta;
     }
+
+    if (speed > 200.0f || speed < -0.0f) {
+      speedDelta = -1 * speedDelta;
+    }
+
     if (screenObjects.isReady()) {
-      updateGauge(g1);
-      updateGaugeCompact(g2);
+      updateGauge(speed);
+      updateGaugeCompact(speed);
       updateGaugeSimple(g1);
     }
   }
