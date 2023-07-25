@@ -37,7 +37,7 @@ void updateGauge(float value)
   sendScreenStream(&screenGauge, &SerialBT);
 }
 
-void addnGaugeCompact(float value) {
+void addGaugeCompact(float value) {
   screenGaugeCompact.x = 20;
   screenGaugeCompact.y = 270;
   screenGaugeCompact.dimSize = 120;
@@ -63,12 +63,12 @@ void addGaugeSimple(float value) {
   screenGaugeSimple.y = 150;
   screenGaugeSimple.dimSize = 153;
   screenGaugeSimple.value = value;
-  screenGaugeSimple.maxValue = 250;
-  screenGaugeSimple.minValue = 175;
+  screenGaugeSimple.maxValue = 20;
+  screenGaugeSimple.minValue = -20;
   screenGaugeSimple.style = 0;
   screenGaugeSimple.isSymmetrical = true;
   screenGaugeSimple.color = BLUE;
-  screenGaugeSimple.setlabel("Engine RPM");
+  screenGaugeSimple.setlabel("Simple Gauge");
   screenGaugeSimple.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenGaugeSimple, &SerialBT);
 }
@@ -82,7 +82,7 @@ void updateGaugeSimple(float value) {
 void screenSetup() {
   Serial.println("Screen setup started!");
   addGauge(0.0f);
-  addnGaugeCompact(0.0f);
+  addGaugeCompact(0.0f);
   addGaugeSimple(0.0f);
   Serial.println("Screen setup done!");
 }
@@ -108,12 +108,12 @@ void loop() {
     g1 += gDelta;
     g2 -= gDelta;
 
-    if (g1 > 20 || g1 < -20) {
+    if (g1 > 20.0f || g1 < -20.0f) {
       gDelta = -1 * gDelta;
     }
 
-  updateGauge(g1);
-  updateGaugeCompact(g2);
+  addGauge(g1);
+  addGaugeCompact(g2);
   updateGaugeSimple(g1);
   }
 }
