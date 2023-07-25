@@ -8,10 +8,10 @@ ScreenGaugeSimple screenGaugeSimple;
 ScreenGaugeCompact screenGaugeCompact;
 
 int counter = 0;
-float g1 = 0;
-float g2 = 0;
+float g1 = 0.0f;
+float g2 = 0.0f;
 
-float gDelta = 1;
+float gDelta = 1.0f;
 
 
 void addGauge(float value)
@@ -112,8 +112,8 @@ void loop() {
       gDelta = -1 * gDelta;
     }
 
-  updateGauge(0.0f);
-  updateGaugeCompact(0.0f);
-  updateGaugeSimple(0.0f);
+  updateGauge(g1);
+  updateGaugeCompact(g2);
+  updateGaugeSimple(g1);
   }
 }
