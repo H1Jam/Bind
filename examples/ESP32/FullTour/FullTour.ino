@@ -238,6 +238,16 @@ void buttonClicked3()
   Serial.print("\n3rd button has been clicked!\n");
 }
 
+void addScreenTerminal() {
+  screenTerminal.x = 10;
+  screenTerminal.y = 460;
+  screenTerminal.cmdId = ADD_OR_REFRESH_CMD;
+  screenTerminal.width = 200;
+  screenTerminal.height = 200;
+  screenTerminal.textSize = 8;
+  //screenTerminal.backColor = BLACK;
+  sendScreenStream(&screenTerminal, &SerialBT);
+}
 
 
 void addScreenTerminalData2() {
