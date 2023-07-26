@@ -3,33 +3,32 @@
 
 BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
-ScreenTextLabel textLabel1;
-ScreenTextLabel textLabel2;
+ScreenTerminal screenTerminal;
+
 int counter = 0;
 char buffer[10];
 
-void addtTextlabel() {
-  textLabel1.x = 20;
-  textLabel1.y = 20;
-  textLabel1.setlabel("Hello Android!");
-  textLabel1.color = WHITE;
-  textLabel1.fontSize = 28;
-  textLabel1.cmdId = ADD_OR_REFRESH_CMD;
-  sendScreenStream(&textLabel1, &SerialBT);
+void addScreenTerminal() {
+  screenTerminal.x = 10;
+  screenTerminal.y = 100;
+  screenTerminal.cmdId = ADD_OR_REFRESH_CMD;
+  screenTerminal.width = 200;
+  screenTerminal.height = 200;
+  screenTerminal.textSize = 8;
+  //screenTerminal.backColor = BLACK;
+  sendScreenStream(&screenTerminal, &SerialBT);
+}
 
-  textLabel2.x = 20;
-  textLabel2.y = 50;
-  textLabel2.setlabel("Second caption");
-  textLabel2.color = YELLOW;
-  textLabel2.fontSize = 18;
-  textLabel2.cmdId = ADD_OR_REFRESH_CMD;
-  sendScreenStream(&textLabel2, &SerialBT);
+void updateScreenTerminalData() {
+  char cstr[16];
+  snprintf(buffer, 10, "%d", millis());
+  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
 void screenSetup()
 {
   Serial.println("Screen setup started!");
-  addtTextlabel();
+  addScreenTerminal();
   Serial.println("Screen setup done!");
 }
 
