@@ -49,9 +49,7 @@ void loop() {
   if(counter>100){
     counter=0;
     snprintf(buffer, 10, "%d", millis());
-    textLabel2.setlabel(buffer);
-    textLabel2.cmdId = ADD_OR_REFRESH_CMD;
-    sendScreenStream(&textLabel2, &SerialBT);
+    updateScreenTerminalData(buffer);
   }
 }
 
