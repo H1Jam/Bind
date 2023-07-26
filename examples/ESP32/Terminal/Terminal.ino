@@ -19,9 +19,7 @@ void addScreenTerminal() {
   sendScreenStream(&screenTerminal, &SerialBT);
 }
 
-void updateScreenTerminalData() {
-  char cstr[16];
-  snprintf(buffer, 10, "%d", millis());
+void updateScreenTerminalData(const char *cstr) {
   ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
