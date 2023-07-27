@@ -11,22 +11,20 @@ char buffer[15];
 
 void addScreenTerminal() {
   screenTerminal.x = 10;
-  screenTerminal.y = 100;
+  screenTerminal.y = 10;
   screenTerminal.cmdId = ADD_OR_REFRESH_CMD;
-  screenTerminal.width = 200;
+  screenTerminal.width = 300;
   screenTerminal.height = 200;
-  screenTerminal.textSize = 8;
+  screenTerminal.textSize = 10;
   screenTerminal.backColor = UBUNTU;
   sendScreenStream(&screenTerminal, &SerialBT);
 }
 
 void updateScreenTerminalData(const char *cstr) {
-  screenTerminal.textSize = 8;
   ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
 void updateScreenTerminalDataBigger(const char *cstr) {
-  screenTerminal.textSize = 12;
   ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
@@ -57,8 +55,8 @@ void loop() {
     snprintf(buffer, 15, "Time: %d", millis());
     updateScreenTerminalData(buffer);
     counter2++;
-    if (counter2 > 5) {
-      updateScreenTerminalDataBigger("Print with bigger font!");
+    if (counter2 >= 5) {
+      updateScreenTerminalDataBigger("Print with diffrent color!");
       counter2 = 0;
     }
   }
