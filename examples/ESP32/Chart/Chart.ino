@@ -6,9 +6,11 @@ ScreenObjects screenObjects;
 ScreenChart screenChart;
 
 int counter = 0;
+float dummyData =0.0f;
 
-void addChartdata() {
-  addChartdata(random(-30, 30), &screenChart, &SerialBT);
+void sendDummyChartdata() {
+  addChartdata(dummyData, &screenChart, &SerialBT);
+  dummyData=random(-30, 30);
 }
 
 void addChart() {
@@ -49,6 +51,6 @@ void loop() {
   counter++;
   if (counter > 50) {
     counter = 0;
-    addChartdata();
+    sendDummyChartdata();
   }
 }
