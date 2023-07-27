@@ -59,7 +59,8 @@ void loop() {
     updateScreenTerminalData(buffer);
 	counter2++;
 	if(counter2>5){
-		updateScreenTerminalDataBigger("Bigger one!");
+		updateScreenTerminalDataBigger("Print with bigger font!");
+    counter2=0;
 	}
   }
 }
