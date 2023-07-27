@@ -21,17 +21,16 @@ void addScreenTerminal() {
 }
 
 void updateScreenTerminalData(const char *cstr) {
-	screenTerminal.textSize = 8;
+  screenTerminal.textSize = 8;
   ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
 void updateScreenTerminalDataBigger(const char *cstr) {
-	screenTerminal.textSize = 12;
+  screenTerminal.textSize = 12;
   ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
-void screenSetup()
-{
+void screenSetup() {
   Serial.println("Screen setup started!");
   addScreenTerminal();
   Serial.println("Screen setup done!");
@@ -53,15 +52,14 @@ void loop() {
   }
   delay(10);
   counter++;
-  if(counter>100){
-    counter=0;
+  if (counter > 100) {
+    counter = 0;
     snprintf(buffer, 15, "Time: %d", millis());
     updateScreenTerminalData(buffer);
-	counter2++;
-	if(counter2>5){
-		updateScreenTerminalDataBigger("Print with bigger font!");
-    counter2=0;
-	}
+    counter2++;
+    if (counter2 > 5) {
+      updateScreenTerminalDataBigger("Print with bigger font!");
+      counter2 = 0;
+    }
   }
 }
-
