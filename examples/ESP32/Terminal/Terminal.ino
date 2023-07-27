@@ -59,7 +59,7 @@ void loop() {
     updateScreenTerminalData(buffer);
 	counter2++;
 	if(counter2>5){
-		updateScreenTerminalDataBigger("Bigger one!");
+		updateScreenTerminalDataBigger("");
 	}
   }
 }
