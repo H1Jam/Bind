@@ -6,7 +6,7 @@ ScreenObjects screenObjects;
 ScreenTerminal screenTerminal;
 
 int counter = 0;
-char buffer[10];
+char buffer[15];
 
 void addScreenTerminal() {
   screenTerminal.x = 10;
@@ -15,7 +15,7 @@ void addScreenTerminal() {
   screenTerminal.width = 200;
   screenTerminal.height = 200;
   screenTerminal.textSize = 8;
-  //screenTerminal.backColor = BLACK;
+  screenTerminal.backColor = UBUNTU;
   sendScreenStream(&screenTerminal, &SerialBT);
 }
 
@@ -48,7 +48,7 @@ void loop() {
   counter++;
   if(counter>100){
     counter=0;
-    snprintf(buffer, 10, "%d", millis());
+    snprintf(buffer, 15, "Time: %d", millis());
     updateScreenTerminalData(buffer);
   }
 }
