@@ -3,34 +3,31 @@
 
 BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
-ScreenTerminal screenTerminal;
+ScreenChart screenChart;
 
 int counter = 0;
-int counter2 = 0;
-char buffer[15];
 
-void addScreenTerminal() {
-  screenTerminal.x = 10;
-  screenTerminal.y = 10;
-  screenTerminal.cmdId = ADD_OR_REFRESH_CMD;
-  screenTerminal.width = 300;
-  screenTerminal.height = 200;
-  screenTerminal.textSize = 10;
-  screenTerminal.backColor = UBUNTU;
-  sendScreenStream(&screenTerminal, &SerialBT);
+void addChartdata() {
+  addChartdata(random(-30, 30), &screenChart, &SerialBT);
 }
 
-void updateScreenTerminalData(const char *cstr) {
-  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
-}
-
-void updateScreenTerminalDataBigger(const char *cstr) {
-  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &SerialBT);
+void addChart() {
+  screenChart.x = 10;
+  screenChart.y = 10;
+  screenChart.cmdId = ADD_OR_REFRESH_CMD;
+  screenChart.width = 250;
+  screenChart.height = 140;
+  screenChart.maxY = 10;
+  screenChart.minY = -10;
+  screenChart.maxX = 20;
+  screenChart.autoSize = true;
+  screenChart.color = MAGENTA;
+  sendScreenStream(&screenChart, &SerialBT);
 }
 
 void screenSetup() {
   Serial.println("Screen setup started!");
-  addScreenTerminal();
+  addChart();
   Serial.println("Screen setup done!");
 }
 
@@ -52,12 +49,6 @@ void loop() {
   counter++;
   if (counter > 100) {
     counter = 0;
-    snprintf(buffer, 15, "Time: %d", millis());
-    updateScreenTerminalData(buffer);
-    counter2++;
-    if (counter2 >= 5) {
-      updateScreenTerminalDataBigger("Print with diffrent color!");
-      counter2 = 0;
-    }
+    addChartdata();
   }
 }
