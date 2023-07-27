@@ -6,6 +6,7 @@ ScreenObjects screenObjects;
 ScreenTerminal screenTerminal;
 
 int counter = 0;
+int counter2 = 0;
 char buffer[15];
 
 void addScreenTerminal() {
@@ -20,7 +21,13 @@ void addScreenTerminal() {
 }
 
 void updateScreenTerminalData(const char *cstr) {
+	screenTerminal.textSize = 8;
   ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
+}
+
+void updateScreenTerminalDataBigger(const char *cstr) {
+	screenTerminal.textSize = 12;
+  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &SerialBT);
 }
 
 void screenSetup()
@@ -50,6 +57,10 @@ void loop() {
     counter=0;
     snprintf(buffer, 15, "Time: %d", millis());
     updateScreenTerminalData(buffer);
+	counter2++;
+	if(counter2>5){
+		updateScreenTerminalDataBigger("Bigger one!");
+	}
   }
 }
 
