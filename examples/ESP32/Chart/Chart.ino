@@ -21,7 +21,7 @@ void addChart() {
   screenChart.minY = -10;
   screenChart.maxX = 20;
   screenChart.autoSize = true;
-  screenChart.color = MAGENTA;
+  screenChart.color = YELLOW;
   sendScreenStream(&screenChart, &SerialBT);
 }
 
@@ -47,7 +47,7 @@ void loop() {
   }
   delay(10);
   counter++;
-  if (counter > 100) {
+  if (counter > 50) {
     counter = 0;
     addChartdata();
   }
