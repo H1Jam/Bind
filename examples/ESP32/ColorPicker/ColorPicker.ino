@@ -6,10 +6,13 @@ ScreenObjects screenObjects;
 ScreenColorPicker screenColorPicker1;
 const int ledPin = 2;
 
-void screenColorPicker1Changed(uint8_t red, uint8_t green, uint8_t blue)
-{
+void screenColorPicker1Changed(uint8_t red, uint8_t green, uint8_t blue) {
   Serial.print("ColorPicker has been changed:");
-  Serial.print(red);Serial.print("\t"); Serial.print(green);Serial.print("\t"); Serial.println(blue);
+  Serial.print(red);
+  Serial.print("\t");
+  Serial.print(green);
+  Serial.print("\t");
+  Serial.println(blue);
 }
 
 void addColorPicker() {
@@ -23,8 +26,7 @@ void addColorPicker() {
   sendScreenStream(&screenColorPicker1, &SerialBT);
 }
 
-void screenSetup()
-{
+void screenSetup() {
   Serial.println("Screen setup started!");
   addColorPicker();
   Serial.println("Screen setup done!");
@@ -48,4 +50,3 @@ void loop() {
   }
   delay(10);
 }
-
