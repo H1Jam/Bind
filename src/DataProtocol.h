@@ -67,7 +67,7 @@ enum ScreenIDs : uint8_t {
 };
 
 enum MarkerIcons : uint8_t {
-PinRed
+PinRed,
 PinGreen,
 PinBlue,
 PinYellow,
@@ -78,7 +78,7 @@ CarYellow,
 PlaneRed,
 PlaneGreen,
 PlaneBlue,
-PlaneYellow,
+PlaneYellow
 };
 
 int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
