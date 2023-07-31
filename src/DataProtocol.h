@@ -41,6 +41,7 @@ static uint8_t MAX_STRING_LENGTH = 32;
 static uint8_t MAX_STRING_LENGTH_TERMINAL = 64;
 uint8_t const dataHeader[3] = {199, 201, 176};
 enum DataDirection {toAndroid, fromAndroid};
+
 enum ScreenIDs : uint8_t {
   setupCMD = 5,
   button,
@@ -63,6 +64,21 @@ enum ScreenIDs : uint8_t {
   terminal,
   terminalData,
   Settings
+};
+
+enum MarkerIcons : uint8_t {
+PinRed
+PinGreen,
+PinBlue,
+PinYellow,
+CarRed,
+CarGreen,
+CarBlue,
+CarYellow,
+PlaneRed,
+PlaneGreen,
+PlaneBlue,
+PlaneYellow,
 };
 
 int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
