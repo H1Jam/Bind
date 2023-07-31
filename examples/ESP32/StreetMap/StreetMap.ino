@@ -8,7 +8,8 @@ ScreenMapMarker screenMapMarker1;
 ScreenMapMarker screenMapMarker2;
 
 int counter = 0;
-float dummyData = 0.0f;
+int wpIndex = 0;
+float oceanDrive[5][2] = {{26.891425, -80.056879},{26.891173, -80.056838},{26.890885, -80.056776},{26.890652, -80.056711},{26.890472, -80.056670}};
 
 void addMap()
 {
@@ -20,25 +21,36 @@ void addMap()
   screenMap.lat = 26.891425f;
   screenMap.lon = -80.056879f;
   screenMap.mapOrientation = 0.0f;
-  screenMap.zoom = 16;
+  screenMap.zoom = 18;
   sendScreenStream(&screenMap, &SerialBT);
 }
 
 
-void addMapMarker()
+void setMapMarker()
 {
-  screenMapMarker1.lat = 26.891425f;
-  screenMapMarker1.lon = -80.056879f;
+  screenMapMarker1.lat = oceanDrive[wpIndex][0];
+  screenMapMarker1.lon = oceanDrive[wpIndex][1];
   screenMapMarker1.rotation = 167.0f;
   screenMapMarker1.iconId = MarkerIcons::CarRed;
   screenMapMarker1.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenMapMarker1, &SerialBT);
-  screenMapMarker2.lat = 26.890472f;
-  screenMapMarker2.lon = -80.056670f;
+
+  screenMapMarker2.lat = oceanDrive[4-wpIndex][0];
+  screenMapMarker2.lon = oceanDrive[4-wpIndex][1];
   screenMapMarker2.rotation = 345.0f;
   screenMapMarker2.iconId = MarkerIcons::CarGreen;
   screenMapMarker2.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenMapMarker2, &SerialBT);
+
+  screenMap.lat = oceanDrive[wpIndex][0];
+  screenMap.lon = oceanDrive[wpIndex][1];
+  screenMap.mapOrientation = 0.0f;
+  screenMap.zoom = 18;
+  sendScreenStream(&screenMap, &SerialBT);
+  wpIndex++;
+  if (wpIndex>4){
+    wpIndex=0;
+  }
 }
 
 
@@ -64,8 +76,8 @@ void loop() {
   }
   delay(100);
   counter++;
-  if (counter > 50) {
+  if (counter > 10) {
     counter = 0;
-    addMapMarker();
+    setMapMarker();
   }
 }
