@@ -17,7 +17,7 @@ void addMap()
   screenMap.x = 10;
   screenMap.y = 10;
   screenMap.width = 300;
-  screenMap.height = 200;
+  screenMap.height = 400;
   screenMap.lat = 26.891425f;
   screenMap.lon = -80.056879f;
   screenMap.mapOrientation = 0.0f;
@@ -32,6 +32,7 @@ void setMapMarker()
   screenMapMarker1.lon = oceanDrive[wpIndex][1];
   screenMapMarker1.rotation = 167.0f;
   screenMapMarker1.iconId = MarkerIcons::CarRed;
+  screenMapMarker2.scale = 70;
   screenMapMarker1.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenMapMarker1, &SerialBT);
 
@@ -39,6 +40,7 @@ void setMapMarker()
   screenMapMarker2.lon = oceanDrive[4-wpIndex][1];
   screenMapMarker2.rotation = 345.0f;
   screenMapMarker2.iconId = MarkerIcons::CarGreen;
+  screenMapMarker2.scale = 60;
   screenMapMarker2.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenMapMarker2, &SerialBT);
 
