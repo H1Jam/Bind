@@ -67,7 +67,7 @@ enum ScreenIDs : uint8_t {
 };
 
 enum MarkerIcons : uint8_t {
-PinRed,
+PinRed = 0,
 PinGreen,
 PinBlue,
 PinYellow,
