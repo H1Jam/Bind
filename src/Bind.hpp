@@ -366,7 +366,7 @@ class ScreenMapMarker: public ScreenStreamAutoTag  {
     float lat = 0.0f;
     float lon = 0.0f;
     float rotation = 0.0f;
-    uint8_t iconId = 0;
+    MarkerIcons iconId = MarkerIcons::PinRed;
     uint8_t cmdId = 0;
     uint16_t getBytes(uint8_t *out) override {
       offset = 0;
