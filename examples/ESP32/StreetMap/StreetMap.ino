@@ -71,6 +71,6 @@ void loop() {
   counter++;
   if (counter > 50) {
     counter = 0;
-    addMapMarker
+    addMapMarker();
   }
 }
