@@ -32,7 +32,6 @@ void addMap()
 
 void addMapMarker()
 {
-  gVal += 10;
   screenMapMarker1.lat = 26.891425f;
   screenMapMarker1.lon = -80.056879f;
   screenMapMarker1.rotation = 167.0f;
@@ -50,7 +49,7 @@ void addMapMarker()
 
 void screenSetup() {
   Serial.println("Screen setup started!");
-  addChart();
+  addMap();
   Serial.println("Screen setup done!");
 }
 
@@ -68,10 +67,10 @@ void loop() {
   while (SerialBT.available()) {
     screenObjects.updateScreen(SerialBT.read());
   }
-  delay(10);
+  delay(100);
   counter++;
   if (counter > 50) {
     counter = 0;
-    sendDummyChartdata();
+    addMapMarker
   }
 }
