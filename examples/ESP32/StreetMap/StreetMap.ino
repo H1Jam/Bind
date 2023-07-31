@@ -33,16 +33,16 @@ void addMap()
 void addMapMarker()
 {
   gVal += 10;
-  screenMapMarker1.lat = 43.732825f;
-  screenMapMarker1.lon = -79.442881f;
-  screenMapMarker1.rotation = gVal;
-  screenMapMarker1.iconId = 1;
+  screenMapMarker1.lat = 26.891425f;
+  screenMapMarker1.lon = -80.056879f;
+  screenMapMarker1.rotation = 167.0f;
+  screenMapMarker1.iconId = MarkerIcons.CarRed;
   screenMapMarker1.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenMapMarker1, &SerialBT);
-  screenMapMarker2.lat = 43.733825f;
-  screenMapMarker2.lon = -79.443881f;
-  screenMapMarker2.rotation = gVal;
-  screenMapMarker2.iconId = 2;
+  screenMapMarker2.lat = 26.890472f;
+  screenMapMarker2.lon = -80.056670f;
+  screenMapMarker2.rotation = 345.0f;
+  screenMapMarker2.iconId = MarkerIcons.CarGreen;;
   screenMapMarker2.cmdId = ADD_OR_REFRESH_CMD;
   sendScreenStream(&screenMapMarker2, &SerialBT);
 }
