@@ -3,21 +3,26 @@
 #include <stdint.h>
 #include <string.h>
 #define MAX_DATA_LENGHT  100
+#define RGB(r, g ,b) ((int32_t) ((uint8_t) (b)) | ((int32_t) (g) << 8) | (((int32_t) (uint8_t) (r)) << 16) | 0xFF000000)
+#define RGBA(r, g ,b, a) ((int32_t) ((uint8_t) (b)) | ((int32_t) (g) << 8) | (((int32_t) (uint8_t) (r)) << 16) | ((int32_t) ((uint8_t) (a)) << 24))
+
 static uint8_t VERSIONID = 0;
 
-static int32_t BLACK       = 0xFF000000;
-static int32_t DKGRAY      = 0xFF444444;
-static int32_t GRAY        = 0xFF888888;
-static int32_t LTGRAY      = 0xFFCCCCCC;
-static int32_t WHITE       = 0xFFFFFFFF;
-static int32_t RED         = 0xFFFF0000;
-static int32_t GREEN       = 0xFF00FF00;
-static int32_t BLUE        = 0xFF0000FF;
-static int32_t YELLOW      = 0xFFFFFF00;
-static int32_t CYAN        = 0xFF00FFFF;
-static int32_t MAGENTA     = 0xFFFF00FF;
-static int32_t UBUNTU     = 0xFF300A24;
-static int32_t TRANSPARENT = 0;
+static int32_t BLACK		= 0xFF000000;
+static int32_t DKGRAY		= 0xFF444444;
+static int32_t GRAY			= 0xFF888888;
+static int32_t LTGRAY		= 0xFFCCCCCC;
+static int32_t WHITE		= 0xFFFFFFFF;
+static int32_t RED			= 0xFFFF0000;
+static int32_t GREEN		= 0xFF00FF00;
+static int32_t BLUE			= 0xFF0000FF;
+static int32_t YELLOW		= 0xFFFFFF00;
+static int32_t CYAN			= 0xFF00FFFF;
+static int32_t MAGENTA		= 0xFFFF00FF;
+static int32_t UBUNTU		= 0xFF300A24;
+static int32_t AVOCADO		= 0xFF95986B;
+static int32_t TRANSPARENT	= 0;
+
 
 static int8_t SCREEN_ORIENTATION_UNSET = -2;
 static int8_t SCREEN_ORIENTATION_UNSPECIFIED = -1;
