@@ -5,6 +5,15 @@ BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
 ScreenJoystick joystickRight;
 ScreenJoystick joystickLeft;
+ScreenSettings screenSettings;
+
+void screenConfig() {
+  screenSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
+  screenSettings.backColor = UBUNTU;
+  screenSettings.actionBarColor = DKGRAY;
+  screenSettings.setlabel("Hello Android");
+  sendScreenStream(&screenSettings, &SerialBT);
+}
 
 void joystickRight_Callback(int16_t x, int16_t y)
 {
@@ -41,12 +50,17 @@ void addJoystickLeft() {
 void screenSetup()
 {
   Serial.println("Screen setup started!");
-  addJoystick1();
+ // addJoystick1();
   Serial.println("Screen setup done!");
 }
 
 void setup() {
   Serial.begin(115200);
+
+  uint32_t rgb = RGB(0x15, 0xE1, 0xBA);
+  uint32_t rgba = RGBA(0x15, 0xE1, 0xBA, 0x10);
+  Serial.println(rgb);
+  Serial.println(rgba);
   screenObjects.registerScreenSetup(&screenSetup);
   screenObjects.registerJoystick(&joystickRight, &joystickRight_Callback);
   screenObjects.registerJoystick(&joystickLeft, &joystickLeft_Callback);
