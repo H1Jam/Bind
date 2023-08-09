@@ -5,13 +5,14 @@ BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
 ScreenJoystick joystickRight;
 ScreenJoystick joystickLeft;
+ScreenGaugeCompact screenGaugeCompact;
 ScreenSettings screenSettings;
 
 void screenConfig() {
   screenSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
-  screenSettings.backColor = UBUNTU;
-  screenSettings.actionBarColor = DKGRAY;
-  screenSettings.setlabel("Hello Android");
+  screenSettings.backColor = RGB(31, 39, 42);
+  screenSettings.actionBarColor = RGB(23, 30, 33);;
+  screenSettings.setlabel("RC Controller");
   sendScreenStream(&screenSettings, &SerialBT);
 }
 
@@ -29,11 +30,12 @@ void joystickLeft_Callback(int16_t x, int16_t y)
   Serial.print(x);
   Serial.print(" y:");
   Serial.println(y);
+  addGaugeCompact(y+100);
 }
 
 void addJoystickRight() {
-  joystickRight.x = 50;
-  joystickRight.y = 80;
+  joystickRight.x = 400;
+  joystickRight.y = 70;
   joystickRight.cmdId = ADD_OR_REFRESH_CMD;
   joystickRight.dimSize = 200;
   sendScreenStream(&joystickRight, &SerialBT);
@@ -41,26 +43,39 @@ void addJoystickRight() {
 
 void addJoystickLeft() {
   joystickLeft.x = 50;
-  joystickLeft.y = 80;
+  joystickLeft.y = 70;
   joystickLeft.cmdId = ADD_OR_REFRESH_CMD;
   joystickLeft.dimSize = 200;
   sendScreenStream(&joystickLeft, &SerialBT);
 }
 
+void addGaugeCompact(float value) {
+  screenGaugeCompact.x = 225;
+  screenGaugeCompact.y = 50;
+  screenGaugeCompact.dimSize = 200;
+  screenGaugeCompact.value = value;
+  screenGaugeCompact.maxValue = 200.0f;
+  screenGaugeCompact.drawArc = 100;
+  screenGaugeCompact.arcGreenMaxVal = 100.0f;
+  screenGaugeCompact.arcYellowMaxVal = 150.0f;
+  screenGaugeCompact.arcRedMaxVal = 180.0f;
+  screenGaugeCompact.setlabel("Speed Km/h");
+  screenGaugeCompact.cmdId = ADD_OR_REFRESH_CMD;
+  sendScreenStream(&screenGaugeCompact, &SerialBT);
+}
+
 void screenSetup()
 {
   Serial.println("Screen setup started!");
- // addJoystick1();
+  screenConfig();
+  addJoystickLeft();
+  addJoystickRight();
+  addGaugeCompact(0);
   Serial.println("Screen setup done!");
 }
 
 void setup() {
   Serial.begin(115200);
-
-  uint32_t rgb = RGB(0x15, 0xE1, 0xBA);
-  uint32_t rgba = RGBA(0x15, 0xE1, 0xBA, 0x10);
-  Serial.println(rgb);
-  Serial.println(rgba);
   screenObjects.registerScreenSetup(&screenSetup);
   screenObjects.registerJoystick(&joystickRight, &joystickRight_Callback);
   screenObjects.registerJoystick(&joystickLeft, &joystickLeft_Callback);
