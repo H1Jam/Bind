@@ -6,11 +6,13 @@ ScreenObjects screenObjects;
 ScreenJoystick joystickRight;
 ScreenJoystick joystickLeft;
 ScreenGaugeCompact screenGaugeCompact;
+ScreenAttitudeIndicator screenAttitudeIndicator;
+ScreenHeadingIndicator screenHeadingIndicator;
 ScreenSettings screenSettings;
 
 void screenConfig() {
   screenSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
-  screenSettings.backColor = RGB(31, 39, 42);
+  screenSettings.backColor = RGB(41, 49, 52);
   screenSettings.actionBarColor = RGB(23, 30, 33);;
   screenSettings.setlabel("RC Controller");
   sendScreenStream(&screenSettings, &SerialBT);
@@ -22,6 +24,7 @@ void joystickRight_Callback(int16_t x, int16_t y)
   Serial.print(x);
   Serial.print(" y:");
   Serial.println(y);
+  setAttitudeIndicator(x*0.45f, y*0.2f);
 }
 
 void joystickLeft_Callback(int16_t x, int16_t y)
@@ -31,6 +34,7 @@ void joystickLeft_Callback(int16_t x, int16_t y)
   Serial.print(" y:");
   Serial.println(y);
   addGaugeCompact(y+100);
+  setHeadingIndicator(x);
 }
 
 void addJoystickRight() {
@@ -51,7 +55,7 @@ void addJoystickLeft() {
 
 void addGaugeCompact(float value) {
   screenGaugeCompact.x = 225;
-  screenGaugeCompact.y = 50;
+  screenGaugeCompact.y = 20;
   screenGaugeCompact.dimSize = 200;
   screenGaugeCompact.value = value;
   screenGaugeCompact.maxValue = 200.0f;
@@ -64,6 +68,25 @@ void addGaugeCompact(float value) {
   sendScreenStream(&screenGaugeCompact, &SerialBT);
 }
 
+void setAttitudeIndicator(float roll, float pitch) {
+  screenAttitudeIndicator.x = 420;
+  screenAttitudeIndicator.y = 5;
+  screenAttitudeIndicator.cmdId = ADD_OR_REFRESH_CMD;
+  screenAttitudeIndicator.roll = roll;
+  screenAttitudeIndicator.pitch = pitch;
+  screenAttitudeIndicator.dimSize = 80;
+  sendScreenStream(&screenAttitudeIndicator, &SerialBT);
+}
+
+void setHeadingIndicator(float heading) {
+  screenHeadingIndicator.x = 150;
+  screenHeadingIndicator.y = 5;
+  screenHeadingIndicator.cmdId = ADD_OR_REFRESH_CMD;
+  screenHeadingIndicator.heading = heading;
+  screenHeadingIndicator.dimSize = 80;
+  sendScreenStream(&screenHeadingIndicator, &SerialBT);
+}
+
 void screenSetup()
 {
   Serial.println("Screen setup started!");
@@ -71,6 +94,8 @@ void screenSetup()
   addJoystickLeft();
   addJoystickRight();
   addGaugeCompact(0);
+  setAttitudeIndicator(0.0f, 0.0f);
+  setHeadingIndicator(0.0f);
   Serial.println("Screen setup done!");
 }
 
