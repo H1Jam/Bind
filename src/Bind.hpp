@@ -15,6 +15,7 @@
 #define ENABLE_CMD 3
 #define HIDE_CMD 4
 #define VISIBLE_CMD 5
+#define DATE_ONLY_CMD 6
 
 class SeekBar {
   private:
