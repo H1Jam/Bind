@@ -13,7 +13,6 @@ ScreenSettings screenSettings;
 void screenConfig() {
   screenSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
   screenSettings.backColor = RGB(41, 49, 52);
-  screenSettings.actionBarColor = RGB(23, 30, 33);;
   screenSettings.setlabel("RC Controller");
   sendScreenStream(&screenSettings, &SerialBT);
 }
