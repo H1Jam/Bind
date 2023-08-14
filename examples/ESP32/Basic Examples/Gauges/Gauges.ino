@@ -11,6 +11,7 @@ float g1 = 0.0f;
 float speed = 0.0f;
 float gDelta = 1.0f;
 float speedDelta = 5.0f;
+unsigned long lastMs = 0;
 
 void addGauge(float value) {
   screenGauge.x = 10;
@@ -29,7 +30,7 @@ void addGauge(float value) {
 
 void updateGauge(float value) {
   screenGauge.value = value;
-  screenGauge.cmdId = ADD_OR_REFRESH_CMD;
+  screenGauge.cmdId = DATE_ONLY_CMD;
   sendScreenStream(&screenGauge, &SerialBT);
 }
 
@@ -50,7 +51,7 @@ void addGaugeCompact(float value) {
 
 void updateGaugeCompact(float value) {
   screenGaugeCompact.value = value;
-  screenGaugeCompact.cmdId = ADD_OR_REFRESH_CMD;
+  screenGaugeCompact.cmdId = DATE_ONLY_CMD;
   sendScreenStream(&screenGaugeCompact, &SerialBT);
 }
 
@@ -71,7 +72,7 @@ void addGaugeSimple(float value) {
 
 void updateGaugeSimple(float value) {
   screenGaugeSimple.value = value;
-  screenGaugeSimple.cmdId = ADD_OR_REFRESH_CMD;
+  screenGaugeSimple.cmdId = DATE_ONLY_CMD;
   sendScreenStream(&screenGaugeSimple, &SerialBT);
 }
 
@@ -98,9 +99,8 @@ void loop() {
     screenObjects.updateScreen(SerialBT.read());
   }
   delay(10);
-  counter++;
-  if (counter > 20) {
-    counter = 0;
+  if (millis() -lastMs  > 250) {
+    lastMs = millis();
     g1 += gDelta;
     speed += speedDelta;
     if (g1 >= 20.0f || g1 <= -20.0f) {
