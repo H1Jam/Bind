@@ -783,8 +783,8 @@ class ScreenObjects {
     uint8_t JoystickHandlerIndex = 1;
     uint8_t ColorPickerHandlerIndex = 1;
 	bool init = false;
-    void (*setupCallback)(void);
-    void screenInit();
+    void (*setupCallback)(int16_t, int16_t);
+    void screenInit(int16_t w, int16_t h);
   public:
     ScreenObjects() {
       setupCallback = NULL;
@@ -801,7 +801,7 @@ class ScreenObjects {
 		return init;
 	}
 		
-    void registerScreenSetup(void (*setupCallback)(void));
+    void registerScreenSetup(void (*setupCallback)(int16_t, int16_t));
     void registerButton(ScreenButton *screenButton, void (*clickCallback)(void));
     void registerDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t));
     int updateScreen(uint8_t inp);
