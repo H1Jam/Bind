@@ -27,8 +27,11 @@ void addChart() {
   sendScreenStream(&screenChart, &SerialBT);
 }
 
-void screenSetup() {
+void screenSetup(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
+  Serial.print(w);
+  Serial.print(" ");
+  Serial.println(h);
   addChart();
   Serial.println("Screen setup done!");
 }
