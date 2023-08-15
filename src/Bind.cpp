@@ -71,7 +71,9 @@ int ScreenObjects::updateScreen(uint8_t inp) {
 int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
   switch (dataFrame[2]) {
      case ScreenIDs::setupCMD:
-      screenInit();
+	  valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
+      valTmp2 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
+      screenInit(valTmp1, valTmp2);
       break;
     case ScreenIDs::button:
       clickButton(dataFrame[3]);
@@ -104,14 +106,14 @@ int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
   return dataFrame[2];
 }
 
-void ScreenObjects::screenInit() {
+void ScreenObjects::screenInit(int16_t w, int16_t h) {
   if (*setupCallback != NULL) {
-    setupCallback();
+    setupCallback(w, h);
 	init = true;
   }
 }
 
-void ScreenObjects::registerScreenSetup(void (*_setupCallback)(void)){
+void ScreenObjects::registerScreenSetup(void (*_setupCallback)(int16_t, int16_t)){
   setupCallback = _setupCallback;
 }
 
