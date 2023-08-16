@@ -96,7 +96,7 @@ class ColorPickerHandler {
 void copyAndOffset(uint8_t *out, uint16_t *offset, const void * source, size_t num);
 class ScreenStream {
   public:
-    virtual uint16_t getBytes(uint8_t *out) {};
+    virtual uint16_t getBytes(uint8_t *out) {return 0;};
     int16_t tag;
 };
 
