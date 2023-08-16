@@ -86,7 +86,7 @@ void setHeadingIndicator(float heading) {
   sendScreenStream(&screenHeadingIndicator, &SerialBT);
 }
 
-void screenSetup()
+void screenSetup(int16_t w, int16_t h)
 {
   Serial.println("Screen setup started!");
   screenConfig();
