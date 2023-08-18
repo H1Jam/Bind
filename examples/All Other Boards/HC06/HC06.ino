@@ -90,7 +90,7 @@ void setup() {
   screenObjects.registerScreenSetup(&screenSetup);
   String devName = "ESP32testB";
   //SerialBT.begin(devName);
-  swSer.begin(115200);
+  swSer.begin(19200);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
   Serial.println(devName);
