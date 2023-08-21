@@ -37,8 +37,7 @@ void setup() {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
   screenObjects.registerScreenSetup(&screenSetup);
-  screenButton1.setCallback(&buttonClicked1);
-  screenObjects.registerButton(&screenButton1);
+  screenObjects.registerButton(&screenButton1, &buttonClicked1);
   String devName = "ESP32testB";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
