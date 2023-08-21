@@ -26,7 +26,7 @@ void addButton1() {
   sendScreenStream(&screenButton1, &SerialBT);
 }
 
-void screenSetup()
+void screenSetup(int16_t w, int16_t h)
 {
   Serial.println("Screen setup started!");
   addButton1();
