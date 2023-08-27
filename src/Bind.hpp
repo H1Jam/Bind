@@ -15,7 +15,9 @@
 #define ENABLE_CMD 3
 #define HIDE_CMD 4
 #define VISIBLE_CMD 5
-#define DATE_ONLY_CMD 6
+#define DATA_ONLY_CMD 6
+
+#define MAP_USER_ZOOM -1
 
 class SeekBar {
   private:
@@ -340,7 +342,7 @@ class ScreenMap: public ScreenStreamAutoTag  {
     float lat = 0.0f;
     float lon = 0.0f;
     float mapOrientation = 0.0f;
-    uint8_t zoom = 1;
+    int8_t zoom = 1;
     uint16_t getBytes(uint8_t *out) override {
       tag = 1; // Only one map for now! will extend it.
       offset = 0;
