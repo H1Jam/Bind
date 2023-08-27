@@ -7,6 +7,7 @@ ScreenMapMarker screenMapMarker2;
 
 int counter = 0;
 int wpIndex = 0;
+bool isReady = false;
 float oceanDrive[5][2] = {
   { 26.891425, -80.056879 },
   { 26.891173, -80.056838 },
@@ -49,7 +50,7 @@ void setMapMarker() {
   screenMap.lat = oceanDrive[wpIndex][0];
   screenMap.lon = oceanDrive[wpIndex][1];
   screenMap.mapOrientation = 0.0f;
-  screenMap.zoom = 18;
+  screenMap.zoom = MAP_USER_ZOOM;
   sendScreenStream(&screenMap, &Serial);
   wpIndex++;
   if (wpIndex > 4) {
@@ -60,13 +61,14 @@ void setMapMarker() {
 
 void screenSetup(int16_t w, int16_t h) {
   addMap();
+  isReady = true;
 }
 
 void setup() {
   Serial.begin(115200);
+  Serial.println("Started!");
   screenObjects.registerScreenSetup(&screenSetup);
   String devName = "ESP32testB";
-
 }
 
 void loop() {
@@ -74,9 +76,11 @@ void loop() {
     screenObjects.updateScreen(Serial.read());
   }
   delay(100);
-  counter++;
-  if (counter > 10) {
-    counter = 0;
-    setMapMarker();
+  if (isReady) {
+    counter++;
+    if (counter > 10) {
+      counter = 0;
+      setMapMarker();
+    }
   }
 }
