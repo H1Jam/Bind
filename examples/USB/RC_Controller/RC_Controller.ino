@@ -95,7 +95,6 @@ void screenSetup(int16_t w, int16_t h) {
 
 void setup() {
   Serial.begin(115200);
-  sleep(100);
   screenObjects.registerScreenSetup(&screenSetup);
   screenObjects.registerJoystick(&joystickRight, &joystickRight_Callback);
   screenObjects.registerJoystick(&joystickLeft, &joystickLeft_Callback);
