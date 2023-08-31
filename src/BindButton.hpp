@@ -1,5 +1,7 @@
 #ifndef __BINDBUTTON_H
 #define __BINDBUTTON_H
+#include <stdint.h>
+#include "Stream.h"
 class Button {
   private:
     void (*clickCallback)(void);
