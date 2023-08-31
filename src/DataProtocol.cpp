@@ -1,7 +1,7 @@
 #include "DataProtocol.h"
 #include "Arduino.h"
 #include "crc16.h"
-//#define DEBUG_MSG 0
+#define DEBUG_MSG 1
 uint16_t crcCalc;
 uint16_t crcRcv;
 
@@ -9,42 +9,38 @@ unsigned long mLastDigitTimeStamp = 0;
 void printArray(uint8_t const *buffer, size_t len);
 
 int DataParser::update(uint8_t inp) {
-  switch (dataStep) {
-    case 0:
-      dataIn[0] = dataIn[1];
-      dataIn[1] = dataIn[2];
-      dataIn[2] = inp;
-      if (memcmp(dataHeader, dataIn, sizeof(dataIn)) == 0) { // we got the header!
-        memset(dataIn, 0, sizeof(dataIn));// Clear it for the next time.
-        bufIndex = 0; // Reset the
-        memset(buf, 0, sizeof(buf));
-        dataStep = 1;
-      }
-      break;
-    case 1:
-      if (inp > MAX_DATA_LENGHT) {
-        dataStep = 0;
-        return 0;
-      }
-      dataLength = inp;
-      dataStep = (dataLength > 0) ? 2 : 0;
-      break;
-    case 2:
-      buf[bufIndex] = inp;
-      bufIndex++;
-      if (bufIndex > MAX_DATA_LENGHT) { // Some extra precaution.
-        dataStep = 0;
-        return 0;
-      }
-      if (bufIndex == dataLength) {
-        dataStep = 0;
-        if (checkCRC(buf, bufIndex)) {
-          return buf[2];
-        }
-      }
-      break;
-  }
-  return 0;
+	Serial.print(inp,HEX);
+	Serial.print(" ");
+	size_t res = slPacker.decode(inp);
+    if (res > 0) {
+		Serial.print("res: ");
+		Serial.print(int(res));
+		if (checkCRC(slPacker.buf, res)) {
+			Serial.println("Good crc!");
+		  return res;
+		}
+    }
+	return 0;
+}
+
+size_t DataParser::sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len) {
+  if (len < 1) return 0;
+  if (len > MAX_DATA_LENGHT) return 0;
+  destBuffer[0] = toAndroid & 0xFF;
+  destBuffer[1] = VERSIONID & 0xFF;
+  memcpy(destBuffer + 2, buffer, len);
+  uint16_t crcTmp = crc16(destBuffer, len+2);
+  destBuffer[len+2] = crcTmp & 0xFF;
+  destBuffer[len+3] = (crcTmp >> 8) & 0xFF;
+  return SLPacker::encode(destBuffer, len+4);
+}
+
+size_t DataParser::sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len, Stream *stream) {
+	size_t size =  sendFrame(destBuffer, buffer, len);
+	if (size > 0) {
+    stream->write(destBuffer, size);
+	}
+	return size;
 }
 
 bool isTimedOut() {
@@ -58,8 +54,8 @@ bool isTimedOut() {
 
 //Header[3]+Len[1]+Payload[Len]+CRC16[2]
 bool checkCRC(uint8_t const *buffer, size_t len) {
-  //printArray(buffer, len);
-  crcCalc = crc16(buffer + 2, len - 4);
+  printArray(buffer, len);
+  crcCalc = crc16(buffer, len-2);
   memcpy(&crcRcv, buffer + len - 2, 2);
   if (crcCalc == crcRcv) {
     return true;
@@ -75,7 +71,7 @@ bool checkCRC(uint8_t const *buffer, size_t len) {
   }
 }
 
-uint16_t crcTmp = 0;
+
 int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len) {
   if (len < 1) return 0;
   if (len > MAX_DATA_LENGHT) return 0;
@@ -85,7 +81,7 @@ int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len) {
   destBuffer[5] = VERSIONID & 0xFF;
   //Todo: add a protocol version Id here. 1 byte!
   memcpy(destBuffer + 6, buffer, len);
-  crcTmp = crc16(buffer, len);
+  uint16_t crcTmp = crc16(buffer, len);
   destBuffer[6 + len] = crcTmp & 0xFF;
   destBuffer[6 + len + 1] = (crcTmp >> 8) & 0xFF;
   return len + 8;
