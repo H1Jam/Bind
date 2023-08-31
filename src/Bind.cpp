@@ -1,4 +1,5 @@
 #include "Bind.hpp"
+#include "Arduino.h"
 int dLenght = 0;
 uint8_t bufFrame[100];
 int frameBufferSize = 0;
@@ -24,26 +25,20 @@ void copyAndOffset(uint8_t *out, uint16_t *offset, const void * source, size_t n
 
 void ScreenTerminalPrint(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, ScreenTerminal *obj, Stream *stream){
   dLenght = obj->getDataBytes(bufFrame, str, textColor, autoScroll, newLine, bold, italic);
-  frameBufferSize = sendFrame(frameTXBuffer, bufFrame, dLenght);
-  if (frameBufferSize > 0) {
-    stream->write(frameTXBuffer, frameBufferSize);
-  }
+  DataParser::sendFrame(frameTXBuffer, bufFrame, dLenght, stream);
+  // if (frameBufferSize > 0) {
+    // stream->write(frameTXBuffer, frameBufferSize);
+  // }
 }
 
 void addChartdata(float chartData, ScreenChart *obj, Stream *stream) {
   dLenght = obj->getDataBytes(bufFrame, chartData);
-  frameBufferSize = sendFrame(frameTXBuffer, bufFrame, dLenght);
-  if (frameBufferSize > 0) {
-    stream->write(frameTXBuffer, frameBufferSize);
-  }
+  DataParser::sendFrame(frameTXBuffer, bufFrame, dLenght, stream);
 }
 
 void sendScreenStream(ScreenStream *obj, Stream *stream) {
   dLenght = obj->getBytes(bufFrame);
-  frameBufferSize = sendFrame(frameTXBuffer, bufFrame, dLenght);
-  if (frameBufferSize > 0) {
-    stream->write(frameTXBuffer, frameBufferSize);
-  }
+  DataParser::sendFrame(frameTXBuffer, bufFrame, dLenght, stream);
 }
 
 
@@ -69,8 +64,11 @@ int ScreenObjects::updateScreen(uint8_t inp) {
 }
 
 int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
+	Serial.print("dataFrame[2]=");
+	Serial.println(dataFrame[2]);
   switch (dataFrame[2]) {
      case ScreenIDs::setupCMD:
+		Serial.println("setupCMD");
 	  valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
       valTmp2 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
       screenInit(valTmp1, valTmp2);
