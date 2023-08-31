@@ -770,7 +770,7 @@ class ScreenObjects {
     int16_t valTmp1 = 0;
     int16_t valTmp2 = 0;
     int16_t valTmp3 = 0;
-    DataParser dataParser;
+	DataParser dataParser;
     Button* buttons;
     DialKnob* dialKnobs;
     Switch *switchs;
