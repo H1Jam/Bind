@@ -1,6 +1,5 @@
 #include "BluetoothSerial.h"
 #include "Bind.hpp"
-
 BluetoothSerial SerialBT;
 ScreenObjects screenObjects;
 ScreenGauge screenGauge;
@@ -30,7 +29,7 @@ void addGauge(float value) {
 
 void updateGauge(float value) {
   screenGauge.value = value;
-  screenGauge.cmdId = DATE_ONLY_CMD;
+  screenGauge.cmdId = DATA_ONLY_CMD;
   sendScreenStream(&screenGauge, &SerialBT);
 }
 
@@ -51,7 +50,7 @@ void addGaugeCompact(float value) {
 
 void updateGaugeCompact(float value) {
   screenGaugeCompact.value = value;
-  screenGaugeCompact.cmdId = DATE_ONLY_CMD;
+  screenGaugeCompact.cmdId = DATA_ONLY_CMD;
   sendScreenStream(&screenGaugeCompact, &SerialBT);
 }
 
@@ -72,11 +71,11 @@ void addGaugeSimple(float value) {
 
 void updateGaugeSimple(float value) {
   screenGaugeSimple.value = value;
-  screenGaugeSimple.cmdId = DATE_ONLY_CMD;
+  screenGaugeSimple.cmdId = DATA_ONLY_CMD;
   sendScreenStream(&screenGaugeSimple, &SerialBT);
 }
 
-void screenSetup() {
+void screenSetup(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
   addGauge(0.0f);
   addGaugeCompact(0.0f);
@@ -99,7 +98,7 @@ void loop() {
     screenObjects.updateScreen(SerialBT.read());
   }
   delay(10);
-  if (millis() -lastMs  > 250) {
+  if (millis() -lastMs  > 100) {
     lastMs = millis();
     g1 += gDelta;
     speed += speedDelta;
