@@ -88,7 +88,10 @@ void setHeadingIndicator(float heading) {
 
 void screenSetup(int16_t w, int16_t h)
 {
-  Serial.println("Screen setup started!");
+  Serial.print("Screen setup started! ");
+  Serial.print(w);
+  Serial.print(":");
+  Serial.println(h);
   screenConfig();
   addJoystickLeft();
   addJoystickRight();
