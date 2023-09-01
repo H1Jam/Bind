@@ -1,5 +1,4 @@
 #include "Bind.hpp"
-#include "Arduino.h"
 int dLenght = 0;
 uint8_t bufFrame[100];
 int frameBufferSize = 0;
@@ -67,8 +66,7 @@ int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
 	Serial.print("dataFrame[2]=");
 	Serial.println(dataFrame[2]);
   switch (dataFrame[2]) {
-     case ScreenIDs::setupCMD:
-		Serial.println("setupCMD");
+    case ScreenIDs::setupCMD:
 	  valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
       valTmp2 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
       screenInit(valTmp1, valTmp2);
