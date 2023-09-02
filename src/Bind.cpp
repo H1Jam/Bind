@@ -25,9 +25,6 @@ void copyAndOffset(uint8_t *out, uint16_t *offset, const void * source, size_t n
 void ScreenTerminalPrint(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, ScreenTerminal *obj, Stream *stream){
   dLenght = obj->getDataBytes(bufFrame, str, textColor, autoScroll, newLine, bold, italic);
   DataParser::sendFrame(frameTXBuffer, bufFrame, dLenght, stream);
-  // if (frameBufferSize > 0) {
-    // stream->write(frameTXBuffer, frameBufferSize);
-  // }
 }
 
 void addChartdata(float chartData, ScreenChart *obj, Stream *stream) {
@@ -63,8 +60,6 @@ int ScreenObjects::updateScreen(uint8_t inp) {
 }
 
 int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
-	Serial.print("dataFrame[2]=");
-	Serial.println(dataFrame[2]);
   switch (dataFrame[2]) {
     case ScreenIDs::setupCMD:
 	  valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
