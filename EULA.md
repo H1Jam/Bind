@@ -16,7 +16,7 @@ Definitions
 
 For the purposes of this Disclaimer:
 
-*   **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Disclaimer) refers to Bind.
+*   **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Disclaimer) refers to Bind or the author of Bind.
     
 *   **Service** refers to the Application.
     
