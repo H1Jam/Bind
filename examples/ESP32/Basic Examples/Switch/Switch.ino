@@ -18,13 +18,13 @@ void addSwitch() {
   screenSwitch.y = 160;
   screenSwitch.cmdId = ADD_OR_REFRESH_CMD;
   screenSwitch.switchValue = false;
-  screenSwitch.fontSize = 30;
+  screenSwitch.fontSize = 16;
   screenSwitch.textColor = YELLOW;
   screenSwitch.setlabel("SwitchFromBind");
   sendScreenStream(&screenSwitch, &SerialBT);
 }
 
-void screenSetup()
+void screenSetup(int16_t w, int16_t h)
 {
   Serial.println("Screen setup started!");
   addSwitch();
@@ -44,9 +44,7 @@ void setup() {
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
+  screenObjects.updateScreen(&SerialBT);
   delay(10);
 }
 
