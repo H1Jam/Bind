@@ -104,8 +104,6 @@ void setup() {
 }
 
 void loop() {
-  while (Serial.available()) {
-    screenObjects.updateScreen(Serial.read());
-  }
+  screenObjects.updateScreen(&Serial);
   delay(2);
 }
