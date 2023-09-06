@@ -59,6 +59,12 @@ int ScreenObjects::updateScreen(uint8_t inp) {
   return 0;
 }
 
+void ScreenObjects::updateScreen(Stream *stream) {
+	while (stream->available()) {
+		updateScreen(stream->read());
+	}
+}
+
 int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
   switch (dataFrame[2]) {
     case ScreenIDs::setupCMD:
