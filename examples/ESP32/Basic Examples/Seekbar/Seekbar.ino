@@ -42,9 +42,7 @@ void setup() {
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
+  screenObjects.updateScreen(&SerialBT);
   delay(10);
 }
 
