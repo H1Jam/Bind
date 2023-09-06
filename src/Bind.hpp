@@ -807,6 +807,7 @@ class ScreenObjects {
     void registerButton(ScreenButton *screenButton, void (*clickCallback)(void));
     void registerDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t));
     int updateScreen(uint8_t inp);
+	void updateScreen(Stream *stream);
     int updateScreenInternal(uint8_t *dataFrame);
     void knobChanged(int8_t tag, int val);
     void clickButton(uint8_t tag);
