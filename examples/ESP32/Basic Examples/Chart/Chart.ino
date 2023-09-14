@@ -6,18 +6,19 @@ ScreenObjects screenObjects;
 ScreenChart screenChart;
 
 int counter = 0;
-float dummyData = 0.0f;
+int dummyData = 0;
 
 void sendDummyChartdata() {
-  dummyData = random(-30, 30);
-  addChartdata(dummyData, &screenChart, &SerialBT);
+  dummyData += 10;
+  dummyData %= 360;
+  addChartdata(cos(dummyData*PI/180.0f)*30, &screenChart, &SerialBT);
 }
 
 void addChart() {
   screenChart.x = 10;
   screenChart.y = 10;
   screenChart.cmdId = ADD_OR_REFRESH_CMD;
-  screenChart.width = 250;
+  screenChart.width = 300;
   screenChart.height = 140;
   screenChart.maxY = 10;
   screenChart.minY = -10;
@@ -50,7 +51,7 @@ void loop() {
   while (SerialBT.available()) {
     screenObjects.updateScreen(SerialBT.read());
   }
-  delay(10);
+  delay(2);
   counter++;
   if (counter > 50) {
     counter = 0;
