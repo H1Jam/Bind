@@ -2,7 +2,7 @@
 #include "Bind.hpp"
 
 BluetoothSerial SerialBT;
-ScreenObjects screenObjects;
+Bind bind;
 ScreenSeekBar screenSeekBar1;
 const int ledPin = 2;
 
@@ -14,7 +14,7 @@ void screenSeekbar1Changed(int16_t val)
 
 void addSeekBar(){
   screenSeekBar1.x = 40;
-  screenSeekBar1.y = 340;
+  screenSeekBar1.y = 160;
   screenSeekBar1.cmdId = ADD_OR_REFRESH_CMD;
   screenSeekBar1.seekValue = 0;
   screenSeekBar1.maxValue = 300;
@@ -32,9 +32,9 @@ void screenSetup(int16_t w, int16_t h)
 void setup() {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
-  screenObjects.registerScreenSetup(&screenSetup);
-  screenObjects.registerSeekBar(&screenSeekBar1, &screenSeekbar1Changed);
-  String devName = "ESP32testB";
+  bind.bindScreenSetup(&screenSetup);
+  bind.bindSeekBar(&screenSeekBar1, &screenSeekbar1Changed);
+  String devName = "BindOnESP32";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
@@ -42,7 +42,7 @@ void setup() {
 }
 
 void loop() {
-  screenObjects.updateScreen(&SerialBT);
+  bind.updateScreen(&SerialBT);
   delay(10);
 }
 
