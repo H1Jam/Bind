@@ -1,6 +1,6 @@
 #include "Bind.hpp"
 
-ScreenObjects screenObjects;
+Bind bind;
 ScreenJoystick joystickRight;
 ScreenJoystick joystickLeft;
 ScreenGaugeCompact screenGaugeCompact;
@@ -95,15 +95,16 @@ void screenSetup(int16_t w, int16_t h) {
 
 void setup() {
   Serial.begin(115200);
-  screenObjects.registerScreenSetup(&screenSetup);
-  screenObjects.registerJoystick(&joystickRight, &joystickRight_Callback);
-  screenObjects.registerJoystick(&joystickLeft, &joystickLeft_Callback);
+  Serial.println("Started!");
+  bind.bindScreenSetup(&screenSetup);
+  bind.bindJoystick(&joystickRight, &joystickRight_Callback);
+  bind.bindJoystick(&joystickLeft, &joystickLeft_Callback);
   //String devName = "ESP32testB";
   //SerialBT.begin(devName);
   //SerialBT.begin(115200);
 }
 
 void loop() {
-  screenObjects.updateScreen(&Serial);
-  delay(2);
+  bind.updateScreen(&Serial);
+  delay(10);
 }
