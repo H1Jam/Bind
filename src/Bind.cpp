@@ -38,34 +38,34 @@ void sendScreenStream(ScreenStream *obj, Stream *stream) {
 }
 
 
-void ScreenObjects::registerButton(ScreenButton * screenButton, void (*clickCallback)(void)) {
+void Bind::bindButton(ScreenButton * screenButton, void (*clickCallback)(void)) {
   if (buttonIndex < maxObjects) {
     screenButton->tag = buttonIndex++;
     buttons[screenButton->tag] = Button(clickCallback);
   }
 }
 
-void ScreenObjects::registerDialKnob(ScreenKnob * screenKnob, void (*changeCallback)(int16_t)) {
+void Bind::bindDialKnob(ScreenKnob * screenKnob, void (*changeCallback)(int16_t)) {
   if (dialKnobIndex < maxObjects) {
     screenKnob->tag = dialKnobIndex++;
     dialKnobs[screenKnob->tag] = DialKnob(&screenKnob->value, changeCallback);
   }
 }
 
-int ScreenObjects::updateScreen(uint8_t inp) {
+int Bind::updateScreen(uint8_t inp) {
   if (dataParser.update(inp) > 0) {
     return updateScreenInternal(dataParser.buf);
   }
   return 0;
 }
 
-void ScreenObjects::updateScreen(Stream *stream) {
+void Bind::updateScreen(Stream *stream) {
 	while (stream->available()) {
 		updateScreen(stream->read());
 	}
 }
 
-int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
+int Bind::updateScreenInternal(uint8_t *dataFrame) {
   switch (dataFrame[2]) {
     case ScreenIDs::setupCMD:
 	  valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
@@ -103,76 +103,76 @@ int ScreenObjects::updateScreenInternal(uint8_t *dataFrame) {
   return dataFrame[2];
 }
 
-void ScreenObjects::screenInit(int16_t w, int16_t h) {
+void Bind::screenInit(int16_t w, int16_t h) {
   if (*setupCallback != NULL) {
     setupCallback(w, h);
 	init = true;
   }
 }
 
-void ScreenObjects::registerScreenSetup(void (*_setupCallback)(int16_t, int16_t)){
+void Bind::bindScreenSetup(void (*_setupCallback)(int16_t, int16_t)){
   setupCallback = _setupCallback;
 }
 
-void ScreenObjects::knobChanged(int8_t tag, int val) {
+void Bind::knobChanged(int8_t tag, int val) {
   if (tag < maxObjects) {
     dialKnobs[tag].changed(val);
   }
 }
 
-void ScreenObjects::clickButton(uint8_t tag) {
+void Bind::clickButton(uint8_t tag) {
   if (tag < maxObjects) {
     buttons[tag].clicked();
   }
 }
 
-void ScreenObjects::registerSwitch(ScreenSwitch * screenSwitch, void (*clickCallback)(bool)) {
+void Bind::bindSwitch(ScreenSwitch * screenSwitch, void (*clickCallback)(bool)) {
   if (switchIndex < maxObjects) {
     screenSwitch->tag = switchIndex++;
     switchs[screenSwitch->tag] = Switch(&screenSwitch->switchValue, clickCallback);
   }
 }
 
-void ScreenObjects::updateSwitch(uint8_t tag, bool val) {
+void Bind::updateSwitch(uint8_t tag, bool val) {
   if (tag < maxObjects) {
     switchs[tag].update(val);
   }
 }
 
-void ScreenObjects::registerSeekBar(ScreenSeekBar * screenSeekBar, void (*changeCallback)(int16_t)) {
+void Bind::bindSeekBar(ScreenSeekBar * screenSeekBar, void (*changeCallback)(int16_t)) {
   if (SeekBarIndex < maxObjects) {
     screenSeekBar->tag = SeekBarIndex++;
     seekBars[screenSeekBar->tag] = SeekBar(&screenSeekBar->seekValue, changeCallback);
   }
 }
 
-void ScreenObjects::updateSeekBar(uint8_t tag, int16_t val) {
+void Bind::updateSeekBar(uint8_t tag, int16_t val) {
   if (tag < maxObjects) {
     seekBars[tag].update(val);
   }
 }
 
-void ScreenObjects::registerJoystick(ScreenJoystick * screenJoystick, void (*changeCallback)(int16_t, int16_t)) {
+void Bind::bindJoystick(ScreenJoystick * screenJoystick, void (*changeCallback)(int16_t, int16_t)) {
   if (JoystickHandlerIndex < maxObjects) {
     screenJoystick->tag = JoystickHandlerIndex++;
     joystickHandlers[screenJoystick->tag] = JoystickHandler(&screenJoystick->sX, &screenJoystick->sY, changeCallback);
   }
 }
 
-void ScreenObjects::updateJoystick(uint8_t tag, int16_t valX, int16_t valY) {
+void Bind::updateJoystick(uint8_t tag, int16_t valX, int16_t valY) {
   if (tag < maxObjects) {
     joystickHandlers[tag].update(valX, valY);
   }
 }
 
-void ScreenObjects::registerColorPicker(ScreenColorPicker * screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t)) {
+void Bind::bindColorPicker(ScreenColorPicker * screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t)) {
   if (ColorPickerHandlerIndex < maxObjects) {
     screenColorPicker->tag = ColorPickerHandlerIndex++;
     colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, clickCallback);
   }
 }
 
-void ScreenObjects::updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b) {
+void Bind::updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b) {
   if (tag < maxObjects) {
     colorPickerHandlers[tag].update(r, g, b);
   }
