@@ -38,6 +38,17 @@ void sendScreenStream(ScreenStream *obj, Stream *stream) {
 }
 
 
+void Bind::setBindDevice(Stream *stream){
+	bindStream = stream;
+}
+
+void Bind::sync(ScreenStream *obj) {
+  if (bindStream !=NULL) {
+    static int len = obj->getBytes(bufFrame);
+    DataParser::sendFrame(frameTXBuffer, bufFrame, len, stream); 
+  }
+}
+
 void Bind::bindButton(ScreenButton * screenButton, void (*clickCallback)(void)) {
   if (buttonIndex < maxObjects) {
     screenButton->tag = buttonIndex++;
