@@ -83,7 +83,7 @@ void Bind::bindDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t))
   if (dialKnobIndex < maxObjects)
   {
     screenKnob->tag = dialKnobIndex++;
-    dialKnobs[screenKnob->tag] = DialKnob(&screenKnob->value, changeCallback);
+    dialKnobs[screenKnob->tag] = DialKnobHandler(&screenKnob->value, changeCallback);
   }
 }
 
@@ -179,7 +179,7 @@ void Bind::bindSwitch(ScreenSwitch *screenSwitch, void (*clickCallback)(bool))
   if (switchIndex < maxObjects)
   {
     screenSwitch->tag = switchIndex++;
-    switchs[screenSwitch->tag] = Switch(&screenSwitch->switchValue, clickCallback);
+    switchs[screenSwitch->tag] = SwitchHandler(&screenSwitch->switchValue, clickCallback);
   }
 }
 
@@ -196,7 +196,7 @@ void Bind::bindSeekBar(ScreenSeekBar *screenSeekBar, void (*changeCallback)(int1
   if (SeekBarIndex < maxObjects)
   {
     screenSeekBar->tag = SeekBarIndex++;
-    seekBars[screenSeekBar->tag] = SeekBar(&screenSeekBar->seekValue, changeCallback);
+    seekBars[screenSeekBar->tag] = SeekBarHandler(&screenSeekBar->seekValue, changeCallback);
   }
 }
 
