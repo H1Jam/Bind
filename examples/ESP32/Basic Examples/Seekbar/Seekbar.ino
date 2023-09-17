@@ -7,22 +7,56 @@ ScreenSeekBar screenSeekBar1;
 ScreenSeekBar screenSeekBar2;
 const int ledPin = 2;
 
-void screenSeekbar1Changed(int16_t val)
+/**
+ * @brief Seekbar 1 change callback.
+ *
+ * This function is automatically triggered when the value of Seekbar 1 changes on the screen.
+ * It accepts an integer parameter, 'val,' which represents the new value of Seekbar 1.
+ * You can then implement the intended actions for this object based on this value.
+ * To connect this callback function with the bind object, you MUST use the following call: 
+ * bind.bindSeekBar(&[your seekbar object], &[this callbak name]);
+ * Please ensure that you include the '&' symbols (these are pointers) in the function parameters.
+ * 
+ *
+ * @param val The new value of Seekbar 1.
+ */
+void screenSeekbar1_changed(int16_t val)
 {
-  Serial.print("Seekbar has been changed:");
+  Serial.print("Seekbar 1 has been changed:");
+  Serial.println(val);
+  // Some fun here:
+  if (val>150){
+    digitalWrite(ledPin, HIGH);
+  }else{
+    digitalWrite(ledPin, LOW);
+  }
+}
+
+void screenSeekbar2_changed(int16_t val)
+{
+  Serial.print("Seekbar 2 has been changed:");
   Serial.println(val);
 }
 
-
-
 void addSeekBars(){
   //Syncing the first SeekBar:
+  // Position on screen 
+  // Tip: You can utilize the grid view to manually adjust the object's 
+  // position on the screen. Afterward, replace these numbers with the values
+  // displayed in grid view mode, representing the new object's x and y coordinates.
   screenSeekBar1.x = 30;
   screenSeekBar1.y = 100;
-  screenSeekBar1.cmdId = ADD_OR_REFRESH_CMD;
-  screenSeekBar1.seekValue = 0;
-  screenSeekBar1.maxValue = 300;
+  // Width on screen (Hight is relative to Width for this object):
   screenSeekBar1.width = 300;
+  // Max value fo the seekbar:
+  screenSeekBar1.maxValue = 300;
+  // Initial value for the seekbar:
+  screenSeekBar1.seekValue = 0;
+
+  screenSeekBar1.cmdId = ADD_OR_REFRESH_CMD;
+
+
+  
   bind.sync(&screenSeekBar1);
 
   //Syncing the second SeekBar:
@@ -56,19 +90,32 @@ void screenSetup(int16_t w, int16_t h)
 void setup() {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
-  bind.bindScreenSetup(&screenSetup);
-  bind.bindSeekBar(&screenSeekBar1, &screenSeekbar1Changed);
-  bind.bindSeekBar(&screenSeekBar2, &screenSeekbar1Changed);
   String devName = "BindOnESP32";
   SerialBT.begin(devName);
+
+  bind.bindScreenSetup(&screenSetup);
+  // To connect the callback function with the bind object, you MUST use the following call:
+  bind.bindSeekBar(&screenSeekBar1, &screenSeekbar1_changed);
+  // And please ensure that you include the '&' symbols (these are pointers) in the function parameters.
+  bind.bindSeekBar(&screenSeekBar2, &screenSeekbar2_changed);
+  // Tell the bind object about our communication method:
   bind.setBindDevice(&SerialBT);
+  // It was SerialBT here, but it could be any serial port, including hardware and software serial.
+
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
   Serial.println(devName);
 }
 
 void loop() {
-  bind.updateScreen(&SerialBT);
-  delay(10);
+  // Important Note: To ensure smooth operation and prevent data loss or lag,
+  // regularly run the following line of code. It's recommended to execute it
+  // a couple of times per second, but the faster, the better! 
+  // Aim for a rate above 20Hz for ideal performance.
+  bind.sync();
+
+  // This delay is not an essential part of the code 
+  // but is included here to simulate a brief pause..
+  delay(10); 
 }
 
