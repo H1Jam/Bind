@@ -8,15 +8,8 @@ private:
   void (*changeCallback)(int16_t);
 
 public:
-  DialKnobHandler()
-  {
-    DialKnobHandler(NULL, NULL);
-  }
-  DialKnobHandler(int16_t *val, void (*_changeCallback)(int16_t))
-  {
-    value = val;
-    changeCallback = _changeCallback;
-  }
+  DialKnobHandler();
+  DialKnobHandler(int16_t *val, void (*_changeCallback)(int16_t));
   void changed(int16_t val);
 };
 #endif /* __BINDDIALKNOBHANDLER_H */
