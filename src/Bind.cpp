@@ -3,7 +3,6 @@ int dLenght = 0;
 uint8_t bufFrame[100];
 int frameBufferSize = 0;
 uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
-int16_t tagIndex = 1;
 
 void ScreenTerminalPrint(const char *str, ScreenTerminal *obj, Stream *stream)
 {
