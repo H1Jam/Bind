@@ -20,18 +20,18 @@
 
 #define MAP_USER_ZOOM -1
 
-class SeekBar
+class SeekBarHandler
 {
 private:
   int16_t *value = NULL;
   void (*changeCallback)(int16_t);
 
 public:
-  SeekBar()
+  SeekBarHandler()
   {
-    SeekBar(NULL, NULL);
+    SeekBarHandler(NULL, NULL);
   }
-  SeekBar(int16_t *val, void (*_changeCallback)(int16_t))
+  SeekBarHandler(int16_t *val, void (*_changeCallback)(int16_t))
   {
     value = val;
     changeCallback = _changeCallback;
@@ -878,9 +878,9 @@ private:
   int dataLen = 0;
   DataParser dataParser;
   Button *buttons;
-  DialKnob *dialKnobs;
-  Switch *switchs;
-  SeekBar *seekBars;
+  DialKnobHandler *dialKnobs;
+  SwitchHandler *switchs;
+  SeekBarHandler *seekBars;
   JoystickHandler *joystickHandlers;
   ColorPickerHandler *colorPickerHandlers;
   uint8_t buttonIndex = 1;
@@ -900,9 +900,9 @@ public:
   {
     setupCallback = NULL;
     buttons = new Button[maxObjects];
-    dialKnobs = new DialKnob[maxObjects];
-    switchs = new Switch[maxObjects];
-    seekBars = new SeekBar[maxObjects];
+    dialKnobs = new DialKnobHandler[maxObjects];
+    switchs = new SwitchHandler[maxObjects];
+    seekBars = new SeekBarHandler[maxObjects];
     joystickHandlers = new JoystickHandler[maxObjects];
     colorPickerHandlers = new ColorPickerHandler[maxObjects];
     dialKnobIndex = 1;
