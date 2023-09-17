@@ -1,6 +1,6 @@
 #ifndef __BINDVIEW_H
 #define __BINDVIEW_H
-
+#include <stdint.h>
 class BindView
 {
 public:
