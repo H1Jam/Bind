@@ -4,29 +4,26 @@
 #include <string.h>
 #include "Stream.h"
 #include "SLPacker.hpp"
-#define MAX_DATA_LENGHT  100
-#define RGB(r, g ,b) ((int32_t) ((uint8_t) (b)) | ((int32_t) (g) << 8) | (((int32_t) (uint8_t) (r)) << 16) | 0xFF000000)
-#define RGBA(r, g ,b, a) ((int32_t) ((uint8_t) (b)) | ((int32_t) (g) << 8) | (((int32_t) (uint8_t) (r)) << 16) | ((int32_t) ((uint8_t) (a)) << 24))
-
-
+#define MAX_DATA_LENGHT 100
+#define RGB(r, g, b) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | 0xFF000000)
+#define RGBA(r, g, b, a) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | ((int32_t)((uint8_t)(a)) << 24))
 
 static uint8_t VERSIONID = 0;
 
-static int32_t BLACK		= 0xFF000000;
-static int32_t DKGRAY		= 0xFF444444;
-static int32_t GRAY			= 0xFF888888;
-static int32_t LTGRAY		= 0xFFCCCCCC;
-static int32_t WHITE		= 0xFFFFFFFF;
-static int32_t RED			= 0xFFFF0000;
-static int32_t GREEN		= 0xFF00FF00;
-static int32_t BLUE			= 0xFF0000FF;
-static int32_t YELLOW		= 0xFFFFFF00;
-static int32_t CYAN			= 0xFF00FFFF;
-static int32_t MAGENTA		= 0xFFFF00FF;
-static int32_t UBUNTU		= 0xFF300A24;
-static int32_t AVOCADO		= 0xFF95986B;
-static int32_t TRANSPARENT	= 0;
-
+static int32_t BLACK = 0xFF000000;
+static int32_t DKGRAY = 0xFF444444;
+static int32_t GRAY = 0xFF888888;
+static int32_t LTGRAY = 0xFFCCCCCC;
+static int32_t WHITE = 0xFFFFFFFF;
+static int32_t RED = 0xFFFF0000;
+static int32_t GREEN = 0xFF00FF00;
+static int32_t BLUE = 0xFF0000FF;
+static int32_t YELLOW = 0xFFFFFF00;
+static int32_t CYAN = 0xFF00FFFF;
+static int32_t MAGENTA = 0xFFFF00FF;
+static int32_t UBUNTU = 0xFF300A24;
+static int32_t AVOCADO = 0xFF95986B;
+static int32_t TRANSPARENT = 0;
 
 static int8_t SCREEN_ORIENTATION_UNSET = -2;
 static int8_t SCREEN_ORIENTATION_UNSPECIFIED = -1;
@@ -49,9 +46,14 @@ static int8_t SCREEN_ORIENTATION_LOCKED = 14;
 static uint8_t MAX_STRING_LENGTH = 32;
 static uint8_t MAX_STRING_LENGTH_TERMINAL = 64;
 uint8_t const dataHeader[3] = {199, 201, 176};
-enum DataDirection {toAndroid, fromAndroid};
+enum DataDirection
+{
+  toAndroid,
+  fromAndroid
+};
 
-enum ScreenIDs : uint8_t {
+enum ScreenIDs : uint8_t
+{
   setupCMD = 5,
   button,
   label,
@@ -75,35 +77,38 @@ enum ScreenIDs : uint8_t {
   Settings
 };
 
-enum MarkerIcons : uint8_t {
-PinRed = 0,
-PinGreen,
-PinBlue,
-PinYellow,
-CarRed,
-CarGreen,
-CarBlue,
-CarYellow,
-PlaneRed,
-PlaneGreen,
-PlaneBlue,
-PlaneYellow
+enum MarkerIcons : uint8_t
+{
+  PinRed = 0,
+  PinGreen,
+  PinBlue,
+  PinYellow,
+  CarRed,
+  CarGreen,
+  CarBlue,
+  CarYellow,
+  PlaneRed,
+  PlaneGreen,
+  PlaneBlue,
+  PlaneYellow
 };
 
 int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
 bool checkCRC(uint8_t const *buffer, size_t len);
-class DataParser {
-  private:
-	SLPacker slPacker;
-    uint8_t dataIn[3] = {0, 0, 0};
-    int bufIndex = 0;
-    int dataStep = 0;
-    int dataLength = 0;
-  public:
-	static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
-	static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len, Stream *stream);
-    uint8_t *buf = slPacker.buf;
-    int update(uint8_t inp);
+class DataParser
+{
+private:
+  SLPacker slPacker;
+  uint8_t dataIn[3] = {0, 0, 0};
+  int bufIndex = 0;
+  int dataStep = 0;
+  int dataLength = 0;
+
+public:
+  static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
+  static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len, Stream *stream);
+  uint8_t *buf = slPacker.buf;
+  int update(uint8_t inp);
 };
 
 #endif /* __DATAPROTOCOL_H */
