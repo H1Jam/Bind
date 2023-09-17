@@ -6,6 +6,7 @@
 #include "BindButton.hpp"
 #include "BindDialKnob.hpp"
 #include "BindSwitch.hpp"
+#include "BindView.h"
 
 #define maxObjects  8
 #define MAX_SINK_OBJECTS  100
@@ -97,18 +98,14 @@ class ColorPickerHandler {
 
 void copyAndOffset(uint8_t *out, uint16_t *offset, const void * source, size_t num);
 
-class ScreenStream {
+
+
+class BindViewAutoTag : public BindView {
   public:
-    virtual uint16_t getBytes(uint8_t *out) {return 0;};
-    int16_t tag;
+    BindViewAutoTag();
 };
 
-class ScreenStreamAutoTag : public ScreenStream {
-  public:
-    ScreenStreamAutoTag();
-};
-
-class ScreenTextLabel: public ScreenStreamAutoTag {
+class ScreenTextLabel: public BindViewAutoTag {
   private:
     uint8_t objID = ScreenIDs::label;
     uint16_t offset = 0;
@@ -147,7 +144,7 @@ class ScreenTextLabel: public ScreenStreamAutoTag {
     }
 };
 
-class ScreenButton: public ScreenStream {
+class ScreenButton: public BindView {
   private:
     uint8_t objID = ScreenIDs::button;
     uint16_t offset = 0;
@@ -188,7 +185,7 @@ class ScreenButton: public ScreenStream {
     }
 };
 
-class ScreenKnob: public ScreenStream {
+class ScreenKnob: public BindView {
   private:
     uint8_t objID = ScreenIDs::knob;
     uint16_t offset = 0;
@@ -231,7 +228,7 @@ class ScreenKnob: public ScreenStream {
     }
 };
 
-class ScreenGauge: public ScreenStreamAutoTag {
+class ScreenGauge: public BindViewAutoTag {
   private:
     uint8_t objID = ScreenIDs::gauge1;
     uint16_t offset = 0;
@@ -280,7 +277,7 @@ class ScreenGauge: public ScreenStreamAutoTag {
     }
 };
 
-class ScreenGaugeCompact: public ScreenStreamAutoTag {
+class ScreenGaugeCompact: public BindViewAutoTag {
   private:
     uint8_t objID = ScreenIDs::gauge2;
     uint16_t offset = 0;
@@ -330,7 +327,7 @@ class ScreenGaugeCompact: public ScreenStreamAutoTag {
 };
 
 
-class ScreenMap: public ScreenStreamAutoTag  {
+class ScreenMap: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::mapView;
     uint16_t offset = 0;
@@ -362,7 +359,7 @@ class ScreenMap: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenMapMarker: public ScreenStreamAutoTag  {
+class ScreenMapMarker: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::mapMarker;
     uint16_t offset = 0;
@@ -387,7 +384,7 @@ class ScreenMapMarker: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenSwitch: public ScreenStream  {
+class ScreenSwitch: public BindView  {
   private:
     uint8_t objID = ScreenIDs::toggleSwitch;
     uint16_t offset = 0;
@@ -428,7 +425,7 @@ class ScreenSwitch: public ScreenStream  {
     }
 };
 
-class ScreenSeekBar: public ScreenStream  {
+class ScreenSeekBar: public BindView  {
   private:
     uint8_t objID = ScreenIDs::seekBar;
     uint16_t offset = 0;
@@ -453,7 +450,7 @@ class ScreenSeekBar: public ScreenStream  {
     }
 };
 
-class ScreenAttitudeIndicator: public ScreenStreamAutoTag  {
+class ScreenAttitudeIndicator: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::attitudeIndicator;
     uint16_t offset = 0;
@@ -478,7 +475,7 @@ class ScreenAttitudeIndicator: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenHeadingIndicator: public ScreenStreamAutoTag  {
+class ScreenHeadingIndicator: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::headingIndicator;
     uint16_t offset = 0;
@@ -501,7 +498,7 @@ class ScreenHeadingIndicator: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenJoystick: public ScreenStream  {
+class ScreenJoystick: public BindView  {
   private:
     uint8_t objID = ScreenIDs::joystick;
     uint16_t offset = 0;
@@ -526,7 +523,7 @@ class ScreenJoystick: public ScreenStream  {
     }
 };
 
-class ScreenGaugeSimple: public ScreenStreamAutoTag  {
+class ScreenGaugeSimple: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::gaugeSimple;
     uint16_t offset = 0;
@@ -575,7 +572,7 @@ class ScreenGaugeSimple: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenColorPicker: public ScreenStream  {
+class ScreenColorPicker: public BindView  {
   private:
     uint8_t objID = ScreenIDs::colorPicker;
     uint16_t offset = 0;
@@ -602,7 +599,7 @@ class ScreenColorPicker: public ScreenStream  {
     }
 };
 
-class ScreenChart: public ScreenStreamAutoTag  {
+class ScreenChart: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::chart;
     uint8_t dataID = ScreenIDs::chartData;
@@ -645,7 +642,7 @@ class ScreenChart: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenRectangle: public ScreenStreamAutoTag  {
+class ScreenRectangle: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::rectangle;
     uint16_t offset = 0;
@@ -676,7 +673,7 @@ class ScreenRectangle: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenTerminal: public ScreenStreamAutoTag  {
+class ScreenTerminal: public BindViewAutoTag  {
   private:
     uint8_t objID = ScreenIDs::terminal;
     uint8_t dataID = ScreenIDs::terminalData;
@@ -722,7 +719,7 @@ class ScreenTerminal: public ScreenStreamAutoTag  {
     }
 };
 
-class ScreenSettings: public ScreenStream  {
+class ScreenSettings: public BindView  {
   private:
     uint8_t objID = ScreenIDs::Settings;
     uint16_t offset = 0;
@@ -812,7 +809,8 @@ class Bind {
 	}
 	
 	void setBindDevice(Stream *stream);
-	void sync(ScreenStream *obj);
+	void sync(BindView *obj);
+	void sync();
     void bindScreenSetup(void (*setupCallback)(int16_t, int16_t));
     void bindButton(ScreenButton *screenButton, void (*clickCallback)(void));
     void bindDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t));
@@ -831,7 +829,7 @@ class Bind {
     void updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);
 };
 
-void sendScreenStream(ScreenStream *obj, Stream *stream);
+void sendScreenStream(BindView *obj, Stream *stream);
 void addChartdata(float chartData, ScreenChart *obj, Stream *stream);
 void ScreenTerminalPrint(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, ScreenTerminal *obj, Stream *stream);
 void ScreenTerminalPrint(const char *str, ScreenTerminal *obj, Stream *stream);
