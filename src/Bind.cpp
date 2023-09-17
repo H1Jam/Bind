@@ -5,7 +5,7 @@ int frameBufferSize = 0;
 uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
 int16_t tagIndex = 1;
 
-ScreenStreamAutoTag::ScreenStreamAutoTag() {
+BindViewAutoTag::BindViewAutoTag() {
   this->tag = tagIndex++;
 }
 
@@ -32,7 +32,7 @@ void addChartdata(float chartData, ScreenChart *obj, Stream *stream) {
   DataParser::sendFrame(frameTXBuffer, bufFrame, dLenght, stream);
 }
 
-void sendScreenStream(ScreenStream *obj, Stream *stream) {
+void sendScreenStream(BindView *obj, Stream *stream) {
   dLenght = obj->getBytes(bufFrame);
   DataParser::sendFrame(frameTXBuffer, bufFrame, dLenght, stream);
 }
@@ -42,11 +42,19 @@ void Bind::setBindDevice(Stream *stream){
 	bindStream = stream;
 }
 
-void Bind::sync(ScreenStream *obj) {
+void Bind::sync(BindView *obj) {
   if (bindStream !=NULL) {
     dataLen = obj->getBytes(bufFrame);
     DataParser::sendFrame(frameTXBuffer, bufFrame, dataLen, bindStream); 
   }
+}
+
+void Bind::sync() {
+	if (bindStream !=NULL) {
+		while (bindStream->available()) {
+			updateScreen(bindStream->read());
+		}
+	}
 }
 
 void Bind::bindButton(ScreenButton * screenButton, void (*clickCallback)(void)) {
