@@ -8,7 +8,7 @@
 #include "BindSwitchHandler.hpp"
 #include "BindView.h"
 
-#define maxObjects 8
+#define maxObjects 16
 #define MAX_SINK_OBJECTS 100
 #define ADD_OR_REFRESH_CMD 0
 #define REMOVE_CMD 1
@@ -886,10 +886,9 @@ private:
   uint8_t buttonIndex = 1;
   uint8_t dialKnobIndex = 1;
   uint8_t switchIndex = 1;
-  uint8_t DialKnobIndex = 1;
-  uint8_t SeekBarIndex = 1;
-  uint8_t JoystickHandlerIndex = 1;
-  uint8_t ColorPickerHandlerIndex = 1;
+  uint8_t seekBarIndex = 1;
+  uint8_t joystickHandlerIndex = 1;
+  uint8_t colorPickerHandlerIndex = 1;
   bool init = false;
   void (*setupCallback)(int16_t, int16_t);
   void screenInit(int16_t w, int16_t h);
@@ -905,8 +904,6 @@ public:
     seekBarHandlers = new SeekBarHandler[maxObjects];
     joystickHandlers = new JoystickHandler[maxObjects];
     colorPickerHandlers = new ColorPickerHandler[maxObjects];
-    dialKnobIndex = 1;
-    buttonIndex = 1;
   }
 
   Bind(void (*_setupCallback)(int16_t, int16_t))
