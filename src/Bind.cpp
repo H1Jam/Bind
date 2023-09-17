@@ -44,8 +44,8 @@ void Bind::setBindDevice(Stream *stream){
 
 void Bind::sync(ScreenStream *obj) {
   if (bindStream !=NULL) {
-    static int len = obj->getBytes(bufFrame);
-    DataParser::sendFrame(frameTXBuffer, bufFrame, len, stream); 
+    dataLen = obj->getBytes(bufFrame);
+    DataParser::sendFrame(frameTXBuffer, bufFrame, dataLen, bindStream); 
   }
 }
 
