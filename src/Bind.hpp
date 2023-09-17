@@ -6,6 +6,10 @@
 #include "BindButtonHandler.hpp"
 #include "BindDialKnobHandler.hpp"
 #include "BindSwitchHandler.hpp"
+#include "BindSeekBarHandler.hpp"
+#include "BindJoystickHandler.hpp"
+#include "BindColorPickerHandler.hpp"
+#include "BindViewAutoTag.hpp"
 #include "BindView.h"
 
 #define maxObjects 16
@@ -20,109 +24,7 @@
 
 #define MAP_USER_ZOOM -1
 
-class SeekBarHandler
-{
-private:
-  int16_t *value = NULL;
-  void (*changeCallback)(int16_t);
-
-public:
-  SeekBarHandler()
-  {
-    SeekBarHandler(NULL, NULL);
-  }
-  SeekBarHandler(int16_t *val, void (*_changeCallback)(int16_t))
-  {
-    value = val;
-    changeCallback = _changeCallback;
-  }
-  void update(int16_t val)
-  {
-    if (value != NULL)
-    {
-      *value = val;
-    }
-    if (changeCallback != NULL)
-    {
-      changeCallback(val);
-    }
-  }
-};
-
-class JoystickHandler
-{
-private:
-  int16_t *valueX = NULL;
-  int16_t *valueY = NULL;
-  void (*changeCallback)(int16_t, int16_t);
-
-public:
-  JoystickHandler()
-  {
-    JoystickHandler(NULL, NULL, NULL);
-  }
-  JoystickHandler(int16_t *valX, int16_t *valY, void (*_changeCallback)(int16_t, int16_t))
-  {
-    valueX = valX;
-    valueY = valY;
-    changeCallback = _changeCallback;
-  }
-  void update(int16_t valX, int16_t valY)
-  {
-    if (valueX != NULL && valueY != NULL)
-    {
-      *valueX = valX;
-      *valueY = valY;
-    }
-    if (changeCallback != NULL)
-    {
-      changeCallback(valX, valY);
-    }
-  }
-};
-
-class ColorPickerHandler
-{
-private:
-  void (*clickCallback)(uint8_t, uint8_t, uint8_t);
-  uint8_t *red = NULL;
-  uint8_t *green = NULL;
-  uint8_t *blue = NULL;
-
-public:
-  ColorPickerHandler()
-  {
-    ColorPickerHandler(NULL, NULL, NULL, NULL);
-  }
-  ColorPickerHandler(uint8_t *r, uint8_t *g, uint8_t *b, void (*_clickCallback)(uint8_t, uint8_t, uint8_t))
-  {
-    red = r;
-    green = g;
-    blue = b;
-    clickCallback = _clickCallback;
-  }
-  void update(uint8_t r, uint8_t g, uint8_t b)
-  {
-    if (red != NULL && green != NULL && blue != NULL)
-    {
-      *red = r;
-      *green = g;
-      *blue = b;
-    }
-    if (*clickCallback != NULL)
-    {
-      clickCallback(r, g, b);
-    }
-  }
-};
-
 void copyAndOffset(uint8_t *out, uint16_t *offset, const void *source, size_t num);
-
-class BindViewAutoTag : public BindView
-{
-public:
-  BindViewAutoTag();
-};
 
 class ScreenTextLabel : public BindViewAutoTag
 {
