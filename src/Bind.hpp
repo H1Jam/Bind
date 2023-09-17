@@ -96,6 +96,7 @@ class ColorPickerHandler {
 
 
 void copyAndOffset(uint8_t *out, uint16_t *offset, const void * source, size_t num);
+
 class ScreenStream {
   public:
     virtual uint16_t getBytes(uint8_t *out) {return 0;};
@@ -770,6 +771,7 @@ class Bind {
     int16_t valTmp1 = 0;
     int16_t valTmp2 = 0;
     int16_t valTmp3 = 0;
+	int dataLen = 0;
 	DataParser dataParser;
     Button* buttons;
     DialKnob* dialKnobs;
