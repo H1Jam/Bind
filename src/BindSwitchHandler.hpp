@@ -1,5 +1,7 @@
 #ifndef __BINDSWITCHHANDLER_H
 #define __BINDSWITCHHANDLER_H
+#include "Stream.h"
+// Todo: Move the implementations to the c file!
 class SwitchHandler
 {
 private:
