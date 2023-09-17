@@ -1,6 +1,6 @@
 #ifndef __BINDDIALKNOBHANDLER_H
 #define __BINDDIALKNOBHANDLER_H
-#include "Stream.h" 
+#include "Stream.h" // for NULL
 class DialKnobHandler
 {
 private:
@@ -19,4 +19,4 @@ public:
   }
   void changed(int16_t val);
 };
-#endif /* __BINDDIALKNOBHANDLER_H */s
+#endif /* __BINDDIALKNOBHANDLER_H */
