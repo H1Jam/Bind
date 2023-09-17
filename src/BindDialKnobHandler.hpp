@@ -1,5 +1,6 @@
 #ifndef __BINDDIALKNOBHANDLER_H
 #define __BINDDIALKNOBHANDLER_H
+#include "Stream.h" 
 class DialKnobHandler
 {
 private:
