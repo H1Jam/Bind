@@ -787,6 +787,7 @@ class Bind {
 	bool init = false;
     void (*setupCallback)(int16_t, int16_t);
     void screenInit(int16_t w, int16_t h);
+	Stream *bindStream = NULL;
   public:
     Bind() {
       setupCallback = NULL;
@@ -807,7 +808,9 @@ class Bind {
 	bool isReady(){
 		return init;
 	}
-		
+	
+	void setBindDevice(Stream *stream);
+	void sync(ScreenStream *obj);
     void bindScreenSetup(void (*setupCallback)(int16_t, int16_t));
     void bindButton(ScreenButton *screenButton, void (*clickCallback)(void));
     void bindDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t));
