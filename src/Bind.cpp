@@ -193,9 +193,9 @@ void Bind::updateSwitch(uint8_t tag, bool val)
 
 void Bind::bindSeekBar(ScreenSeekBar *screenSeekBar, void (*changeCallback)(int16_t))
 {
-  if (SeekBarIndex < maxObjects)
+  if (seekBarIndex < maxObjects)
   {
-    screenSeekBar->tag = SeekBarIndex++;
+    screenSeekBar->tag = seekBarIndex++;
     seekBarHandlers[screenSeekBar->tag] = SeekBarHandler(&screenSeekBar->seekValue, changeCallback);
   }
 }
@@ -210,9 +210,9 @@ void Bind::updateSeekBar(uint8_t tag, int16_t val)
 
 void Bind::bindJoystick(ScreenJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t))
 {
-  if (JoystickHandlerIndex < maxObjects)
+  if (joystickHandlerIndex < maxObjects)
   {
-    screenJoystick->tag = JoystickHandlerIndex++;
+    screenJoystick->tag = joystickHandlerIndex++;
     joystickHandlers[screenJoystick->tag] = JoystickHandler(&screenJoystick->sX, &screenJoystick->sY, changeCallback);
   }
 }
@@ -227,9 +227,9 @@ void Bind::updateJoystick(uint8_t tag, int16_t valX, int16_t valY)
 
 void Bind::bindColorPicker(ScreenColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t))
 {
-  if (ColorPickerHandlerIndex < maxObjects)
+  if (colorPickerHandlerIndex < maxObjects)
   {
-    screenColorPicker->tag = ColorPickerHandlerIndex++;
+    screenColorPicker->tag = colorPickerHandlerIndex++;
     colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, clickCallback);
   }
 }
