@@ -3,9 +3,9 @@
 #include <stdint.h>
 #include "Stream.h"
 #include "DataProtocol.h"
-#include "BindButton.hpp"
-#include "BindDialKnob.hpp"
-#include "BindSwitch.hpp"
+#include "BindButtonHandler.hpp"
+#include "BindDialKnobHandler.hpp"
+#include "BindSwitchHandler.hpp"
 #include "BindView.h"
 
 #define maxObjects 8
@@ -877,10 +877,10 @@ private:
   int16_t valTmp3 = 0;
   int dataLen = 0;
   DataParser dataParser;
-  Button *buttons;
-  DialKnobHandler *dialKnobs;
-  SwitchHandler *switchs;
-  SeekBarHandler *seekBars;
+  ButtonHandler *buttons;
+  DialKnobHandler *dialKnobHandlers;
+  SwitchHandler *switchHandlers;
+  SeekBarHandler *seekBarHandlers;
   JoystickHandler *joystickHandlers;
   ColorPickerHandler *colorPickerHandlers;
   uint8_t buttonIndex = 1;
@@ -899,10 +899,10 @@ public:
   Bind()
   {
     setupCallback = NULL;
-    buttons = new Button[maxObjects];
-    dialKnobs = new DialKnobHandler[maxObjects];
-    switchs = new SwitchHandler[maxObjects];
-    seekBars = new SeekBarHandler[maxObjects];
+    buttons = new ButtonHandler[maxObjects];
+    dialKnobHandlers = new DialKnobHandler[maxObjects];
+    switchHandlers = new SwitchHandler[maxObjects];
+    seekBarHandlers = new SeekBarHandler[maxObjects];
     joystickHandlers = new JoystickHandler[maxObjects];
     colorPickerHandlers = new ColorPickerHandler[maxObjects];
     dialKnobIndex = 1;
