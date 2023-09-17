@@ -5,11 +5,6 @@ int frameBufferSize = 0;
 uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
 int16_t tagIndex = 1;
 
-BindViewAutoTag::BindViewAutoTag()
-{
-  this->tag = tagIndex++;
-}
-
 void ScreenTerminalPrint(const char *str, ScreenTerminal *obj, Stream *stream)
 {
   ScreenTerminalPrint(str, WHITE, true, false, false, false, obj, stream);
@@ -241,3 +236,4 @@ void Bind::updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b)
     colorPickerHandlers[tag].update(r, g, b);
   }
 }
+
