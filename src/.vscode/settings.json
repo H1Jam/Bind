@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.tcc": "cpp",
-        "bindutils.h": "c",
-        "optional": "cpp",
-        "type_traits": "cpp",
-        "stdint.h": "c"
-    }
-}
