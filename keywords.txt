@@ -1,27 +1,51 @@
 #######################################
-# Syntax Coloring Map For UIduino
+# Syntax Coloring Map For Bind
 #######################################
 # Class
 #######################################
 
-ScreenObjects	KEYWORD1
-ScreenButton	KEYWORD1
+Bind	KEYWORD1
+BindButton	KEYWORD1
+BindSeekBar	KEYWORD1
+BindKnob	KEYWORD1
+BindTextLabel	KEYWORD1
+BindGauge	KEYWORD1
+BindGaugeCompact	KEYWORD1
+BindMap	KEYWORD1
+BindMapMarker	KEYWORD1
+BindSwitch	KEYWORD1
+BindAttitudeIndicator	KEYWORD1
+BindHeadingIndicator	KEYWORD1
+BindJoystick	KEYWORD1
+BindGaugeSimple	KEYWORD1
+BindColorPicker	KEYWORD1
+BindChart	KEYWORD1
+BindRectangle	KEYWORD1
+BindTerminal	KEYWORD1
+BindCanvasSettings	KEYWORD1
 
 #######################################
 # Methods and Functions
 #######################################
 
-registerScreenSetup	KEYWORD2
-registerButton	KEYWORD2
-setCallback	KEYWORD2
-sendScreenStream	KEYWORD2
-updateScreen	KEYWORD2
-setlabel	KEYWORD2
+sync	KEYWORD2
+setBindDevice	KEYWORD2
+bindButton	KEYWORD2
+bindSwitch	KEYWORD2
+bindSeekBar	KEYWORD2
+bindJoystick	KEYWORD2
+bindColorPicker	KEYWORD2
+syncChartData	KEYWORD2
+syncTerminalData	KEYWORD2
 
 #######################################
 # Constants
 #######################################
 
-ENABLE_CMD	LITERAL1
-BLACK	LITERAL1
-YELLOW	LITERAL1
+BIND_ADD_OR_REFRESH_CMD LITERAL1
+BIND_REMOVE_CMD LITERAL1
+BIND_DISABLE_CMD LITERAL1
+BIND_ENABLE_CMD LITERAL1
+BIND_HIDE_CMD LITERAL1
+BIND_VISIBLE_CMD LITERAL1
+BIND_DATA_ONLY_CMD LITERAL1
