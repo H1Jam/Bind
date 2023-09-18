@@ -1,6 +1,7 @@
 #ifndef __BINDBUTTONHANDLER_H
 #define __BINDBUTTONHANDLER_H
 #include "Stream.h"
+// TODO: Add the class summaries!
 class ButtonHandler
 {
 private:
