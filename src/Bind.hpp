@@ -11,768 +11,247 @@
 #include "BindColorPickerHandler.hpp"
 #include "BindViewAutoTag.hpp"
 #include "BindView.h"
-
-#define maxObjects 16
-#define MAX_SINK_OBJECTS 100
-#define ADD_OR_REFRESH_CMD 0
-#define REMOVE_CMD 1
-#define DISABLE_CMD 2
-#define ENABLE_CMD 3
-#define HIDE_CMD 4
-#define VISIBLE_CMD 5
-#define DATA_ONLY_CMD 6
-
-#define MAP_USER_ZOOM -1
-
-void copyAndOffset(uint8_t *out, uint16_t *offset, const void *source, size_t num);
-
-class ScreenTextLabel : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::label;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenTextLabel(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenTextLabel()
-  {
-    setlabel("TextLabel");
-  }
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  int16_t fontSize;
-  int32_t color;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &fontSize, sizeof(fontSize));
-    copyAndOffset(out, &offset, &color, sizeof(color));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenButton : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::button;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenButton(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenButton()
-  {
-    setlabel("Button");
-  }
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  int16_t fontSize;
-  int32_t color;
-  int32_t backColor;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &fontSize, sizeof(fontSize));
-    copyAndOffset(out, &offset, &color, sizeof(color));
-    copyAndOffset(out, &offset, &backColor, sizeof(backColor));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenKnob : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::knob;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenKnob(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenKnob()
-  {
-    setlabel("Knob");
-  }
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  int16_t dimSize;
-  int16_t minValue;
-  int16_t maxValue;
-  int16_t value;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &minValue, sizeof(minValue));
-    copyAndOffset(out, &offset, &maxValue, sizeof(maxValue));
-    copyAndOffset(out, &offset, &value, sizeof(value));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenGauge : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::gauge1;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenGauge(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenGauge()
-  {
-    setlabel("Gauge");
-  }
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 100;
-  float value = 0;
-  float maxValue = 100.0f;
-  uint8_t drawArc = 0;
-  float arcGreenMaxVal = 0;
-  float arcYellowMaxVal = 0;
-  float arcRedMaxVal = 0;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, 1);
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &value, sizeof(value));
-    copyAndOffset(out, &offset, &maxValue, sizeof(maxValue));
-    copyAndOffset(out, &offset, &drawArc, sizeof(drawArc));
-    copyAndOffset(out, &offset, &arcGreenMaxVal, sizeof(arcGreenMaxVal));
-    copyAndOffset(out, &offset, &arcYellowMaxVal, sizeof(arcYellowMaxVal));
-    copyAndOffset(out, &offset, &arcRedMaxVal, sizeof(arcRedMaxVal));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenGaugeCompact : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::gauge2;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenGaugeCompact(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenGaugeCompact()
-  {
-    setlabel("Gauge");
-  }
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 100;
-  float value = 0;
-  float maxValue = 100.0f;
-  uint8_t drawArc = 0;
-  float arcGreenMaxVal = 0;
-  float arcYellowMaxVal = 0;
-  float arcRedMaxVal = 0;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &value, sizeof(value));
-    copyAndOffset(out, &offset, &maxValue, sizeof(maxValue));
-    copyAndOffset(out, &offset, &drawArc, sizeof(drawArc));
-    copyAndOffset(out, &offset, &arcGreenMaxVal, sizeof(arcGreenMaxVal));
-    copyAndOffset(out, &offset, &arcYellowMaxVal, sizeof(arcYellowMaxVal));
-    copyAndOffset(out, &offset, &arcRedMaxVal, sizeof(arcRedMaxVal));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenMap : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::mapView;
-  uint16_t offset = 0;
-
-public:
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  int16_t width = 100;
-  int16_t height = 100;
-  float lat = 0.0f;
-  float lon = 0.0f;
-  float mapOrientation = 0.0f;
-  int8_t zoom = 1;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    tag = 1; // Only one map for now! will extend it.
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &width, sizeof(width));
-    copyAndOffset(out, &offset, &height, sizeof(height));
-    copyAndOffset(out, &offset, &lat, sizeof(lat));
-    copyAndOffset(out, &offset, &lon, sizeof(lon));
-    copyAndOffset(out, &offset, &mapOrientation, sizeof(mapOrientation));
-    copyAndOffset(out, &offset, &zoom, sizeof(zoom));
-    return offset;
-  }
-};
-
-class ScreenMapMarker : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::mapMarker;
-  uint16_t offset = 0;
-
-public:
-  float lat = 0.0f;
-  float lon = 0.0f;
-  float rotation = 0.0f;
-  uint8_t scale = 100;
-  MarkerIcons iconId = MarkerIcons::PinRed;
-  uint8_t cmdId = 0;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &lat, sizeof(lat));
-    copyAndOffset(out, &offset, &lon, sizeof(lon));
-    copyAndOffset(out, &offset, &rotation, sizeof(rotation));
-    copyAndOffset(out, &offset, &iconId, sizeof(iconId));
-    copyAndOffset(out, &offset, &scale, sizeof(scale));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    return offset;
-  }
-};
-
-class ScreenSwitch : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::toggleSwitch;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenSwitch(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenSwitch()
-  {
-    setlabel("Switch");
-  }
-  int16_t x;
-  int16_t y;
-  uint8_t cmdId = 0;
-  bool switchValue;
-  int16_t fontSize;
-  int32_t textColor;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, 2);
-    copyAndOffset(out, &offset, &y, 2);
-    copyAndOffset(out, &offset, &tag, 2);
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &switchValue, sizeof(switchValue));
-    copyAndOffset(out, &offset, &fontSize, sizeof(fontSize));
-    copyAndOffset(out, &offset, &textColor, sizeof(textColor));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenSeekBar : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::seekBar;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t seekValue = 0;
-  int16_t maxValue = 100;
-  int16_t width = 200;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, 2);
-    copyAndOffset(out, &offset, &y, 2);
-    copyAndOffset(out, &offset, &tag, 2);
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &seekValue, sizeof(seekValue));
-    copyAndOffset(out, &offset, &maxValue, sizeof(maxValue));
-    copyAndOffset(out, &offset, &width, sizeof(width));
-    return offset;
-  }
-};
-
-class ScreenAttitudeIndicator : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::attitudeIndicator;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 200;
-  float roll = 0.0f;
-  float pitch = 0.0f;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &roll, sizeof(roll));
-    copyAndOffset(out, &offset, &pitch, sizeof(pitch));
-    return offset;
-  }
-};
-
-class ScreenHeadingIndicator : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::headingIndicator;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 200;
-  float heading = 0.0f;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &heading, sizeof(heading));
-    return offset;
-  }
-};
-
-class ScreenJoystick : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::joystick;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 200;
-  int16_t sX = 0;
-  int16_t sY = 0;
-  bool springed = true;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &springed, sizeof(springed));
-    return offset;
-  }
-};
-
-class ScreenGaugeSimple : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::gaugeSimple;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenGaugeSimple(const char *cstr)
-  {
-    setlabel(cstr);
-  }
-  ScreenGaugeSimple()
-  {
-    setlabel("Gauge");
-  }
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 200;
-  int16_t minValue = 0;
-  int16_t maxValue = 100;
-  int16_t value = 0;
-  uint8_t style = 0;
-  bool isSymmetrical = false;
-  int32_t color;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &minValue, sizeof(minValue));
-    copyAndOffset(out, &offset, &maxValue, sizeof(maxValue));
-    copyAndOffset(out, &offset, &value, sizeof(value));
-    copyAndOffset(out, &offset, &style, sizeof(style));
-    copyAndOffset(out, &offset, &isSymmetrical, sizeof(isSymmetrical));
-    copyAndOffset(out, &offset, &color, sizeof(color));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenColorPicker : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::colorPicker;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t dimSize = 200;
-  uint8_t red = 0;
-  uint8_t green = 0;
-  uint8_t blue = 0;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &dimSize, sizeof(dimSize));
-    copyAndOffset(out, &offset, &red, sizeof(red));
-    copyAndOffset(out, &offset, &green, sizeof(green));
-    copyAndOffset(out, &offset, &blue, sizeof(blue));
-    return offset;
-  }
-};
-
-class ScreenChart : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::chart;
-  uint8_t dataID = ScreenIDs::chartData;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t width = 200;
-  int16_t height = 100;
-  int16_t maxY = 10;
-  int16_t minY = -10;
-  int16_t maxX = 20;
-  bool autoSize = true;
-  int32_t color = YELLOW;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &width, sizeof(width));
-    copyAndOffset(out, &offset, &height, sizeof(height));
-    copyAndOffset(out, &offset, &maxY, sizeof(maxY));
-    copyAndOffset(out, &offset, &minY, sizeof(minY));
-    copyAndOffset(out, &offset, &maxX, sizeof(maxX));
-    copyAndOffset(out, &offset, &autoSize, sizeof(autoSize));
-    copyAndOffset(out, &offset, &color, sizeof(color));
-    return offset;
-  }
-  uint16_t getDataBytes(uint8_t *out, float chartData)
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &dataID, sizeof(dataID));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &chartData, sizeof(chartData));
-    copyAndOffset(out, &offset, &color, sizeof(color));
-    return offset;
-  }
-};
-
-class ScreenRectangle : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::rectangle;
-  uint16_t offset = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t width = 200;
-  int16_t height = 100;
-  int32_t fillColor = BLACK;
-  int32_t strokeColor = YELLOW;
-  int16_t strokeWidth = 10;
-  int16_t cornersRadius = 10;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &width, sizeof(width));
-    copyAndOffset(out, &offset, &height, sizeof(height));
-    copyAndOffset(out, &offset, &fillColor, sizeof(fillColor));
-    copyAndOffset(out, &offset, &strokeColor, sizeof(strokeColor));
-    copyAndOffset(out, &offset, &strokeWidth, sizeof(strokeWidth));
-    copyAndOffset(out, &offset, &cornersRadius, sizeof(cornersRadius));
-    return offset;
-  }
-};
-
-class ScreenTerminal : public BindViewAutoTag
-{
-private:
-  uint8_t objID = ScreenIDs::terminal;
-  uint8_t dataID = ScreenIDs::terminalData;
-  uint16_t offset = 0;
-  int strLength = 0;
-
-public:
-  int16_t x = 0;
-  int16_t y = 0;
-  uint8_t cmdId = 0;
-  int16_t width = 200;
-  int16_t height = 100;
-  int16_t textSize = 10;
-  int32_t backColor = UBUNTU;
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &x, sizeof(x));
-    copyAndOffset(out, &offset, &y, sizeof(y));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &width, sizeof(width));
-    copyAndOffset(out, &offset, &height, sizeof(height));
-    copyAndOffset(out, &offset, &textSize, sizeof(textSize));
-    copyAndOffset(out, &offset, &backColor, sizeof(backColor));
-    return offset;
-  }
-  uint16_t getDataBytes(uint8_t *out, const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic)
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &dataID, sizeof(dataID));
-    copyAndOffset(out, &offset, &tag, sizeof(tag));
-    copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-    copyAndOffset(out, &offset, &textColor, sizeof(textColor));
-    copyAndOffset(out, &offset, &newLine, sizeof(newLine));
-    copyAndOffset(out, &offset, &bold, sizeof(bold));
-    copyAndOffset(out, &offset, &italic, sizeof(italic));
-    copyAndOffset(out, &offset, &autoScroll, sizeof(autoScroll));
-    copyAndOffset(out, &offset, str, strLength);
-    return offset;
-  }
-};
-
-class ScreenSettings : public BindView
-{
-private:
-  uint8_t objID = ScreenIDs::Settings;
-  uint16_t offset = 0;
-  int strLength = 0;
-  const char *str;
-
-public:
-  ScreenSettings()
-  {
-    setlabel("BindApp");
-  }
-  int8_t screenOrientation = 0;
-  int32_t backColor;
-  int32_t actionBarColor;
-  bool resetScreen = false;
-  void setlabel(const char *cstr)
-  {
-    str = cstr;
-  }
-
-  uint16_t getBytes(uint8_t *out, int8_t _screenOrientation, int32_t _backColor, int32_t _actionBarColor, const char *cstr)
-  {
-    screenOrientation = _screenOrientation;
-    backColor = _backColor;
-    actionBarColor = _actionBarColor;
-    str = cstr;
-    return getBytes(out);
-  }
-
-  uint16_t getBytes(uint8_t *out) override
-  {
-    offset = 0;
-    strLength = strlen(str);
-    if (strLength > MAX_STRING_LENGTH_TERMINAL)
-    {
-      strLength = MAX_STRING_LENGTH_TERMINAL;
-    }
-    copyAndOffset(out, &offset, &objID, sizeof(objID));
-    copyAndOffset(out, &offset, &screenOrientation, sizeof(screenOrientation));
-    copyAndOffset(out, &offset, &backColor, sizeof(backColor));
-    copyAndOffset(out, &offset, &actionBarColor, sizeof(actionBarColor));
-    copyAndOffset(out, &offset, &resetScreen, sizeof(resetScreen));
-    copyAndOffset(out, &offset, str, strLength);
-    resetScreen = false;
-    return offset;
-  }
-};
+#include "BindUtils.hpp"
+#include "BindButton.hpp"
+#include "BindKnob.hpp"
+#include "BindTextLabel.hpp"
+#include "BindWidgets.hpp"
+// Maximum number of object handlers
+#define MAX_HANDLERS 16
+// This command either adds the object to the canvas (screen) or refreshes the existing one.
+#define BIND_ADD_OR_REFRESH_CMD 0
+// This command removes the object from the canvas (screen).
+#define BIND_REMOVE_CMD 1
+// This command disables the object.
+#define BIND_DISABLE_CMD 2
+// This command enables the object.
+#define BIND_ENABLE_CMD 3
+// This command hides the object.
+#define BIND_HIDE_CMD 4
+// This command restores the object's visibility.
+#define BIND_VISIBLE_CMD 5
+// This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
+#define BIND_DATA_ONLY_CMD 6
 
 class Bind
 {
+public:
+  Bind()
+  {
+    setupCallback = NULL;
+    buttons = new ButtonHandler[MAX_HANDLERS];
+    dialKnobHandlers = new DialKnobHandler[MAX_HANDLERS];
+    switchHandlers = new SwitchHandler[MAX_HANDLERS];
+    seekBarHandlers = new SeekBarHandler[MAX_HANDLERS];
+    joystickHandlers = new JoystickHandler[MAX_HANDLERS];
+    colorPickerHandlers = new ColorPickerHandler[MAX_HANDLERS];
+  }
+
+  /**
+   * @brief Constructs a Bind object with a setup callback function.
+   *
+   * This constructor creates a Bind object and associates it with a setup callback function.
+   * The setup callback is in charge of configuring the initial state of the Bind object,
+   * which includes screen rotation and syncing all the objects. To put it simply,
+   * 'setupCallback' is where you construct the application view.
+   *
+   * @param _setupCallback A pointer to the setup callback function that initializes the Bind screen.
+   */
+  Bind(void (*_setupCallback)(int16_t, int16_t)) : Bind()
+  {
+    setupCallback = _setupCallback;
+  }
+
+  /**
+   * @brief Checks if the bind object is in a ready state.
+   *
+   * This function checks whether the Bind object is in a ready state,
+   * which indicates whether it is connected or not.
+   *
+   * @return True if the object is ready; otherwise, false.
+   */
+  bool isReady()
+  {
+    return init;
+  }
+
+  /**
+   * @brief Sets the communication device for the Bind framework.
+   *
+   * This function configures the communication device for the Bind framework. It takes a pointer
+   * to a 'Stream' object, 'stream,' which represents the device used for data exchange with Bind.
+   * This stream object can be any serial port including hardware or software serial or
+   * blutooth classic serial port.
+   *
+   * @param stream A pointer to the 'Stream' object representing the communication device.
+   */
+  void setBindDevice(Stream *stream);
+
+  /**
+   * @brief Synchronizes a BindView object with the BindCanvas screen.
+   *
+   * This function synchronizes a 'BindView' object, 'obj,' with the BindCanvas screen, ensuring that
+   * the object reflects the most up-to-date data and appearance as intended.
+   *
+   * @param obj A pointer to the 'BindView' object (e.g. BindButton, BindSeekbar) to synchronize.
+   */
+  void sync(BindView *obj);
+
+  /**
+   * @brief Synchronizes the bind with the current state.
+   *
+   * This function synchronizes the Bind object with the current state by
+   * reading data from the canvas and managing user interactions with Bind
+   * views, such as button presses or connection requests.
+   * In simpler terms, it reads the screen.
+   * @attention: To ensure smooth operation and prevent data loss or lag,
+   * regularly run the following line of code. It's recommended to execute it
+   * a few times per second, and faster is even better!
+   * Try to achieve a rate more than 10Hz for optimal performance."
+   */
+  void sync();
+
+  /**
+   * @brief set the the screen setup callback.
+   *
+   * Bind automatically invokes this callback function upon connecting to BindCanvas.
+   * You should sync all the screen objects here.
+   * You'll receive two integers as the parameters: 'w' for width and 'h' for height.
+   * These values allow you to ensure that the objects' positioning and size remain
+   * consistent across various devices with varying screen sizes."
+   *
+   * Note: You don't need to call this function manually!
+   *
+   * @param w The width of the screen in dp (Density-independent Pixels).
+   * @param h The height of the screen in dp (Density-independent Pixels).
+   */
+  void bindScreenSetup(void (*setupCallback)(int16_t, int16_t));
+
+  /**
+   * @brief Binds a Button object to a click callback function.
+   *
+   * This function establishes a connection between a Button object and a click callback function.
+   * It takes two parameters: a pointer to the 'BindButton' object, 'screenButton,' and a pointer
+   * to a callback function, 'clickCallback,' which handles button click events.
+   *
+   * @param screenButton A pointer to the 'BindButton' object to bind.
+   * @param clickCallback A pointer to the callback function that responds to button clicks.
+   */
+  void bindButton(BindButton *screenButton, void (*clickCallback)(void));
+
+  /**
+   * @brief Binds a Dial Knob object to a change callback function.
+   *
+   * This function establishes a connection between a Dial Knob object and a change callback function.
+   * It takes two parameters: a pointer to the 'BindKnob' object, 'screenKnob,' and a pointer to a
+   * callback function, 'changeCallback,' which handles changes in the dial knob's value.
+   * @attention The changeCallback receives a 16-bit integer representing the knob angle,
+   * and the range of values depends on the user's configuration for that knob.
+   *
+   * @param screenKnob A pointer to the 'BindKnob' object to bind.
+   * @param changeCallback A pointer to the callback function that responds to dial knob value changes.
+   */
+  void bindDialKnob(BindKnob *screenKnob, void (*changeCallback)(int16_t));
+
+  /**
+   * @brief Binds a ON/OFF Switch object to a click callback function.
+   *
+   * This function establishes a connection between a Switch object and a click callback function.
+   * It takes two parameters: a pointer to the 'BindSwitch' object, 'screenSwitch,' and a pointer
+   * to a callback function, 'clickCallback,' which handles switch state changes.
+   * @attention The clickCallback receives a boolean representing the state of the switch.
+   *
+   * @param screenSwitch A pointer to the 'BindSwitch' object to bind.
+   * @param clickCallback A pointer to the callback function that responds to switch state changes.
+   */
+  void bindSwitch(BindSwitch *screenSwitch, void (*clickCallback)(bool));
+
+  /**
+   * @brief Binds a SeekBar object to a change callback function.
+   *
+   * This function establishes a connection between a SeekBar object and a change callback function.
+   * It takes two parameters: a pointer to the 'BindSeekBar' object, 'screenSeekBar,' and a pointer
+   * to a callback function, 'changeCallback,' which handles SeekBar value changes.
+   * The callback receives an integer parameter representing the new value of the seekbar.
+   * @attention The clickCallback receives a 16-bit integer representing the progress of
+   * the seekbar, and the range of values depends on the user's configuration for that seekbar.
+   *
+   * @param screenSeekBar A pointer to the 'BindSeekBar' object to bind.
+   * @param changeCallback A pointer to the callback function that responds to SeekBar changes.
+   */
+  void bindSeekBar(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t));
+
+  /**
+   * @brief Binds a Joystick object to a change callback function.
+   *
+   * This function establishes a connection between a Joystick object and a change callback function.
+   * It takes two parameters: a pointer to the 'BindJoystick' object, 'screenJoystick,' and a pointer
+   * to a callback function, 'changeCallback,' which handles changes in the joystick's position.
+   * @attention The clickCallback receives two 16-bit integers representing
+   * the X and Y axes of the joystick, with each axis ranging from -100 to 100.
+   *
+   * @param screenJoystick A pointer to the 'BindJoystick' object to bind.
+   * @param changeCallback A pointer to the callback function that responds to joystick position changes.
+   */
+  void bindJoystick(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t));
+
+  /**
+   * @brief Binds a Color Picker object to a click callback function.
+   *
+   * This function establishes a connection between a Color Picker object and a click callback function.
+   * It takes two parameters: a pointer to the 'BindColorPicker' object, 'screenColorPicker,' and a pointer
+   * to a callback function, 'clickCallback,' which handles color selection events.
+   * @attention The clickCallback receives three 8-bit integers (ranging from 0 to 255)
+   * that represent the Red, Green, and Blue elements of the selected color.
+   *
+   * @param screenColorPicker A pointer to the 'BindColorPicker' object to bind.
+   * @param clickCallback A pointer to the callback function that responds to color selection events.
+   */
+  void bindColorPicker(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t));
+
+  /**
+   * @brief Synchronizes chart data of a BindChart object.
+   *
+   * This function synchronizes the chart data represented by a float value with a 'BindChart' object.
+   * It takes two parameters: the 'chartData' to be synchronized and a
+   * pointer to the 'BindChart' object, 'obj' so that it knows the data blong to which chart.
+   * This function updates the chart data on the screen immediately.
+   *
+   * @param chartData The data to be synchronized with the 'BindChart' object.
+   * @param obj A pointer to the 'BindChart' object for data synchronization.
+   */
+  void syncChartData(float chartData, BindChart *obj);
+
+  /**
+   * @brief Prints terminal data in a BindTerminal object.
+   *
+   * This function synchronizes terminal data, including text, text color, formatting options, and
+   * terminal behavior, with a 'BindTerminal' object.
+   *
+   * @param str The text data to be printed in the 'BindTerminal' object.
+   * @param textColor The color of the text.
+   * @param autoScroll Determines whether auto-scrolling is enabled.
+   * @param newLine Determines whether a new line is added after the text.
+   * @param bold Indicates whether the text should be bold.
+   * @param italic Indicates whether the text should be italic.
+   * @param obj A pointer to the 'BindTerminal' object for data synchronization.
+   */
+  void syncTerminalData(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, BindTerminal *obj);
+
+  /**
+   * @brief Prints terminal data in a BindTerminal object.
+   *
+   * This function prints terminal data with this simple format:
+   * textColor is white
+   * autoScroll is enable 
+   * always adds a new line
+   * No bold, no italic
+   *
+   * @param str The text data to be printed in the 'BindTerminal' object.
+   * @param obj A pointer to the 'BindTerminal' object for data synchronization.
+   */
+  void syncTerminalData(const char *str, BindTerminal *obj);
+
 private:
   int16_t valTmp1 = 0;
   int16_t valTmp2 = 0;
@@ -795,54 +274,15 @@ private:
   void (*setupCallback)(int16_t, int16_t);
   void screenInit(int16_t w, int16_t h);
   Stream *bindStream = NULL;
-
-public:
-  Bind()
-  {
-    setupCallback = NULL;
-    buttons = new ButtonHandler[maxObjects];
-    dialKnobHandlers = new DialKnobHandler[maxObjects];
-    switchHandlers = new SwitchHandler[maxObjects];
-    seekBarHandlers = new SeekBarHandler[maxObjects];
-    joystickHandlers = new JoystickHandler[maxObjects];
-    colorPickerHandlers = new ColorPickerHandler[maxObjects];
-  }
-
-  Bind(void (*_setupCallback)(int16_t, int16_t))
-  {
-    Bind();
-    setupCallback = _setupCallback;
-  }
-  bool isReady()
-  {
-    return init;
-  }
-
-  void setBindDevice(Stream *stream);
-  void sync(BindView *obj);
-  void sync();
-  void bindScreenSetup(void (*setupCallback)(int16_t, int16_t));
-  void bindButton(ScreenButton *screenButton, void (*clickCallback)(void));
-  void bindDialKnob(ScreenKnob *screenKnob, void (*changeCallback)(int16_t));
   int updateScreen(uint8_t inp);
   void updateScreen(Stream *stream);
   int updateScreenInternal(uint8_t *dataFrame);
+  void updateJoystick(uint8_t tag, int16_t valX, int16_t valY);
+  void updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);
+  void updateSeekBar(uint8_t tag, int16_t val);
   void knobChanged(int8_t tag, int val);
   void clickButton(uint8_t tag);
-  void bindSwitch(ScreenSwitch *screenSwitch, void (*clickCallback)(bool));
   void updateSwitch(uint8_t tag, bool val);
-  void bindSeekBar(ScreenSeekBar *screenSeekBar, void (*changeCallback)(int16_t));
-  void updateSeekBar(uint8_t tag, int16_t val);
-  void bindJoystick(ScreenJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t));
-  void updateJoystick(uint8_t tag, int16_t valX, int16_t valY);
-  void bindColorPicker(ScreenColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t));
-  void updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);
 };
-
-void sendScreenStream(BindView *obj, Stream *stream);
-void addChartdata(float chartData, ScreenChart *obj, Stream *stream);
-void ScreenTerminalPrint(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, ScreenTerminal *obj, Stream *stream);
-void ScreenTerminalPrint(const char *str, ScreenTerminal *obj, Stream *stream);
-void ScreenTerminalPrintln(const char *str, ScreenTerminal *obj, Stream *stream);
 
 #endif /* __BIND_H */
