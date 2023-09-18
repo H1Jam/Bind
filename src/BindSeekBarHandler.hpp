@@ -1,7 +1,8 @@
 #ifndef __BINDSEEKBARHANDLER_H
 #define __BINDSEEKBARHANDLER_H
 #include "Stream.h"
-// Todo: Move the implementations to the c file!
+// TODO: Extract the class to a serprate .h and .c file! Now!
+// TODO: Add the class summaries!
 class SeekBarHandler
 {
 private:
