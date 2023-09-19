@@ -2,12 +2,14 @@
 uint8_t bufFrame[100];
 uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
 
-void Bind::setBindDevice(Stream *stream)
+void Bind::init(Stream *stream, void (*_setupCallback)(int16_t, int16_t))
 {
   bindStream = stream;
+  setupCallback = _setupCallback;
 }
 
-void Bind::syncChartData(float chartData, BindChart *obj)
+
+void Bind::sync(float chartData, BindChart *obj)
 {
   if (bindStream != NULL)
   {
@@ -16,7 +18,7 @@ void Bind::syncChartData(float chartData, BindChart *obj)
   }
 }
 
-void Bind::syncTerminalData(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, BindTerminal *obj)
+void Bind::sync(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, BindTerminal *obj)
 {
   if (bindStream != NULL)
   {
@@ -25,9 +27,9 @@ void Bind::syncTerminalData(const char *str, int32_t textColor, bool autoScroll,
   }
 }
 
-void Bind::syncTerminalData(const char *str, BindTerminal *obj)
+void Bind::sync(const char *str, BindTerminal *obj)
 {
-  syncTerminalData(str, WHITE, true, true, false, false, obj);
+  sync(str, WHITE, true, true, false, false, obj);
 }
 
 
@@ -51,7 +53,7 @@ void Bind::sync()
   }
 }
 
-void Bind::bindButton(BindButton *screenButton, void (*clickCallback)(void))
+void Bind::join(BindButton *screenButton, void (*clickCallback)(void))
 {
   if (buttonIndex < MAX_HANDLERS)
   {
@@ -60,7 +62,7 @@ void Bind::bindButton(BindButton *screenButton, void (*clickCallback)(void))
   }
 }
 
-void Bind::bindDialKnob(BindKnob *screenKnob, void (*changeCallback)(int16_t))
+void Bind::join(BindKnob *screenKnob, void (*changeCallback)(int16_t))
 {
   if (dialKnobIndex < MAX_HANDLERS)
   {
@@ -131,14 +133,11 @@ void Bind::screenInit(int16_t w, int16_t h)
   if (*setupCallback != NULL)
   {
     setupCallback(w, h);
-    init = true;
+    isInitialized = true;
   }
 }
 
-void Bind::bindScreenSetup(void (*_setupCallback)(int16_t, int16_t))
-{
-  setupCallback = _setupCallback;
-}
+
 
 void Bind::knobChanged(int8_t tag, int val)
 {
@@ -156,7 +155,7 @@ void Bind::clickButton(uint8_t tag)
   }
 }
 
-void Bind::bindSwitch(BindSwitch *screenSwitch, void (*clickCallback)(bool))
+void Bind::join(BindSwitch *screenSwitch, void (*clickCallback)(bool))
 {
   if (switchIndex < MAX_HANDLERS)
   {
@@ -173,7 +172,7 @@ void Bind::updateSwitch(uint8_t tag, bool val)
   }
 }
 
-void Bind::bindSeekBar(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t))
+void Bind::join(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t))
 {
   if (seekBarIndex < MAX_HANDLERS)
   {
@@ -190,7 +189,7 @@ void Bind::updateSeekBar(uint8_t tag, int16_t val)
   }
 }
 
-void Bind::bindJoystick(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t))
+void Bind::join(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t))
 {
   if (joystickHandlerIndex < MAX_HANDLERS)
   {
@@ -207,7 +206,7 @@ void Bind::updateJoystick(uint8_t tag, int16_t valX, int16_t valY)
   }
 }
 
-void Bind::bindColorPicker(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t))
+void Bind::join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t))
 {
   if (colorPickerHandlerIndex < MAX_HANDLERS)
   {
