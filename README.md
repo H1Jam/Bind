@@ -1,6 +1,9 @@
 ![workflow](https://github.com/H1Jam/Bind/actions/workflows/main.yml/badge.svg)
 ![license](https://img.shields.io/github/license/H1Jam/Bind)
 # Bind Library
-Bind is an Android UI toolkit for Arduino which allows you to create interactive UI elements for your Arduino codes. In other words, your MCU codes can spawn UI elements on the Android screen to show data (Text, Chart, Gaugages, etc ) or get user inputs back (Buttons, Checkbox, Joystick, Slider, etc). For example, you may create a button with custom text, size, and color, spawn it in the desired location on the Android app and register a callback function to run the commands when the user presses the button. You don't need to modify the Android app! everything happens inside the code you deploy into your Arduino board. For now, we only support Bluetooth.
-Will be ready soon! Stay tuned...
+Bind is a C++ UI toolkit designed for Arduino, enabling the creation of interactive user interface elements within your Arduino projects. In simpler terms, it allows your microcontroller (MCU) code to generate UI components on an Android screen, serving two main purposes: displaying data such as text, charts, and gauges, and receiving user input through buttons, checkboxes, joysticks, sliders, and more.
 
+For instance, you can effortlessly craft a customized button with specific text, dimensions, and colors. Then, you can position this button within the Android app and associate a callback function in your Arduino code to execute commands when users interact with it (e.g. toggling an LED or controlling a relay). Importantly, all these capabilities are achieved without the need to make alterations to the Android application or handle any serial protocol. Instead, everything occurs within the code that you upload to your Arduino board.
+
+As of now, Bind only supports Bluetooth and Serial port (over USB) for these interactions.
+Will be ready soon! Stay tuned...
