@@ -3,34 +3,31 @@
 #include <stdint.h>
 #include "Stream.h"
 #include "DataProtocol.h"
-#include "BindButtonHandler.hpp"
-#include "BindDialKnobHandler.hpp"
-#include "BindSwitchHandler.hpp"
-#include "BindSeekBarHandler.hpp"
-#include "BindJoystickHandler.hpp"
-#include "BindColorPickerHandler.hpp"
-#include "BindViewAutoTag.hpp"
-#include "BindView.h"
 #include "BindUtils.hpp"
-#include "BindButton.hpp"
-#include "BindKnob.hpp"
-#include "BindTextLabel.hpp"
 #include "BindWidgets.hpp"
-///< Maximum number of object handlers
+
+/// @brief Maximum number of object handlers
 #define MAX_HANDLERS 16
-///< This command either adds the object to the canvas (screen) or refreshes the existing one.
+
+/// @brief This command either adds the object to the canvas (screen) or refreshes the existing one.
 #define BIND_ADD_OR_REFRESH_CMD 0
-///< This command removes the object from the canvas (screen).
+
+/// @brief This command removes the object from the canvas (screen).
 #define BIND_REMOVE_CMD 1
-///< This command disables the object.
+
+/// @brief This command disables the object.
 #define BIND_DISABLE_CMD 2
-///< This command enables the object.
+
+/// @brief This command enables the object.
 #define BIND_ENABLE_CMD 3
-///< This command hides the object.
+
+/// @brief This command hides the object.
 #define BIND_HIDE_CMD 4
-///< This command restores the object's visibility.
+
+/// @brief This command restores the object's visibility.
 #define BIND_VISIBLE_CMD 5
-///< This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
+
+/// @brief This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
 #define BIND_DATA_ONLY_CMD 6
 
 /**
@@ -89,7 +86,7 @@ public:
    */
   bool isReady()
   {
-    return init;
+    return isInitialized;
   }
 
   /**
@@ -119,32 +116,27 @@ public:
   // Binding functions for UI elements...
 
   /**
-   * @brief Sets the communication device for the Bind framework.
+   * @brief Initializes the Bind framework with communication and screen setup.
    *
-   * This function configures the communication device for the Bind framework. It takes a pointer
-   * to a 'Stream' object, 'stream,' which represents the device used for data exchange with Bind.
-   * This stream object can be any serial port including hardware or software serial or
-   * blutooth classic serial port.
+   * This function serves a dual purpose:
+   * 1. It configures the communication device for the Bind framework using a 'Stream' object.
+   *    The 'stream' can represent any serial port, including hardware, software serial, or
+   *    Bluetooth classic serial.
+   * 2. It sets the screen setup callback. This callback function is automatically invoked by 
+   *    BindCanvas upon establishing a connection. It plays a crucial role in configuring the
+   *    screen and ensuring that all screen objects are synchronized properly. You will receive
+   *    two parameters: 'w' for screen width and 'h' for screen height in density-independent pixels (dp).
+   *    These values allow you to maintain consistent object positioning  and size across various devices
+   *    with different screen dimensions.
+   *  @note For more information about density-independent pixels (dp) visit:
+   *                  http://en.wikipedia.org/wiki/Device-independent_pixel
    *
    * @param stream A pointer to the 'Stream' object representing the communication device.
+   * @param setupCallback A pointer to the screen setup callback function.
+   *                     This function receives 'w' for width and 'h' for height.
+   *                     It ensures consistent object positioning and size across devices.
    */
-  void setBindDevice(Stream *stream);
-
-  /**
-   * @brief set the the screen setup callback.
-   *
-   * Bind automatically invokes this callback function upon connecting to BindCanvas.
-   * You should sync all the screen objects here.
-   * You'll receive two integers as the parameters: 'w' for width and 'h' for height.
-   * These values allow you to ensure that the objects' positioning and size remain
-   * consistent across various devices with varying screen sizes."
-   *
-   * Note: You don't need to call this function manually!
-   *
-   * @param w The width of the screen in dp (Density-independent Pixels).
-   * @param h The height of the screen in dp (Density-independent Pixels).
-   */
-  void bindScreenSetup(void (*setupCallback)(int16_t, int16_t));
+  void init(Stream *stream, void (*setupCallback)(int16_t, int16_t));
 
   /**
    * @brief Binds a Button object to a click callback function.
@@ -156,7 +148,7 @@ public:
    * @param screenButton A pointer to the 'BindButton' object to bind.
    * @param clickCallback A pointer to the callback function that responds to button clicks.
    */
-  void bindButton(BindButton *screenButton, void (*clickCallback)(void));
+  void join(BindButton *screenButton, void (*clickCallback)(void));
 
   /**
    * @brief Binds a Dial Knob object to a change callback function.
@@ -170,7 +162,7 @@ public:
    * @param screenKnob A pointer to the 'BindKnob' object to bind.
    * @param changeCallback A pointer to the callback function that responds to dial knob value changes.
    */
-  void bindDialKnob(BindKnob *screenKnob, void (*changeCallback)(int16_t));
+  void join(BindKnob *screenKnob, void (*changeCallback)(int16_t));
 
   /**
    * @brief Binds a ON/OFF Switch object to a click callback function.
@@ -183,7 +175,7 @@ public:
    * @param screenSwitch A pointer to the 'BindSwitch' object to bind.
    * @param clickCallback A pointer to the callback function that responds to switch state changes.
    */
-  void bindSwitch(BindSwitch *screenSwitch, void (*clickCallback)(bool));
+  void join(BindSwitch *screenSwitch, void (*clickCallback)(bool));
 
   /**
    * @brief Binds a SeekBar object to a change callback function.
@@ -198,7 +190,7 @@ public:
    * @param screenSeekBar A pointer to the 'BindSeekBar' object to bind.
    * @param changeCallback A pointer to the callback function that responds to SeekBar changes.
    */
-  void bindSeekBar(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t));
+  void join(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t));
 
   /**
    * @brief Binds a Joystick object to a change callback function.
@@ -212,7 +204,7 @@ public:
    * @param screenJoystick A pointer to the 'BindJoystick' object to bind.
    * @param changeCallback A pointer to the callback function that responds to joystick position changes.
    */
-  void bindJoystick(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t));
+  void join(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t));
 
   /**
    * @brief Binds a Color Picker object to a click callback function.
@@ -226,7 +218,7 @@ public:
    * @param screenColorPicker A pointer to the 'BindColorPicker' object to bind.
    * @param clickCallback A pointer to the callback function that responds to color selection events.
    */
-  void bindColorPicker(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t));
+  void join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t));
 
   /**
    * @brief Synchronizes chart data of a BindChart object.
@@ -239,7 +231,7 @@ public:
    * @param chartData The data to be synchronized with the 'BindChart' object.
    * @param obj A pointer to the 'BindChart' object for data synchronization.
    */
-  void syncChartData(float chartData, BindChart *obj);
+  void sync(float chartData, BindChart *obj);
 
   /**
    * @brief Prints terminal data in a BindTerminal object.
@@ -255,7 +247,7 @@ public:
    * @param italic Indicates whether the text should be italic.
    * @param obj A pointer to the 'BindTerminal' object for data synchronization.
    */
-  void syncTerminalData(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, BindTerminal *obj);
+  void sync(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, BindTerminal *obj);
 
   /**
    * @brief Prints terminal data in a BindTerminal object.
@@ -269,7 +261,7 @@ public:
    * @param str The text data to be printed in the 'BindTerminal' object.
    * @param obj A pointer to the 'BindTerminal' object for data synchronization.
    */
-  void syncTerminalData(const char *str, BindTerminal *obj);
+  void sync(const char *str, BindTerminal *obj);
 
 private:
   // Private member variables and functions...
@@ -290,7 +282,7 @@ private:
   uint8_t seekBarIndex = 1;
   uint8_t joystickHandlerIndex = 1;
   uint8_t colorPickerHandlerIndex = 1;
-  bool init = false;
+  bool isInitialized = false;
   void (*setupCallback)(int16_t, int16_t);
   void screenInit(int16_t w, int16_t h);
   Stream *bindStream = NULL;
