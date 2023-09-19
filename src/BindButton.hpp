@@ -39,12 +39,12 @@ public:
     setlabel("Button");
   }
 
-  int16_t x;          // X-coordinate position of the button
-  int16_t y;          // Y-coordinate position of the button
-  uint8_t cmdId = 0;  // Command ID for the button
-  int16_t fontSize;   // Font size of the button's label
-  int32_t color;      // Text color of the button
-  int32_t backColor;  // Background color of the button
+  int16_t x;          ///< X-coordinate position of the button
+  int16_t y;          ///< Y-coordinate position of the button
+  uint8_t cmdId = 0;  ///< Command ID for the button
+  int16_t fontSize;   ///< Font size of the button's label
+  int32_t color;      ///< Text color of the button
+  int32_t backColor;  ///< Background color of the button
 
   /**
    * @brief Sets the label text for the button.
@@ -89,7 +89,7 @@ public:
   }
 
   private:
-  
+
   uint8_t objID = BindIDs::button;
   uint16_t offset = 0;
   int strLength = 0;
