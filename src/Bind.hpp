@@ -33,9 +33,26 @@
 // This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
 #define BIND_DATA_ONLY_CMD 6
 
+/**
+ * @brief The Bind class provides a framework for creating interactive applications with BindCanvas.
+ *
+ * Bind is a versatile class that enables you to build applications that interact with BindCanvas.
+ * It provides functions for binding and synchronizing various UI elements, including buttons,
+ * knobs, switches, seekbars, joysticks, color pickers, and terminals. You can use Bind to connect
+ * your application to the BindCanvas screen, manage user interactions, and update UI elements in real time.
+ *
+ * To use Bind effectively, you can define a setup callback function to configure the initial state
+ * of your application, including screen setup and object synchronization. Bind also allows you to
+ * set the communication device, such as a serial port, for data exchange with BindCanvas.
+ *
+ * @note To ensure smooth operation and responsiveness, regularly call the 'sync' function to
+ * synchronize your Bind objects with the current state of the BindCanvas screen.
+ */
 class Bind
 {
 public:
+  // Constructors and setup functions...
+
   Bind()
   {
     setupCallback = NULL;
@@ -76,18 +93,6 @@ public:
   }
 
   /**
-   * @brief Sets the communication device for the Bind framework.
-   *
-   * This function configures the communication device for the Bind framework. It takes a pointer
-   * to a 'Stream' object, 'stream,' which represents the device used for data exchange with Bind.
-   * This stream object can be any serial port including hardware or software serial or
-   * blutooth classic serial port.
-   *
-   * @param stream A pointer to the 'Stream' object representing the communication device.
-   */
-  void setBindDevice(Stream *stream);
-
-  /**
    * @brief Synchronizes a BindView object with the BindCanvas screen.
    *
    * This function synchronizes a 'BindView' object, 'obj,' with the BindCanvas screen, ensuring that
@@ -110,6 +115,20 @@ public:
    * Try to achieve a rate more than 10Hz for optimal performance."
    */
   void sync();
+
+  // Binding functions for UI elements...
+
+  /**
+   * @brief Sets the communication device for the Bind framework.
+   *
+   * This function configures the communication device for the Bind framework. It takes a pointer
+   * to a 'Stream' object, 'stream,' which represents the device used for data exchange with Bind.
+   * This stream object can be any serial port including hardware or software serial or
+   * blutooth classic serial port.
+   *
+   * @param stream A pointer to the 'Stream' object representing the communication device.
+   */
+  void setBindDevice(Stream *stream);
 
   /**
    * @brief set the the screen setup callback.
@@ -243,7 +262,7 @@ public:
    *
    * This function prints terminal data with this simple format:
    * textColor is white
-   * autoScroll is enable 
+   * autoScroll is enable
    * always adds a new line
    * No bold, no italic
    *
@@ -253,6 +272,7 @@ public:
   void syncTerminalData(const char *str, BindTerminal *obj);
 
 private:
+  // Private member variables and functions...
   int16_t valTmp1 = 0;
   int16_t valTmp2 = 0;
   int16_t valTmp3 = 0;
