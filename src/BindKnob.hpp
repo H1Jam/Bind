@@ -44,13 +44,13 @@ public:
     setlabel("Knob");
   }
 
-  int16_t x;         // X-coordinate position of the knob
-  int16_t y;         // Y-coordinate position of the knob
-  uint8_t cmdId = 0; // Command ID for the knob
-  int16_t dimSize;   // Dimensions or size of the knob
-  int16_t minValue;  // Minimum value of the knob's range
-  int16_t maxValue;  // Maximum value of the knob's range
-  int16_t value;     // Current value of the knob
+  int16_t x;         ///< X-coordinate position of the knob
+  int16_t y;         ///< Y-coordinate position of the knob
+  uint8_t cmdId = 0; ///< Command ID for the knob
+  int16_t dimSize;   ///< Dimensions or size of the knob
+  int16_t minValue;  ///< Minimum value of the knob's range
+  int16_t maxValue;  ///< Maximum value of the knob's range
+  int16_t value;     ///< Current value of the knob
 
   /**
    * @brief Sets the label text for the knob.
