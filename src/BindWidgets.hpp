@@ -39,16 +39,16 @@ public:
     setlabel("Gauge");
   }
 
-  int16_t x;                 // X-coordinate position of the gauge
-  int16_t y;                 // Y-coordinate position of the gauge
-  uint8_t cmdId = 0;         // Command ID for the gauge
-  int16_t dimSize = 100;     // Size of the gauge (Width = height)
-  float value = 0;           // Current value of the gauge
-  float maxValue = 100.0f;   // Maximum value of the gauge
-  uint8_t drawArc = 0;       // Indicates whether to draw the gauge arc
-  float arcGreenMaxVal = 0;  // Maximum value for the green arc section
-  float arcYellowMaxVal = 0; // Maximum value for the yellow arc section
-  float arcRedMaxVal = 0;    // Maximum value for the red arc section
+  int16_t x;                 ///< X-coordinate position of the gauge
+  int16_t y;                 ///< Y-coordinate position of the gauge
+  uint8_t cmdId = 0;         ///< Command ID for the gauge
+  int16_t dimSize = 100;     ///< Size of the gauge (Width = height)
+  float value = 0;           ///< Current value of the gauge
+  float maxValue = 100.0f;   ///< Maximum value of the gauge
+  uint8_t drawArc = 0;       ///< Indicates whether to draw the gauge arc
+  float arcGreenMaxVal = 0;  ///< Maximum value for the green arc section
+  float arcYellowMaxVal = 0; ///< Maximum value for the yellow arc section
+  float arcRedMaxVal = 0;    ///< Maximum value for the red arc section
 
   /**
    * @brief Sets the label text for the gauge.
@@ -151,21 +151,36 @@ public:
     setlabel("Gauge");
   }
 
-  int16_t x;            ///< The x-coordinate position of the gauge on the canvas.
-  int16_t y;            ///< The y-coordinate position of the gauge on the canvas.
-  uint8_t cmdId = 0;    ///< The command ID associated with the gauge.
-  int16_t dimSize = 100;///< The dimensions (size) of the gauge.
-  float value = 0;      ///< The current value of the gauge.
-  float maxValue = 100.0f;///< The maximum value that the gauge can represent.
-  uint8_t drawArc = 0;  ///< Indicates whether to draw an arc for the gauge. 0=False, 1=True.
-  float arcGreenMaxVal = 0;///< The maximum value for the green arc section.
-  float arcYellowMaxVal = 0;///< The maximum value for the yellow arc section.
-  float arcRedMaxVal = 0;  ///< The maximum value for the red arc section.
+  int16_t x;                 ///< The x-coordinate position of the gauge on the canvas.
+  int16_t y;                 ///< The y-coordinate position of the gauge on the canvas.
+  uint8_t cmdId = 0;         ///< The command ID associated with the gauge.
+  int16_t dimSize = 100;     ///< The dimensions (size) of the gauge.
+  float value = 0;           ///< The current value of the gauge.
+  float maxValue = 100.0f;   ///< The maximum value that the gauge can represent.
+  uint8_t drawArc = 0;       ///< Indicates whether to draw an arc for the gauge. 0=False, 1=True.
+  float arcGreenMaxVal = 0;  ///< The maximum value for the green arc section.
+  float arcYellowMaxVal = 0; ///< The maximum value for the yellow arc section.
+  float arcRedMaxVal = 0;    ///< The maximum value for the red arc section.
 
+  /**
+   * @brief Sets the label to be displayed on the gauge.
+   *
+   * @param cstr The label text.
+   */
   void setlabel(const char *cstr)
   {
     str = cstr;
   }
+
+  /**
+   * @brief Gets the bytes representing the BindGaugeCompact object for data synchronization.
+   *
+   * This function generates a byte representation of the BindGaugeCompact object, including its properties,
+   * and stores it in the provided buffer for data transmission and synchronization with the BindCanvas screen.
+   *
+   * @param out A pointer to the buffer where the byte data will be stored.
+   * @return The number of bytes written to the buffer.
+   */
   uint16_t getBytes(uint8_t *out) override
   {
     offset = 0;
