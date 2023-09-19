@@ -63,7 +63,7 @@ public:
    * @brief Retrieves the bytes representing the button for synchronization.
    *
    * This function is used to gather the bytes that represent the button's properties for synchronization.
-   * @note The user does not need to call this function, Bind calls it internally.
+   * @note This function should not be called directly by users, Bind calls it internally.
    * 
    * @param out A pointer to the output buffer where the button data will be stored.
    * @return The number of bytes written to the output buffer.
