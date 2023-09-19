@@ -16,21 +16,21 @@
 #include "BindKnob.hpp"
 #include "BindTextLabel.hpp"
 #include "BindWidgets.hpp"
-// Maximum number of object handlers
+///< Maximum number of object handlers
 #define MAX_HANDLERS 16
-// This command either adds the object to the canvas (screen) or refreshes the existing one.
+///< This command either adds the object to the canvas (screen) or refreshes the existing one.
 #define BIND_ADD_OR_REFRESH_CMD 0
-// This command removes the object from the canvas (screen).
+///< This command removes the object from the canvas (screen).
 #define BIND_REMOVE_CMD 1
-// This command disables the object.
+///< This command disables the object.
 #define BIND_DISABLE_CMD 2
-// This command enables the object.
+///< This command enables the object.
 #define BIND_ENABLE_CMD 3
-// This command hides the object.
+///< This command hides the object.
 #define BIND_HIDE_CMD 4
-// This command restores the object's visibility.
+///< This command restores the object's visibility.
 #define BIND_VISIBLE_CMD 5
-// This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
+///< This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
 #define BIND_DATA_ONLY_CMD 6
 
 /**
