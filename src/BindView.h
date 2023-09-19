@@ -63,7 +63,7 @@ enum BindIDs : uint8_t
   Settings
 };
 
-enum MarkerIcons : uint8_t
+enum Markers : uint8_t
 {
   PinRed = 0,
   PinGreen,
