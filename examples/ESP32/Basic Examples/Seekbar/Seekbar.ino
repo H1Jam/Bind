@@ -9,22 +9,23 @@ BindSeekBar seekBar2;
 const int ledPin = 2;
 
 /**
- * @brief Seekbar 1 change callback.
+ * @brief Callback for Seekbar 1 Value Change
  *
- * This function is automatically triggered when the value of Seekbar 1 changes on the screen.
- * It receives an integer parameter, 'val,' which represents the new value of Seekbar 1.
- * You can then implement the intended actions for this object based on this value.
- * To connect this callback function with the bind object, you MUST use the following call: 
- * bind.join(&[your seekbar object], &[this callbak name]);
- * Please ensure that you include the '&' symbols (these are pointers) in the function parameters.
- *
+ * This function is automatically triggered when Seekbar 1's value changes on the screen.
+ * It receives an integer parameter, 'val,' representing the new value of Seekbar 1.
+ * You can define specific actions based on this value to respond to Seekbar changes.
+ * To link this callback function with the Bind object, use the following syntax (in the Setup()):
+ * `bind.join(&your_seekbar_object, &seekbar1_changed);`
+ * Make sure to include the '&' symbols as they indicate pointers to the function and object.
+ * @note Ensure you call "bind.sync();" in the main loop in order to get the callback and chage events.
  *
  * @param val The new value of Seekbar 1.
  */
 void seekbar1_changed(int16_t val) {
-  Serial.print("Seekbar 1 has been changed:");
+  Serial.print("Seekbar 1 value has changed to: ");
   Serial.println(val);
-  // Some fun here:
+
+  // Implement your custom actions here:
   if (val > 150) {
     digitalWrite(ledPin, HIGH);
   } else {
@@ -32,38 +33,48 @@ void seekbar1_changed(int16_t val) {
   }
 }
 
+/**
+ * @brief Callback for Seekbar 2 Value Change
+ */
 void seekbar2_changed(int16_t val) {
   Serial.print("Seekbar 2 has been changed:");
   Serial.println(val);
 }
 
+/**
+ * @brief Adds SeekBars to the BindCanvas
+ *
+ * This function adds (or refreshes, if already exist) SeekBars on the BindCanvas screen. It synchronizes
+ * the SeekBars' properties with their respective BindCanvas to display them correctly.
+ * You can customize the SeekBars' position, width, maximum value, initial value, and more.
+ * @note Ensure you call "bind.sync();" in the main loop in order to get the callback and chage events.
+ */
 void addSeekBars() {
   // Syncing the first SeekBar:
-  // Position on screen
-  // Tip: You can utilize the grid view to manually adjust the object's
-  // position on the screen. Afterward, replace these numbers with the values
-  // displayed in grid view mode, representing the new object's x and y coordinates.
+  // Set the SeekBar's position on the screen.
+  // Tip: You can use the grid view mode inBindCanvas app to determine the x and y coordinates
+  // and replace these numbers with the grid values for precise positioning.
   seekBar1.x = 30;
   seekBar1.y = 100;
-  // Width on screen (Hight is relative to Width for this object):
+  /// Set the width of the SeekBar on the screen (height is relative to width for this object).
   seekBar1.width = 300;
-  // Max value fo the seekbar:
+  /// Set the maximum value for the SeekBar.
   seekBar1.maxValue = 300;
-  // Initial value for the seekbar:
+  /// Set the initial value for the SeekBar.
   seekBar1.seekValue = 0;
-  // This command either adds the object to the canvas (screen) or refreshes the existing one.
-  seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
-
+  /// Specify the command to either add the object
+  to the BindCanvas(screen) or refresh the existing one.seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  /// Synchronize the seekBar1 object with BindCanvas.
   bind.sync(&seekBar1);
 
-  //Syncing the second SeekBar:
+  /// Syncing the second SeekBar:
   seekBar2.x = 100;
   seekBar2.y = 150;
   seekBar2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   seekBar2.seekValue = 0;
   seekBar2.maxValue = 100;
   seekBar2.width = 150;
-  
+  /// Synchronize the seekBar2 object with BindCanvas.
   bind.sync(&seekBar2);
 }
 
@@ -96,14 +107,15 @@ void setup() {
   String devName = "BindOnESP32";
   SerialBT.begin(devName);
 
-  // Tell the bind object about our communication method:
+  /// Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
   bind.init(&SerialBT, &onConnection);
-  // It was SerialBT here, but it could be any serial port, including hardware and software serial.  
+  /// Note: It was SerialBT here, but it could be any serial port, including hardware and software serial.
 
-  // To connect the callback function with the bind object, you MUST use the following call:
+  /// Connect the callback functions with the Bind objects.
   bind.join(&seekBar1, &seekbar1_changed);
-  // And please ensure that you include the '&' symbols (these are pointers) in the function parameters.
   bind.join(&seekBar2, &seekbar2_changed);
+  /// @note please ensure that you include the '&' symbols in the function parameters, these are pointers.
+
 
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
@@ -111,10 +123,19 @@ void setup() {
 }
 
 void loop() {
-  // Important Note: To ensure smooth operation and prevent data loss or lag,
-  // regularly run the following line of code. It's recommended to execute it
-  // a couple of times per second, but the faster, the better!
-  // Aim for a rate above 20Hz for ideal performance.
+  /**
+ * Synchronize Bind UI Events
+ *
+ * To ensure proper handling of user inputs and touch events, it's crucial to call
+ * this function regularly within your Arduino loop. Failing to do so may result
+ * in missed events, such as button clicks or user interactions with your UI elements.
+ * By calling `bind.sync()`, you maintain seamless communication between your Arduino
+ * code and the Bind Framework.
+ * It's recommended to call sync() a couple of times per second, but the faster, the better!
+ * Aim for a rate above 20Hz for ideal performance.
+  */
+
+  // Regularly synchronize Bind UI events
   bind.sync();
 
   // This delay is not an essential part of the code
