@@ -2,22 +2,37 @@
 #define __BINDTERMINAL_HPP
 #include "BindViewAutoTag.hpp"
 #include "BindUtils.hpp"
+
+/**
+ * @brief Represents a terminal display for BindCanvas.
+ *
+ * The `BindTerminal` class is designed to create and display a terminal-like text interface
+ * within a BindCanvas UI. This terminal can be used for displaying text data, log messages,
+ * or other textual information and provides various customization options.
+ *
+ * @see the example folder for more information.
+ */
 class BindTerminal : public BindViewAutoTag
 {
-private:
-    uint8_t objID = BindIDs::terminal;
-    uint8_t dataID = BindIDs::terminalData;
-    uint16_t offset = 0;
-    int strLength = 0;
 
 public:
-    int16_t x = 0;
-    int16_t y = 0;
-    uint8_t cmdId = 0;
-    int16_t width = 200;
-    int16_t height = 100;
-    int16_t textSize = 10;
-    int32_t backColor = UBUNTU;
+    int16_t x = 0;              ///< X-coordinate position of the terminal.
+    int16_t y = 0;              ///< Y-coordinate position of the terminal.
+    uint8_t cmdId = 0;          ///< Command ID for the terminal.
+    int16_t width = 200;        ///< Width of the terminal.
+    int16_t height = 100;       ///< Height of the terminal.
+    int16_t textSize = 10;      ///< Text size of the displayed text.
+    int32_t backColor = UBUNTU; ///< Background color of the terminal.
+
+    /**
+     * @brief Generates and returns the byte data representing the terminal's configuration.
+     *
+     * This function is meant for internal use by the Bind framework and should not be called directly by users.
+     * It serializes the terminal's configuration properties into a byte array for communication with BindCanvas.
+     *
+     * @param out Pointer to the output byte array.
+     * @return The number of bytes written to the output array.
+     */
     uint16_t getBytes(uint8_t *out) override
     {
         offset = 0;
@@ -32,6 +47,22 @@ public:
         copyAndOffset(out, &offset, &backColor, sizeof(backColor));
         return offset;
     }
+    
+    /**
+     * @brief Generates and returns the byte data representing text to be displayed in the terminal.
+     *
+     * Use this method to send text data to the terminal for display. It serializes the text properties
+     * including color, formatting, and scrolling behavior into a byte array.
+     *
+     * @param out Pointer to the output byte array.
+     * @param str The text data to be displayed.
+     * @param textColor The color of the text.
+     * @param autoScroll Whether the terminal should automatically scroll to show new text.
+     * @param newLine Whether a new line should be added after the text.
+     * @param bold Whether the text should be displayed in bold.
+     * @param italic Whether the text should be displayed in italic.
+     * @return The number of bytes written to the output array.
+     */
     uint16_t getDataBytes(uint8_t *out, const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic)
     {
         offset = 0;
@@ -51,5 +82,11 @@ public:
         copyAndOffset(out, &offset, str, strLength);
         return offset;
     }
+
+private:
+    uint8_t objID = BindIDs::terminal;
+    uint8_t dataID = BindIDs::terminalData;
+    uint16_t offset = 0;
+    int strLength = 0;
 };
 #endif /* __BINDTERMINAL_HPP */
