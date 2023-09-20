@@ -35,15 +35,17 @@
  *
  * Bind is a versatile class that enables you to build applications that interact with BindCanvas.
  * It provides functions for binding and synchronizing various UI elements, including buttons,
- * knobs, switches, seekbars, joysticks, color pickers, and terminals. You can use Bind to connect
- * your application to the BindCanvas screen, manage user interactions, and update UI elements in real time.
+ * knobs, switches, seekbars, joysticks, color pickers, terminals, and many more. You can use Bind to connect
+ * your c++ programme to the BindCanvas screen, manage user interactions, and update UI elements in real time.
  *
  * To use Bind effectively, you can define a setup callback function to configure the initial state
  * of your application, including screen setup and object synchronization. Bind also allows you to
  * set the communication device, such as a serial port, for data exchange with BindCanvas.
  *
  * @note To ensure smooth operation and responsiveness, regularly call the 'sync' function to
- * synchronize your Bind objects with the current state of the BindCanvas screen.
+ * synchronize your Bind objects with the current state of the BindCanvas screen. Failing to 
+ * do so may result in missed events, such as button clicks or user interactions with your
+ * UI elements.
  */
 class Bind
 {
