@@ -24,9 +24,12 @@
  *
  * Example usage:
  * ```cpp
- * BindColorPicker colorPicker;
- * // in your Setup() function"
- * 
+ *      BindColorPicker colorPicker;
+ * - in your Setup() function:
+ * bind.join(&colorPicker, &colorPicker_changed);
+ * - colorPicker_changed is callback function like this: 
+ * void colorPicker_changed(uint8_t red, uint8_t green, uint8_t blue) 
+ * - and in the onConnection() callback:
  * colorPicker.x = 30;
  * colorPicker.y = 100;
  * colorPicker.dimSize = 200;
@@ -36,24 +39,20 @@
  * colorPicker.cmdId = BIND_ADD_OR_REFRESH_CMD;
  * bind.sync(&colorPicker);
  * ```
- *
- * @see BindView
- * @see BindCanvas
+ * @note check the BindColorPicker examples for more information.
  */
 class BindColorPicker : public BindView
 {
-private:
-    uint8_t objID = BindIDs::colorPicker;
-    uint16_t offset = 0;
 
 public:
-    int16_t x = 0;
-    int16_t y = 0;
-    uint8_t cmdId = 0;
-    int16_t dimSize = 200;
-    uint8_t red = 0;
-    uint8_t green = 0;
-    uint8_t blue = 0;
+    int16_t x = 0; ///< The x-coordinate position of the color picker on the screen.
+    int16_t y = 0; ///< The y-coordinate position of the color picker on the screen.
+    uint8_t cmdId = 0; ///< Command identifier to add or refresh the color picker.
+    int16_t dimSize = 200; ///< The dimensions (size) of the color picker.
+    uint8_t red = 0; ///< The initial value for the red component of the selected color (0-255).
+    uint8_t green = 0; ///< The initial value for the green component of the selected color (0-255).
+    uint8_t blue = 0; ///< The initial value for the blue component of the selected color (0-255).
+
     uint16_t getBytes(uint8_t *out) override
     {
         offset = 0;
