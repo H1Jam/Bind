@@ -35,7 +35,7 @@
  * gauge.cmdId = BIND_ADD_OR_REFRESH_CMD;
  * bind.sync(&gauge);
  * ```
- *@note check the examples for more information.
+ * @note check the examples for more information.
  */
 class BindGaugeSimple : public BindViewAutoTag
 {
