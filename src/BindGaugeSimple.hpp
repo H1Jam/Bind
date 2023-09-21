@@ -62,7 +62,7 @@ public:
     {
         setlabel("Gauge");
     }
-    
+
     int16_t x = 0; ///< The x-coordinate position of the gauge on the screen.
     int16_t y = 0; ///< The y-coordinate position of the gauge on the screen.
     uint8_t cmdId = 0; ///< Command identifier to add or refresh the gauge.
