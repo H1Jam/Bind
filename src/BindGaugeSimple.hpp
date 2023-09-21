@@ -63,17 +63,17 @@ public:
         setlabel("Gauge");
     }
 
-    int16_t x = 0; ///< The x-coordinate position of the gauge on the screen.
-    int16_t y = 0; ///< The y-coordinate position of the gauge on the screen.
-    uint8_t cmdId = 0; ///< Command identifier to add or refresh the gauge.
-    int16_t dimSize = 200; ///< The dimensions (size) of the gauge.
-    int16_t minValue = 0; ///< The minimum value for the gauge's value range.
-    int16_t maxValue = 100; ///< The maximum value for the gauge's value range.
-    int16_t value = 0; ///< The current value of the gauge.
-    uint8_t style = 0; ///< The style of the gauge (e.g., radial or linear).
+    int16_t x = 0;              ///< The x-coordinate position of the gauge on the screen.
+    int16_t y = 0;              ///< The y-coordinate position of the gauge on the screen.
+    uint8_t cmdId = 0;          ///< Command identifier to add or refresh the gauge.
+    int16_t dimSize = 200;      ///< The dimensions (size) of the gauge.
+    int16_t minValue = 0;       ///< The minimum value for the gauge's value range.
+    int16_t maxValue = 100;     ///< The maximum value for the gauge's value range.
+    int16_t value = 0;          ///< The current value of the gauge.
+    uint8_t style = 0;          ///< The style of the gauge (e.g., radial or linear).
     bool isSymmetrical = false; ///< Indicates whether the gauge is symmetrical or not.
-    int32_t color; ///< The color of the gauge.
-    
+    int32_t color;              ///< The color of the gauge.
+
     void setlabel(const char *cstr)
     {
         str = cstr;
