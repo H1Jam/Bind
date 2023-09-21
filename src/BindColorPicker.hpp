@@ -53,6 +53,14 @@ public:
     uint8_t green = 0;     ///< The initial value for the green component of the selected color (0-255).
     uint8_t blue = 0;      ///< The initial value for the blue component of the selected color (0-255).
 
+    /**
+     * @brief Serialize the color picker object into bytes.
+     *
+     * This function serializes the color picker object into a byte array, allowing it to be sent and displayed on BindCanvas.
+     *
+     * @param out A pointer to the byte array where the serialized data will be stored.
+     * @return The offset representing the length of the serialized data.
+     */
     uint16_t getBytes(uint8_t *out) override
     {
         offset = 0;
