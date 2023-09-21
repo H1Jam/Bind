@@ -74,10 +74,26 @@ public:
     bool isSymmetrical = false; ///< Indicates whether the gauge is symmetrical or not.
     int32_t color;              ///< The color of the gauge.
 
+    /**
+     * @brief Set the label text.
+     *
+     * Allows setting a custom label text for the gauge.
+     *
+     * @param cstr A pointer to the label text.
+     */
     void setlabel(const char *cstr)
     {
         str = cstr;
     }
+
+    /**
+     * @brief Serialize the gauge object into bytes.
+     *
+     * This function serializes the gauge object into a byte array, allowing it to be sent and displayed on BindCanvas.
+     *
+     * @param out A pointer to the byte array where the serialized data will be stored.
+     * @return The offset representing the length of the serialized data.
+     */
     uint16_t getBytes(uint8_t *out) override
     {
         offset = 0;
