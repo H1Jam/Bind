@@ -2,6 +2,44 @@
 #define __BINDCOLORPICKER_HPP
 #include "BindView.h"
 #include "BindUtils.hpp"
+
+/**
+ * @brief BindColorPicker Class
+ *
+ * The `BindColorPicker` class is part of the Bind framework for Arduino, designed to facilitate 
+ * the creation of interactive user interface elements. Specifically, it represents a color picker 
+ * element that can be displayed and controlled on the BindCanvas Android app interface.
+ *
+ * This class allows you to define a color picker's properties, including its position, size, and 
+ * the initial RGB color values. You can synchronize these properties with BindCanvas to provide a 
+ * visual color selection component in your Arduino projects.
+ *
+ * To use the `BindColorPicker` class effectively, you can set its attributes such as the 
+ * position (x and y coordinates), dimensions (size), and initial color (red, green, and blue values).
+ * The `cmdId` parameter specifies whether to add the color picker to the BindCanvas or refresh 
+ * an existing one.
+ *
+ * Additionally, you should regularly call `bind.sync()` in your main loop to ensure that the color picker
+ * reflects the user interactions and properly calls the colorPicker callback
+ *
+ * Example usage:
+ * ```cpp
+ * BindColorPicker colorPicker;
+ * // in your Setup() function"
+ * 
+ * colorPicker.x = 30;
+ * colorPicker.y = 100;
+ * colorPicker.dimSize = 200;
+ * colorPicker.red = 255;
+ * colorPicker.green = 0;
+ * colorPicker.blue = 0;
+ * colorPicker.cmdId = BIND_ADD_OR_REFRESH_CMD;
+ * bind.sync(&colorPicker);
+ * ```
+ *
+ * @see BindView
+ * @see BindCanvas
+ */
 class BindColorPicker : public BindView
 {
 private:
