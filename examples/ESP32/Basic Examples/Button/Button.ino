@@ -84,6 +84,6 @@ void loop() {
   bind.sync();
 
   // This delay is not an essential part of the code
-  // but is included here to prevent excessive processing.
+  // but is included here to simulate the other work you may want to do.
   delay(10);
 }
