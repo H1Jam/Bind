@@ -31,18 +31,6 @@ void addButton1() {
   bind.sync(&button1);
 }
 
-void addButton1() {
-  screenButton1.x = 60;               // location on android screen
-  screenButton1.y = 120;              // location on android screen
-  screenButton1.color = BLACK;        // Text color
-  screenButton1.backColor = YELLOW;   // button color
-  screenButton1.setlabel("Button1");  // button label
-  screenButton1.fontSize = 23;        // button label font size
-  screenButton1.cmdId = ADD_OR_REFRESH_CMD;
-
-  sendScreenStream(&screenButton1, &SerialBT);
-}
-
 void screenSetup(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
   addButton1();
