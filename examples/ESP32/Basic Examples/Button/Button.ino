@@ -13,6 +13,17 @@ void buttonClicked1() {
   digitalWrite(ledPin, ledIsON);
 }
 
+/**
+ * @brief Adds Button 1 to the BindCanvas
+ *
+ * This function adds (or refreshes, if already exist) Button 1 on the BindCanvas screen.
+ * It synchronizes the Button's properties with the BindCanvas to display it correctly.
+ * You can customize the Button's position, size, text, and more.
+ * @attention a button object need the calback function as well. Make sure you set the
+ * callback function by `bind.join(&button1, &button1_pressed);` where `button1_pressed`
+ * is the callback.
+ * @note Ensure you call "bind.sync();" in the main loop to receive button press events.
+ */
 void addButton1() {
   // Syncing Button 1:
   // Set the Button's position on the screen.
