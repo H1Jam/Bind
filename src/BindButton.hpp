@@ -2,7 +2,7 @@
 #define __BINDBUTTON_H
 #include "BindView.h"
 #include "BindUtils.hpp"
-// TODO: Extract the class to a serprate .h and .c file! Now!
+
 /**
  * @brief The BindButton class represents a button UI element for use with BindCanvas.
  *
