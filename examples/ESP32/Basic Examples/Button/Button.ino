@@ -7,10 +7,24 @@ ScreenButton screenButton1;
 const int ledPin = 2;
 bool ledIsON = false;
 
-void buttonClicked1() {
-  Serial.println("button1 has been clicked!");
-  ledIsON = !ledIsON;
-  digitalWrite(ledPin, ledIsON);
+
+/**
+ * @brief Callback for Button 1 Press Event
+ *
+ * This function is automatically triggered when Button 1 is pressed on the screen.
+ * It allows you to define specific actions to perform when the button is pressed.
+ * To link this callback function with the Bind object, use the following syntax (in the Setup()):
+ * `bind.join(&your_button_object, &button1_pressed);`
+ * Make sure to include the '&' symbols as they indicate pointers to the function and object.
+ * @note Ensure you call "bind.sync();" in the main loop to receive button press events.
+ */
+void button1_pressed() {
+  Serial.println("Button 1 has been pressed!");
+
+  // Implement your custom actions here:
+  digitalWrite(ledPin, HIGH);
+
+  // Add more actions as needed.
 }
 
 /**
@@ -19,9 +33,8 @@ void buttonClicked1() {
  * This function adds (or refreshes, if already exist) Button 1 on the BindCanvas screen.
  * It synchronizes the Button's properties with the BindCanvas to display it correctly.
  * You can customize the Button's position, size, text, and more.
- * @attention a button object need the calback function as well. Make sure you set the
- * callback function by `bind.join(&button1, &button1_pressed);` where `button1_pressed`
- * is the callback.
+ * @attention a button object need the calback function as well. See the button1_pressed()
+ * function.
  * @note Ensure you call "bind.sync();" in the main loop to receive button press events.
  */
 void addButton1() {
@@ -42,7 +55,7 @@ void addButton1() {
   bind.sync(&button1);
 }
 
-void screenSetup(int16_t w, int16_t h) {
+void onConnection(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
   addButton1();
   Serial.println("Screen setup done!");
@@ -51,18 +64,26 @@ void screenSetup(int16_t w, int16_t h) {
 void setup() {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
-  screenObjects.registerScreenSetup(&screenSetup);
-  screenObjects.registerButton(&screenButton1, &buttonClicked1);
-  String devName = "ESP32testB";
+  String devName = "BindOnESP32";
   SerialBT.begin(devName);
+  // Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
+  bind.init(&SerialBT, &onConnection);
+  // Note: It was SerialBT here, but it could be any serial port, including hardware and software serial.
+
+  // Connect the callback functions with the Bind objects.
+  bind.join(&button1, &button1_pressed);
+
+  
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
   Serial.println(devName);
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
+  // Regularly synchronize Bind UI events to receive button press events.
+  bind.sync();
+
+  // This delay is not an essential part of the code
+  // but is included here to prevent excessive processing.
   delay(10);
 }
