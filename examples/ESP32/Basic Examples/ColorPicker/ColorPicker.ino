@@ -5,7 +5,9 @@ BluetoothSerial SerialBT;
 Bind bind;
 BindColorPicker colorPicker1;
 
-
+/**
+ * @brief colorPicker1's Callback
+ */
 void colorPicker1_changed(uint8_t red, uint8_t green, uint8_t blue) {
   Serial.print("ColorPicker has been changed: r:");
   Serial.print(red);
