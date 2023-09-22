@@ -79,10 +79,19 @@ enum Markers : uint8_t
   PlaneYellow
 };
 
-// TODO: Add the class summaries!
+
 class BindView
 {
 public:
+  /**
+   * @brief Retrieves the bytes representing the BindView for synchronization.
+   *
+   * This function is used to gather the bytes that represent the BindView's properties for synchronization.
+   * @note This function should not be called directly by users, Bind calls it internally.
+   * 
+   * @param out A pointer to the output buffer where the button data will be stored.
+   * @return The number of bytes written to the output buffer.
+   */
   virtual uint16_t getBytes(uint8_t *out) { return 0; };
   int16_t tag;
 };
