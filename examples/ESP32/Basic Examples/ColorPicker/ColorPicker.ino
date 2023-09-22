@@ -2,31 +2,34 @@
 #include "Bind.hpp"
 
 BluetoothSerial SerialBT;
-ScreenObjects screenObjects;
-ScreenColorPicker screenColorPicker1;
-const int ledPin = 2;
+Bind bind;
+BindColorPicker colorPicker1;
 
-void screenColorPicker1Changed(uint8_t red, uint8_t green, uint8_t blue) {
-  Serial.print("ColorPicker has been changed:");
+
+void colorPicker1_changed(uint8_t red, uint8_t green, uint8_t blue) {
+  Serial.print("ColorPicker has been changed: r:");
   Serial.print(red);
-  Serial.print("\t");
+  Serial.print("\tg:");
   Serial.print(green);
-  Serial.print("\t");
+  Serial.print("\tb:");
   Serial.println(blue);
 }
 
 void addColorPicker() {
-  screenColorPicker1.x = 200;
-  screenColorPicker1.y = 300;
-  screenColorPicker1.cmdId = ADD_OR_REFRESH_CMD;
-  screenColorPicker1.dimSize = 150;
-  screenColorPicker1.red = 160;
-  screenColorPicker1.green = 190;
-  screenColorPicker1.blue = 220;
-  sendScreenStream(&screenColorPicker1, &SerialBT);
+  colorPicker1.x = 50;                          /// The x-coordinate position of the color picker on the screen.
+  colorPicker1.y = 100;                          /// The y-coordinate position of the color picker on the screen.
+  colorPicker1.dimSize = 200;                    /// The dimensions (size) of the color picker.
+  colorPicker1.red = 160;                        /// The initial value for the red component of the selected color (0-255).
+  colorPicker1.green = 190;                      /// The initial value for the green component of the selected color (0-255).
+  colorPicker1.blue = 220;                       /// The initial value for the blue component of the selected color (0-255).
+  colorPicker1.cmdId = BIND_ADD_OR_REFRESH_CMD;  /// Command identifier to add or refresh the color picker.
+  bind.sync(&colorPicker1);
 }
 
-void screenSetup() {
+/**
+ * @brief Connection Callback for BindCanvas.
+ */
+void onConnection(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
   addColorPicker();
   Serial.println("Screen setup done!");
@@ -34,9 +37,13 @@ void screenSetup() {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
-  screenObjects.registerScreenSetup(&screenSetup);
-  screenObjects.registerColorPicker(&screenColorPicker1, &screenColorPicker1Changed);
+  // Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
+  bind.init(&SerialBT, &onConnection);
+  // Note: It was SerialBT here, but it could be any serial port, including hardware and software serial.
+
+  // Connect the callback functions with the Bind objects.
+  bind.join(&colorPicker1, &colorPicker1_changed);
+
   String devName = "ESP32testB";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
@@ -45,8 +52,10 @@ void setup() {
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
+  // Regularly synchronize Bind UI events to receive button press events.
+  bind.sync();
+
+  // This delay is not an essential part of the code
+  // but is included here to simulate the other work you may want to do.
   delay(10);
 }
