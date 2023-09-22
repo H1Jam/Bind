@@ -12,8 +12,7 @@ int sinX = 0;
 void sendDummySinWaveChartdata() {
   X += 10;
   X %= 360;
-  sinX = sin(sinX*PI/180.0f)*30
-  bind.sync(sinX, &chart1);
+  sinX = sin(sinX * PI / 180.0f) * 30 bind.sync(sinX, &chart1);
 }
 
 void addChart() {
@@ -52,9 +51,7 @@ void setup() {
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
+  bind.sync();
   delay(2);
   counter++;
   if (counter > 50) {
