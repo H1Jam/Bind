@@ -2,11 +2,11 @@
 #include "Bind.hpp"
 
 BluetoothSerial SerialBT;
-ScreenObjects screenObjects;
-ScreenButton screenButton1;
-const int ledPin = 2;
-bool ledIsON = false;
+Bind bind;
+BindButton button1;
+BindButton button2;
 
+const int ledPin = 2;
 
 /**
  * @brief Callback for Button 1 Press Event
@@ -23,6 +23,17 @@ void button1_pressed() {
 
   // Implement your custom actions here:
   digitalWrite(ledPin, HIGH);
+
+  // Add more actions as needed.
+}
+
+/**
+ * @brief Callback for Button 1 Press Event
+ */
+void button2_pressed() {
+  // See button1_pressed descripotions!
+  Serial.println("Button 2 has been pressed!");
+  digitalWrite(ledPin, LOW);
 
   // Add more actions as needed.
 }
@@ -45,14 +56,30 @@ void addButton1() {
   button1.x = 30;
   button1.y = 150;
   // Set the Button's text label.
-  button1.setlabel("Click Me");  // button label
-  button1.fontSize = 23;         // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
-  button1.textColor = BLACK;         // Text color
-  button1.backColor = YELLOW;    // button color
+  button1.setlabel("ON");     // button label
+  button1.fontSize = 23;      // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
+  button1.textColor = BLACK;  // Text color
+  button1.backColor = GREEN;  // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the button1 object with BindCanvas.
   bind.sync(&button1);
+}
+
+void addButton2() {
+  // Syncing Button 2:
+  // See addButton1 descripotions!
+  button2.x = 30;
+  button2.y = 200;
+  // Set the Button's text label.
+  button2.setlabel("OFF");     // button label
+  button2.fontSize = 23;       // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
+  button2.textColor = BLACK;   // Text color
+  button2.backColor = YELLOW;  // button color
+  // Specify the command to either add the object to the BindCanvas or refresh the existing one.
+  button2.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Synchronize the button1 object with BindCanvas.
+  bind.sync(&button2);
 }
 
 void onConnection(int16_t w, int16_t h) {
@@ -72,8 +99,8 @@ void setup() {
 
   // Connect the callback functions with the Bind objects.
   bind.join(&button1, &button1_pressed);
+  bind.join(&button2, &button2_pressed);
 
-  
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
   Serial.println(devName);
