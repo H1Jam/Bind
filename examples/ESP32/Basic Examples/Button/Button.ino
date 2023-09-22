@@ -85,6 +85,7 @@ void addButton2() {
 void onConnection(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
   addButton1();
+  addButton2();
   Serial.println("Screen setup done!");
 }
 
