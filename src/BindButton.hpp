@@ -12,9 +12,7 @@
  *
  * Buttons created with BindButton can be synchronized with BindCanvas through the Bind framework,
  * allowing interactive user interfaces to be built for various applications.
- *
- * @note To use BindButton effectively, you can set the label, position, font size, text color,
- * background color, and other properties to tailor the button's appearance and behavior.
+ * Note: To receive touch events and user interactions, you must regularly call `bind.sync()` in your main loop.
  */
 class BindButton : public BindView
 {
@@ -43,7 +41,7 @@ public:
   int16_t y;          ///< Y-coordinate position of the button
   uint8_t cmdId = 0;  ///< Command ID for the button
   int16_t fontSize;   ///< Font size of the button's label
-  int32_t color;      ///< Text color of the button
+  int32_t textColor;      ///< Text color of the button
   int32_t backColor;  ///< Background color of the button
 
   /**
@@ -82,7 +80,7 @@ public:
     copyAndOffset(out, &offset, &tag, sizeof(tag));
     copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
     copyAndOffset(out, &offset, &fontSize, sizeof(fontSize));
-    copyAndOffset(out, &offset, &color, sizeof(color));
+    copyAndOffset(out, &offset, &textColor, sizeof(textColor));
     copyAndOffset(out, &offset, &backColor, sizeof(backColor));
     copyAndOffset(out, &offset, str, strLength);
     return offset;
