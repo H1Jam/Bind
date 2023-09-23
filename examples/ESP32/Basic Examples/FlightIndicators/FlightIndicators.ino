@@ -2,9 +2,13 @@
 #include "Bind.hpp"
 
 BluetoothSerial SerialBT;
-ScreenObjects screenObjects;
+Bind bind;
+BindAttitudeIndicator attitudeIndicator;
+
 ScreenAttitudeIndicator screenAttitudeIndicator;
 ScreenHeadingIndicator screenHeadingIndicator;
+
+
 int counter = 0;
 float rollC = 0;
 float pitchC = 0;
@@ -14,14 +18,44 @@ float pitchDelta = 1;
 
 float headingC = 0;
 
+void onConnection(int16_t w, int16_t h) {
+  Serial.println("Screen setup started!");
+  addAttitudeIndicator();
+  Serial.println("Screen setup done!");
+}
+
+void addAttitudeIndicator() {
+  attitudeIndicator.x = 30;
+  attitudeIndicator.y = 70;
+  attitudeIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  attitudeIndicator.dimSize = 200;
+
+  // Specify the initial roll and pitch values.
+  attitudeIndicator.roll = 0.0f;
+  attitudeIndicator.pitch = 0.0f;
+
+  // Synchronize the attitudeIndicator object with BindCanvas.
+  bind.sync(&attitudeIndicator);
+}
 void setAttitudeIndicator(float roll, float pitch) {
-  screenAttitudeIndicator.x = 10;
-  screenAttitudeIndicator.y = 10;
-  screenAttitudeIndicator.cmdId = ADD_OR_REFRESH_CMD;
+  screenAttitudeIndicator.cmdId = BIND_DATA_ONLY_CMD;
   screenAttitudeIndicator.roll = roll;
   screenAttitudeIndicator.pitch = pitch;
   screenAttitudeIndicator.dimSize = 150;
   sendScreenStream(&screenAttitudeIndicator, &SerialBT);
+}
+
+void addHeadingIndicator() {
+  headingIndicator.x = 30;
+  headingIndicator.y = 70;
+  headingIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  headingIndicator.dimSize = 200;
+
+  // Specify the initial heading value.
+  headingIndicator.heading = 0.0f;
+
+  // Synchronize the headingIndicator object with BindCanvas.
+  bind.sync(&headingIndicator);
 }
 
 void setHeadingIndicator(float heading) {
@@ -51,9 +85,7 @@ void setup() {
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
+  bind.sync();
   delay(10);
   counter++;
   if (counter > 20) {
