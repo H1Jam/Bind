@@ -8,7 +8,7 @@
  * The `BindRectangle` class defines a rectangular object that can be displayed and manipulated
  * on a BindCanvas screen. This object can be used for various purposes, such as drawing shapes,
  * creating backgrounds, or framing other elements. It allows you to control its dimensions, position,
- * fill color, stroke color, stroke width, and corner radius.
+ * fill color, border color, border width, and corner radius.
  *
  * To use a `BindRectangle` object, you can create an instance and configure its properties,
  * then add it to the BindCanvas using the sync functions.
@@ -23,10 +23,10 @@ public:
     uint8_t cmdId = 0;            ///< Command identifier for the rectangle.
     int16_t width = 200;          ///< Width of the rectangle.
     int16_t height = 100;         ///< Height of the rectangle.
-    int32_t fillColor = BLACK;    ///< Fill color of the rectangle.
-    int32_t strokeColor = YELLOW; ///< Stroke color of the rectangle.
-    int16_t strokeWidth = 10;     ///< Stroke width of the rectangle.
-    int16_t cornersRadius = 10;   ///< Radius of the rectangle's rounded corners.
+    int32_t fillColor = WHITE;    ///< Fill color of the rectangle.
+    int32_t borderColor = DKGRAY; ///< Border (Stroke) color of the rectangle.
+    int16_t borderWidth = 2;     ///< Border (Stroke) width of the rectangle.
+    int16_t cornersRadius = 5;   ///< Radius of the rectangle's rounded corners.
 
     /**
      * @brief Get the serialized bytes of the `BindRectangle` object.
@@ -48,8 +48,8 @@ public:
         copyAndOffset(out, &offset, &width, sizeof(width));
         copyAndOffset(out, &offset, &height, sizeof(height));
         copyAndOffset(out, &offset, &fillColor, sizeof(fillColor));
-        copyAndOffset(out, &offset, &strokeColor, sizeof(strokeColor));
-        copyAndOffset(out, &offset, &strokeWidth, sizeof(strokeWidth));
+        copyAndOffset(out, &offset, &borderColor, sizeof(borderColor));
+        copyAndOffset(out, &offset, &borderWidth, sizeof(borderWidth));
         copyAndOffset(out, &offset, &cornersRadius, sizeof(cornersRadius));
         return offset;
     }
