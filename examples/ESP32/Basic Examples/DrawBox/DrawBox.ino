@@ -44,15 +44,26 @@ BindRectangle rectangle2;
 // onConnection Callback for BindCanvas
 void onConnection(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
+  configureCanvasSettings();
   addRectangles();
   Serial.println("Screen setup done!");
+}
+
+// Function to configure the BindCanvas screen settings
+void configureCanvasSettings() {
+  // Set the screen orientation (0 for portrait, 1 for landscape)
+  canvasSettings.screenOrientation = SCREEN_ORIENTATION_PORTRAIT;
+  // Set the background color of the screen (in RGB format)
+  canvasSettings.backColor = WHITE;
+  // Synchronize the canvasSettings object with BindCanvas
+  bind.sync(&canvasSettings);
 }
 
 // Function to add a rectangle to the BindCanvas screen
 void addRectangles() {
   // Configure and synchronize the rectangle
-  rectangle1.x = 50;
-  rectangle1.y = 50;
+  rectangle1.x = 10;
+  rectangle1.y = 70;
   rectangle1.width = 200;
   rectangle1.height = 100;
   rectangle1.cmdId = BIND_ADD_OR_REFRESH_CMD;
@@ -62,10 +73,10 @@ void addRectangles() {
   rectangle1.cornersRadius = 5;  /// Radius of the rectangle's rounded corners.
   bind.sync(&rectangle1);
 
-  rectangle2.x = 50;
-  rectangle2.y = 180;
-  rectangle2.width = 100;
-  rectangle2.height = 100;
+  rectangle2.x = 10;
+  rectangle2.y = 175;
+  rectangle2.width = 200;
+  rectangle2.height = 200;
   rectangle2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   rectangle2.fillColor = WHITE; // Fill color of the rectangle (in RGB format)
   rectangle2.borderColor = DKGRAY; // Border color of the rectangle (in RGB format) 
@@ -79,7 +90,7 @@ void setup() {
   Serial.begin(115200);
     // Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
   bind.init(&SerialBT, &onConnection);
-  String devName = "ESP32testB";
+  String devName = "BindingESP32";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
