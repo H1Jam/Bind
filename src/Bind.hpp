@@ -12,6 +12,9 @@
 /// @brief This command either adds the object to the canvas (screen) or refreshes the existing one.
 #define BIND_ADD_OR_REFRESH_CMD 0
 
+/// @brief This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
+#define BIND_DATA_ONLY_CMD 6
+
 /// @brief This command removes the object from the canvas (screen).
 #define BIND_REMOVE_CMD 1
 
@@ -27,8 +30,6 @@
 /// @brief This command restores the object's visibility.
 #define BIND_VISIBLE_CMD 5
 
-/// @brief This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
-#define BIND_DATA_ONLY_CMD 6
 
 /**
  * @brief The Bind class provides a framework for creating interactive applications with BindCanvas.
