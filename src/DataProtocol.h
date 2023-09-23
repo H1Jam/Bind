@@ -5,8 +5,6 @@
 #include "Stream.h"
 #include "SLPacker.hpp"
 #define MAX_DATA_LENGHT 100
-#define RGB(r, g, b) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | 0xFF000000)
-#define RGBA(r, g, b, a) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | ((int32_t)((uint8_t)(a)) << 24))
 
 static uint8_t VERSIONID = 0;
 
