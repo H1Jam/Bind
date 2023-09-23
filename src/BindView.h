@@ -37,6 +37,8 @@ static int8_t SCREEN_ORIENTATION_LOCKED = 14;
 
 static uint8_t MAX_STRING_LENGTH = 32;
 static uint8_t MAX_STRING_LENGTH_TERMINAL = 64;
+#define RGB(r, g, b) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | 0xFF000000)
+#define RGBA(r, g, b, a) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | ((int32_t)((uint8_t)(a)) << 24))
 
 enum BindIDs : uint8_t
 {
