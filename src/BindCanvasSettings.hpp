@@ -2,6 +2,42 @@
 #define __BINDCANVASSETTINGS_HPP
 #include "BindView.h"
 #include "BindUtils.hpp"
+
+// Screen orientation is not set or specified.
+static int8_t SCREEN_ORIENTATION_UNSET = -2;
+// Screen orientation is unspecified, allowing the system to decide.
+static int8_t SCREEN_ORIENTATION_UNSPECIFIED = -1;
+// Landscape mode: screen width > height.
+static int8_t SCREEN_ORIENTATION_LANDSCAPE = 0;
+// Portrait mode: screen height > width.
+static int8_t SCREEN_ORIENTATION_PORTRAIT = 1;
+// User-defined orientation.
+static int8_t SCREEN_ORIENTATION_USER = 2;
+// Based on the previous activity's orientation.
+static int8_t SCREEN_ORIENTATION_BEHIND = 3;
+// Orientation determined by device sensors.
+static int8_t SCREEN_ORIENTATION_SENSOR = 4;
+// Disable sensor-based orientation.
+static int8_t SCREEN_ORIENTATION_NOSENSOR = 5;
+// Landscape orientation based on sensors.
+static int8_t SCREEN_ORIENTATION_SENSOR_LANDSCAPE = 6;
+// Portrait orientation based on sensors.
+static int8_t SCREEN_ORIENTATION_SENSOR_PORTRAIT = 7;
+// Reverse landscape orientation.
+static int8_t SCREEN_ORIENTATION_REVERSE_LANDSCAPE = 8;
+// Reverse portrait orientation.
+static int8_t SCREEN_ORIENTATION_REVERSE_PORTRAIT = 9;
+// Full sensor-based control over orientation.
+static int8_t SCREEN_ORIENTATION_FULL_SENSOR = 10;
+// User-defined landscape orientation.
+static int8_t SCREEN_ORIENTATION_USER_LANDSCAPE = 11;
+// User-defined portrait orientation.
+static int8_t SCREEN_ORIENTATION_USER_PORTRAIT = 12;
+// Full user control over orientation, including reverse.
+static int8_t SCREEN_ORIENTATION_FULL_USER = 13;
+// Lock the current screen orientation.
+static int8_t SCREEN_ORIENTATION_LOCKED = 14;
+
 /**
  * @brief Represents the configuration settings for a BindCanvas application screen.
  *
