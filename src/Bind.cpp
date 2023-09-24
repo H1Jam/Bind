@@ -92,31 +92,31 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
 {
   switch (dataFrame[2])
   {
-  case BindIDs::setupCMD:
+  case BIND_ID_SETUP_CMD:
     valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
     valTmp2 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
     screenInit(valTmp1, valTmp2);
     break;
-  case BindIDs::button:
+  case BIND_ID_BUTTON:
     clickButton(dataFrame[3]);
     break;
-  case BindIDs::knob:
+  case BIND_ID_KNOB:
     valTmp1 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
     knobChanged(dataFrame[3], valTmp1);
     break;
-  case BindIDs::toggleSwitch:
+  case BIND_ID_TOGGLE_SWITCH:
     updateSwitch(dataFrame[3], dataFrame[5] == 1);
     break;
-  case BindIDs::seekBar:
+  case BIND_ID_SEEK_BAR:
     valTmp1 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
     updateSeekBar(dataFrame[3], valTmp1);
     break;
-  case BindIDs::joystick:
+  case BIND_ID_JOYSTICK:
     valTmp1 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
     valTmp2 = ((0xFFFF & dataFrame[8]) << 8) | (dataFrame[7] & 0xFF);
     updateJoystick(dataFrame[3], valTmp1, valTmp2);
     break;
-  case BindIDs::colorPicker:
+  case BIND_ID_COLOR_PICKER:
     valTmp1 = (dataFrame[5] & 0xFF);
     valTmp2 = (dataFrame[6] & 0xFF);
     valTmp3 = (dataFrame[7] & 0xFF);
