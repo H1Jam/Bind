@@ -1,6 +1,6 @@
 #ifndef __BINDGAUGECOMPACT_HPP
 #define __BINDGAUGECOMPACT_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 // TODO: Extract each class to a serprate .h and .c file! Now!
 
@@ -29,7 +29,7 @@
  * bind.sync(&gauge);
  * @endcode
  */
-class BindGaugeCompact : public BindViewAutoTag
+class BindGaugeCompact : public BindView
 {
 
 public:
@@ -110,6 +110,7 @@ private:
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDGAUGECOMPACT_HPP */

@@ -1,13 +1,13 @@
 #ifndef __BINDGAUGE_HPP
 #define __BINDGAUGE_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 // TODO: Extract each class to a serprate .h and .c file! Now!
 /**
  * @brief The BindGauge class represents a gauge UI element for use with BindCanvas.
  *
  * BindGauge is a class that defines a gauge UI element that can be used within BindCanvas-based
- * applications. It inherits from the BindViewAutoTag class and provides functionality to create and
+ * applications. It inherits from the BindView class and provides functionality to create and
  * customize gauges, including setting positions, dimensions, value ranges, and appearance.
  *
  * Gauges created with BindGauge can be synchronized with BindCanvas through the Bind framework, allowing
@@ -16,7 +16,7 @@
  * @note To use BindGauge effectively, you can set various properties such as position, dimensions,
  * value range, appearance, and label.
  */
-class BindGauge : public BindViewAutoTag
+class BindGauge : public BindView
 {
 public:
     /**
@@ -106,6 +106,7 @@ private:
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDGAUGE_HPP */
