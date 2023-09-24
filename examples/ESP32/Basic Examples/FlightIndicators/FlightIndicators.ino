@@ -5,7 +5,6 @@ BluetoothSerial SerialBT;
 Bind bind;
 BindAttitudeIndicator attitudeIndicator;
 BindHeadingIndicator headingIndicator;
-BindHeadingIndicator headingIndicator2;
 
 int counter = 0;
 float rollC = 0;
@@ -24,7 +23,7 @@ void onConnection(int16_t w, int16_t h) {
 }
 
 void drawAttitudeIndicator() {
-  attitudeIndicator.x = 30;
+  attitudeIndicator.x = 80;
   attitudeIndicator.y = 70;
   attitudeIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
   attitudeIndicator.dimSize = 200;
@@ -38,8 +37,8 @@ void drawAttitudeIndicator() {
 }
 
 void addHeadingIndicator() {
-  headingIndicator.x = 30;
-  headingIndicator.y = 70;
+  headingIndicator.x = 80;
+  headingIndicator.y = 270;
   headingIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
   headingIndicator.dimSize = 200;
 
@@ -83,19 +82,19 @@ void loop() {
     if (headingC > 360) {
       headingC = 0.0f;
     }
-    _setAttitudeIndicator(rollC, pitchC);
-    _setHeadingIndicator(headingC);
+    setAttitudeIndicator(rollC, pitchC);
+    setHeadingIndicator(headingC);
   }
 }
 
-void _setAttitudeIndicator(float roll, float pitch) {
+void setAttitudeIndicator(float roll, float pitch) {
   attitudeIndicator.cmdId = BIND_DATA_ONLY_CMD;
   attitudeIndicator.roll = roll;
   attitudeIndicator.pitch = pitch;
   bind.sync(&attitudeIndicator);
 }
 
-void _setHeadingIndicator(float heading) {
+void setHeadingIndicator(float heading) {
   headingIndicator.cmdId = BIND_DATA_ONLY_CMD;
   headingIndicator.heading = heading;
   bind.sync(&headingIndicator);
