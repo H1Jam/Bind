@@ -19,50 +19,6 @@ static int32_t TRANSPARENT = 0;
 
 static uint8_t MAX_STRING_LENGTH = 32;
 static uint8_t MAX_STRING_LENGTH_TERMINAL = 64;
-#define RGB(r, g, b) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | 0xFF000000)
-#define RGBA(r, g, b, a) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | ((int32_t)((uint8_t)(a)) << 24))
-
-enum BindIDs : uint8_t
-{
-  setupCMD = 5,
-  button,
-  label,
-  gauge1,
-  gauge2,
-  knob,
-  mapView,
-  mapMarker,
-  toggleSwitch,
-  seekBar,
-  attitudeIndicator,
-  headingIndicator,
-  joystick,
-  gaugeSimple,
-  colorPicker,
-  chart,
-  chartData,
-  rectangle,
-  terminal,
-  terminalData,
-  Settings
-};
-
-enum Markers : uint8_t
-{
-  PinRed = 0,
-  PinGreen,
-  PinBlue,
-  PinYellow,
-  CarRed,
-  CarGreen,
-  CarBlue,
-  CarYellow,
-  PlaneRed,
-  PlaneGreen,
-  PlaneBlue,
-  PlaneYellow
-};
-
 
 class BindView
 {
