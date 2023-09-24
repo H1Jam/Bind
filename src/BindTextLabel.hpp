@@ -1,13 +1,13 @@
 #ifndef __BINDTEXTLABEL_H
 #define __BINDTEXTLABEL_H
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 // TODO: Extract the class to a serprate .h and .c file! Now!
 /**
  * @brief The BindTextLabel class represents a text label UI element for use with BindCanvas.
  *
  * BindTextLabel is a class that defines a text label UI element that can be used within BindCanvas-based
- * applications. It inherits from the BindViewAutoTag class and provides functionality to create and
+ * applications. It inherits from the BindView class and provides functionality to create and
  * customize text labels, including setting labels, positions, font size, and text color.
  *
  * Text labels created with BindTextLabel can be synchronized with BindCanvas through the Bind framework,
@@ -16,7 +16,7 @@
  * @note To use BindTextLabel effectively, you can set various properties such as the label, position,
  * font size, and text color.
  */
-class BindTextLabel : public BindViewAutoTag
+class BindTextLabel : public BindView
 {
 
 public:
@@ -95,6 +95,7 @@ private:
   uint16_t offset = 0;
   int strLength = 0;
   const char *str;
+  static int16_t tagIndex;
 };
 
 #endif /* __BINDTEXTLABEL_H */

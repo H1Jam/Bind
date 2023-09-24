@@ -1,6 +1,6 @@
 #ifndef __BINDTERMINAL_HPP
 #define __BINDTERMINAL_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /**
@@ -12,7 +12,7 @@
  *
  * @see the example folder for more information.
  */
-class BindTerminal : public BindViewAutoTag
+class BindTerminal : public BindView
 {
 
 public:
@@ -88,5 +88,6 @@ private:
     uint8_t dataID = BindIDs::terminalData;
     uint16_t offset = 0;
     int strLength = 0;
+    static int16_t tagIndex;
 };
 #endif /* __BINDTERMINAL_HPP */
