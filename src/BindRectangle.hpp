@@ -18,6 +18,7 @@
 class BindRectangle : public BindView
 {
 public:
+    BindRectangle();
     int16_t x = 0;                ///< X-coordinate position of the rectangle.
     int16_t y = 0;                ///< Y-coordinate position of the rectangle.
     uint8_t cmdId = 0;            ///< Command identifier for the rectangle.
@@ -25,8 +26,8 @@ public:
     int16_t height = 100;         ///< Height of the rectangle.
     int32_t fillColor = WHITE;    ///< Fill color of the rectangle.
     int32_t borderColor = DKGRAY; ///< Border (Stroke) color of the rectangle.
-    int16_t borderWidth = 2;     ///< Border (Stroke) width of the rectangle.
-    int16_t cornersRadius = 5;   ///< Radius of the rectangle's rounded corners.
+    int16_t borderWidth = 2;      ///< Border (Stroke) width of the rectangle.
+    int16_t cornersRadius = 5;    ///< Radius of the rectangle's rounded corners.
 
     /**
      * @brief Get the serialized bytes of the `BindRectangle` object.
@@ -55,7 +56,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::rectangle;
+    uint8_t objID = BIND_ID_RECTANGLE;
     uint16_t offset = 0;
     static int16_t tagIndex;
 };

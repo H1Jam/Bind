@@ -14,11 +14,12 @@
 class BindMapMarker : public BindView
 {
 public:
+    BindMapMarker();
     float lat = 0.0f;                 ///< Latitude coordinate of the marker's position.
     float lon = 0.0f;                 ///< Longitude coordinate of the marker's position.
     float rotation = 0.0f;            ///< Rotation angle of the marker (in degrees).
     uint8_t scale = 100;              ///< Scale factor for the marker's size.
-    Markers iconId = Markers::PinRed; ///< Identifier for the marker's icon. Visit Markers enum in BindView.h
+    uint8_t iconId = MARKER_PIN_RED; ///< Identifier for the marker's icon. Visit Markers enum in BindView.h
     uint8_t cmdId = 0;                ///< Command identifier.
 
     /**
@@ -45,7 +46,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::mapMarker; ///< Unique identifier for map markers.
+    uint8_t objID = BIND_ID_MAP_MARKER; ///< Unique identifier for map markers.
     uint16_t offset = 0;                ///< Offset for byte data serialization.
     static int16_t tagIndex;
 };

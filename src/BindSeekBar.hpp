@@ -45,7 +45,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::seekBar; ///< Unique identifier for the SeekBar.
+    uint8_t objID = BIND_ID_SEEK_BAR; ///< Unique identifier for the SeekBar.
     uint16_t offset = 0;              ///< Offset for serialization.
 };
 
