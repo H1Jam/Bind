@@ -77,7 +77,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::colorPicker;
+    uint8_t objID = BIND_ID_COLOR_PICKER;
     uint16_t offset = 0;
 };
 
