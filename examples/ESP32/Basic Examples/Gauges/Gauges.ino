@@ -1,10 +1,11 @@
 #include "BluetoothSerial.h"
 #include "Bind.hpp"
 BluetoothSerial SerialBT;
-ScreenObjects screenObjects;
-ScreenGauge screenGauge;
-ScreenGaugeSimple screenGaugeSimple;
-ScreenGaugeCompact screenGaugeCompact;
+Bind bind;
+BindGauge gauge1;
+BindGaugeCompact gauge2;
+BindGaugeSimple gauge3;
+
 int counter = 0;
 float g1 = 0.0f;
 float speed = 0.0f;
@@ -12,61 +13,63 @@ float gDelta = 1.0f;
 float speedDelta = 5.0f;
 unsigned long lastMs = 0;
 
-void addGauge(float value) {
-  screenGauge.x = 10;
-  screenGauge.y = 10;
-  screenGauge.dimSize = 200;
-  screenGauge.value = value;
-  screenGauge.maxValue = 200.0f;
-  screenGauge.drawArc = 100;
-  screenGauge.arcGreenMaxVal = 100.0f;
-  screenGauge.arcYellowMaxVal = 150.0f;
-  screenGauge.arcRedMaxVal = 180.0f;
-  screenGauge.setlabel("Speed mph");
-  screenGauge.cmdId = ADD_OR_REFRESH_CMD;
-  sendScreenStream(&screenGauge, &SerialBT);
+// Configure and add the first gauge (BindGauge)
+void addGauge() {
+  gauge1.x = 10;
+  gauge1.y = 10;
+  gauge1.dimSize = 200;
+  gauge1.value = 0.0f;
+  gauge1.maxValue = 200.0f;
+  gauge1.drawArc = 100;
+  gauge1.arcGreenMaxVal = 100.0f;
+  gauge1.arcYellowMaxVal = 150.0f;
+  gauge1.arcRedMaxVal = 180.0f;
+  gauge1.setlabel("Speed mph");
+  gauge1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  bind.sync(&gauge1);
 }
 
 void updateGauge(float value) {
-  screenGauge.value = value;
-  screenGauge.cmdId = DATA_ONLY_CMD;
-  sendScreenStream(&screenGauge, &SerialBT);
+  gauge1.value = value;
+  gauge1.cmdId = BIND_DATA_ONLY_CMD;
+  bind.sync(&gauge1);
 }
 
-void addGaugeCompact(float value) {
-  screenGaugeCompact.x = 10;
-  screenGaugeCompact.y = 230;
-  screenGaugeCompact.dimSize = 200;
-  screenGaugeCompact.value = value;
-  screenGaugeCompact.maxValue = 200.0f;
-  screenGaugeCompact.drawArc = 100;
-  screenGaugeCompact.arcGreenMaxVal = 100.0f;
-  screenGaugeCompact.arcYellowMaxVal = 150.0f;
-  screenGaugeCompact.arcRedMaxVal = 180.0f;
-  screenGaugeCompact.setlabel("Speed Km/h");
-  screenGaugeCompact.cmdId = ADD_OR_REFRESH_CMD;
-  sendScreenStream(&screenGaugeCompact, &SerialBT);
+// Configure and add the second gauge (BindGaugeCompact)
+void addGaugeCompact() {
+  gauge2.x = 10;
+  gauge2.y = 230;
+  gauge2.dimSize = 200;
+  gauge2.value = 0.0f;
+  gauge2.maxValue = 200.0f;
+  gauge2.drawArc = 100;
+  gauge2.arcGreenMaxVal = 100.0f;
+  gauge2.arcYellowMaxVal = 150.0f;
+  gauge2.arcRedMaxVal = 180.0f;
+  gauge2.setlabel("Speed Km/h");
+  gauge2.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  bind.sync(&gauge2);
 }
 
 void updateGaugeCompact(float value) {
-  screenGaugeCompact.value = value;
-  screenGaugeCompact.cmdId = DATA_ONLY_CMD;
-  sendScreenStream(&screenGaugeCompact, &SerialBT);
+  gauge2.value = value;
+  gauge2.cmdId = BIND_DATA_ONLY_CMD;
+  bind.sync(&gauge2);
 }
 
-void addGaugeSimple(float value) {
-  screenGaugeSimple.x = 10;
-  screenGaugeSimple.y = 360;
-  screenGaugeSimple.dimSize = 200;
-  screenGaugeSimple.value = value;
-  screenGaugeSimple.maxValue = 20;
-  screenGaugeSimple.minValue = -20;
-  screenGaugeSimple.style = 0;
-  screenGaugeSimple.isSymmetrical = true;
-  screenGaugeSimple.color = BLUE;
-  screenGaugeSimple.setlabel("Simple Gauge");
-  screenGaugeSimple.cmdId = ADD_OR_REFRESH_CMD;
-  sendScreenStream(&screenGaugeSimple, &SerialBT);
+void addGaugeSimple() {
+  gauge3.x = 10;
+  gauge3.y = 360;
+  gauge3.dimSize = 200;
+  gauge3.value = 0.0f;
+  gauge3.maxValue = 20;
+  gauge3.minValue = -20;
+  gauge3.style = 0;
+  gauge3.isSymmetrical = true;
+  gauge3.color = BLUE;
+  gauge3.setlabel("Simple Gauge");
+  gauge3.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  bind.sync(&gauge3);
 }
 
 void updateGaugeSimple(float value) {
