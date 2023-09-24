@@ -1,6 +1,6 @@
 #ifndef __BINDCHART_HPP
 #define __BINDCHART_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /**
@@ -18,19 +18,19 @@
  * - Update the chart's data in real-time using the `bind.sync(136.36f, &myChart)` function.
  *
  */
-class BindChart : public BindViewAutoTag
+class BindChart : public BindView
 {
 
 public:
-    int16_t x = 0; ///< X-coordinate position of the chart.
-    int16_t y = 0; ///< Y-coordinate position of the chart.
-    uint8_t cmdId = 0; ///< Command ID for the chart.
-    int16_t width = 200; ///< Width of the chart.
-    int16_t height = 100; ///< Height of the chart.
-    int16_t maxY = 10; ///< Maximum Y-axis value of the chart.
-    int16_t minY = -10; ///< Minimum Y-axis value of the chart.
-    int16_t maxX = 20; ///< Maximum X-axis value of the chart.
-    bool autoSize = true; ///< Flag to enable auto-sizing based on data.
+    int16_t x = 0;          ///< X-coordinate position of the chart.
+    int16_t y = 0;          ///< Y-coordinate position of the chart.
+    uint8_t cmdId = 0;      ///< Command ID for the chart.
+    int16_t width = 200;    ///< Width of the chart.
+    int16_t height = 100;   ///< Height of the chart.
+    int16_t maxY = 10;      ///< Maximum Y-axis value of the chart.
+    int16_t minY = -10;     ///< Minimum Y-axis value of the chart.
+    int16_t maxX = 20;      ///< Maximum X-axis value of the chart.
+    bool autoSize = true;   ///< Flag to enable auto-sizing based on data.
     int32_t color = YELLOW; ///< Color of the chart.
 
     /**
@@ -81,10 +81,11 @@ public:
         return offset;
     }
 
-    private:
+private:
     uint8_t objID = BindIDs::chart;
     uint8_t dataID = BindIDs::chartData;
     uint16_t offset = 0;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDCHART_HPP */
