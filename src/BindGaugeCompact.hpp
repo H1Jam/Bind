@@ -38,18 +38,12 @@ public:
      *
      * @param cstr The label to display on the gauge.
      */
-    BindGaugeCompact(const char *cstr)
-    {
-        setlabel(cstr);
-    }
+    BindGaugeCompact(const char *cstr);
 
     /**
      * @brief Constructs a BindGaugeCompact object with a default label.
      */
-    BindGaugeCompact()
-    {
-        setlabel("Gauge");
-    }
+    BindGaugeCompact():BindGaugeCompact("Gauge"){}
 
     int16_t x;                 ///< The x-coordinate position of the gauge on the canvas.
     int16_t y;                 ///< The y-coordinate position of the gauge on the canvas.
@@ -106,7 +100,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::gauge2;
+    uint8_t objID = BIND_ID_GAUGE2;
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;
