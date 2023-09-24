@@ -15,8 +15,8 @@ unsigned long lastMs = 0;
 
 // Configure and add the first gauge (BindGauge)
 void addGauge() {
-  gauge1.x = 10;
-  gauge1.y = 10;
+  gauge1.x = 40;
+  gauge1.y = 70;
   gauge1.dimSize = 200;
   gauge1.value = 0.0f;
   gauge1.maxValue = 200.0f;
@@ -37,8 +37,8 @@ void updateGauge(float value) {
 
 // Configure and add the second gauge (BindGaugeCompact)
 void addGaugeCompact() {
-  gauge2.x = 10;
-  gauge2.y = 230;
+  gauge2.x = 40;
+  gauge2.y = 270;
   gauge2.dimSize = 200;
   gauge2.value = 0.0f;
   gauge2.maxValue = 200.0f;
@@ -58,8 +58,8 @@ void updateGaugeCompact(float value) {
 }
 
 void addGaugeSimple() {
-  gauge3.x = 10;
-  gauge3.y = 360;
+  gauge3.x = 40;
+  gauge3.y = 370;
   gauge3.dimSize = 200;
   gauge3.value = 0.0f;
   gauge3.maxValue = 20;
@@ -73,38 +73,42 @@ void addGaugeSimple() {
 }
 
 void updateGaugeSimple(float value) {
-  screenGaugeSimple.value = value;
-  screenGaugeSimple.cmdId = DATA_ONLY_CMD;
-  sendScreenStream(&screenGaugeSimple, &SerialBT);
+  gauge3.value = value;
+  gauge3.cmdId = BIND_DATA_ONLY_CMD;
+  bind.sync(&gauge3);
 }
 
-void screenSetup(int16_t w, int16_t h) {
+void onConnection(int16_t width, int16_t height) {
   Serial.println("Screen setup started!");
-  addGauge(0.0f);
-  addGaugeCompact(0.0f);
-  addGaugeSimple(0.0f);
+  addGauge();
+  addGaugeCompact();
+  addGaugeSimple();
   Serial.println("Screen setup done!");
 }
 
 void setup() {
   Serial.begin(115200);
-  screenObjects.registerScreenSetup(&screenSetup);
-  String devName = "ESP32testB";
+  String devName = "BindOnESP32";
   SerialBT.begin(devName);
-  Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
-  Serial.println("devName:");
+
+  bind.init(&SerialBT, &onConnection);
+
+  Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
+  Serial.println("Device Name:");
   Serial.println(devName);
 }
 
 void loop() {
-  while (SerialBT.available()) {
-    screenObjects.updateScreen(SerialBT.read());
-  }
-  delay(10);
-  if (millis() -lastMs  > 100) {
+  bind.sync();
+  delay(5);
+
+  // Sending some dummy data to the gauges:
+  if (millis() - lastMs > 100) {
     lastMs = millis();
+
     g1 += gDelta;
     speed += speedDelta;
+
     if (g1 >= 20.0f || g1 <= -20.0f) {
       gDelta = -1 * gDelta;
     }
@@ -113,7 +117,7 @@ void loop() {
       speedDelta = -1 * speedDelta;
     }
 
-    if (screenObjects.isReady()) {
+    if (bind.isReady()) {
       updateGauge(speed);
       updateGaugeCompact(speed);
       updateGaugeSimple(g1);
