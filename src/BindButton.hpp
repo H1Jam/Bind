@@ -88,7 +88,7 @@ public:
 
   private:
 
-  uint8_t objID = BindIDs::button;
+  uint8_t objID = BIND_ID_BUTTON;
   uint16_t offset = 0;
   int strLength = 0;
   const char *str;
