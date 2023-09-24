@@ -39,10 +39,7 @@ public:
    * This constructor creates a BindKnob with a default label of "Knob."
    * You can customize the label later using the 'setLabel' function.
    */
-  BindKnob()
-  {
-    setlabel("Knob");
-  }
+  BindKnob() : BindKnob("Knob"){}
 
   int16_t x;         ///< X-coordinate position of the knob
   int16_t y;         ///< Y-coordinate position of the knob
@@ -97,7 +94,7 @@ public:
   }
 
 private:
-  uint8_t objID = BindIDs::knob;
+  uint8_t objID = BIND_ID_KNOB;
   uint16_t offset = 0;
   int strLength = 0;
   const char *str;

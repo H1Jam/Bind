@@ -64,7 +64,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::mapView;
+    uint8_t objID = BIND_ID_MAP_VIEW;
     uint16_t offset = 0;
 };
 

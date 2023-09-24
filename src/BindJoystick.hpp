@@ -67,7 +67,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::joystick;
+    uint8_t objID = BIND_ID_JOYSTICK;
     uint16_t offset = 0;
 };
 
