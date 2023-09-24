@@ -1,6 +1,6 @@
 #ifndef __BINDMAP_HPP
 #define __BINDMAP_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /// This allows the user to manualy change the map zoom.
@@ -22,11 +22,8 @@
  * @note The `BIND_MAP_USER_ZOOM` constant can be used to let the user manually change the map's zoom level.
  * You can also set predefined zoom levels as needed.
  */
-class BindMap : public BindViewAutoTag
+class BindMap : public BindView
 {
-private:
-    uint8_t objID = BindIDs::mapView;
-    uint16_t offset = 0;
 
 public:
     int16_t x;                   ///< X-coordinate position of the map.
@@ -65,6 +62,10 @@ public:
         copyAndOffset(out, &offset, &zoom, sizeof(zoom));
         return offset;
     }
+
+private:
+    uint8_t objID = BindIDs::mapView;
+    uint16_t offset = 0;
 };
 
 #endif /* __BINDMAP_HPP */
