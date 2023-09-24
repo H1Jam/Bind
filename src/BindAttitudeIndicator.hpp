@@ -1,6 +1,6 @@
 #ifndef __BINDATTITUDEINDICATOR_HPP
 #define __BINDATTITUDEINDICATOR_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 /**
  * @brief Represents an attitude indicator UI element in the Bind framework.
@@ -16,7 +16,7 @@
  * - Synchronize the attitude indicator with the Bind framework using `bind.sync(&myIndicator)` when you need to refresh the values.
  *
  */
-class BindAttitudeIndicator : public BindViewAutoTag
+class BindAttitudeIndicator : public BindView
 {
 
 public:
@@ -53,6 +53,7 @@ public:
 private:
     uint8_t objID = BindIDs::attitudeIndicator;
     uint16_t offset = 0;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDATTITUDEINDICATOR_HPP */
