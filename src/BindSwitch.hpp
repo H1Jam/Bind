@@ -87,7 +87,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::toggleSwitch;
+    uint8_t objID = BIND_ID_TOGGLE_SWITCH;
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;
