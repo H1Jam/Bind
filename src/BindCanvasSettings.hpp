@@ -132,7 +132,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::Settings; ///< Object ID for Bind settings.
+    uint8_t objID = BIND_ID_SETTINGS; ///< Object ID for Bind settings.
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;

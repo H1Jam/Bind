@@ -48,20 +48,14 @@ public:
      *
      * @param cstr A pointer to the label text.
      */
-    BindGaugeSimple(const char *cstr)
-    {
-        setlabel(cstr);
-    }
+    BindGaugeSimple(const char *cstr);
 
     /**
      * @brief Default constructor.
      *
      * Initializes a `BindGaugeSimple` object with a default label ("Gauge").
      */
-    BindGaugeSimple()
-    {
-        setlabel("Gauge");
-    }
+    BindGaugeSimple():BindGaugeSimple("Gauge"){}
 
     int16_t x = 0;              ///< The x-coordinate position of the gauge on the screen.
     int16_t y = 0;              ///< The y-coordinate position of the gauge on the screen.
@@ -119,7 +113,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::gaugeSimple; ///< The unique identifier for the simple gauge object.
+    uint8_t objID = BIND_ID_GAUGE_SIMPLE; ///< The unique identifier for the simple gauge object.
     uint16_t offset = 0;                  ///< Offset used for byte serialization.
     int strLength = 0;                    ///< Length of the label text.
     const char *str;                      ///< Pointer to the label text.

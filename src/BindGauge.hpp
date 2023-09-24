@@ -2,6 +2,7 @@
 #define __BINDGAUGE_HPP
 #include "BindView.hpp"
 #include "BindUtils.hpp"
+
 // TODO: Extract each class to a serprate .h and .c file! Now!
 /**
  * @brief The BindGauge class represents a gauge UI element for use with BindCanvas.
@@ -27,10 +28,7 @@ public:
      *
      * @param cstr A pointer to the character array representing the custom label for the gauge.
      */
-    BindGauge(const char *cstr)
-    {
-        setlabel(cstr);
-    }
+    BindGauge(const char *cstr);
 
     /**
      * @brief Constructs a BindGauge with a default label.
@@ -38,10 +36,7 @@ public:
      * This constructor creates a BindGauge with a default label of "Gauge."
      * You can customize the label later using the 'setLabel' function.
      */
-    BindGauge()
-    {
-        setlabel("Gauge");
-    }
+    BindGauge() : BindGauge("Gauge"){};
 
     int16_t x;                 ///< X-coordinate position of the gauge
     int16_t y;                 ///< Y-coordinate position of the gauge
@@ -102,7 +97,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::gauge1;
+    uint8_t objID = BIND_ID_GAUGE1;
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;

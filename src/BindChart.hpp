@@ -22,6 +22,7 @@ class BindChart : public BindView
 {
 
 public:
+    BindChart();
     int16_t x = 0;          ///< X-coordinate position of the chart.
     int16_t y = 0;          ///< Y-coordinate position of the chart.
     uint8_t cmdId = 0;      ///< Command ID for the chart.
@@ -82,8 +83,8 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::chart;
-    uint8_t dataID = BindIDs::chartData;
+    uint8_t objID = BIND_ID_CHART;
+    uint8_t dataID = BIND_ID_CHART_DATA;
     uint16_t offset = 0;
     static int16_t tagIndex;
 };
