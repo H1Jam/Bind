@@ -1,7 +1,6 @@
 #ifndef __BINDWIDGETS_H
 #define __BINDWIDGETS_H
-#include "BindViewAutoTag.hpp"
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindGauge.hpp"
 #include "BindGaugeCompact.hpp"
 #include "BindMap.hpp"
