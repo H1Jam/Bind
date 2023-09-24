@@ -1,5 +1,5 @@
-#ifndef __BINDVIEW_H
-#define __BINDVIEW_H
+#ifndef __BINDVIEW_HPP
+#define __BINDVIEW_HPP
 #include <stdint.h>
 
 static int32_t BLACK = 0xFF000000;
@@ -80,4 +80,4 @@ public:
   int16_t tag;
 };
 
-#endif /* __BINDVIEW_H */
+#endif /* __BINDVIEW_HPP */

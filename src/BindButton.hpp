@@ -1,6 +1,6 @@
 #ifndef __BINDBUTTON_H
 #define __BINDBUTTON_H
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /**

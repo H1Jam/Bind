@@ -1,6 +1,6 @@
 #ifndef __BINDKNOB_H
 #define __BINDKNOB_H
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 // TODO: Extract the class to a serprate .h and .c file! Now!
 /**

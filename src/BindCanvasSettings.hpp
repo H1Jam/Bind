@@ -1,6 +1,6 @@
 #ifndef __BINDCANVASSETTINGS_HPP
 #define __BINDCANVASSETTINGS_HPP
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 // Screen orientation is not set or specified.

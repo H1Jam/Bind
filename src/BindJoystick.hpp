@@ -1,6 +1,6 @@
 #ifndef __BINDJOYSTICK_HPP
 #define __BINDJOYSTICK_HPP
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 /**
  * @brief BindJoystick Class

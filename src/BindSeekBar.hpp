@@ -1,6 +1,6 @@
 #ifndef __BINDSEEKBAR_HPP
 #define __BINDSEEKBAR_HPP
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 /**
  * @brief Represents a SeekBar object in the Bind framework.

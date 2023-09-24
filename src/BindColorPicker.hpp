@@ -1,6 +1,6 @@
 #ifndef __BINDCOLORPICKER_HPP
 #define __BINDCOLORPICKER_HPP
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /**
