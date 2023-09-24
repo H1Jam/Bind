@@ -1,6 +1,6 @@
 #ifndef __BINDRECTANGLE_HPP
 #define __BINDRECTANGLE_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 /**
  * @brief Represents a Rectangle Object for BindCanvas.
@@ -15,7 +15,7 @@
  *
  * @note This class is typically used to group objects in a zone.
  */
-class BindRectangle : public BindViewAutoTag
+class BindRectangle : public BindView
 {
 public:
     int16_t x = 0;                ///< X-coordinate position of the rectangle.
@@ -57,6 +57,7 @@ public:
 private:
     uint8_t objID = BindIDs::rectangle;
     uint16_t offset = 0;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDRECTANGLE_HPP */

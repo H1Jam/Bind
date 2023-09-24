@@ -1,6 +1,6 @@
 #ifndef __BINDSWITCH_HPP
 #define __BINDSWITCH_HPP
-#include "BindView.h"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 /**
  * @brief Represents a toggle switch UI element in the Bind framework.

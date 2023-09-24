@@ -1,6 +1,6 @@
 #ifndef __BINDMAPMARKER_HPP
 #define __BINDMAPMARKER_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 /**
  * @brief Represents a marker to be used in BindMap (street map) within BindCanvas.
@@ -11,7 +11,7 @@
  * includind pins, cars, planes from Markers, for example Markers::PinRed or Markers::CarBlue.
  * Visit Markers enum in BindView.h for more markers.
  */
-class BindMapMarker : public BindViewAutoTag
+class BindMapMarker : public BindView
 {
 public:
     float lat = 0.0f;                 ///< Latitude coordinate of the marker's position.
@@ -47,6 +47,7 @@ public:
 private:
     uint8_t objID = BindIDs::mapMarker; ///< Unique identifier for map markers.
     uint16_t offset = 0;                ///< Offset for byte data serialization.
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDMAPMARKER_HPP */
