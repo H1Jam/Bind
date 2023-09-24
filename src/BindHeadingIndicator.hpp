@@ -1,6 +1,6 @@
 #ifndef __BINDHEADINGINDICATOR_HPP
 #define __BINDHEADINGINDICATOR_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /**
@@ -10,7 +10,7 @@
  * within a BindCanvas screen. This element allows users to visualize and monitor a vehicle or an object's heading.
  *
  */
-class BindHeadingIndicator : public BindViewAutoTag
+class BindHeadingIndicator : public BindView
 {
 
 public:
@@ -45,6 +45,7 @@ public:
 private:
     uint8_t objID = BindIDs::headingIndicator;
     uint16_t offset = 0;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDHEADINGINDICATOR_HPP */

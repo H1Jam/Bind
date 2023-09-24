@@ -1,6 +1,6 @@
 #ifndef __BINDGAUGESIMPLE_HPP
 #define __BINDGAUGESIMPLE_HPP
-#include "BindViewAutoTag.hpp"
+#include "BindView.hpp"
 #include "BindUtils.hpp"
 
 /**
@@ -37,7 +37,7 @@
  * ```
  * @note check the examples for more information.
  */
-class BindGaugeSimple : public BindViewAutoTag
+class BindGaugeSimple : public BindView
 {
 
 public:
@@ -123,6 +123,7 @@ private:
     uint16_t offset = 0;                  ///< Offset used for byte serialization.
     int strLength = 0;                    ///< Length of the label text.
     const char *str;                      ///< Pointer to the label text.
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDGAUGESIMPLE_HPP */
