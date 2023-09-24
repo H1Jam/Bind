@@ -20,6 +20,7 @@ class BindAttitudeIndicator : public BindView
 {
 
 public:
+    BindAttitudeIndicator();
     int16_t x = 0; ///< X-coordinate position of the attitude indicator.
     int16_t y = 0; ///< Y-coordinate position of the attitude indicator.
     uint8_t cmdId = 0;
@@ -51,7 +52,7 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::attitudeIndicator;
+    uint8_t objID = BIND_ID_ATTITUDE_INDICATOR;
     uint16_t offset = 0;
     static int16_t tagIndex;
 };
