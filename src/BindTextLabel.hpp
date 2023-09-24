@@ -28,10 +28,7 @@ public:
    *
    * @param cstr A pointer to the character array representing the custom label for the text label.
    */
-  BindTextLabel(const char *cstr)
-  {
-    setlabel(cstr);
-  }
+  BindTextLabel(const char *cstr);
 
   /**
    * @brief Constructs a BindTextLabel with a default label.
@@ -39,10 +36,7 @@ public:
    * This constructor creates a BindTextLabel with a default label of "TextLabel."
    * You can customize the label later using the 'setLabel' function.
    */
-  BindTextLabel()
-  {
-    setlabel("TextLabel");
-  }
+  BindTextLabel() :BindTextLabel("TextLabel"){}
 
   /**
    * @brief Sets the label text for the text label.
@@ -91,7 +85,7 @@ public:
   }
 
 private:
-  uint8_t objID = BindIDs::label;
+  uint8_t objID = BIND_ID_LABEL;
   uint16_t offset = 0;
   int strLength = 0;
   const char *str;
