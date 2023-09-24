@@ -16,6 +16,7 @@ class BindTerminal : public BindView
 {
 
 public:
+    BindTerminal();
     int16_t x = 0;              ///< X-coordinate position of the terminal.
     int16_t y = 0;              ///< Y-coordinate position of the terminal.
     uint8_t cmdId = 0;          ///< Command ID for the terminal.
@@ -84,8 +85,8 @@ public:
     }
 
 private:
-    uint8_t objID = BindIDs::terminal;
-    uint8_t dataID = BindIDs::terminalData;
+    uint8_t objID = BIND_ID_TERMINAL;
+    uint8_t dataID = BIND_ID_TERMINAL_DATA;
     uint16_t offset = 0;
     int strLength = 0;
     static int16_t tagIndex;
