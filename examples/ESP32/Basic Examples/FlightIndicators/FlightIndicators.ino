@@ -15,7 +15,7 @@ float pitchDelta = 1;
 
 float headingC = 0;
 
-void onConnection(int16_t w, int16_t h) {
+void onConnection(int16_t width, int16_t height) {
   Serial.println("Screen setup started!");
   drawAttitudeIndicator();
   addHeadingIndicator();
