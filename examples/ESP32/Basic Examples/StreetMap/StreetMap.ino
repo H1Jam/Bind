@@ -9,6 +9,7 @@ BindMapMarker mapMarker2;
 
 int counter = 0;
 int wpIndex = 0;
+//dummy locations:
 float oceanDrive[5][2] = {
   { 26.891425, -80.056879 },
   { 26.891173, -80.056838 },
@@ -31,6 +32,7 @@ void addMap() {
   bind.sync(&bindMap);
 }
 
+// Move some dummy markers:
 void moveMapAndMarkers() {
   mapMarker1.lat = oceanDrive[wpIndex][0];
   mapMarker1.lon = oceanDrive[wpIndex][1];
