@@ -24,7 +24,7 @@ void addJoystick1() {
   // Configure and add the joystick
   joystick1.x = 50;
   joystick1.y = 80;
-  joystick1.dimSize = 200;//width = height = 200
+  joystick1.dimSize = 200;  //width = height = 200
   joystick1.springed = true;
   joystick1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   bind.sync(&joystick1);
@@ -32,9 +32,9 @@ void addJoystick1() {
 
 void addJoystick2(int16_t height) {
   // Configure and add the joystick
-  joystick2.x = height - 200; // placed at the end of screen.
+  joystick2.x = height - 200;  // placed at the end of screen.
   joystick2.y = 80;
-  joystick2.dimSize = 200; //width = height = 200
+  joystick2.dimSize = 200;  //width = height = 200
   joystick2.springed = true;
   joystick2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   bind.sync(&joystick2);
@@ -71,6 +71,17 @@ void setup() {
 }
 
 void loop() {
+  /**
+ * Synchronize Bind UI Events
+ *
+ * To ensure proper handling of user inputs and touch events, it's crucial to call
+ * this function regularly within your Arduino loop. Failing to do so may result
+ * in missed events, such as button clicks or user interactions with your UI elements.
+ * By calling `bind.sync()`, you maintain seamless communication between your Arduino
+ * code and the Bind Framework.
+ * It's recommended to call sync() a couple of times per second, but the faster, the better!
+ * Aim for a rate above 20Hz for ideal performance.
+  */
   bind.sync();
   delay(10);
 }
