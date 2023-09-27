@@ -92,10 +92,10 @@ void addSeekBars() {
  * Note: For more information about density-independent pixels (dp) visit:
  *                 https://en.wikipedia.org/wiki/Device-independent_pixel
  *
- * @param w The width of the screen in dp (Density-Independent Pixels).
- * @param h The height of the screen in dp (Density-Independent Pixels).
+ * @param width The width of the screen in dp (Density-Independent Pixels).
+ * @param height The height of the screen in dp (Density-Independent Pixels).
  */
-void onConnection(int16_t w, int16_t h) {
+void onConnection(int16_t width, int16_t height) {
   Serial.println("Screen setup started!");
   addSeekBars();
   Serial.println("Screen setup done!");
