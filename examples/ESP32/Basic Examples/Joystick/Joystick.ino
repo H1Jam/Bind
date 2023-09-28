@@ -6,6 +6,16 @@ Bind bind;
 BindJoystick joystick1;
 BindJoystick joystick2;
 
+/**
+ * @brief Callback for joystick change.
+ *
+ * This function is triggered when the joystick's position changes. It receives
+ * two parameters, 'x' and 'y,' representing the new X and Y coordinates of the joystick.
+ * You can implement custom actions based on these coordinates.
+ *
+ * @param x The new X-coordinate of the joystick.
+ * @param y The new Y-coordinate of the joystick.
+ */
 void joystick1_onChange(int16_t x, int16_t y) {
   Serial.print("joystick1 has been changed, x:");
   Serial.print(x);
@@ -13,6 +23,9 @@ void joystick1_onChange(int16_t x, int16_t y) {
   Serial.println(y);
 }
 
+/**
+ * @brief Callback for joystick change.
+ */
 void joystick2_onChange(int16_t x, int16_t y) {
   Serial.print("joystick2 has been changed, x:");
   Serial.print(x);
@@ -46,7 +59,7 @@ void onConnection(int16_t width, int16_t height) {
   // Rotate the creen for better exprince and more space.
   BindCanvasSettings canvasSettings;
   canvasSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
-  canvasSettings.backColor = BLACK;
+  canvasSettings.backColor = BLACK; // Or use RGB(R:0-255, G:0-255, B0-255). For example RGB(100,255,40);
   bind.sync(&canvasSettings);
 
   addJoystick1();
