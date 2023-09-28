@@ -16,7 +16,10 @@ void setScreenConfig() {
 
   // Landscape mode: screen width > height.
   canvasSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
-  canvasSettings.backColor = BLACK;
+  canvasSettings.backColor = BLACK; 
+  // Or use RGB(R:0-255, G:0-255, B0-255). 
+  //For example:
+  //canvasSettings.backColor = RGB(100,255,40);
   bind.sync(&canvasSettings);
 }
 
