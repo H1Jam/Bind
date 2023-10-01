@@ -1,8 +1,14 @@
 #include "crc16.h"
 #include <stdint.h>
 #include <stddef.h>
+#ifdef __AVR__
+#include <avr/pgmspace.h>
+#define PRGM PROGMEM
+#else
+#define PRGM
+#endif
 
-uint16_t const crc16_table[256] = {
+uint16_t const crc16_table[] PRGM = {
     0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
     0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
     0x1231, 0x0210, 0x3273, 0x2252, 0x52b5, 0x4294, 0x72f7, 0x62d6,
@@ -38,7 +44,11 @@ uint16_t const crc16_table[256] = {
 
 static inline uint16_t crc16_byte(uint16_t crc, const uint8_t data)
 {
+  #ifdef __AVR__
+  return (crc << 8) ^ pgm_read_word_near(&crc16_table[(crc >> 8) ^ data]);
+  #else
   return (crc << 8) ^ crc16_table[(crc >> 8) ^ data];
+  #endif
 }
 uint16_t crc = 0;
 uint16_t crc16(uint8_t const *buffer, size_t len)
