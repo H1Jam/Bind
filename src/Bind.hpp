@@ -139,7 +139,7 @@ public:
    *                     This function receives 'w' for width and 'h' for height.
    *                     It ensures consistent object positioning and size across devices.
    */
-  void init(Stream *stream, void (*setupCallback)(int16_t, int16_t));
+  bool init(Stream *stream, void (*setupCallback)(int16_t, int16_t));
 
   /**
    * @brief Binds a Button object to a click callback function.
