@@ -4,11 +4,9 @@
 #include <string.h>
 #include "Stream.h"
 #include "SLPacker.hpp"
-#define MAX_DATA_LENGHT 100
 
 static uint8_t VERSIONID = 0;
 
-uint8_t const dataHeader[3] = {199, 201, 176};
 enum DataDirection
 {
   toAndroid,
@@ -21,10 +19,6 @@ class DataParser
 {
 private:
   SLPacker slPacker;
-  uint8_t dataIn[3] = {0, 0, 0};
-  int bufIndex = 0;
-  int dataStep = 0;
-  int dataLength = 0;
 
 public:
   static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
