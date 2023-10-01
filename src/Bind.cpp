@@ -2,12 +2,19 @@
 uint8_t bufFrame[100];
 uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
 
-void Bind::init(Stream *stream, void (*_setupCallback)(int16_t, int16_t))
+bool Bind::init(Stream *stream, void (*_setupCallback)(int16_t, int16_t))
 {
-  bindStream = stream;
-  setupCallback = _setupCallback;
+  if (stream != NULL && _setupCallback != NULL)
+  {
+    bindStream = stream;
+    setupCallback = _setupCallback;
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
-
 
 void Bind::sync(float chartData, BindChart *obj)
 {
@@ -31,7 +38,6 @@ void Bind::sync(const char *str, BindTerminal *obj)
 {
   sync(str, WHITE, true, true, false, false, obj);
 }
-
 
 void Bind::sync(BindView *obj)
 {
@@ -136,8 +142,6 @@ void Bind::screenInit(int16_t w, int16_t h)
     isInitialized = true;
   }
 }
-
-
 
 void Bind::knobChanged(int8_t tag, int val)
 {
