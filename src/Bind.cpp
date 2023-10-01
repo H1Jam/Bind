@@ -1,6 +1,4 @@
 #include "Bind.hpp"
-uint8_t bufFrame[100];
-uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
 
 bool Bind::init(Stream *stream, void (*_setupCallback)(int16_t, int16_t))
 {
