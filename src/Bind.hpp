@@ -2,6 +2,7 @@
 #define __BIND_H
 #include <stdint.h>
 #include "Stream.h"
+#include "SLPacker.hpp"
 #include "DataProtocol.h"
 #include "BindUtils.hpp"
 #include "BindWidgets.hpp"
@@ -138,6 +139,7 @@ public:
    * @param setupCallback A pointer to the screen setup callback function.
    *                     This function receives 'w' for width and 'h' for height.
    *                     It ensures consistent object positioning and size across devices.
+   * @return Returns 'true' if initialization is successful; otherwise, returns 'false'.
    */
   bool init(Stream *stream, void (*setupCallback)(int16_t, int16_t));
 
@@ -268,6 +270,8 @@ public:
 
 private:
   // Private member variables and functions...
+  uint8_t bufFrame[MAX_DATA_LENGHT];
+  uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];
   int16_t valTmp1 = 0;
   int16_t valTmp2 = 0;
   int16_t valTmp3 = 0;
