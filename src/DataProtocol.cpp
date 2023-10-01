@@ -10,6 +10,9 @@ void printArray(uint8_t const *buffer, size_t len);
 
 int DataParser::update(uint8_t inp)
 {
+  #ifdef DEBUG_MSG
+  Serial.print(inp, HEX);
+  #endif
   size_t res = slPacker.decode(inp);
   if (res > 0)
   {
@@ -80,23 +83,24 @@ bool checkCRC(uint8_t const *buffer, size_t len)
   }
 }
 
-int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len)
-{
-  if (len < 1)
-    return 0;
-  if (len > MAX_DATA_LENGHT)
-    return 0;
-  memcpy(destBuffer, dataHeader, 3);
-  destBuffer[3] = (len + 4) & 0xFF;
-  destBuffer[4] = toAndroid & 0xFF;
-  destBuffer[5] = VERSIONID & 0xFF;
-  // Todo: add a protocol version Id here. 1 byte!
-  memcpy(destBuffer + 6, buffer, len);
-  uint16_t crcTmp = crc16(buffer, len);
-  destBuffer[6 + len] = crcTmp & 0xFF;
-  destBuffer[6 + len + 1] = (crcTmp >> 8) & 0xFF;
-  return len + 8;
-}
+// Legacy
+// int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len)
+// {
+//   if (len < 1)
+//     return 0;
+//   if (len > MAX_DATA_LENGHT)
+//     return 0;
+//   memcpy(destBuffer, dataHeader, 3);
+//   destBuffer[3] = (len + 4) & 0xFF;
+//   destBuffer[4] = toAndroid & 0xFF;
+//   destBuffer[5] = VERSIONID & 0xFF;
+//   // Todo: add a protocol version Id here. 1 byte!
+//   memcpy(destBuffer + 6, buffer, len);
+//   uint16_t crcTmp = crc16(buffer, len);
+//   destBuffer[6 + len] = crcTmp & 0xFF;
+//   destBuffer[6 + len + 1] = (crcTmp >> 8) & 0xFF;
+//   return len + 8;
+// }
 
 void printArray(uint8_t const *buffer, size_t len)
 {
