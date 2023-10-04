@@ -4,7 +4,7 @@
 
 **Bind** is a powerful C++ UI toolkit specifically designed for Arduino, empowering developers to create interactive user interfaces seamlessly integrated into their Arduino projects. In essence, it facilitates the generation of UI components on an Android screen through MCU code. This toolkit serves a dual purpose: displaying diverse data formats, including text, charts, and gauges, and capturing user inputs through an array of elements such as buttons, checkboxes, joysticks, and sliders.
 
-Using Bind is a breeze, requiring just three fundamental functions: `init`, `join`, `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
+Using Bind is a breeze, requiring just three fundamental functions: `init`, `join`, and `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
 
 No need to delve into data parsing or protocol handling, everything is internally managed by the Bind library. Simply define your objects, set attributes like location, size, and color, and call `bind.sync(&myBindObject)` to display them on the screen.
 
