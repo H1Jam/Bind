@@ -59,7 +59,7 @@ void Bind::sync()
 
 void Bind::join(BindButton *screenButton, void (*clickCallback)(void))
 {
-  if (buttonIndex < MAX_HANDLERS)
+  if (buttonIndex < MAX_HANDLERS && screenButton->tag == 0)
   {
     screenButton->tag = buttonIndex++;
     buttons[screenButton->tag] = ButtonHandler(clickCallback);
@@ -68,7 +68,7 @@ void Bind::join(BindButton *screenButton, void (*clickCallback)(void))
 
 void Bind::join(BindKnob *screenKnob, void (*changeCallback)(int16_t))
 {
-  if (dialKnobIndex < MAX_HANDLERS)
+  if (dialKnobIndex < MAX_HANDLERS && screenKnob->tag == 0)
   {
     screenKnob->tag = dialKnobIndex++;
     dialKnobHandlers[screenKnob->tag] = DialKnobHandler(&screenKnob->value, changeCallback);
@@ -159,7 +159,7 @@ void Bind::clickButton(uint8_t tag)
 
 void Bind::join(BindSwitch *screenSwitch, void (*clickCallback)(bool))
 {
-  if (switchIndex < MAX_HANDLERS)
+  if (switchIndex < MAX_HANDLERS && screenSwitch->tag == 0)
   {
     screenSwitch->tag = switchIndex++;
     switchHandlers[screenSwitch->tag] = SwitchHandler(&screenSwitch->switchValue, clickCallback);
@@ -176,7 +176,7 @@ void Bind::updateSwitch(uint8_t tag, bool val)
 
 void Bind::join(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t))
 {
-  if (seekBarIndex < MAX_HANDLERS)
+  if (seekBarIndex < MAX_HANDLERS && screenSeekBar->tag == 0)
   {
     screenSeekBar->tag = seekBarIndex++;
     seekBarHandlers[screenSeekBar->tag] = SeekBarHandler(&screenSeekBar->seekValue, changeCallback);
@@ -193,7 +193,7 @@ void Bind::updateSeekBar(uint8_t tag, int16_t val)
 
 void Bind::join(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t))
 {
-  if (joystickHandlerIndex < MAX_HANDLERS)
+  if (joystickHandlerIndex < MAX_HANDLERS && screenJoystick->tag == 0)
   {
     screenJoystick->tag = joystickHandlerIndex++;
     joystickHandlers[screenJoystick->tag] = JoystickHandler(&screenJoystick->sX, &screenJoystick->sY, changeCallback);
@@ -210,7 +210,7 @@ void Bind::updateJoystick(uint8_t tag, int16_t valX, int16_t valY)
 
 void Bind::join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t))
 {
-  if (colorPickerHandlerIndex < MAX_HANDLERS)
+  if (colorPickerHandlerIndex < MAX_HANDLERS && screenColorPicker->tag == 0)
   {
     screenColorPicker->tag = colorPickerHandlerIndex++;
     colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, clickCallback);
