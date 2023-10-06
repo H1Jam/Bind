@@ -42,9 +42,9 @@ bool led_is_on = false;
 void setup() {
     pinMode(ledPin, OUTPUT);
     // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
-    bind.init(&Serial, &onConnection);
+    bind.init(Serial, onConnection);
     // Connect the callback functions with the Bind objects.
-    bind.join(&myButton, &myButtonClicked);
+    bind.join(myButton, myButtonClicked);
 }
 
 /**
@@ -63,7 +63,7 @@ void addButton() {
   myButton.setlabel("LED");
   myButton.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the myButton object with BindCanvas.
-  bind.sync(&myButton);
+  bind.sync(myButton);
 }
 
 void myButtonClicked() {
@@ -96,9 +96,9 @@ void setup() {
     SerialBT.begin("BindOnESP32");
   
     // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
-    bind.init(&SerialBT, &onConnection);
+    bind.init(SerialBT, onConnection);
     // Connect the callback functions with the Bind objects.
-    bind.join(&myButton, &myButtonClicked);
+    bind.join(myButton, myButtonClicked);
 }
 
 /**
@@ -117,7 +117,7 @@ void addButton() {
   myButton.setlabel("LED");
   myButton.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the myButton object with BindCanvas.
-  bind.sync(&myButton);
+  bind.sync(myButton);
 }
 
 void myButtonClicked() {
