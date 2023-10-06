@@ -31,13 +31,13 @@ void addGauge() {
   gauge1.arcRedMaxVal = 180.0f;
   gauge1.setlabel("Speed mph");
   gauge1.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&gauge1);
+  bind.sync(gauge1);
 }
 
 void updateGauge(float value) {
   gauge1.value = value;
   gauge1.cmdId = BIND_DATA_ONLY_CMD;
-  bind.sync(&gauge1);
+  bind.sync(gauge1);
 }
 
 // Configure and add the second gauge (BindGaugeCompact)
@@ -53,13 +53,13 @@ void addGaugeCompact() {
   gauge2.arcRedMaxVal = 180.0f;
   gauge2.setlabel("Speed Km/h");
   gauge2.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&gauge2);
+  bind.sync(gauge2);
 }
 
 void updateGaugeCompact(float value) {
   gauge2.value = value;
   gauge2.cmdId = BIND_DATA_ONLY_CMD;
-  bind.sync(&gauge2);
+  bind.sync(gauge2);
 }
 
 void addGaugeSimple() {
@@ -74,13 +74,13 @@ void addGaugeSimple() {
   gauge3.color = BLUE;
   gauge3.setlabel("Simple Gauge");
   gauge3.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&gauge3);
+  bind.sync(gauge3);
 }
 
 void updateGaugeSimple(float value) {
   gauge3.value = value;
   gauge3.cmdId = BIND_DATA_ONLY_CMD;
-  bind.sync(&gauge3);
+  bind.sync(gauge3);
 }
 
 void onConnection(int16_t width, int16_t height) {
@@ -96,7 +96,7 @@ void setup() {
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
 
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
 
   Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
   Serial.println("Device Name:");
