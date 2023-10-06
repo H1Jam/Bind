@@ -6,9 +6,9 @@
 
 Using Bind is a breeze, requiring just three fundamental functions: `init`, `join`, and `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
 
-No need to delve into data parsing or protocol handling, everything is internally managed by the Bind library. Simply define your objects, set attributes like location, size, and color, and call `bind.sync(&myBindObject)` to display them on the screen.
+No need to delve into data parsing or protocol handling, everything is internally managed by the Bind library. Simply define your objects, set attributes like location, size, and color, and call `bind.sync(myBindObject)` to display them on the screen.
 
-For interactive elements like buttons or color pickers where you expect user input in your C++ code, set a callback function using `bind.join(&myButton, &myButtonClicked)` In this context,`myButtonClicked` is function like:
+For interactive elements like buttons or color pickers where you expect user input in your C++ code, set a callback function using `bind.join(myButton, myButtonClicked)` In this context,`myButtonClicked` is function like:
 ```cpp
 void myButtonClicked() {
     // Your custom logic when the button is clicked
