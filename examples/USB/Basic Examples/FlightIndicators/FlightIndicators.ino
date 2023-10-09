@@ -29,7 +29,7 @@ void drawAttitudeIndicator() {
   attitudeIndicator.pitch = 0.0f;
 
   // Synchronize the attitudeIndicator object with BindCanvas.
-  bind.sync(&attitudeIndicator);
+  bind.sync(attitudeIndicator);
 }
 
 void addHeadingIndicator() {
@@ -42,13 +42,13 @@ void addHeadingIndicator() {
   headingIndicator.heading = 0.0f;
 
   // Synchronize the headingIndicator object with BindCanvas.
-  bind.sync(&headingIndicator);
+  bind.sync(headingIndicator);
 }
 
 void setup() {
   Serial.begin(115200);
 
-  bind.init(&Serial, &onConnection);
+  bind.init(Serial, onConnection);
   
 }
 
@@ -82,11 +82,11 @@ void setAttitudeIndicator(float roll, float pitch) {
   attitudeIndicator.cmdId = BIND_DATA_ONLY_CMD;
   attitudeIndicator.roll = roll;
   attitudeIndicator.pitch = pitch;
-  bind.sync(&attitudeIndicator);
+  bind.sync(attitudeIndicator);
 }
 
 void setHeadingIndicator(float heading) {
   headingIndicator.cmdId = BIND_DATA_ONLY_CMD;
   headingIndicator.heading = heading;
-  bind.sync(&headingIndicator);
+  bind.sync(headingIndicator);
 }
