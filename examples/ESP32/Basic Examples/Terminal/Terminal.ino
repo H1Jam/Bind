@@ -17,15 +17,15 @@ void addScreenTerminal() {
   screenTerminal.height = 200;
   screenTerminal.textSize = 10;
   screenTerminal.backColor = UBUNTU;
-  sendScreenStream(&screenTerminal, &SerialBT);
+  sendScreenStream(screenTerminal, SerialBT);
 }
 
 void updateScreenTerminalData(const char *cstr) {
-  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &SerialBT);
+  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, screenTerminal, SerialBT);
 }
 
 void updateScreenTerminalDataBigger(const char *cstr) {
-  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &SerialBT);
+  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, screenTerminal, SerialBT);
 }
 
 void screenSetup() {
@@ -36,7 +36,7 @@ void screenSetup() {
 
 void setup() {
   Serial.begin(115200);
-  screenObjects.registerScreenSetup(&screenSetup);
+  screenObjects.registerScreenSetup(screenSetup);
   String devName = "ESP32testB";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
