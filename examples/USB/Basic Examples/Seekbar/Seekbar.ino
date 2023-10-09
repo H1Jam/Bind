@@ -13,7 +13,7 @@ const int ledPin = 2;
  * It receives an integer parameter, 'val,' representing the new value of Seekbar 1.
  * You can define specific actions based on this value to respond to Seekbar changes.
  * To link this callback function with the Bind object, use the following syntax (in the Setup()):
- * `bind.join(&your_seekbar_object, &seekbar1_changed);`
+ * `bind.join(your_seekbar_object, seekbar1_changed);`
  * Make sure to include the '&' symbols as they indicate pointers to the function and object.
  * @note Ensure you call "bind.sync();" in the main loop in order to get the callback and chage events.
  *
@@ -59,7 +59,7 @@ void addSeekBars() {
   /// Specify the command to either add the object
   to the BindCanvas(screen) or refresh the existing one.seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   /// Synchronize the seekBar1 object with BindCanvas.
-  bind.sync(&seekBar1);
+  bind.sync(seekBar1);
 
   /// Syncing the second SeekBar:
   seekBar2.x = 100;
@@ -69,7 +69,7 @@ void addSeekBars() {
   seekBar2.maxValue = 100;
   seekBar2.width = 150;
   /// Synchronize the seekBar2 object with BindCanvas.
-  bind.sync(&seekBar2);
+  bind.sync(seekBar2);
 }
 
 /**
@@ -98,12 +98,12 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 
   /// Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
-  bind.init(&Serial, &onConnection);
+  bind.init(Serial, onConnection);
   /// Note: It was Serial here, but it could be any serial port, including hardware and software serial.
 
   /// Connect the callback functions with the Bind objects.
-  bind.join(&seekBar1, &seekbar1_changed);
-  bind.join(&seekBar2, &seekbar2_changed);
+  bind.join(seekBar1, seekbar1_changed);
+  bind.join(seekBar2, seekbar2_changed);
   /// @note please ensure that you include the '&' symbols in the function parameters, these are pointers.
 
 
