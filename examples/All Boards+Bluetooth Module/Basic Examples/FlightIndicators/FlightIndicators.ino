@@ -38,7 +38,7 @@ void drawAttitudeIndicator() {
   attitudeIndicator.pitch = 0.0f;
 
   // Synchronize the attitudeIndicator object with BindCanvas.
-  bind.sync(&attitudeIndicator);
+  bind.sync(attitudeIndicator);
 }
 
 void addHeadingIndicator() {
@@ -51,7 +51,7 @@ void addHeadingIndicator() {
   headingIndicator.heading = 0.0f;
 
   // Synchronize the headingIndicator object with BindCanvas.
-  bind.sync(&headingIndicator);
+  bind.sync(headingIndicator);
 }
 
 void setup() {
@@ -59,7 +59,7 @@ void setup() {
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
 
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
   
   Serial.println("The Bluetooth device started, now you can pair the phone with Bluetooth!");
 }
@@ -94,11 +94,11 @@ void setAttitudeIndicator(float roll, float pitch) {
   attitudeIndicator.cmdId = BIND_DATA_ONLY_CMD;
   attitudeIndicator.roll = roll;
   attitudeIndicator.pitch = pitch;
-  bind.sync(&attitudeIndicator);
+  bind.sync(attitudeIndicator);
 }
 
 void setHeadingIndicator(float heading) {
   headingIndicator.cmdId = BIND_DATA_ONLY_CMD;
   headingIndicator.heading = heading;
-  bind.sync(&headingIndicator);
+  bind.sync(headingIndicator);
 }
