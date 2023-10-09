@@ -19,7 +19,7 @@ void send_Dummy_SinWave_Chartdata() {
   X += 10;
   X %= 360;
   sinX = sin(X * PI / 180.0f) * 30;
-  bind.sync(sinX, &chart1);
+  bind.sync(sinX, chart1);
 }
 
 /**
@@ -39,7 +39,7 @@ void addChart() {
   chart1.maxX = 20;
   chart1.autoSize = true;
   chart1.color = YELLOW;
-  bind.sync(&chart1);
+  bind.sync(chart1);
 }
 
 /**
@@ -57,7 +57,7 @@ void onConnection(int16_t w, int16_t h) {
 void setup() {
   Serial.begin(115200);
   // Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
-  bind.init(&SerialBT, &onConnection);
+  bind.init(SerialBT, onConnection);
 
   String devName = "ESP32testB";
   SerialBT.begin(devName);
