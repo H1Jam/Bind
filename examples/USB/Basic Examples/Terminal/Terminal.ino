@@ -15,15 +15,15 @@ void addScreenTerminal() {
   screenTerminal.height = 200;
   screenTerminal.textSize = 10;
   screenTerminal.backColor = UBUNTU;
-  sendScreenStream(&screenTerminal, &Serial);
+  sendScreenStream(screenTerminal, Serial);
 }
 
 void updateScreenTerminalData(const char *cstr) {
-  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &Serial);
+  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, screenTerminal, Serial);
 }
 
 void updateScreenTerminalDataBigger(const char *cstr) {
-  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &Serial);
+  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, screenTerminal, Serial);
 }
 
 void screenSetup() {
@@ -32,7 +32,7 @@ void screenSetup() {
 
 void setup() {
   Serial.begin(115200);
-  screenObjects.registerScreenSetup(&screenSetup);
+  screenObjects.registerScreenSetup(screenSetup);
 }
 
 void loop() {
