@@ -15,7 +15,7 @@ const int ledPin = 2;
  * It receives a boolean parameter, 'state,' representing the new state of Switch 1 (ON or OFF).
  * You can define specific actions based on this state to respond to Switch changes.
  * To link this callback function with the Bind object, use the following syntax (in the Setup()):
- * `bind.join(&your_switch_object, &switch1_changed);`
+ * `bind.join(your_switch_object, switch1_changed);`
  * Make sure to include the '&' symbols as they indicate pointers to the function and object.
  * @note Ensure you call "bind.sync();" in the main loop to get the callback and change events.
  *
@@ -32,7 +32,7 @@ void switch1_changed(bool state) {
     digitalWrite(ledPin, LOW); // Turn off the LED
     switch1.setlabel("OFF");
   }
-  bind.sync(&switch1);
+  bind.sync(switch1);
 }
 
 /**
@@ -47,7 +47,7 @@ void switch2_changed(bool state) {
     switch2.setlabel("Disable");
   }
   switch2.cmdId = BIND_DATA_ONLY_CMD;
-  bind.sync(&switch2);
+  bind.sync(switch2);
 }
 
 /**
@@ -73,7 +73,7 @@ void addSwitches() {
   // Specify the command to either add the object to the BindCanvas screen or refresh the existing one.
   switch1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the switch1 object with BindCanvas.
-  bind.sync(&switch1);
+  bind.sync(switch1);
 
   // Syncing the second Switch:
   switch2.x = 30;
@@ -84,7 +84,7 @@ void addSwitches() {
   switch2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   switch2.switchValue = true;
   // Synchronize the switch2 object with BindCanvas.
-  bind.sync(&switch2);
+  bind.sync(switch2);
 }
 
 /**
@@ -117,12 +117,12 @@ void setup() {
   SerialBT.begin(devName);
 
   // Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
-  bind.init(&SerialBT, &onConnection);
+  bind.init(SerialBT, onConnection);
   // Note: It was SerialBT here, but it could be any serial port, including hardware and software serial.
 
   // Connect the callback functions with the Bind objects.
-  bind.join(&switch1, &switch1_changed);
-  bind.join(&switch2, &switch2_changed);
+  bind.join(switch1, switch1_changed);
+  bind.join(switch2, switch2_changed);
   // Please ensure that you include the '&' symbols in the function parameters; these are pointers.
 
   Serial.println("The Bluetooth device started; now you can pair the phone with Bluetooth!");
