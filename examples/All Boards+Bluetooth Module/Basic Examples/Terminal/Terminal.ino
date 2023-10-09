@@ -22,15 +22,15 @@ void addScreenTerminal() {
   screenTerminal.height = 200;
   screenTerminal.textSize = 10;
   screenTerminal.backColor = UBUNTU;
-  sendScreenStream(&screenTerminal, &swSerial);
+  sendScreenStream(screenTerminal, swSerial);
 }
 
 void updateScreenTerminalData(const char *cstr) {
-  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, &screenTerminal, &swSerial);
+  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, screenTerminal, swSerial);
 }
 
 void updateScreenTerminalDataBigger(const char *cstr) {
-  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, &screenTerminal, &swSerial);
+  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, screenTerminal, swSerial);
 }
 
 void screenSetup() {
@@ -41,7 +41,7 @@ void screenSetup() {
 
 void setup() {
   Serial.begin(115200);
-  screenObjects.registerScreenSetup(&screenSetup);
+  screenObjects.registerScreenSetup(screenSetup);
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
 }
