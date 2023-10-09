@@ -17,11 +17,11 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 
   // Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
 
   // Connect the callback functions with the Bind objects.
-  bind.join(&knob1, &knob1_changed);
-  bind.join(&knob2, &knob2_changed);
+  bind.join(knob1, knob1_changed);
+  bind.join(knob2, knob2_changed);
 
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
@@ -73,7 +73,7 @@ void addKnobs() {
   knob1.minValue = 0;
   knob1.maxValue = 100;
   knob1.value = 50;  // Initial value
-  bind.sync(&knob1);
+  bind.sync(knob1);
 
   // Configure and synchronize Knob 2
   knob2.x = 100;
@@ -83,5 +83,5 @@ void addKnobs() {
   knob2.minValue = 0;
   knob2.maxValue = 100;
   knob2.value = 25;  // Initial value
-  bind.sync(&knob2);
+  bind.sync(knob2);
 }
