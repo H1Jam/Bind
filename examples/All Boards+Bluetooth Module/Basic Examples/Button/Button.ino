@@ -19,7 +19,7 @@ const int ledPin = 2;
  * This function is automatically triggered when Button 1 is pressed on the screen.
  * It allows you to define specific actions to perform when the button is pressed.
  * To link this callback function with the Bind object, use the following syntax (in the Setup()):
- * `bind.join(&your_button_object, &button1_pressed);`
+ * `bind.join(your_button_object, button1_pressed);`
  * Make sure to include the '&' symbols as they indicate pointers to the function and object.
  * @note Ensure you call "bind.sync();" in the main loop to receive button press events.
  */
@@ -68,7 +68,7 @@ void addButton1() {
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the button1 object with BindCanvas.
-  bind.sync(&button1);
+  bind.sync(button1);
 }
 
 void addButton2() {
@@ -84,7 +84,7 @@ void addButton2() {
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the button1 object with BindCanvas.
-  bind.sync(&button2);
+  bind.sync(button2);
 }
 
 void onConnection(int16_t w, int16_t h) {
@@ -100,12 +100,12 @@ void setup() {
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
   // Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
   // Note: It was swSerial here, but it could be any serial port, including hardware and software serial.
 
   // Connect the callback functions with the Bind objects.
-  bind.join(&button1, &button1_pressed);
-  bind.join(&button2, &button2_pressed);
+  bind.join(button1, button1_pressed);
+  bind.join(button2, button2_pressed);
 
 }
 
