@@ -20,7 +20,7 @@ void setScreenConfig() {
   // Or use RGB(R:0-255, G:0-255, B0-255). 
   //For example:
   //canvasSettings.backColor = RGB(100,255,40);
-  bind.sync(&canvasSettings);
+  bind.sync(canvasSettings);
 }
 
 void onConnection(int16_t width, int16_t height) {
@@ -39,7 +39,7 @@ void setup() {
   String devName = "BindOnESP32";
   SerialBT.begin(devName);
 
-  bind.init(&SerialBT, &onConnection);
+  bind.init(SerialBT, onConnection);
 
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
