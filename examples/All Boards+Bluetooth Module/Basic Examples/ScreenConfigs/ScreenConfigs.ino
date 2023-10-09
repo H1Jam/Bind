@@ -25,7 +25,7 @@ void setScreenConfig() {
   // Or use RGB(R:0-255, G:0-255, B0-255). 
   //For example:
   //canvasSettings.backColor = RGB(100,255,40);
-  bind.sync(&canvasSettings);
+  bind.sync(canvasSettings);
 }
 
 void onConnection(int16_t width, int16_t height) {
@@ -44,7 +44,7 @@ void setup() {
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
 
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
 
 }
 
