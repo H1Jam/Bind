@@ -17,7 +17,7 @@ void addColorPicker() {
   colorPicker1.green = 190;                      /// The initial value for the green component of the selected color (0-255).
   colorPicker1.blue = 220;                       /// The initial value for the blue component of the selected color (0-255).
   colorPicker1.cmdId = BIND_ADD_OR_REFRESH_CMD;  /// Command identifier to add or refresh the color picker.
-  bind.sync(&colorPicker1);
+  bind.sync(colorPicker1);
 }
 
 /**
@@ -30,11 +30,11 @@ void onConnection(int16_t w, int16_t h) {
 void setup() {
   Serial.begin(115200);
   // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
-  bind.init(&Serial, &onConnection);
+  bind.init(Serial, onConnection);
   // Note: It was Serial here, but it could be any serial port, including hardware and software serial.
 
   // Connect the callback functions with the Bind objects.
-  bind.join(&colorPicker1, &colorPicker1_changed);
+  bind.join(colorPicker1, colorPicker1_changed);
 
 }
 
