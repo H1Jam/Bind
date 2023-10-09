@@ -43,7 +43,7 @@ void screenConfig() {
   BindCanvasSettings canvasSettings;
   canvasSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
   canvasSettings.backColor = RGB(41, 49, 52);
-  bind.sync(&canvasSettings);
+  bind.sync(canvasSettings);
 }
 
 /**
@@ -84,7 +84,7 @@ void addJoystickRight(int16_t screenHeight) {
   joystickRight.y = 140;
   joystickRight.cmdId = BIND_ADD_OR_REFRESH_CMD;
   joystickRight.dimSize = 200; // For BindJoystick, dimSize = height = width
-  bind.sync(&joystickRight);
+  bind.sync(joystickRight);
 }
 
 /**
@@ -95,7 +95,7 @@ void addJoystickLeft() {
   joystickLeft.y = 140;
   joystickLeft.cmdId = BIND_ADD_OR_REFRESH_CMD;
   joystickLeft.dimSize = 200; // For BindJoystick, dimSize = height = width
-  bind.sync(&joystickLeft);
+  bind.sync(joystickLeft);
 }
 
 /**
@@ -114,7 +114,7 @@ void addSpeedGauge(int16_t screenHeight) {
   speedGauge.arcRedMaxVal = 180.0f;
   speedGauge.setlabel("Speed Km/h");
   speedGauge.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&speedGauge);
+  bind.sync(speedGauge);
 }
 
 /**
@@ -127,7 +127,7 @@ void addAttitudeIndicator(int16_t screenHeight) {
   attitudeIndicator.roll = 0;
   attitudeIndicator.pitch = 0;
   attitudeIndicator.dimSize = 120; // For BindAttitudeIndicator, dimSize = height = width
-  bind.sync(&attitudeIndicator);
+  bind.sync(attitudeIndicator);
 }
 
 /**
@@ -139,7 +139,7 @@ void addHeadingIndicator(int16_t screenHeight) {
   headingIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
   headingIndicator.heading = 0;
   headingIndicator.dimSize = 120; // For BindHeadingIndicator, dimSize = height = width
-  bind.sync(&headingIndicator);
+  bind.sync(headingIndicator);
 }
 
 /**
@@ -150,7 +150,7 @@ void addHeadingIndicator(int16_t screenHeight) {
 void setHeadingIndicator(float heading) {
   headingIndicator.cmdId = BIND_DATA_ONLY_CMD;
   headingIndicator.heading = heading;
-  bind.sync(&headingIndicator);
+  bind.sync(headingIndicator);
 }
 
 /**
@@ -163,7 +163,7 @@ void setAttitudeIndicator(float roll, float pitch) {
   attitudeIndicator.cmdId = BIND_DATA_ONLY_CMD;
   attitudeIndicator.roll = roll;
   attitudeIndicator.pitch = pitch;
-  bind.sync(&attitudeIndicator);
+  bind.sync(attitudeIndicator);
 }
 
 /**
@@ -174,7 +174,7 @@ void setAttitudeIndicator(float roll, float pitch) {
 void setSpeedGauge(float value) {
   speedGauge.value = value;
   speedGauge.cmdId = BIND_DATA_ONLY_CMD;
-  bind.sync(&speedGauge);
+  bind.sync(speedGauge);
 }
 
 void setup() {
@@ -182,11 +182,11 @@ void setup() {
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
 
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
 
   //Set the callbacks
-  bind.join(&joystickRight, &joystickRight_onChange);
-  bind.join(&joystickLeft, &joystickLeft_onChange);
+  bind.join(joystickRight, joystickRight_onChange);
+  bind.join(joystickLeft, joystickLeft_onChange);
 
 }
 
