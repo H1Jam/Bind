@@ -24,7 +24,7 @@ void addtTextlabel() {
   textLabel1.color = WHITE;
   textLabel1.fontSize = 28;
   textLabel1.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&textLabel1);
+  bind.sync(textLabel1);
 
   textLabel2.x = 20;
   textLabel2.y = 230;
@@ -32,7 +32,7 @@ void addtTextlabel() {
   textLabel2.color = YELLOW;
   textLabel2.fontSize = 18;
   textLabel2.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&textLabel2);
+  bind.sync(textLabel2);
 }
 
 /**
@@ -64,7 +64,7 @@ void setup() {
   swSerial.begin(57600);
 
   // Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
   // Note: It was swSerial here, but it could be any serial port, including hardware and software serial.
 
 }
@@ -81,6 +81,6 @@ void loop() {
     snprintf(buffer, 10, "%d", millis());
     textLabel2.setlabel(buffer);
     textLabel2.cmdId = BIND_DATA_ONLY_CMD;
-    bind.sync(&textLabel2);
+    bind.sync(textLabel2);
   }
 }
