@@ -30,7 +30,7 @@ void addJoystick1() {
   joystick1.dimSize = 200;  //width = height = 200
   joystick1.springed = true;
   joystick1.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&joystick1);
+  bind.sync(joystick1);
 }
 
 void addJoystick2(int16_t height) {
@@ -40,7 +40,7 @@ void addJoystick2(int16_t height) {
   joystick2.dimSize = 200;  //width = height = 200
   joystick2.springed = true;
   joystick2.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&joystick2);
+  bind.sync(joystick2);
 }
 
 void onConnection(int16_t width, int16_t height) {
@@ -49,7 +49,7 @@ void onConnection(int16_t width, int16_t height) {
   BindCanvasSettings canvasSettings;
   canvasSettings.screenOrientation = SCREEN_ORIENTATION_LANDSCAPE;
   canvasSettings.backColor = BLACK; // Or use RGB(R:0-255, G:0-255, B0-255). For example RGB(100,255,40);
-  bind.sync(&canvasSettings);
+  bind.sync(canvasSettings);
 
   addJoystick1();
   addJoystick2(height);
@@ -58,11 +58,11 @@ void onConnection(int16_t width, int16_t height) {
 void setup() {
   Serial.begin(115200);
 
-  bind.init(&Serial, &onConnection);
+  bind.init(Serial, onConnection);
 
   //Set the callbacks
-  bind.join(&joystick1, &joystick1_onChange);
-  bind.join(&joystick2, &joystick2_onChange);
+  bind.join(joystick1, joystick1_onChange);
+  bind.join(joystick2, joystick2_onChange);
 
 }
 
