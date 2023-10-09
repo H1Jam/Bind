@@ -19,7 +19,7 @@ void configureCanvasSettings() {
   // Set the background color of the screen (in RGB format)
   canvasSettings.backColor = RGB(240, 240, 240);
   // Synchronize the canvasSettings object with BindCanvas
-  bind.sync(&canvasSettings);
+  bind.sync(canvasSettings);
 }
 
 // Function to add a rectangle to the BindCanvas screen
@@ -34,7 +34,7 @@ void addRectangle() {
   rectangle1.borderColor = RGB(100, 100, 100);  // Border color of the rectangle (in RGB format)
   rectangle1.borderWidth = 1;                   // Border width
   rectangle1.cornersRadius = 5;                 /// Radius of the rectangle's rounded corners.
-  bind.sync(&rectangle1);
+  bind.sync(rectangle1);
 }
 
 void drawAdaptiveRectangle(int16_t screenWidth) {
@@ -47,14 +47,14 @@ void drawAdaptiveRectangle(int16_t screenWidth) {
   rectangle2.borderColor = DKGRAY;  // Border color of the rectangle (in RGB format)
   rectangle2.borderWidth = 0;       // Border width
   rectangle2.cornersRadius = 2;     /// Radius of the rectangle's rounded corners.
-  bind.sync(&rectangle2);
+  bind.sync(rectangle2);
 }
 
 
 void setup() {
   Serial.begin(115200);
   // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
-  bind.init(&Serial, &onConnection);
+  bind.init(Serial, onConnection);
 }
 
 void loop() {
