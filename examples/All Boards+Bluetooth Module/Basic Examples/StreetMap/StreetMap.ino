@@ -34,7 +34,7 @@ void addMap() {
   bindMap.mapOrientation = 0.0f;
   bindMap.zoom = 18;
   bindMap.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&bindMap);
+  bind.sync(bindMap);
 }
 
 // Move some dummy markers:
@@ -59,7 +59,7 @@ void moveMapAndMarkers() {
   mapMarker1.iconId = MARKER_CAR_RED; 
   mapMarker1.scale = 70;
   mapMarker1.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&mapMarker1);
+  bind.sync(mapMarker1);
 
   mapMarker2.lat = oceanDrive[4 - wpIndex][0];
   mapMarker2.lon = oceanDrive[4 - wpIndex][1];
@@ -67,14 +67,14 @@ void moveMapAndMarkers() {
   mapMarker2.iconId = MARKER_CAR_GREEN;
   mapMarker2.scale = 60;
   mapMarker2.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&mapMarker2);
+  bind.sync(mapMarker2);
 
   bindMap.lat = oceanDrive[wpIndex][0];
   bindMap.lon = oceanDrive[wpIndex][1];
   bindMap.mapOrientation = 0.0f;
   bindMap.zoom = 18;  // or BIND_MAP_USER_ZOOM to let the user control the zoom level.
   bindMap.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  bind.sync(&bindMap);
+  bind.sync(bindMap);
   wpIndex++;
   if (wpIndex > 4) {
     wpIndex = 0;
@@ -93,7 +93,7 @@ void setup() {
   swSerial.begin(57600);
 
   /// Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
-  bind.init(&swSerial, &onConnection);
+  bind.init(swSerial, onConnection);
   /// Note: It was swSerial here, but it could be any serial port, including hardware and software serial.
 
 }
