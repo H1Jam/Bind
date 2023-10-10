@@ -2,7 +2,7 @@
 ![license](https://img.shields.io/github/license/H1Jam/Bind)
 # Bind: C++ UI Toolkit for Arduino
 
-**Bind** is a powerful C++ UI toolkit specifically designed for Arduino, empowering developers to create interactive user interfaces seamlessly integrated into their Arduino projects. In other words, it facilitates the generation of UI components on an Android screen through MCU code. By using Bind you can display diverse data formats, including text, charts, and gauges, and captur user inputs through an array of *interactive elements* such as buttons, checkboxes, joysticks, sliders, and color pickers.
+**Bind** is a C++ UI toolkit specifically designed for Arduino, empowering developers to create interactive user interfaces seamlessly integrated into their Arduino projects. In other words, it facilitates the generation of UI components on an Android screen through MCU code. By using Bind you can display diverse data formats, including text, charts, and gauges, and captur user inputs through an array of *interactive elements* such as buttons, checkboxes, joysticks, sliders, and color pickers.
 
 Using Bind is a breeze, requiring just three fundamental functions: `init`, `join`, and `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
 
