@@ -34,7 +34,7 @@
 /**
  * @brief The Bind class provides a framework for creating interactive applications with BindCanvas.
  *
- * Bind is a versatile class that enables you to build applications that interact with BindCanvas.
+ * Bind is a class that enables you to build applications that interact with BindCanvas.
  * It provides functions for binding and synchronizing various UI elements, including buttons,
  * knobs, switches, seekbars, joysticks, color pickers, terminals, and many more. You can use Bind to connect
  * your c++ programme to the BindCanvas screen, manage user interactions, and update UI elements in real time.
