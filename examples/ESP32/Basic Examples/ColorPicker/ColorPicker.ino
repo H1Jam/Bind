@@ -46,7 +46,7 @@ void setup() {
   // Connect the callback functions with the Bind objects.
   bind.join(colorPicker1, colorPicker1_changed);
 
-  String devName = "ESP32testB";
+  String devName = "BindOnESP32";
   SerialBT.begin(devName);
   Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
   Serial.println("devName:");
