@@ -96,7 +96,7 @@ void Bind::join(BindJoystick &screenJoystick, void (&changeCallback)(int16_t, in
 
 void Bind::join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_t, uint8_t, uint8_t))
 {
-  join(screenColorPicker, clickCallback);
+  join(&screenColorPicker, &clickCallback);
 }
 
 void Bind::join(BindButton *screenButton, void (*clickCallback)(void))
