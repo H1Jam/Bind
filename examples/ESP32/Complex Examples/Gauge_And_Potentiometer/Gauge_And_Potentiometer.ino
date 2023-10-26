@@ -20,14 +20,8 @@ void onConnection(int16_t width, int16_t height) {
   Serial.print(width);
   Serial.print(":");
   Serial.println(height);
-
   screenConfig();  // Configure the screen settings
-  //addJoystickLeft();       // Add the left joystick to the BindCanvas
-  //addJoystickRight(height);      // Add the right joystick to the BindCanvas
   addSpeedGauge(height);  // Add a speed gauge to the BindCanvas
-  //addAttitudeIndicator(height);  // Add an attitude indicator to the BindCanvas
-  //addHeadingIndicator(height);   // Add a heading indicator to the BindCanvas
-
   Serial.println("Screen setup done!");
 }
 
