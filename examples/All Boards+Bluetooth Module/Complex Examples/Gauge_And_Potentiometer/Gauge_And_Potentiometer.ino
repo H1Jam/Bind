@@ -1,11 +1,18 @@
+//For the esp32 requires the EspSoftwareSerial library.
 #include <SoftwareSerial.h>
 #include "Bind.hpp"
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.
 #ifdef __AVR__
-SoftwareSerial swSerial(4, 3);
+// For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
+SoftwareSerial swSerial(4, 3); 
+#elif defined(ESP32)
+// For ESP32: RX: pin 12, TX: pin 14
+SoftwareSerial swSerial(12, 14);
+#elif defined(ESP8266)
+// For ESP8266: RX: pin 12, TX: pin 14
 #else
-SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, ESP32, or similar.
+SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, or similar.
 #endif
 
 Bind bind;
@@ -81,7 +88,12 @@ void setSpeedGauge(float value) {
 
 void setup() {
   Serial.begin(115200);
+// If you want to utilize the full resolution, 
+// modify the value conversion in the syncPotentiometer() function.
+// Set the resulotion to 10bit, so we get 0-1023 from analogRead.
+#if defined(ESP32) || defined(ARDUINO_ARCH_RP2040)
   analogReadResolution(10);
+#endif
 
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
   swSerial.begin(57600);
