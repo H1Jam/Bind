@@ -2,17 +2,17 @@
 #include <SoftwareSerial.h>
 #include "Bind.hpp"
 
-// Note: Adjust the pins to match your Bluetooth module's configuration.
+// Note: Adjust the pins to match your Bluetooth module's configuration. You may use the Hardware UART as well.
 #ifdef __AVR__
-// For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
-SoftwareSerial swSerial(4, 3); 
-#elif defined(ESP32)
-// For ESP32: RX: pin 12, TX: pin 14
-SoftwareSerial swSerial(12, 14);
+SoftwareSerial swSerial(4, 3); // For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
+#elif defined(ESP32) 
+SoftwareSerial swSerial(11, 12); // For ESP32: RX: pin 11, TX: pin 12
 #elif defined(ESP8266)
-// For ESP8266: RX: pin 12, TX: pin 14
+SoftwareSerial swSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2
+#elif defined(ARDUINO_ARCH_RP2040)
+SoftwareSerial swSerial(2, 3); // For RP2040(Raspberry Pi Pico): RX: pin 2, TX: pin 3
 #else
-SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, or similar.
+SoftwareSerial swSerial(4, 3); // Modify this line, if your board is neither above.
 #endif
 
 Bind bind;
@@ -32,14 +32,8 @@ void onConnection(int16_t width, int16_t height) {
   Serial.print(width);
   Serial.print(":");
   Serial.println(height);
-
   screenConfig();  // Configure the screen settings
-  //addJoystickLeft();       // Add the left joystick to the BindCanvas
-  //addJoystickRight(height);      // Add the right joystick to the BindCanvas
   addSpeedGauge(height);  // Add a speed gauge to the BindCanvas
-  //addAttitudeIndicator(height);  // Add an attitude indicator to the BindCanvas
-  //addHeadingIndicator(height);   // Add a heading indicator to the BindCanvas
-
   Serial.println("Screen setup done!");
 }
 
