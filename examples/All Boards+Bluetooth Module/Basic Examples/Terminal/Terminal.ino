@@ -1,39 +1,51 @@
+//We only use SoftwareSerial for AVR Arduinos or ESP8266 library.
+#if defined(__AVR__) || defined(ESP8266)
 #include <SoftwareSerial.h>
+#endif
+
 #include "Bind.hpp"
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.
+// We may use SoftwareSerial for AVR Arduinos or ESP8266.
 #ifdef __AVR__
-SoftwareSerial swSerial(4, 3);
+SoftwareSerial btSerial(4, 3);  // For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
+#elif defined(ESP8266)
+SoftwareSerial btSerial(D1, D2);  // For ESP8266: RX: pin D1, TX: pin D2
+#elif defined(ESP32)
+#define btSerial Serial2  // For ESP32 we use Serial2.
+#elif defined(ARDUINO_ARCH_RP2040)
+#define btSerial Serial1  // For RP2040(Raspberry Pi Pico): Use serial1 RX: pin 2, TX: pin 3
 #else
-SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, ESP32, or similar.
+SoftwareSerial btSerial(4, 3);  // Modify this line, if your board is neither above.
 #endif
-ScreenObjects screenObjects;
-ScreenTerminal screenTerminal;
+
+Bind bind;
+BindTerminal bindTerminal;
 
 int counter = 0;
 int counter2 = 0;
 char buffer[15];
 
 void addScreenTerminal() {
-  screenTerminal.x = 10;
-  screenTerminal.y = 10;
-  screenTerminal.cmdId = ADD_OR_REFRESH_CMD;
-  screenTerminal.width = 300;
-  screenTerminal.height = 200;
-  screenTerminal.textSize = 10;
-  screenTerminal.backColor = UBUNTU;
-  sendScreenStream(screenTerminal, swSerial);
+  bindTerminal.x = 10;
+  bindTerminal.y = 70;
+  bindTerminal.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  bindTerminal.width = 300;
+  bindTerminal.height = 200;
+  bindTerminal.textSize = 10;
+  bindTerminal.backColor = UBUNTU;
+  bind.sync(bindTerminal);
 }
 
 void updateScreenTerminalData(const char *cstr) {
-  ScreenTerminalPrint(cstr, GREEN, true, true, true, false, screenTerminal, swSerial);
+  bind.sync(cstr, GREEN, true, true, true, false, bindTerminal);
 }
 
 void updateScreenTerminalDataBigger(const char *cstr) {
-  ScreenTerminalPrint(cstr, WHITE, true, true, true, false, screenTerminal, swSerial);
+  bind.sync(cstr, WHITE, true, true, true, false, bindTerminal);
 }
 
-void screenSetup() {
+void onConnection(int16_t w, int16_t h) {
   Serial.println("Screen setup started!");
   addScreenTerminal();
   Serial.println("Screen setup done!");
@@ -41,20 +53,21 @@ void screenSetup() {
 
 void setup() {
   Serial.begin(115200);
-  screenObjects.registerScreenSetup(screenSetup);
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
-  swSerial.begin(57600);
+  btSerial.begin(57600);
+  // Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
+  bind.init(btSerial, onConnection);
+  // Note: We used Software Serial here, but it could be any serial port, including hardware and software serial.
 }
 
 void loop() {
-  while (swSerial.available()) {
-    screenObjects.updateScreen(swSerial.read());
-  }
+  // Regularly synchronize Bind UI events to receive events.
+  bind.sync();
   delay(10);
   counter++;
   if (counter > 100) {
     counter = 0;
-    snprintf(buffer, 15, "Time: %d", millis());
+    snprintf(buffer, 15, "Time: %lu", millis());
     updateScreenTerminalData(buffer);
     counter2++;
     if (counter2 >= 5) {
