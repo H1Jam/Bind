@@ -60,13 +60,15 @@ void setSpeedGauge(float value) {
 }
 
 void setup() {
+	
   Serial.begin(115200);
+  
+#if defined(ESP32) || defined(ARDUINO_ARCH_RP2040)
   analogReadResolution(10);
-
-  Serial.begin(devName);
-
+#endif
+  
   bind.init(Serial, onConnection);
-
+  
 }
 
 void loop() {
