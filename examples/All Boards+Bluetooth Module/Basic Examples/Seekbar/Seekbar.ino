@@ -1,17 +1,27 @@
+//We only use SoftwareSerial for AVR Arduinos or ESP8266 library.
+#if defined(__AVR__) || defined(ESP8266)
 #include <SoftwareSerial.h>
+#endif
+
 #include "Bind.hpp"
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.
+// We may use SoftwareSerial for AVR Arduinos or ESP8266.
 #ifdef __AVR__
-SoftwareSerial swSerial(4, 3);
+SoftwareSerial btSerial(4, 3); // For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
+#elif defined(ESP8266)
+SoftwareSerial btSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2
+#elif defined(ESP32) 
+#define btSerial Serial2 // For ESP32 we use Serial2.
+#elif defined(ARDUINO_ARCH_RP2040)
+#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial1 RX: pin 2, TX: pin 3
 #else
-SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, ESP32, or similar.
+SoftwareSerial btSerial(4, 3); // Modify this line, if your board is neither above.
 #endif
+
 Bind bind;
 BindSeekBar seekBar1;
 BindSeekBar seekBar2;
-
-const int ledPin = 2;
 
 /**
  * @brief Callback for Seekbar 1 Value Change
@@ -32,9 +42,9 @@ void seekbar1_changed(int16_t val) {
 
   // Implement your custom actions here:
   if (val > 150) {
-    digitalWrite(ledPin, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
   } else {
-    digitalWrite(ledPin, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
@@ -42,7 +52,7 @@ void seekbar1_changed(int16_t val) {
  * @brief Callback for Seekbar 2 Value Change
  */
 void seekbar2_changed(int16_t val) {
-  Serial.print("Seekbar 2 has been changed:");
+  Serial.print("Seekbar 2 value has changed to:");
   Serial.println(val);
 }
 
@@ -67,8 +77,8 @@ void addSeekBars() {
   seekBar1.maxValue = 300;
   /// Set the initial value for the SeekBar.
   seekBar1.seekValue = 0;
-  /// Specify the command to either add the object
-  to the BindCanvas(screen) or refresh the existing one.seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  /// Specify the command to either add the object to the BindCanvas(screen) or refresh the existing one.
+  seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   /// Synchronize the seekBar1 object with BindCanvas.
   bind.sync(seekBar1);
 
@@ -108,12 +118,12 @@ void onConnection(int16_t width, int16_t height) {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
-  swSerial.begin(57600);
+  btSerial.begin(57600);
 
-  /// Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
-  bind.init(swSerial, onConnection);
+  /// Initialize the Bind object and specify the communication method (btSerial) and callback function (onConnection).
+  bind.init(btSerial, onConnection);
   /// Note: It was swSerial here, but it could be any serial port, including hardware and software serial.
 
   /// Connect the callback functions with the Bind objects.
