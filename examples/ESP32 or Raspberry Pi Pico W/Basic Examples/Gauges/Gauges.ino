@@ -1,6 +1,15 @@
+//Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.  
+//Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
+
+#if defined(ESP32)
 #include "BluetoothSerial.h"
-#include "Bind.hpp"
 BluetoothSerial SerialBT;
+#elif defined(ARDUINO_ARCH_RP2040)
+#include <SerialBT.h>
+#endif
+
+#include "Bind.hpp"
+
 Bind bind;
 BindGauge gauge1;
 BindGaugeCompact gauge2;
@@ -88,14 +97,18 @@ void onConnection(int16_t width, int16_t height) {
 
 void setup() {
   Serial.begin(115200);
+
+#if defined(ESP32)
   String devName = "BindOnESP32";
   SerialBT.begin(devName);
-
-  bind.init(SerialBT, onConnection);
-
   Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
   Serial.println("Device Name:");
   Serial.println(devName);
+#elif defined(ARDUINO_ARCH_RP2040)
+  SerialBT.begin();
+#endif
+
+  bind.init(SerialBT, onConnection);
 }
 
 void loop() {
