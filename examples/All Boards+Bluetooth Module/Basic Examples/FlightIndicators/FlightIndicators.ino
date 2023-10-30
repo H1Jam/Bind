@@ -1,12 +1,24 @@
+//We only use SoftwareSerial for AVR Arduinos or ESP8266 library.
+#if defined(__AVR__) || defined(ESP8266)
 #include <SoftwareSerial.h>
+#endif
+
 #include "Bind.hpp"
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.
+// We may use SoftwareSerial for AVR Arduinos or ESP8266.
 #ifdef __AVR__
-SoftwareSerial swSerial(4, 3);
+SoftwareSerial btSerial(4, 3); // For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
+#elif defined(ESP8266)
+SoftwareSerial btSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2
+#elif defined(ESP32) 
+#define btSerial Serial2 // For ESP32 we use Serial2.
+#elif defined(ARDUINO_ARCH_RP2040)
+#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial1 RX: pin 2, TX: pin 3
 #else
-SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, ESP32, or similar.
+SoftwareSerial btSerial(4, 3); // Modify this line, if your board is neither above.
 #endif
+
 Bind bind;
 BindAttitudeIndicator attitudeIndicator;
 BindHeadingIndicator headingIndicator;
@@ -57,9 +69,9 @@ void addHeadingIndicator() {
 void setup() {
   Serial.begin(115200);
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
-  swSerial.begin(57600);
+  btSerial.begin(57600);
 
-  bind.init(swSerial, onConnection);
+  bind.init(btSerial, onConnection);
   
   Serial.println("The Bluetooth device started, now you can pair the phone with Bluetooth!");
 }
