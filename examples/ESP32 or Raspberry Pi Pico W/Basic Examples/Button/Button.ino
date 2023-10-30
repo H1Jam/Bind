@@ -1,12 +1,18 @@
+//Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.  
+//Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
+
+#if defined(ESP32)
 #include "BluetoothSerial.h"
+BluetoothSerial SerialBT;
+#elif defined(ARDUINO_ARCH_RP2040)
+#include <SerialBT.h>
+#endif
+
 #include "Bind.hpp"
 
-BluetoothSerial SerialBT;
 Bind bind;
 BindButton button1;
 BindButton button2;
-
-const int ledPin = 2;
 
 /**
  * @brief Callback for Button 1 Press Event
@@ -22,7 +28,7 @@ void button1_pressed() {
   Serial.println("Button 1 has been pressed!");
 
   // Implement your custom actions here:
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
 
   // Add more actions as needed.
 }
@@ -33,7 +39,7 @@ void button1_pressed() {
 void button2_pressed() {
   // See button1_pressed descripotions!
   Serial.println("Button 2 has been pressed!");
-  digitalWrite(ledPin, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
 
   // Add more actions as needed.
 }
@@ -91,9 +97,17 @@ void onConnection(int16_t w, int16_t h) {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+  
+#if defined(ESP32)
   String devName = "BindOnESP32";
   SerialBT.begin(devName);
+  Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
+  Serial.println("Device Name:");
+  Serial.println(devName);
+#elif defined(ARDUINO_ARCH_RP2040)
+  SerialBT.begin();
+#endif
   // Initialize the Bind object and specify the communication method (SerialBT) and callback function (onConnection).
   bind.init(SerialBT, onConnection);
   // Note: It was SerialBT here, but it could be any serial port, including hardware and software serial.
@@ -102,9 +116,6 @@ void setup() {
   bind.join(button1, button1_pressed);
   bind.join(button2, button2_pressed);
 
-  Serial.println("The bluetooth device started, now you can pair the phone with bluetooth!");
-  Serial.println("devName:");
-  Serial.println(devName);
 }
 
 void loop() {
