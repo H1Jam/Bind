@@ -1,17 +1,27 @@
+//We only use SoftwareSerial for AVR Arduinos or ESP8266 library.
+#if defined(__AVR__) || defined(ESP8266)
 #include <SoftwareSerial.h>
+#endif
+
 #include "Bind.hpp"
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.
+// We may use SoftwareSerial for AVR Arduinos or ESP8266.
 #ifdef __AVR__
-SoftwareSerial swSerial(4, 3);
+SoftwareSerial btSerial(4, 3); // For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
+#elif defined(ESP8266)
+SoftwareSerial btSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2
+#elif defined(ESP32) 
+#define btSerial Serial2 // For ESP32 we use Serial2.
+#elif defined(ARDUINO_ARCH_RP2040)
+#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial1 RX: pin 2, TX: pin 3
 #else
-SoftwareSerial swSerial(D4, D3); // For boards like ESP8266, ESP32, or similar.
+SoftwareSerial btSerial(4, 3); // Modify this line, if your board is neither above.
 #endif
+
 Bind bind;
 BindSwitch switch1;
 BindSwitch switch2;
-
-const int ledPin = 2;
 
 /**
  * @brief Callback for Switch 1 Value Change
@@ -31,10 +41,10 @@ void switch1_changed(bool state) {
   Serial.println(state);
   // Implement your custom actions here:
   if (state) {
-    digitalWrite(ledPin, HIGH); // Turn on the LED
+    digitalWrite(LED_BUILTIN, HIGH); // Turn on the LED
     switch1.setlabel("ON");
   } else {
-    digitalWrite(ledPin, LOW); // Turn off the LED
+    digitalWrite(LED_BUILTIN, LOW); // Turn off the LED
     switch1.setlabel("OFF");
   }
   bind.sync(switch1);
@@ -117,12 +127,12 @@ void onConnection(int16_t w, int16_t h) {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   // Note: Adjust the baud rate to match your Bluetooth module's configuration.
-  swSerial.begin(57600);
+  btSerial.begin(57600);
 
-  // Initialize the Bind object and specify the communication method (swSerial) and callback function (onConnection).
-  bind.init(swSerial, onConnection);
+  // Initialize the Bind object and specify the communication method (btSerial) and callback function (onConnection).
+  bind.init(btSerial, onConnection);
   // Note: It was swSerial here, but it could be any serial port, including hardware and software serial.
 
   // Connect the callback functions with the Bind objects.
