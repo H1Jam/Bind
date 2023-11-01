@@ -2,16 +2,8 @@
 //Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
 
 #if defined(ESP32)
-//Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.  
-//Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
-
-#if defined(ESP32)
 #include "BluetoothSerial.h"
 BluetoothSerial SerialBT;
-#elif defined(ARDUINO_ARCH_RP2040)
-#include <SerialBT.h>
-#endif
-
 #elif defined(ARDUINO_ARCH_RP2040)
 #include <SerialBT.h>
 #endif
@@ -107,18 +99,11 @@ void setup() {
   Serial.begin(115200);
 
 #if defined(ESP32)
-  
-#if defined(ESP32)
   String devName = "BindOnESP32";
   SerialBT.begin(devName);
   Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
   Serial.println("Device Name:");
   Serial.println(devName);
-#elif defined(ARDUINO_ARCH_RP2040)
-  SerialBT.begin();
-#endif
-  Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
-  Serial.println("Device Name:");
 #elif defined(ARDUINO_ARCH_RP2040)
   SerialBT.begin();
 #endif
