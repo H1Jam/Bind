@@ -10,14 +10,19 @@
 #ifdef __AVR__
 SoftwareSerial btSerial(4, 3); // For AVR Arduinos like Pro Mini or Mega: RX: pin 4, TX: pin 3
 #elif defined(ESP8266)
-SoftwareSerial btSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2
+SoftwareSerial btSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2 (Led logic might be diffrent)
 #elif defined(ESP32) 
 #define btSerial Serial2 // For ESP32 we use Serial2.
 #elif defined(ARDUINO_ARCH_RP2040)
-#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial1 RX: pin 2, TX: pin 3
+#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial1 RX: pin 2, TX: pin 1
 #else
 SoftwareSerial btSerial(4, 3); // Modify this line, if your board is neither above.
 #endif
+
+// If the board doesn't have built-in LED, assign an external LED here (if wish to use it):
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 10
+#endif  
 
 Bind bind;
 BindButton buttonON;
