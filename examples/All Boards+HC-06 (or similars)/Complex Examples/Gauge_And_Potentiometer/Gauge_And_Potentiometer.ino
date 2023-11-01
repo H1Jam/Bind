@@ -14,7 +14,7 @@ SoftwareSerial btSerial(D1, D2); // For ESP8266: RX: pin D1, TX: pin D2
 #elif defined(ESP32) 
 #define btSerial Serial2 // For ESP32 we use Serial2.
 #elif defined(ARDUINO_ARCH_RP2040)
-#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial2 RX: pin 2, TX: pin 3
+#define btSerial Serial1 // For RP2040(Raspberry Pi Pico): Use serial2 RX: pin 2, TX: pin 1
 #else
 SoftwareSerial btSerial(4, 3); // Modify this line, if your board is neither above.
 #endif
