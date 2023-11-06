@@ -73,8 +73,7 @@ void addSeekBars() {
   seekBar1.maxValue = 300;
   /// Set the initial value for the SeekBar.
   seekBar1.seekValue = 0;
-  /// Specify the command to either add the object
-  to the BindCanvas(screen) or refresh the existing one.
+  /// Specify the command to either add the object to the BindCanvas(screen) or refresh the existing one.
   seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   /// Synchronize the seekBar1 object with BindCanvas.
   bind.sync(seekBar1);
