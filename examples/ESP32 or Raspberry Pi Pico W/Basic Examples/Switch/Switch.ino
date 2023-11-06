@@ -14,7 +14,11 @@ Bind bind;
 BindSwitch switch1;
 BindSwitch switch2;
 
-const int ledPin = 2;
+// If the board doesn't have built-in LED, assign an external LED here (if wish to use it):
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 10
+#endif  
+
 
 /**
  * @brief Callback for Switch 1 Value Change
@@ -34,10 +38,10 @@ void switch1_changed(bool state) {
   Serial.println(state);
   // Implement your custom actions here:
   if (state) {
-    digitalWrite(ledPin, HIGH); // Turn on the LED
+    digitalWrite(LED_BUILTIN, HIGH); // Turn on the LED
     switch1.setlabel("ON");
   } else {
-    digitalWrite(ledPin, LOW); // Turn off the LED
+    digitalWrite(LED_BUILTIN, LOW); // Turn off the LED
     switch1.setlabel("OFF");
   }
   bind.sync(switch1);
@@ -120,7 +124,7 @@ void onConnection(int16_t w, int16_t h) {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   
 #if defined(ESP32)
   String devName = "BindOnESP32";
