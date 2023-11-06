@@ -14,7 +14,10 @@ Bind bind;
 BindSeekBar seekBar1;
 BindSeekBar seekBar2;
 
-const int ledPin = 2;
+// If the board doesn't have built-in LED, assign an external LED here (if wish to use it):
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 10
+#endif  
 
 /**
  * @brief Callback for Seekbar 1 Value Change
@@ -35,9 +38,9 @@ void seekbar1_changed(int16_t val) {
 
   // Implement your custom actions here:
   if (val > 150) {
-    digitalWrite(ledPin, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
   } else {
-    digitalWrite(ledPin, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
@@ -111,7 +114,7 @@ void onConnection(int16_t width, int16_t height) {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   
 #if defined(ESP32)
   String devName = "BindOnESP32";
