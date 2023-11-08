@@ -76,7 +76,7 @@ void addSpeedGauge(int16_t screenHeight) {
  *
  * @param value The speed value to be displayed on the Speed Gauge.
  */
-void setSpeedGauge(float value) {
+void setSpeedGaugeValue(float value) {
   speedGauge.value = value;
   speedGauge.cmdId = BIND_DATA_ONLY_CMD;
   if (bind.isReady()){
@@ -123,6 +123,6 @@ void syncPotentiometer() {
     counter =0;
     sensorValue = analogRead(analogInPin);
     outputValue = map(sensorValue, 0, 1023, 0, 180);
-    setSpeedGauge(outputValue);
+    setSpeedGaugeValue(outputValue);
   }
 }
