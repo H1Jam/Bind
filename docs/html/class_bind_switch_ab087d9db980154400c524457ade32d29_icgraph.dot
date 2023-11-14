@@ -1,0 +1,13 @@
+digraph "BindSwitch::setlabel"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="BindSwitch::setlabel",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Sets the label text for the toggle switch."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="BindSwitch::BindSwitch",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_bind_switch.html#a450bb1b4c5856fe056fcbd0ee43f3341",tooltip="Default constructor to create a BindSwitch with a default label (\"Switch\")."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="BindSwitch::BindSwitch",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_bind_switch.html#af252a5152999058de346c6bff8183fc6",tooltip="Constructor to create a BindSwitch with a custom label."];
+}

@@ -1,0 +1,11 @@
+digraph "BindGaugeCompact::BindGaugeCompact"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="BindGaugeCompact::BindGauge\lCompact",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructs a BindGaugeCompact object with a custom label."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="BindGaugeCompact::setlabel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_bind_gauge_compact.html#ab567734f2b0d2085cabe45b400d6d0f0",tooltip="Sets the label to be displayed on the gauge."];
+}

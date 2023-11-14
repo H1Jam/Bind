@@ -1,0 +1,12 @@
+digraph "C:/Users/BIG/Documents/Arduino/Libraries/Bind/examples/USB/Basic Examples/Chart"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_da9ecf253ab14f183699fd4f2f7c8787 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="Basic Examples", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_da9ecf253ab14f183699fd4f2f7c8787.html",tooltip=""]
+  dir_3b0f9f1f27d5df7b38b21a1698745ed5 [label="Chart", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_3b0f9f1f27d5df7b38b21a1698745ed5.html",tooltip=""];
+  }
+}
