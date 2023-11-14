@@ -1,4 +1,5 @@
 #include "Bind.hpp"
+#include "Arduino.h"
 
 bool Bind::init(Stream &stream, void (&_setupCallback)(int16_t, int16_t))
 {
@@ -172,6 +173,14 @@ void Bind::updateScreen(Stream *stream)
 
 int Bind::updateScreenInternal(uint8_t *dataFrame)
 {
+  if ((millis() - lastMs) < 5)
+  {
+#ifdef DEBUG_MSG
+    Serial.println("\nToo fast!\n");
+#endif
+    delay(5);
+  }
+  lastMs = millis();
   switch (dataFrame[2])
   {
   case BIND_ID_SETUP_CMD:
