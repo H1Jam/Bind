@@ -387,6 +387,8 @@ private:
   int16_t valTmp2 = 0;
   int16_t valTmp3 = 0;
   int dataLen = 0;
+  uint32_t lastMs = 0;
+  uint32_t deltaMs = 0;
   DataParser dataParser;
   ButtonHandler *buttons;
   DialKnobHandler *dialKnobHandlers;
