@@ -138,7 +138,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b> = 0</td></tr
 <tr class="separator:a8dea005085b6e3707d15fb8d246fa29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a822dfb225fc3b2f0d7bf712084a7c1e5" id="r_a822dfb225fc3b2f0d7bf712084a7c1e5"><td class="memItemLeft" align="right" valign="top"><a id="a822dfb225fc3b2f0d7bf712084a7c1e5" name="a822dfb225fc3b2f0d7bf712084a7c1e5"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
-<tr class="memdesc:a822dfb225fc3b2f0d7bf712084a7c1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command ID for the heading indicator. <br /></td></tr>
+<tr class="memdesc:a822dfb225fc3b2f0d7bf712084a7c1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command ID for the heading indicator. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:a822dfb225fc3b2f0d7bf712084a7c1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7b279488272f8ed1296da0f23fa154" id="r_a3b7b279488272f8ed1296da0f23fa154"><td class="memItemLeft" align="right" valign="top"><a id="a3b7b279488272f8ed1296da0f23fa154" name="a3b7b279488272f8ed1296da0f23fa154"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>dimSize</b> = 200</td></tr>
@@ -155,7 +155,17 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a heading indicator for BindCanvas. </p>
-<p>The <code><a class="el" href="class_bind_heading_indicator.html" title="Represents a heading indicator for BindCanvas.">BindHeadingIndicator</a></code> class is designed to create and display a heading indicator element within a BindCanvas screen. This element allows users to visualize and monitor a vehicle or an object's heading. </p>
+<p>The <code><a class="el" href="class_bind_heading_indicator.html" title="Represents a heading indicator for BindCanvas.">BindHeadingIndicator</a></code> class is designed to create and display a heading indicator element within a BindCanvas screen. This element allows users to visualize and monitor a vehicle or an object's heading.</p>
+<dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
+<li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
+<li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
+<li>BIND_REMOVE_CMD: Removes the object from the canvas (screen).</li>
+<li>BIND_DISABLE_CMD: Disables the object.</li>
+<li>BIND_ENABLE_CMD: Enables the object.</li>
+<li>BIND_HIDE_CMD: Hides the object.</li>
+<li>BIND_VISIBLE_CMD: Restores the object's visibility. </li>
+</ul>
+</dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="acd1a7585976e2e552dca7d06b3ff8894" name="acd1a7585976e2e552dca7d06b3ff8894"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acd1a7585976e2e552dca7d06b3ff8894">&#9670;&#160;</a></span>getBytes()</h2>

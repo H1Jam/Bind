@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"class_joystick_handler.html":[3,0,24],
 "class_s_l_packer.html":[3,0,26],
 "class_seek_bar_handler.html":[3,0,25],
 "class_switch_handler.html":[3,0,27],

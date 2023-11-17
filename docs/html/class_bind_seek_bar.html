@@ -138,7 +138,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 <tr class="separator:aa966131025c6bd87405d47605d636064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e47f3e0a9e5305ea5740786d14cf4d9" id="r_a0e47f3e0a9e5305ea5740786d14cf4d9"><td class="memItemLeft" align="right" valign="top"><a id="a0e47f3e0a9e5305ea5740786d14cf4d9" name="a0e47f3e0a9e5305ea5740786d14cf4d9"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
-<tr class="memdesc:a0e47f3e0a9e5305ea5740786d14cf4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier. <br /></td></tr>
+<tr class="memdesc:a0e47f3e0a9e5305ea5740786d14cf4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:a0e47f3e0a9e5305ea5740786d14cf4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae35712810180bd650495dc85daef3189" id="r_ae35712810180bd650495dc85daef3189"><td class="memItemLeft" align="right" valign="top"><a id="ae35712810180bd650495dc85daef3189" name="ae35712810180bd650495dc85daef3189"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>seekValue</b> = 0</td></tr>
@@ -159,7 +159,17 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a SeekBar object in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. </p>
-<p>The <code><a class="el" href="class_bind_seek_bar.html" title="Represents a SeekBar object in the Bind framework.">BindSeekBar</a></code> class defines a SeekBar object that can be used in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. SeekBars are typically used to select a value within a specified range by dragging a slider. This class provides methods to configure SeekBars on the screen. </p>
+<p>The <code><a class="el" href="class_bind_seek_bar.html" title="Represents a SeekBar object in the Bind framework.">BindSeekBar</a></code> class defines a SeekBar object that can be used in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. SeekBars are typically used to select a value within a specified range (determined by maxValue) by dragging a slider. This class provides methods to configure SeekBars on the screen.</p>
+<dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
+<li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
+<li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
+<li>BIND_REMOVE_CMD: Removes the object from the canvas (screen).</li>
+<li>BIND_DISABLE_CMD: Disables the object.</li>
+<li>BIND_ENABLE_CMD: Enables the object.</li>
+<li>BIND_HIDE_CMD: Hides the object.</li>
+<li>BIND_VISIBLE_CMD: Restores the object's visibility. </li>
+</ul>
+</dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a14c971ef9cf51fad4f91875fcee55f1d" name="a14c971ef9cf51fad4f91875fcee55f1d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a14c971ef9cf51fad4f91875fcee55f1d">&#9670;&#160;</a></span>getBytes()</h2>

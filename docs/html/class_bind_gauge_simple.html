@@ -147,7 +147,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b> = 0</td></tr
 <tr class="separator:a933627060d5c55d21b124bb7d3efb88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b4db2656fc01333e5d1a93b275c6e9a" id="r_a9b4db2656fc01333e5d1a93b275c6e9a"><td class="memItemLeft" align="right" valign="top"><a id="a9b4db2656fc01333e5d1a93b275c6e9a" name="a9b4db2656fc01333e5d1a93b275c6e9a"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
-<tr class="memdesc:a9b4db2656fc01333e5d1a93b275c6e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier to add or refresh the gauge. <br /></td></tr>
+<tr class="memdesc:a9b4db2656fc01333e5d1a93b275c6e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier to add or refresh the gauge. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:a9b4db2656fc01333e5d1a93b275c6e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a938df009051993908bc6614dd23a0530" id="r_a938df009051993908bc6614dd23a0530"><td class="memItemLeft" align="right" valign="top"><a id="a938df009051993908bc6614dd23a0530" name="a938df009051993908bc6614dd23a0530"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>dimSize</b> = 200</td></tr>
@@ -186,6 +186,16 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <div class="textblock"><p><a class="el" href="class_bind_gauge_simple.html" title="BindGaugeSimple Class.">BindGaugeSimple</a> Class. </p>
 <p>The <code><a class="el" href="class_bind_gauge_simple.html" title="BindGaugeSimple Class.">BindGaugeSimple</a></code> class is a part of the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework for Arduino, designed to create a simple gauge element that can be displayed and controlled on the BindCanvas Android app interface.</p>
 <p>This class allows you to define the properties of a gauge, including its position, size, value range, current value, style, symmetry, color, and label. You can synchronize these properties with BindCanvas to provide visual gauge displays in your Arduino projects.</p>
+<dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
+<li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
+<li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
+<li>BIND_REMOVE_CMD: Removes the object from the canvas (screen).</li>
+<li>BIND_DISABLE_CMD: Disables the object.</li>
+<li>BIND_ENABLE_CMD: Enables the object.</li>
+<li>BIND_HIDE_CMD: Hides the object.</li>
+<li>BIND_VISIBLE_CMD: Restores the object's visibility.</li>
+</ul>
+</dd></dl>
 <p>The gauge's properties can be customized by setting attributes such as the position (x and y coordinates), dimensions (size), minimum and maximum values for the gauge, current value, style (e.g., arc, horizontal, or vertical), whether it's symmetrical or not (center is zero), color, and label text.</p>
 <p>To use the <code><a class="el" href="class_bind_gauge_simple.html" title="BindGaugeSimple Class.">BindGaugeSimple</a></code> class effectively, you can create an instance, set its attributes, and call <code>bind.sync(&amp;your_gauge)</code> to synchronize it with BindCanvas.</p>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="class_bind_gauge_simple.html">BindGaugeSimple</a> gauge(<span class="stringliteral">&quot;Temperature&quot;</span>);</div>
@@ -200,7 +210,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <div class="line">gauge.color = YELLOW;</div>
 <div class="line">gauge.cmdId = BIND_ADD_OR_REFRESH_CMD;</div>
 <div class="line">bind.sync(&amp;gauge);</div>
-<div class="ttc" id="aclass_bind_gauge_simple_html"><div class="ttname"><a href="class_bind_gauge_simple.html">BindGaugeSimple</a></div><div class="ttdoc">BindGaugeSimple Class.</div><div class="ttdef"><b>Definition</b> BindGaugeSimple.hpp:41</div></div>
+<div class="ttc" id="aclass_bind_gauge_simple_html"><div class="ttname"><a href="class_bind_gauge_simple.html">BindGaugeSimple</a></div><div class="ttdoc">BindGaugeSimple Class.</div><div class="ttdef"><b>Definition</b> BindGaugeSimple.hpp:50</div></div>
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>check the examples for more information. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a77e675415dcba699bd0035de3ed31d89" name="a77e675415dcba699bd0035de3ed31d89"></a>

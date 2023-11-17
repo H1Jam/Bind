@@ -147,7 +147,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 <tr class="separator:ae0e0a096051d30a30889c4f4f0b98d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e7c25ff7ffb25518c553c5784c0561" id="r_aa8e7c25ff7ffb25518c553c5784c0561"><td class="memItemLeft" align="right" valign="top"><a id="aa8e7c25ff7ffb25518c553c5784c0561" name="aa8e7c25ff7ffb25518c553c5784c0561"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
-<tr class="memdesc:aa8e7c25ff7ffb25518c553c5784c0561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command ID for the gauge. <br /></td></tr>
+<tr class="memdesc:aa8e7c25ff7ffb25518c553c5784c0561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command ID for the gauge. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:aa8e7c25ff7ffb25518c553c5784c0561"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae057e307c0c61f3a39c0c9114cad841" id="r_aae057e307c0c61f3a39c0c9114cad841"><td class="memItemLeft" align="right" valign="top"><a id="aae057e307c0c61f3a39c0c9114cad841" name="aae057e307c0c61f3a39c0c9114cad841"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>dimSize</b> = 100</td></tr>
@@ -185,6 +185,16 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_bind_gauge.html" title="The BindGauge class represents a gauge UI element for use with BindCanvas.">BindGauge</a> class represents a gauge UI element for use with BindCanvas. </p>
 <p><a class="el" href="class_bind_gauge.html" title="The BindGauge class represents a gauge UI element for use with BindCanvas.">BindGauge</a> is a class that defines a gauge UI element that can be used within BindCanvas-based applications. It inherits from the <a class="el" href="class_bind_view.html">BindView</a> class and provides functionality to create and customize gauges, including setting positions, dimensions, value ranges, and appearance.</p>
+<dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
+<li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
+<li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
+<li>BIND_REMOVE_CMD: Removes the object from the canvas (screen).</li>
+<li>BIND_DISABLE_CMD: Disables the object.</li>
+<li>BIND_ENABLE_CMD: Enables the object.</li>
+<li>BIND_HIDE_CMD: Hides the object.</li>
+<li>BIND_VISIBLE_CMD: Restores the object's visibility.</li>
+</ul>
+</dd></dl>
 <p>Gauges created with <a class="el" href="class_bind_gauge.html" title="The BindGauge class represents a gauge UI element for use with BindCanvas.">BindGauge</a> can be synchronized with BindCanvas through the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework, allowing real-time updates of gauge values and visual styles in various applications.</p>
 <dl class="section note"><dt>Note</dt><dd>To use <a class="el" href="class_bind_gauge.html" title="The BindGauge class represents a gauge UI element for use with BindCanvas.">BindGauge</a> effectively, you can set various properties such as position, dimensions, value range, appearance, and label. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

@@ -141,7 +141,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b> = 0</td></tr
 <tr class="separator:a4c2a7bfc19295c0892ce8deda3860eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7f4bc86ff5498eef5d1f7d1e3d14dac" id="r_aa7f4bc86ff5498eef5d1f7d1e3d14dac"><td class="memItemLeft" align="right" valign="top"><a id="aa7f4bc86ff5498eef5d1f7d1e3d14dac" name="aa7f4bc86ff5498eef5d1f7d1e3d14dac"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
-<tr class="memdesc:aa7f4bc86ff5498eef5d1f7d1e3d14dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command ID for the terminal. <br /></td></tr>
+<tr class="memdesc:aa7f4bc86ff5498eef5d1f7d1e3d14dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command ID for the terminal. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:aa7f4bc86ff5498eef5d1f7d1e3d14dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bccd4e51b95ed8cecf054e7da5b2f6b" id="r_a9bccd4e51b95ed8cecf054e7da5b2f6b"><td class="memItemLeft" align="right" valign="top"><a id="a9bccd4e51b95ed8cecf054e7da5b2f6b" name="a9bccd4e51b95ed8cecf054e7da5b2f6b"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> = 200</td></tr>
@@ -167,6 +167,16 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a terminal display for BindCanvas. </p>
 <p>The <code><a class="el" href="class_bind_terminal.html" title="Represents a terminal display for BindCanvas.">BindTerminal</a></code> class is designed to create and display a terminal-like text interface within a BindCanvas UI. This terminal can be used for displaying text data, log messages, or other textual information and provides various customization options.</p>
+<dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
+<li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
+<li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
+<li>BIND_REMOVE_CMD: Removes the object from the canvas (screen).</li>
+<li>BIND_DISABLE_CMD: Disables the object.</li>
+<li>BIND_ENABLE_CMD: Enables the object.</li>
+<li>BIND_HIDE_CMD: Hides the object.</li>
+<li>BIND_VISIBLE_CMD: Restores the object's visibility.</li>
+</ul>
+</dd></dl>
 <dl class="section see"><dt>See also</dt><dd>the example folder for more information. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="acf7d8d1e6c23dc81d3bb967d7f7e1cbb" name="acf7d8d1e6c23dc81d3bb967d7f7e1cbb"></a>

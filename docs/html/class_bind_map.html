@@ -138,7 +138,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 <tr class="separator:ab73f54af54aec33455dd403024032777"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adac0123d38ae9e21320554a81455294d" id="r_adac0123d38ae9e21320554a81455294d"><td class="memItemLeft" align="right" valign="top"><a id="adac0123d38ae9e21320554a81455294d" name="adac0123d38ae9e21320554a81455294d"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
-<tr class="memdesc:adac0123d38ae9e21320554a81455294d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier for the map. <br /></td></tr>
+<tr class="memdesc:adac0123d38ae9e21320554a81455294d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier for the map. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:adac0123d38ae9e21320554a81455294d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c5650cd00146a643ab789e1f0954753" id="r_a8c5650cd00146a643ab789e1f0954753"><td class="memItemLeft" align="right" valign="top"><a id="a8c5650cd00146a643ab789e1f0954753" name="a8c5650cd00146a643ab789e1f0954753"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> = 100</td></tr>
@@ -172,6 +172,16 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a Map Object for BindCanvas. </p>
 <p>The <code><a class="el" href="class_bind_map.html" title="Represents a Map Object for BindCanvas.">BindMap</a></code> class is used to display and control a street map within the BindCanvas framework. It allows users to show and interact with maps, including changing the map's location, orientation, and zoom level. Users can manually control the map zoom or use predefined zoom levels.</p>
+<dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
+<li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
+<li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
+<li>BIND_REMOVE_CMD: Removes the object from the canvas (screen).</li>
+<li>BIND_DISABLE_CMD: Disables the object.</li>
+<li>BIND_ENABLE_CMD: Enables the object.</li>
+<li>BIND_HIDE_CMD: Hides the object.</li>
+<li>BIND_VISIBLE_CMD: Restores the object's visibility.</li>
+</ul>
+</dd></dl>
 <p>To use a <code><a class="el" href="class_bind_map.html" title="Represents a Map Object for BindCanvas.">BindMap</a></code> object, create an instance and configure its properties, including position, dimensions, latitude, longitude, orientation, and zoom level. You can then add it to the BindCanvas for rendering and interaction by calling the sync function.</p>
 <dl class="section attention"><dt>Attention</dt><dd>Currently, the framework supports the creation of only one map object. Additional support for multiple maps may be added in future updates. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The <code>BIND_MAP_USER_ZOOM</code> constant can be used to let the user manually change the map's zoom level. You can also set predefined zoom levels as needed. </dd></dl>

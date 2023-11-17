@@ -68,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_bind_8hpp_source.html",
-"class_s_l_packer.html"
+"class_joystick_handler.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
