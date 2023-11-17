@@ -39,6 +39,8 @@
  * knobs, switches, seekbars, joysticks, color pickers, terminals, and many more. You can use Bind to connect
  * your c++ programme to the BindCanvas screen, manage user interactions, and update UI elements in real time.
  *
+ * \image html demo_app.jpg
+ * 
  * To use Bind effectively, you can define a setup callback function to configure the initial state
  * of your application, including screen setup and object synchronization. Bind also allows you to
  * set the communication device, such as a serial port, for data exchange with BindCanvas.
