@@ -10,6 +10,15 @@
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize text labels, including setting labels, positions, font size, and text color.
  *
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  * Text labels created with BindTextLabel can be synchronized with BindCanvas through the Bind framework,
  * allowing dynamic text content to be displayed in various applications.
  *
@@ -53,7 +62,7 @@ public:
 
   int16_t x;          ///< X-coordinate position of the text label
   int16_t y;          ///< Y-coordinate position of the text label
-  uint8_t cmdId = 0;  ///< Command ID for the text label
+  uint8_t cmdId = 0;  ///< Command ID for the text label. See the notes for possible cmdId values.
   int16_t fontSize;   ///< Font size for the text label
   int32_t color;      ///< Text color for the text label
 

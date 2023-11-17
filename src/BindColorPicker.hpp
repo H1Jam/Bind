@@ -18,6 +18,14 @@
  * position (x and y coordinates), dimensions (size), and initial color (red, green, and blue values).
  * The `cmdId` parameter specifies whether to add the color picker to the BindCanvas or refresh
  * an existing one.
+ * @note: Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * Additionally, you should regularly call `bind.sync()` in your main loop to ensure that the color picker
  * reflects the user interactions and properly calls the colorPicker callback
@@ -47,7 +55,7 @@ class BindColorPicker : public BindView
 public:
     int16_t x = 0;         ///< The x-coordinate position of the color picker on the screen.
     int16_t y = 0;         ///< The y-coordinate position of the color picker on the screen.
-    uint8_t cmdId = 0;     ///< Command identifier to add or refresh the color picker.
+    uint8_t cmdId = 0;     ///< Command identifier to add or refresh the color picker. See the notes for possible cmdId values.
     int16_t dimSize = 200; ///< The dimensions (size) of the color picker.
     uint8_t red = 0;       ///< The initial value for the red component of the selected color (0-255).
     uint8_t green = 0;     ///< The initial value for the green component of the selected color (0-255).

@@ -12,6 +12,15 @@
  * This class allows you to define the properties of a gauge, including its position, size, value range,
  * current value, style, symmetry, color, and label. You can synchronize these properties with BindCanvas
  * to provide visual gauge displays in your Arduino projects.
+ * 
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * The gauge's properties can be customized by setting attributes such as the position (x and y coordinates),
  * dimensions (size), minimum and maximum values for the gauge, current value, style (e.g., arc, horizontal, or vertical),
@@ -59,7 +68,7 @@ public:
 
     int16_t x = 0;              ///< The x-coordinate position of the gauge on the screen.
     int16_t y = 0;              ///< The y-coordinate position of the gauge on the screen.
-    uint8_t cmdId = 0;          ///< Command identifier to add or refresh the gauge.
+    uint8_t cmdId = 0;          ///< Command identifier to add or refresh the gauge. See the notes for possible cmdId values.
     int16_t dimSize = 200;      ///< The dimensions (size) of the gauge.
     int16_t minValue = 0;       ///< The minimum value for the gauge's value range.
     int16_t maxValue = 100;     ///< The maximum value for the gauge's value range.

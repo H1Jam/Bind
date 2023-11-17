@@ -8,6 +8,15 @@
  * The `BindSwitch` class allows you to create toggle switch UI elements within your Arduino projects to be shown in BindCanvas.
  * You can customize the appearance and behavior of the switch, such as its position, label text, size, and colors.
  * Users can interact with the switch to toggle its state, and you can capture and respond to these state changes.
+ * 
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * Example usage:
  * - Create a toggle switch with specific settings.
@@ -42,7 +51,7 @@ public:
 
     int16_t x; ///< X-coordinate position of the toggle switch.
     int16_t y; ///< Y-coordinate position of the toggle switch.
-    uint8_t cmdId = 0;
+    uint8_t cmdId = 0; ///< Command identifier. See the notes for possible cmdId values.
     bool switchValue;  ///< The current state (ON/OFF) of the toggle switch.
     int16_t fontSize;  ///< Font size for the switch label.
     int32_t textColor; ///< Text color for the switch label.

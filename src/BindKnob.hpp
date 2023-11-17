@@ -10,6 +10,15 @@
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize knobs, including setting labels, positions, dimensions, value ranges, and current values.
  *
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  * Knobs created with BindKnob can be synchronized with BindCanvas through the Bind framework,
  * allowing interactive user interfaces to be built for various applications.
  *
@@ -43,7 +52,7 @@ public:
 
   int16_t x;         ///< X-coordinate position of the knob
   int16_t y;         ///< Y-coordinate position of the knob
-  uint8_t cmdId = 0; ///< Command ID for the knob
+  uint8_t cmdId = 0; ///< Command ID for the knob. See the notes for possible cmdId values.
   int16_t dimSize;   ///< Dimensions or size of the knob
   int16_t minValue;  ///< Minimum value of the knob's range
   int16_t maxValue;  ///< Maximum value of the knob's range

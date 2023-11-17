@@ -8,6 +8,15 @@
  * The `BindAttitudeIndicator` class enables the creation of an attitude indicator within your Arduino projects.
  * This UI element visually displays the roll and pitch of a vehicle or object, providing valuable information about its orientation.
  * You can customize the appearance and behavior of the attitude indicator, such as its position, size, and orientation values.
+ * 
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * Example usage:
  * - Create an attitude indicator with specific settings.

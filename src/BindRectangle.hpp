@@ -10,6 +10,15 @@
  * creating backgrounds, or framing other elements. It allows you to control its dimensions, position,
  * fill color, border color, border width, and corner radius.
  *
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  * To use a `BindRectangle` object, you can create an instance and configure its properties,
  * then add it to the BindCanvas using the sync functions.
  *
@@ -21,7 +30,7 @@ public:
     BindRectangle();
     int16_t x = 0;                ///< X-coordinate position of the rectangle.
     int16_t y = 0;                ///< Y-coordinate position of the rectangle.
-    uint8_t cmdId = 0;            ///< Command identifier for the rectangle.
+    uint8_t cmdId = 0;            ///< Command identifier for the rectangle. See the notes for possible cmdId values.
     int16_t width = 200;          ///< Width of the rectangle.
     int16_t height = 100;         ///< Height of the rectangle.
     int32_t fillColor = WHITE;    ///< Fill color of the rectangle.

@@ -8,11 +8,20 @@
  * The `BindJoystick` class is a part of the Bind framework for Arduino, designed to creat a
  * joystick element that can be displayed and controlled on the BindCanvas Android app interface.
  *
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  * This class allows you to define the properties of a joystick, including its position, size,
  * spring behavior, and more. You can synchronize these properties with BindCanvas to provide
  * joystick controls in your Arduino projects.
  *
- * @note: To receive touch events and user interactions, you must regularly call `bind.sync()` in your main loop.
+ * @note To receive touch events and user interactions, you must regularly call `bind.sync()` in your main loop.
  *
  * To use the `BindJoystick` class effectively, you can
  * create an instance,
@@ -23,12 +32,22 @@
  * Example usage:
  * ```cpp
  * BindJoystick joystick;
+ * ...
+ * bind.join(joystick1, joystick1_onChange);
+ * ...
  * joystick.x = 30;
  * joystick.y = 100;
  * joystick.dimSize = 200;
  * joystick.springed = true;
  * joystick.cmdId = BIND_ADD_OR_REFRESH_CMD;
- * bind.sync(&joystick);
+ * bind.sync(joystick);
+ * ...
+ * void joystick1_onChange(int16_t x, int16_t y) {
+ *  Serial.print("joystick1 has been changed, x:");
+ *  Serial.print(x);
+ *  Serial.print(" y:");
+ *  Serial.println(y);
+ * }
  * ```
  * @note check the examples for more information.
  *
@@ -39,7 +58,7 @@ class BindJoystick : public BindView
 public:
     int16_t x = 0; ///< The x-coordinate position of the joystick on the screen.
     int16_t y = 0; ///< The y-coordinate position of the joystick on the screen.
-    uint8_t cmdId = 0; ///< Command identifier to add or refresh the joystick.
+    uint8_t cmdId = 0; ///< Command identifier to add or refresh the joystick. See the notes for possible cmdId values.
     int16_t dimSize = 200; ///< The dimensions (size) of the joystick.
     int16_t sX = 0; ///< The joystick's current X-axis position (internal).
     int16_t sY = 0; ///< The joystick's current Y-axis position (internal).

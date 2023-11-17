@@ -9,7 +9,16 @@
  * The `BindChart` class provides the capability to create and display customizable charts within a BindCanvas interface.
  * Users can define various attributes of the chart, such as its position, size, color, data ranges, and more.
  * Additionally, users can dynamically update the chart data using the `bind.sync([float chartData], &myChart)` function.
- *
+ * 
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
+ * 
  * Example usage:
  * - Create a `BindChart` object to represent the chart element.
  * - Configure the chart's position, dimensions, color, and data ranges.

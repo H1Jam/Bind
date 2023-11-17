@@ -7,28 +7,28 @@
 #include "BindUtils.hpp"
 #include "BindWidgets.hpp"
 
-/// @brief Maximum number of object handlers
+/// \brief Maximum number of object handlers
 #define MAX_HANDLERS 16
 
-/// @brief This command either adds the object to the canvas (screen) or refreshes the existing one.
+/// \brief This command either adds the object to the canvas (screen) or refreshes the existing one.
 #define BIND_ADD_OR_REFRESH_CMD 0
 
-/// @brief This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
+///\brief This command refreshes the existing object without moving or resizing it; it simply updates the data, such as text.
 #define BIND_DATA_ONLY_CMD 6
 
-/// @brief This command removes the object from the canvas (screen).
+///\brief This command removes the object from the canvas (screen).
 #define BIND_REMOVE_CMD 1
 
-/// @brief This command disables the object.
+///\brief This command disables the object.
 #define BIND_DISABLE_CMD 2
 
-/// @brief This command enables the object.
+///\brief This command enables the object.
 #define BIND_ENABLE_CMD 3
 
-/// @brief This command hides the object.
+///\brief This command hides the object.
 #define BIND_HIDE_CMD 4
 
-/// @brief This command restores the object's visibility.
+//!\brief This command restores the object's visibility.
 #define BIND_VISIBLE_CMD 5
 
 /**

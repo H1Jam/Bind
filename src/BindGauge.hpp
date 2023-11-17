@@ -10,6 +10,15 @@
  * BindGauge is a class that defines a gauge UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize gauges, including setting positions, dimensions, value ranges, and appearance.
+ * 
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * Gauges created with BindGauge can be synchronized with BindCanvas through the Bind framework, allowing
  * real-time updates of gauge values and visual styles in various applications.
@@ -40,7 +49,7 @@ public:
 
     int16_t x;                 ///< X-coordinate position of the gauge
     int16_t y;                 ///< Y-coordinate position of the gauge
-    uint8_t cmdId = 0;         ///< Command ID for the gauge
+    uint8_t cmdId = 0;         ///< Command ID for the gauge. See the notes for possible cmdId values.
     int16_t dimSize = 100;     ///< Size of the gauge (Width = height)
     float value = 0;           ///< Current value of the gauge
     float maxValue = 100.0f;   ///< Maximum value of the gauge

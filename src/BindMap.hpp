@@ -13,6 +13,15 @@
  * It allows users to show and interact with maps, including changing the map's location, orientation,
  * and zoom level. Users can manually control the map zoom or use predefined zoom levels.
  *
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  * To use a `BindMap` object, create an instance and configure its properties, including position,
  * dimensions, latitude, longitude, orientation, and zoom level. You can then add it to the BindCanvas
  * for rendering and interaction by calling the sync function.
@@ -28,7 +37,7 @@ class BindMap : public BindView
 public:
     int16_t x;                   ///< X-coordinate position of the map.
     int16_t y;                   ///< Y-coordinate position of the map.
-    uint8_t cmdId = 0;           ///< Command identifier for the map.
+    uint8_t cmdId = 0;           ///< Command identifier for the map. See the notes for possible cmdId values.
     int16_t width = 100;         ///< Width of the map.
     int16_t height = 100;        ///< Height of the map.
     float lat = 0.0f;            ///< Latitude of the map's center.

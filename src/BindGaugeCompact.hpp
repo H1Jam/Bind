@@ -10,6 +10,15 @@
  * The BindGaugeCompact class is used to create compact gauge views that can be displayed
  * on the BindCanvas screen. These gauges provide visual feedback for values within a specified range.
  * Users can customize the gauge appearance, label, and value range.
+ * 
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * This class inherits from BindViewAutoTag, allowing it to be managed by the BindCanvas framework.
  * It includes functionality for setting properties such as position, dimensions, current value, maximum value,
@@ -47,7 +56,7 @@ public:
 
     int16_t x;                 ///< The x-coordinate position of the gauge on the canvas.
     int16_t y;                 ///< The y-coordinate position of the gauge on the canvas.
-    uint8_t cmdId = 0;         ///< The command ID associated with the gauge.
+    uint8_t cmdId = 0;         ///< The command ID associated with the gauge. See the notes for possible cmdId values.
     int16_t dimSize = 100;     ///< The dimensions (size) of the gauge.
     float value = 0;           ///< The current value of the gauge.
     float maxValue = 100.0f;   ///< The maximum value that the gauge can represent.

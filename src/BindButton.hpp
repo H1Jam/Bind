@@ -9,16 +9,23 @@
  * BindButton is a class that defines a button UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize buttons, including setting labels, positions, colors, and sizes.
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
  *
  * Buttons created with BindButton can be synchronized with BindCanvas through the Bind framework,
  * allowing interactive user interfaces to be built for various applications.
- * Note: To receive touch events and user interactions, you must regularly call `bind.sync()` in your main loop.
+ * @note To receive touch events and user interactions, you must regularly call `bind.sync()` in your main loop.
  */
 class BindButton : public BindView
 {
 
 public:
-
   /**
    * @brief Constructs a BindButton with a custom label.
    *
@@ -37,12 +44,12 @@ public:
     setlabel("Button");
   }
 
-  int16_t x;          ///< X-coordinate position of the button
-  int16_t y;          ///< Y-coordinate position of the button
-  uint8_t cmdId = 0;  ///< Command ID for the button
-  int16_t fontSize;   ///< Font size of the button's label
-  int32_t textColor;      ///< Text color of the button
-  int32_t backColor;  ///< Background color of the button
+  int16_t x;         ///< X-coordinate position of the button
+  int16_t y;         ///< Y-coordinate position of the button
+  uint8_t cmdId = 0; ///< Command ID for the button. See the notes for possible cmdId values.
+  int16_t fontSize;  ///< Font size of the button's label
+  int32_t textColor; ///< Text color of the button
+  int32_t backColor; ///< Background color of the button
 
   /**
    * @brief Sets the label text for the button.
@@ -62,7 +69,7 @@ public:
    *
    * This function is used to gather the bytes that represent the button's properties for synchronization.
    * @note This function should not be called directly by users, Bind calls it internally.
-   * 
+   *
    * @param out A pointer to the output buffer where the button data will be stored.
    * @return The number of bytes written to the output buffer.
    */
@@ -86,8 +93,7 @@ public:
     return offset;
   }
 
-  private:
-
+private:
   uint8_t objID = BIND_ID_BUTTON;
   uint16_t offset = 0;
   int strLength = 0;

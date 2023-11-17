@@ -8,6 +8,16 @@
  *
  * The `BindHeadingIndicator` class is designed to create and display a heading indicator element
  * within a BindCanvas screen. This element allows users to visualize and monitor a vehicle or an object's heading.
+ *  
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *	- BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *	- BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *	- BIND_DISABLE_CMD: Disables the object.
+ *	- BIND_ENABLE_CMD: Enables the object.
+ *	- BIND_HIDE_CMD: Hides the object.
+ *	- BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  *
  */
 class BindHeadingIndicator : public BindView
@@ -17,7 +27,7 @@ public:
     BindHeadingIndicator();
     int16_t x = 0;         ///< X-coordinate position of the heading indicator.
     int16_t y = 0;         ///< Y-coordinate position of the heading indicator.
-    uint8_t cmdId = 0;     ///< Command ID for the heading indicator.
+    uint8_t cmdId = 0;     ///< Command ID for the heading indicator. See the notes for possible cmdId values.
     int16_t dimSize = 200; ///< Size dimension of the heading indicator (Width = Height).
     float heading = 0.0f;  ///< Current heading value.
 

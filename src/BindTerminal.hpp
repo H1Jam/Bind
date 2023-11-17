@@ -10,6 +10,15 @@
  * within a BindCanvas UI. This terminal can be used for displaying text data, log messages,
  * or other textual information and provides various customization options.
  *
+ * @note Possible cmdId values for a BindView and corresponding effects:
+ *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.
+ *  - BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.
+ *  - BIND_REMOVE_CMD: Removes the object from the canvas (screen).
+ *  - BIND_DISABLE_CMD: Disables the object.
+ *  - BIND_ENABLE_CMD: Enables the object.
+ *  - BIND_HIDE_CMD: Hides the object.
+ *  - BIND_VISIBLE_CMD: Restores the object's visibility.
+ *
  * @see the example folder for more information.
  */
 class BindTerminal : public BindView
@@ -19,7 +28,7 @@ public:
     BindTerminal();
     int16_t x = 0;              ///< X-coordinate position of the terminal.
     int16_t y = 0;              ///< Y-coordinate position of the terminal.
-    uint8_t cmdId = 0;          ///< Command ID for the terminal.
+    uint8_t cmdId = 0;          ///< Command ID for the terminal. See the notes for possible cmdId values.
     int16_t width = 200;        ///< Width of the terminal.
     int16_t height = 100;       ///< Height of the terminal.
     int16_t textSize = 10;      ///< Text size of the displayed text.
