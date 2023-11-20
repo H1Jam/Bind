@@ -89,6 +89,7 @@ void addKnobs() {
   knob1.minValue = 0;
   knob1.maxValue = 100;
   knob1.value = 50;  // Initial value
+  knob1.setlabel("knob1");
   bind.sync(knob1);
 
   // Configure and synchronize Knob 2
@@ -99,5 +100,6 @@ void addKnobs() {
   knob2.minValue = 0;
   knob2.maxValue = 100;
   knob2.value = 25;  // Initial value
+  knob2.setlabel("knob2");
   bind.sync(knob2);
 }
