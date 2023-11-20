@@ -36,10 +36,10 @@ float oceanDrive[5][2] = {
 };
 
 // Add the map on screen (You can only have one map on the screen for now.)
-void addMap() {
+void addMap(int16_t screenWidth)  {
   bindMap.x = 10;
   bindMap.y = 70;
-  bindMap.width = 300;
+  bindMap.width = screenWidth - bindMap.x * 2;
   bindMap.height = 400;
   bindMap.lat = 26.891425f;
   bindMap.lon = -80.056879f;
@@ -95,7 +95,7 @@ void moveMapAndMarkers() {
 
 void onConnection(int16_t width, int16_t height) {
   Serial.println("Screen setup started!");
-  addMap();
+  addMap(width);
   Serial.println("Screen setup done!");
 }
 
