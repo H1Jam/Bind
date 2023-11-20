@@ -4,7 +4,7 @@
 
 **Bind** is a C++ UI toolkit for Arduino, allowing developers to create interactive user interfaces seamlessly integrated into their Arduino projects. In other words, it facilitates the generation of UI components on an Android screen through MCU code. By using Bind you can display data using text, charts, and gauges, and captur user inputs through an array of *interactive elements* such as buttons, checkboxes, joysticks, sliders, and color pickers.
 
-| ![App Sample](./img/demo_app.png) Sample App 1| ![App Demo](./img/demo_app2.png) Sample App 2|
+| ![App Sample](./img/demo_app.png) Sample app created by Bind| ![App Demo](./img/demo_app2.png) Sample app created by Bind|
 |:---:|:---:|
 
 
