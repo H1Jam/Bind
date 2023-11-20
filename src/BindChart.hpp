@@ -34,7 +34,7 @@ public:
     BindChart();
     int16_t x = 0;          ///< X-coordinate position of the chart.
     int16_t y = 0;          ///< Y-coordinate position of the chart.
-    uint8_t cmdId = 0;      ///< Command ID for the chart.
+    uint8_t cmdId = 0;      ///< Command ID for the chart. See the notes for possible cmdId values.
     int16_t width = 200;    ///< Width of the chart.
     int16_t height = 100;   ///< Height of the chart.
     int16_t maxY = 10;      ///< Maximum Y-axis value of the chart.
