@@ -11,12 +11,14 @@ BluetoothSerial SerialBT;
 #include "Bind.hpp"
 // Note: This logic can be applied to all Bind objects; I used bind button (button1) here.
 // Note: Check the button sample for a better understanding of how Bind buttons work.
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 10
+#endif
 
 Bind bind;
 BindButton button1;
 BindButton buttonShowHide;
 BindButton buttonDisableEnable;
-
 
 bool ledStatus = false;
 
@@ -68,7 +70,7 @@ void buttonDisableEnable_pressed() {
  * @note Ensure you call "bind.sync();" in the main loop to receive button press events.
  */
 void addButton1() {
-  // Syncing Button 1:
+  // Syncing the first Button:
   // Set the Button's position on the screen.
   // Tip: You can use the grid view mode in BindCanvas app to determine the x and y coordinates
   // and replace these numbers with the grid values for precise positioning.
@@ -86,7 +88,7 @@ void addButton1() {
 }
 
 void addButtonShowHide() {
-  // Syncing Button 2:
+  // Syncing 2nd Button:
   // See addButton1 descripotions!
   buttonShowHide.x = 100;
   buttonShowHide.y = 150;
@@ -102,7 +104,7 @@ void addButtonShowHide() {
 }
 
 void addButtonDisableEnable() {
-  // Syncing Button 2:
+  // Syncing 3rd Button:
   // See addButton1 descripotions!
   buttonDisableEnable.x = 80;
   buttonDisableEnable.y = 100;
