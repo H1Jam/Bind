@@ -22,7 +22,7 @@ SoftwareSerial btSerial(4, 3); // Modify this line, if your board is neither abo
 // If the board doesn't have built-in LED, assign an external LED here (if wish to use it):
 #ifndef LED_BUILTIN
 #define LED_BUILTIN 10
-#endif  
+#endif
 
 Bind bind;
 BindButton buttonON;
@@ -121,7 +121,6 @@ void setup() {
   // Connect the callback functions with the Bind objects.
   bind.join(buttonON, buttonON_pressed);
   bind.join(buttonOFF, buttonOFF_pressed);
-
 }
 
 void loop() {
