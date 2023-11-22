@@ -22,14 +22,14 @@ This callback function allows you to seamlessly integrate your own logic with th
 This simplifies the process, allowing you to focus on defining your UI elements and their behavior.
 ## Compatibility
 
-- **Communication Methods:** Bind currently supports Bluetooth (Classic) and Serial port (over USB) for seamless interactions. Support for Wi-Fi and internet (MQTT) interfaces will be integrated soon. Although BLE (Bluetooth Low Energy) is not currently supported, it is a planned feature for future releases. Yet, if needed, you have the flexibility to create your custom interface by leveraging the existing communication methods.
+- **Communication Methods:** Bind currently supports Bluetooth (Classic) and Serial port (over USB) for seamless interactions. Support for Wi-Fi, BLE (Bluetooth Low Energy), and internet (MQTT) interfaces will be integrated soon. Yet, if needed, you have the flexibility to create your custom interface or module by leveraging the existing communication methods.
 
 - **Hardware Support:**
 
 | Board | USB | Bluetooth dongle (HC-06 or similar) | Built-in Bluetooth | Note |
 |:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | Works OK but has a very limited RAM. |
-| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. ESP32-C3 and S3 are not supported yet.|
+| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. For ESP32-C3 and S3, bluetooth is not supported yet.|
 | Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare). |
 | ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A |  |
 | Other Boards | :heavy_check_mark: | :heavy_check_mark: | TBD | USB serial port and external Bluetooth dongle should work with all boards. |
@@ -83,7 +83,7 @@ void addButton() {
 
 void myButtonClicked() {
     // Your custom logic when the button is clicked
-    //For example toggle a LED:
+    // For example toggle a LED:
     led_is_on = !led_is_on;
     digitalWrite(ledPin, led_is_on);
 }
@@ -137,7 +137,7 @@ void addButton() {
 
 void myButtonClicked() {
     // Your custom logic when the button is clicked
-    //For example toggle a LED:
+    // For example toggle a LED:
     led_is_on = !led_is_on;
     digitalWrite(ledPin, led_is_on);
 }
