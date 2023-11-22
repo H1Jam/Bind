@@ -27,13 +27,12 @@ This simplifies the process, allowing you to focus on defining your UI elements 
 - **Hardware Support:**
 
 | Board | USB | Blutooth dongle | built-in Blutooth | Note |
-|:---:|:---:||:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| * | * | N/A | Works OK but has limited RAM |
 | ESP32 | :heavy_check_mark: | * | * | ESP32-C3 and S3 are not supported yet|
 | Rasblery Pi Pico W | * | * | * | Blutooth driver is not perfect. Pairing problems and ocassinaly crash has been observed (rare though)   |
 | ESP8266 | * | * | N/A |  |
 | Other Boards | * | * | TBD | USB serial port and external Blutooth dongle should work with all boards |
-
 
 
 - **Android Compatibility:** Designed for Android 6 Marshmallow and later versions (API Level 23+), ensuring compatibility with a broad range of new devices and most of still-alive aging Android devices.
