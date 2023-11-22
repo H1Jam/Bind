@@ -29,8 +29,8 @@ This simplifies the process, allowing you to focus on defining your UI elements 
 | Board | USB | Blutooth dongle (HC-06 or similar) | Built-in Blutooth | Note |
 |:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | Works OK but has limited RAM |
-| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ESP32-C3 and S3 are not supported yet|
-| Rasblery Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Blutooth driver is not perfect. Pairing problems and ocassinaly crash has been observed (rare though)   |
+| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. ESP32-C3 and S3 are not supported yet|
+| Rasblery Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Blutooth driver is not perfect yet. Pairing problems and occasionally some crash has been observed (very rare) |
 | ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A |  |
 | Other Boards | :heavy_check_mark: | :heavy_check_mark: | TBD | USB serial port and external Blutooth dongle should work with all boards |
 
