@@ -26,7 +26,7 @@ This simplifies the process, allowing you to focus on defining your UI elements 
 
 - **Hardware Support:**
 
-| Board | USB | Bluetooth dongle (HC-06 or similar) | Built-in Blutooth | Note |
+| Board | USB | Bluetooth dongle (HC-06 or similar) | Built-in Bluetooth | Note |
 |:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | Works OK but has a very limited RAM. |
 | ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. ESP32-C3 and S3 are not supported yet.|
