@@ -26,7 +26,7 @@ This simplifies the process, allowing you to focus on defining your UI elements 
 
 - **Hardware Support:**
 
-| Board | USB | Blutooth dongle | built-in Blutooth | Note |
+| Board | USB | Blutooth dongle (HC-06 or similar) | built-in Blutooth | Note |
 |:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | Works OK but has limited RAM |
 | ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ESP32-C3 and S3 are not supported yet|
