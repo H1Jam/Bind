@@ -2,7 +2,7 @@
 ![license](https://img.shields.io/github/license/H1Jam/Bind)
 # Bind: C++ UI Toolkit for Arduino
 
-**Bind** is a C++ UI toolkit for Arduino, allowing developers to create interactive user interfaces seamlessly integrated into their Arduino projects. In other words, it facilitates the generation of UI components on an Android screen (BindCanvas) through MCU code. By using Bind you can display data using text, charts, gauges, maps, and many more, and also capture user inputs through an array of *interactive elements* such as buttons, checkboxes, joysticks, sliders, and color pickers.
+**Bind** is a C++ UI library for Arduino, allowing developers to create interactive user interfaces seamlessly integrated into their Arduino projects. In other words, it facilitates the generation of UI components on an Android screen (BindCanvas) through MCU code. Bind allows you to display data using text, charts, gauges, street maps, and many more, and also capture user inputs through an array of *interactive elements* such as buttons, checkboxes, joysticks, sliders, and color pickers.
 
 | ![App Sample](./img/demo_app.png) Sample app created by Bind| ![App Demo](./img/demo_app2.png) Sample app created by Bind|
 |:---:|:---:|
@@ -23,6 +23,18 @@ This simplifies the process, allowing you to focus on defining your UI elements 
 ## Compatibility
 
 - **Communication Methods:** Bind currently supports Bluetooth (Classic) and Serial port (over USB) for seamless interactions. Support for Wi-Fi and internet (MQTT) interfaces will be integrated soon. Although BLE (Bluetooth Low Energy) is not currently supported, it is a planned feature for future releases. Yet, if needed, you have the flexibility to create your custom interface by leveraging the existing communication methods.
+
+- **Hardware Support:**
+
+| Board | USB | Blutooth dongle | built-in Blutooth | Note |
+|:---:|:---:||:---:|:---:|:---:|
+| Avr Arduino (Uno, Pro Micro,...)| * | * | N/A | Works OK but has limited RAM |
+| ESP32 | :heavy_check_mark: | * | * | ESP32-C3 and S3 are not supported yet|
+| Rasblery Pi Pico W | * | * | * | Blutooth driver is not perfect. Pairing problems and ocassinaly crash has been observed (rare though)   |
+| ESP8266 | * | * | N/A |  |
+| Other Boards | * | * | TBD | USB serial port and external Blutooth dongle should work with all boards |
+
+
 
 - **Android Compatibility:** Designed for Android 6 Marshmallow and later versions (API Level 23+), ensuring compatibility with a broad range of new devices and most of still-alive aging Android devices.
 
