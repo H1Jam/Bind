@@ -7,6 +7,8 @@
 
 #define RGB(r, g, b) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | 0xFF000000)
 #define RGBA(r, g, b, a) ((int32_t)((uint8_t)(b)) | ((int32_t)(g) << 8) | (((int32_t)(uint8_t)(r)) << 16) | ((int32_t)((uint8_t)(a)) << 24))
+#define rgb(r, g, b) RGB(r, g, b) 
+#define rgba(r, g, b, a) RGBA(r, g, b, a) 
 
 #define BIND_ID_SETUP_CMD 5
 #define BIND_ID_BUTTON 6
