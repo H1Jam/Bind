@@ -7,13 +7,12 @@
 
 A short YouTube video introducing Bind:
 
-[![What is Bind?](https://img.youtube.com/vi/IQnyPGmxeUg/0.jpg)](https://www.youtube.com/watch?v=IQnyPGmxeUg)
+[![What is Bind?](./img/BindVideo1lq.jpg)](https://www.youtube.com/watch?v=IQnyPGmxeUg)
 
 | ![App Sample](./img/demo_app.png) Sample app created by Bind| ![App Demo](./img/demo_app2.png) Sample app created by Bind|
 |:---:|:---:|
 
-
-Using Bind is a breeze, requiring just three fundamental functions: `init`, `join`, and `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
+Using Bind is easy, requiring just three fundamental functions: `init`, `join`, and `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
 
 No need to delve into data parsing or protocol handling, everything is internally managed by the Bind library. Simply define your objects, set attributes like location, size, and color, and call `bind.sync(myBindObject)` to display them on the screen.
 
