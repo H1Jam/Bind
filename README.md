@@ -1,4 +1,6 @@
 ![workflow](https://github.com/H1Jam/Bind/actions/workflows/main.yml/badge.svg)
+[![](https://img.shields.io/badge/Available_in_the_Arduino_Library_Manager-2ea44f)](https://www.arduino.cc/reference/en/libraries/bind/)
+[![arduino-library-badge](https://www.ardu-badge.com/badge/Bind.svg?)](https://www.ardu-badge.com/Bind)
 ![license](https://img.shields.io/github/license/H1Jam/Bind)
 # Bind: C++ UI Toolkit for Arduino
 
@@ -12,6 +14,14 @@ A short YouTube video introducing Bind:
 | ![App Sample](./img/demo_app.png) Sample app created by Bind| ![App Demo](./img/demo_app2.png) Sample app created by Bind|
 |:---:|:---:|
 
+## Instalation:
+To install Bind into your Arduino IDE you can use the **Library Manage**r (available from IDE version 1.6.2). Open the IDE and click to the **_Tools_** menu and then **_Manage Libraries..._**.
+Then search for **_Bind_**, click on install, and wait for the IDE to install Bind. Once it has finished, an Installed tag should appear next to the Bind library. You can close the Library Manager.
+
+![What is Bind?](./img/libman-bind.jpg)
+
+Now you can find the library examples under **File > Examples > Bind**
+## Usage
 Using Bind is easy, requiring just three fundamental functions: `init`, `join`, and `sync`. First, use `init` to initialize the Bind interface. Then, employ `join` to associate objects with callbacks for interactive elements.  Lastly, use `sync` to synchronize with the screen and receive events.
 
 No need to delve into data parsing or protocol handling, everything is internally managed by the Bind library. Simply define your objects, set attributes like location, size, and color, and call `bind.sync(myBindObject)` to display them on the screen.
@@ -24,6 +34,7 @@ void myButtonClicked() {
 ```
 This callback function allows you to seamlessly integrate your own logic with the user interactions, defining specific actions to be executed when the associated button is clicked.
 This simplifies the process, allowing you to focus on defining your UI elements and their behavior.
+Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) or examples (under **File > Examples > Bind**) for more information.
 ## Compatibility
 
 - **Communication Methods:** Bind currently supports Bluetooth (Classic) and Serial port (over USB) for seamless interactions. Support for Wi-Fi, BLE (Bluetooth Low Energy), and internet (MQTT) interfaces will be integrated soon. Yet, if needed, you have the flexibility to create your custom interface or module by leveraging the existing communication methods.
