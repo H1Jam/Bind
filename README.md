@@ -6,6 +6,7 @@
 [You can check out the complete class documentation here.](https://h1jam.github.io/Bind/class_bind.html)
 
 A short YouTube video introducing Bind:
+
 [![What is Bind?](https://img.youtube.com/vi/IQnyPGmxeUg/0.jpg)](https://www.youtube.com/watch?v=IQnyPGmxeUg)
 
 | ![App Sample](./img/demo_app.png) Sample app created by Bind| ![App Demo](./img/demo_app2.png) Sample app created by Bind|
