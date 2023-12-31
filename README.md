@@ -14,9 +14,8 @@ A short YouTube video introducing Bind:
 | ![App Sample](./img/demo_app.png) Sample app created by Bind| ![App Demo](./img/demo_app2.png) Sample app created by Bind|
 |:---:|:---:|
 
-## Instalation:
-To install Bind into your Arduino IDE you can use the **Library Manage**r (available from IDE version 1.6.2). Open the IDE and click to the **_Tools_** menu and then **_Manage Libraries..._**.
-Then search for **_Bind_**, click on install, and wait for the IDE to install Bind. Once it has finished, an Installed tag should appear next to the Bind library. You can close the Library Manager.
+## Installation:
+To install Bind in your Arduino IDE, use the **Library Manager** (available from IDE version 1.6.2). Open the IDE, go to **Tools > Manage Libraries...**, search for **_Bind_**, click install, and wait for completion. Once installed, you'll see an 'Installed' tag next to the Bind library. Close the Library Manager
 
 ![What is Bind?](./img/libman-bind.jpg)
 
