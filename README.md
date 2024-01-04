@@ -7,7 +7,7 @@
 **Bind** is a C++ UI library for Arduino, allowing developers to create interactive user interfaces for their Arduino projects. Bind allows you to display data using text, charts, gauges, street maps, and many more, and also capture user inputs through an array of *interactive elements* such as buttons, checkboxes, joysticks, sliders, and color pickers.
 [You can check out the complete class documentation here.](https://h1jam.github.io/Bind/class_bind.html)
 
-Get BindCanvas:<br>
+Get BindCanvas Android App:<br>
 <a href='https://play.google.com/store/apps/details?id=com.hjam.bindcanvas&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
 <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="215"/>
 </a>
