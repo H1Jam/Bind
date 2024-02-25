@@ -8,6 +8,17 @@
 #define PRGM
 #endif
 
+/**
+ * @brief Lookup table for CRC-16 calculation.
+ * 
+ * This table is used for CRC-16 calculation in the code.
+ * It contains precomputed values for faster computation.
+ * The table is stored as a constant array of 256 16-bit values.
+ * 
+ * @note The table is defined as `PRGM` to indicate that it is stored in program memory.
+ * 
+ * @see crc16_calculate()
+ */
 uint16_t const crc16_table[] PRGM = {
     0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
     0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
@@ -42,6 +53,13 @@ uint16_t const crc16_table[] PRGM = {
     0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
     0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0};
 
+/**
+ * Calculates the CRC-16 checksum for a single byte of data.
+ *
+ * @param crc The current CRC value.
+ * @param data The byte of data to calculate the checksum for.
+ * @return The updated CRC value after calculating the checksum for the given byte of data.
+ */
 static inline uint16_t crc16_byte(uint16_t crc, const uint8_t data)
 {
   #ifdef __AVR__
@@ -50,7 +68,16 @@ static inline uint16_t crc16_byte(uint16_t crc, const uint8_t data)
   return (crc << 8) ^ crc16_table[(crc >> 8) ^ data];
   #endif
 }
+
 uint16_t crc = 0;
+
+/**
+ * Calculates the CRC-16 checksum for the given buffer.
+ *
+ * @param buffer The input buffer.
+ * @param len The length of the buffer.
+ * @return The calculated CRC-16 checksum.
+ */
 uint16_t crc16(uint8_t const *buffer, size_t len)
 {
   crc = CRC16_INIT;
