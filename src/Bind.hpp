@@ -6,7 +6,6 @@
 #include "DataProtocol.h"
 #include "BindUtils.hpp"
 #include "BindWidgets.hpp"
-
 /// \brief Maximum number of object handlers
 #define MAX_HANDLERS 16
 
@@ -127,6 +126,18 @@ public:
    * Try to achieve a rate more than 10Hz for optimal performance."
    */
   void sync();
+
+  /**
+   * @brief Synchronizes the bind with the current state.
+   * 
+   * Similar to sync() but uses the buffer directly to be used in some cases 
+   * that the regular stream object is not available. for example ble, wifi or
+   * any other custom communication.
+   * 
+   * @param buffer a pointer to the buffer that contains the data to be processed.
+   * @param size size of the buffer.
+   */
+  void sync(const uint8_t *buffer, size_t size);
 
   // Binding functions for UI elements...
 
