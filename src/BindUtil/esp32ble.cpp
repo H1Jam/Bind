@@ -22,11 +22,9 @@ void sendData(uint8_t *data, size_t size)
 
 BleStream* ble_init(Bind &bind, std::string deviceName)
 {
-
     BLEDevice::init(deviceName);
     pServer = BLEDevice::createServer();
     pServer->setCallbacks(new BleCallbacks());
-
     BLEService *pService = pServer->createService(SERVICE_UUID);
 
     pTxCharacteristic = pService->createCharacteristic(
