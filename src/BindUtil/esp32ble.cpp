@@ -15,7 +15,8 @@ void sendData(uint8_t *data, size_t size)
     {
         pTxCharacteristic->setValue(data, size);
         pTxCharacteristic->notify();
-        delay(2); // bluetooth stack will go into congestion, if too many packets are sent
+        // Add a small delay to prevent congestion in the Bluetooth stack.
+        delay(2);
     }
 }
 
