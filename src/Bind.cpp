@@ -57,6 +57,15 @@ void Bind::sync(BindView *obj)
   }
 }
 
+void Bind::sync(const uint8_t *buffer, size_t size)
+{
+  while (size > 0)
+  {
+    updateScreen(*buffer++);
+    size--;
+  }
+}
+
 void Bind::sync()
 {
   if (bindStream != NULL)
