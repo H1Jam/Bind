@@ -1,15 +1,10 @@
-//Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.  
-//Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
+// Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.
+// Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x +
+// Bluetooth).
 
-#if defined(ESP32)
-#include "BluetoothSerial.h"
-BluetoothSerial SerialBT;
-#elif defined(ARDUINO_ARCH_RP2040)
 #include <SerialBT.h>
-#endif
 
 #include "Bind.hpp"
-
 
 Bind bind;
 BindJoystick joystickRight;
@@ -28,8 +23,8 @@ void onConnection(int16_t width, int16_t height) {
   Serial.print(":");
   Serial.println(height);
 
-  screenConfig();          // Configure the screen settings
-  addJoystickLeft();       // Add the left joystick to the BindCanvas
+  screenConfig();                // Configure the screen settings
+  addJoystickLeft();             // Add the left joystick to the BindCanvas
   addJoystickRight(height);      // Add the right joystick to the BindCanvas
   addSpeedGauge(height);         // Add a speed gauge to the BindCanvas
   addAttitudeIndicator(height);  // Add an attitude indicator to the BindCanvas
@@ -53,8 +48,8 @@ void screenConfig() {
  * @brief Callback for joystick change.
  *
  * This function is triggered when the joystick's position changes. It receives
- * two parameters, 'x' and 'y,' representing the new X and Y coordinates of the joystick.
- * You can implement custom actions based on these coordinates.
+ * two parameters, 'x' and 'y,' representing the new X and Y coordinates of the
+ * joystick. You can implement custom actions based on these coordinates.
  *
  * @param x The new X-coordinate of the joystick.
  * @param y The new Y-coordinate of the joystick.
@@ -83,10 +78,12 @@ void joystickLeft_onChange(int16_t x, int16_t y) {
  * @brief Add the right joystick to the BindCanvas
  */
 void addJoystickRight(int16_t screenHeight) {
-  joystickRight.x = screenHeight- 200 - 20; // 200 = dimSize(the object width), 20 is fair clearance.
+  joystickRight.x =
+      screenHeight - 200 -
+      20;  // 200 = dimSize(the object width), 20 is fair clearance.
   joystickRight.y = 140;
   joystickRight.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  joystickRight.dimSize = 200; // For BindJoystick, dimSize = height = width
+  joystickRight.dimSize = 200;  // For BindJoystick, dimSize = height = width
   bind.sync(joystickRight);
 }
 
@@ -97,7 +94,7 @@ void addJoystickLeft() {
   joystickLeft.x = 20;
   joystickLeft.y = 140;
   joystickLeft.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  joystickLeft.dimSize = 200; // For BindJoystick, dimSize = height = width
+  joystickLeft.dimSize = 200;  // For BindJoystick, dimSize = height = width
   bind.sync(joystickLeft);
 }
 
@@ -105,10 +102,11 @@ void addJoystickLeft() {
  * @brief Add the speed gauge to the BindCanvas
  */
 void addSpeedGauge(int16_t screenHeight) {
-  //We want to put the center of SpeedGauge on the center of the screen. Therefore:
-  speedGauge.x = screenHeight/2 - 100; // 100 is dimSize/2
+  // We want to put the center of SpeedGauge on the center of the screen.
+  // Therefore:
+  speedGauge.x = screenHeight / 2 - 100;  // 100 is dimSize/2
   speedGauge.y = 150;
-  speedGauge.dimSize = 200; // For BindGaugeCompact, dimSize = height = width
+  speedGauge.dimSize = 200;  // For BindGaugeCompact, dimSize = height = width
   speedGauge.value = 0;
   speedGauge.maxValue = 200.0f;
   speedGauge.drawArc = 100;
@@ -124,12 +122,13 @@ void addSpeedGauge(int16_t screenHeight) {
  * @brief Add the attitude indicator to the BindCanvas
  */
 void addAttitudeIndicator(int16_t screenHeight) {
-  attitudeIndicator.x = screenHeight/2;
+  attitudeIndicator.x = screenHeight / 2;
   attitudeIndicator.y = 5;
   attitudeIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
   attitudeIndicator.roll = 0;
   attitudeIndicator.pitch = 0;
-  attitudeIndicator.dimSize = 120; // For BindAttitudeIndicator, dimSize = height = width
+  attitudeIndicator.dimSize =
+      120;  // For BindAttitudeIndicator, dimSize = height = width
   bind.sync(attitudeIndicator);
 }
 
@@ -137,11 +136,12 @@ void addAttitudeIndicator(int16_t screenHeight) {
  * @brief Add the heading indicator to the BindCanvas
  */
 void addHeadingIndicator(int16_t screenHeight) {
-  headingIndicator.x = screenHeight/2 - 120; // 120 = dimSize or width
+  headingIndicator.x = screenHeight / 2 - 120;  // 120 = dimSize or width
   headingIndicator.y = 5;
   headingIndicator.cmdId = BIND_ADD_OR_REFRESH_CMD;
   headingIndicator.heading = 0;
-  headingIndicator.dimSize = 120; // For BindHeadingIndicator, dimSize = height = width
+  headingIndicator.dimSize =
+      120;  // For BindHeadingIndicator, dimSize = height = width
   bind.sync(headingIndicator);
 }
 
@@ -182,37 +182,28 @@ void setSpeedGauge(float value) {
 
 void setup() {
   Serial.begin(115200);
-  
-#if defined(ESP32)
-  String devName = "BindOnESP32";
-  SerialBT.begin(devName);
-  Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
-  Serial.println("Device Name:");
-  Serial.println(devName);
-#elif defined(ARDUINO_ARCH_RP2040)
+
   SerialBT.begin();
-#endif
 
   bind.init(SerialBT, onConnection);
 
-  //Set the callbacks
+  // Set the callbacks
   bind.join(joystickRight, joystickRight_onChange);
   bind.join(joystickLeft, joystickLeft_onChange);
-
 }
 
 void loop() {
   /**
- * Synchronize Bind UI Events
- *
- * To ensure proper handling of user inputs and touch events, it's crucial to call
- * this function regularly within your Arduino loop. Failing to do so may result
- * in missed events, such as button clicks or user interactions with your UI elements.
- * By calling `bind.sync()`, you maintain seamless communication between your Arduino
- * code and the Bind Framework.
- * It's recommended to call sync() a couple of times per second, but the faster, the better!
- * Aim for a rate above 20Hz for ideal performance.
-  */
+   * Synchronize Bind UI Events
+   *
+   * To ensure proper handling of user inputs and touch events, it's crucial to
+   * call this function regularly within your Arduino loop. Failing to do so may
+   * result in missed events, such as button clicks or user interactions with
+   * your UI elements. By calling `bind.sync()`, you maintain seamless
+   * communication between your Arduino code and the Bind Framework. It's
+   * recommended to call sync() a couple of times per second, but the faster,
+   * the better! Aim for a rate above 20Hz for ideal performance.
+   */
   bind.sync();
   delay(5);
 }

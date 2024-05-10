@@ -1,20 +1,16 @@
-//Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.  
-//Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
+// Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.
+// Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x +
+// Bluetooth).
 
-#if defined(ESP32)
-#include "BluetoothSerial.h"
-BluetoothSerial SerialBT;
-#elif defined(ARDUINO_ARCH_RP2040)
 #include <SerialBT.h>
-#endif
 
 #include "Bind.hpp"
-
 
 Bind bind;
 BindGaugeCompact speedGauge;
 
-const int analogInPin = 15;  // Analog input pin that the potentiometer is attached to
+const int analogInPin =
+    15;  // Analog input pin that the potentiometer is attached to
 int sensorValue = 0;
 int outputValue = 0;
 int counter = 0;
@@ -28,7 +24,7 @@ void onConnection(int16_t width, int16_t height) {
   Serial.print(width);
   Serial.print(":");
   Serial.println(height);
-  screenConfig();  // Configure the screen settings
+  screenConfig();         // Configure the screen settings
   addSpeedGauge(height);  // Add a speed gauge to the BindCanvas
   Serial.println("Screen setup done!");
 }
@@ -48,7 +44,8 @@ void screenConfig() {
  * @brief Add the speed gauge to the BindCanvas
  */
 void addSpeedGauge(int16_t screenHeight) {
-  //We want to put the center of SpeedGauge on the center of the screen. Therefore:
+  // We want to put the center of SpeedGauge on the center of the screen.
+  // Therefore:
   speedGauge.x = 10;  // 100 is dimSize/2
   speedGauge.y = 80;
   speedGauge.dimSize = 200;  // For BindGaugeCompact, dimSize = height = width
@@ -71,7 +68,7 @@ void addSpeedGauge(int16_t screenHeight) {
 void setSpeedGauge(float value) {
   speedGauge.value = value;
   speedGauge.cmdId = BIND_DATA_ONLY_CMD;
-  if (bind.isReady()){
+  if (bind.isReady()) {
     bind.sync(speedGauge);
   }
 }
@@ -79,32 +76,24 @@ void setSpeedGauge(float value) {
 void setup() {
   Serial.begin(115200);
   analogReadResolution(10);
-  
-#if defined(ESP32)
-  String devName = "BindOnESP32";
-  SerialBT.begin(devName);
-  Serial.println("The Bluetooth device started. Pair your phone with Bluetooth!");
-  Serial.println("Device Name:");
-  Serial.println(devName);
-#elif defined(ARDUINO_ARCH_RP2040)
+
   SerialBT.begin();
-#endif
 
   bind.init(SerialBT, onConnection);
 }
 
 void loop() {
   /**
- * Synchronize Bind UI Events
- *
- * To ensure proper handling of user inputs and touch events, it's crucial to call
- * this function regularly within your Arduino loop. Failing to do so may result
- * in missed events, such as button clicks or user interactions with your UI elements.
- * By calling `bind.sync()`, you maintain seamless communication between your Arduino
- * code and the Bind Framework.
- * It's recommended to call sync() a couple of times per second, but the faster, the better!
- * Aim for a rate above 20Hz for ideal performance.
-  */
+   * Synchronize Bind UI Events
+   *
+   * To ensure proper handling of user inputs and touch events, it's crucial to
+   * call this function regularly within your Arduino loop. Failing to do so may
+   * result in missed events, such as button clicks or user interactions with
+   * your UI elements. By calling `bind.sync()`, you maintain seamless
+   * communication between your Arduino code and the Bind Framework. It's
+   * recommended to call sync() a couple of times per second, but the faster,
+   * the better! Aim for a rate above 20Hz for ideal performance.
+   */
   bind.sync();
   syncPotentiometer();
   delay(10);
@@ -113,7 +102,7 @@ void loop() {
 void syncPotentiometer() {
   counter++;
   if (counter > 10) {
-    counter =0;
+    counter = 0;
     sensorValue = analogRead(analogInPin);
     outputValue = map(sensorValue, 0, 1023, 0, 180);
     setSpeedGauge(outputValue);
