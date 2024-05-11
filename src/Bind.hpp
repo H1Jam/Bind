@@ -120,10 +120,11 @@ public:
    * reading data from the canvas and managing user interactions with Bind
    * views, such as button presses or connection requests.
    * In simpler terms, it reads the screen.
-   * @attention: To ensure smooth operation and prevent data loss or lag,
+   * @attention To ensure smooth operation and prevent data loss or lag,
    * regularly run the following line of code. It's recommended to execute it
    * a few times per second, and faster is even better!
    * Try to achieve a rate more than 10Hz for optimal performance."
+   * @note Not needed if using ESP32 as the sync function is called automatically.
    */
   void sync();
 
