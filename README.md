@@ -108,17 +108,15 @@ void myButtonClicked() {
 }
 
 void loop() {
-    // Regularly synchronize Bind UI events
+    // Regularly synchronize Bind UI events 
     bind.sync();
     // Other loop logic
 }
 ```
 ## Example Usage 2 (Using Bluetooth for ESP32)
 ```cpp
-#include "BluetoothSerial.h"
 #include "Bind.hpp"
-
-BluetoothSerial SerialBT;
+#include "BindUtil/esp32ble.h"
 
 Bind bind;
 BindButton myButton;
@@ -127,10 +125,13 @@ bool led_is_on = false;
 
 void setup() {
     pinMode(ledPin, OUTPUT);
-    SerialBT.begin("BindOnESP32");
+
+    //Initialize the BLE device:
+    BleStream* SerialBT = ble_init(bind, "BindOnESP32_ble");
   
     // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
     bind.init(SerialBT, onConnection);
+
     // Connect the callback functions with the Bind objects.
     bind.join(myButton, myButtonClicked);
 }
@@ -162,8 +163,7 @@ void myButtonClicked() {
 }
 
 void loop() {
-    // Regularly synchronize Bind UI events
-    bind.sync();
+    // calling sync() is not needed while using ESP32 over BLE.
     // Other loop logic
 }
 ```
