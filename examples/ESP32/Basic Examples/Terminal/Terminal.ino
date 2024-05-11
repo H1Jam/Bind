@@ -1,5 +1,10 @@
 #include "Bind.hpp"
-#include "BindUtil/esp32ble.h"
+#include "BindUtil/esp32ble.h"  // For BLE
+// If you want to use Bluetooth Classic (which is faster), uncomment the
+// following two lines. However, please note that Bluetooth Classic is not
+// compatible with ESP32-C3 or ESP32-S3 models (BLE only). 
+//#include "BluetoothSerial.h"
+//BluetoothSerial SerialBT;
 
 Bind bind;
 BindTerminal bindTerminal;
@@ -42,6 +47,8 @@ void setup() {
 }
 
 void loop() {
+  // bind.sync(); // Uncomment For Bluetooth Classic
+  // For BLE, no need to periodically call bind.sync(); it's already handled by the ESP32 BLE service
   delay(10);
   counter++;
   if (counter > 100) {

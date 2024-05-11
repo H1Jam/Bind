@@ -1,6 +1,12 @@
 #include <Adafruit_NeoPixel.h>
+
 #include "Bind.hpp"
-#include "BindUtil/esp32ble.h"
+#include "BindUtil/esp32ble.h"  // For BLE
+// If you want to use Bluetooth Classic (which is faster), uncomment the
+// following two lines. However, please note that Bluetooth Classic is not
+// compatible with ESP32-C3 or ESP32-S3 models (BLE only). 
+//#include "BluetoothSerial.h"
+//BluetoothSerial SerialBT;
 
 Bind bind;
 BindColorPicker colorPicker1;
@@ -68,7 +74,8 @@ void setup() {
   pixels.begin();  // INITIALIZE NeoPixel strip object (REQUIRED)
   // Initialize the Bind object and specify the communication method (SerialBT)
   // and callback function (onConnection).
-  BleStream* SerialBT = ble_init(bind, "BindOnESP32_ble");
+  BleStream* SerialBT = ble_init(bind, "BindOnESP32_ble"); // Only when using BLE! otherwise comment the line.
+  //SerialBT.begin("BindOnESP32"); // Uncomment For Bluetooth Classic
   bind.init(SerialBT, onConnection);
   // Note: It was SerialBT here, but it could be any serial port, including
   // hardware and software serial.
@@ -78,6 +85,7 @@ void setup() {
 }
 
 void loop() {
-  // No need to periodically call bind.sync(); it's already handled by the ESP32 BLE service 
+  // bind.sync(); // Uncomment For Bluetooth Classic
+  // For BLE, no need to periodically call bind.sync(); it's already handled by the ESP32 BLE service
   delay(10);
 }
