@@ -13,7 +13,6 @@ enum DataDirection
   fromAndroid
 };
 
-int sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
 bool checkCRC(uint8_t const *buffer, size_t len);
 class DataParser
 {
