@@ -7,6 +7,7 @@ uint8_t UDPStream::bindHeartbeat[6] = { 0x42, 0X69, 0X6E, 0X64, 0X48, 0X42 };  /
 uint16_t UDPStream::bindPort = 7997;
 
 void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
+  #if UDP_DEBUG_MSG
   Serial.print("RX: ");
   Serial.print(packet.remoteIP());
   Serial.print(" - [");
@@ -18,11 +19,14 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
     Serial.print(" ");
   }
   Serial.println("]");
+  #endif
 
   if (memcmp(packet.data(), udpStream.discoveryMsg, sizeof(udpStream.discoveryMsg)) == 0) {
     char buffer[50];
     sprintf(buffer, "BindDiscovered:%s", udpStream.bindname);
+    #if UDP_DEBUG_MSG
     Serial.println(buffer);
+    #endif
     udpStream.udp.writeTo((uint8_t*)buffer, strlen(buffer), packet.remoteIP(), packet.localPort());
   }
 
@@ -34,12 +38,16 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
       udpStream.sendPackets = true;
       char buffer[50];
       sprintf(buffer, "BindConnected:%s", udpStream.bindname);
+      #if UDP_DEBUG_MSG
       Serial.println(buffer);
+      #endif
       udpStream.udp.writeTo((uint8_t*)buffer, strlen(buffer), udpStream.canvasIP, packet.localPort());
     } else {
       char buffer[50];
       sprintf(buffer, "BindConnectionFailed:%s", udpStream.bindname);
+      #if UDP_DEBUG_MSG
       Serial.println(buffer);
+      #endif
       udpStream.udp.writeTo((uint8_t*)buffer, strlen(buffer), packet.remoteIP(), packet.localPort());
     }
   }
@@ -50,7 +58,9 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
     if (memcmp(packet.data(), udpStream.bindHeartbeat, sizeof(udpStream.bindHeartbeat)) == 0) {
       char buffer[50];
       sprintf(buffer, "BindHeartbeat:%s - time:%d", udpStream.bindname, udpStream.lastHeartbeat);
+      #if UDP_DEBUG_MSG
       Serial.println(buffer);
+      #endif
       udpStream.udp.writeTo((uint8_t*)buffer, strlen(buffer), packet.remoteIP(), packet.localPort());
     }
 
@@ -58,10 +68,6 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
       udpStream.sendPackets = false;
       udpStream.canvasIP = IPAddress(0, 0, 0, 0);
     }
-
     udpStream._bind->sync(packet.data(),packet.length());
-
-    //To Do: Add other commands
-    //To Do: update the lastHeartbeat when get any packet from canvas
   }
 }
