@@ -5,7 +5,12 @@
 #include <Stream.h>
 #include <AsyncUDP.h>
 #include "Bind.hpp"
+#define UDP_DEBUG_MSG 0 // Set to 1 to enable debug messages
 
+/*
+  * This class is used to send and receive data over UDP to be used 
+  * with the Bind class.
+*/
 class UDPStream : public Stream
 {
 private:
@@ -17,7 +22,6 @@ private:
     static uint16_t bindPort;
     IPAddress canvasIP = IPAddress(0, 0, 0, 0);
     void handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet);
-    //void syncCallbacksync(const uint8_t *buffer, size_t size)
     Bind *_bind;
     AsyncUDP udp;
     uint32_t lastHeartbeat = 0;
@@ -45,6 +49,7 @@ public:
       if (this->sendPackets == true && this->lastHeartbeat + 5000 > millis())
       {
         this->udp.writeTo(buffer, size, this->canvasIP, this->bindPort);
+        #if UDP_DEBUG_MSG
         Serial.print("TX: ");
         Serial.print(this->canvasIP);
         Serial.print(" - Hex[");
@@ -54,6 +59,7 @@ public:
           Serial.print(" ");
         }
         Serial.println("]");
+        #endif
         return size;
       }
       else
