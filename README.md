@@ -66,7 +66,7 @@ Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) 
 ## Example Usage 1 (Using Serial port over USB for all boards)
 
 ```cpp
-#include "Bind.hpp"
+#include "bind.h"
 
 Bind bind;
 BindButton myButton;
@@ -115,8 +115,8 @@ void loop() {
 ```
 ## Example Usage 2 (Using Bluetooth for ESP32)
 ```cpp
-#include "Bind.hpp"
-#include "BindUtil/esp32ble.h"
+#include "bind.h"
+#include "BindUtil/BindOverBLE.h"
 
 Bind bind;
 BindButton myButton;
