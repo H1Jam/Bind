@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('class_bind.html',''); initResizable();
 <p>The <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> class provides a framework for creating interactive applications with BindCanvas.  
  <a href="class_bind.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_bind_8hpp_source.html">Bind.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_bind_8h_source.html">Bind.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -128,6 +128,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sync</b> (<a class="e
 <tr class="memitem:ada2b21bda8d982949f0de94b1877bed3" id="r_ada2b21bda8d982949f0de94b1877bed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a> ()</td></tr>
 <tr class="memdesc:ada2b21bda8d982949f0de94b1877bed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the bind with the current state.  <br /></td></tr>
 <tr class="separator:ada2b21bda8d982949f0de94b1877bed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df82dcb0b03a33f8ec96893b0edd619" id="r_a1df82dcb0b03a33f8ec96893b0edd619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#a1df82dcb0b03a33f8ec96893b0edd619">sync</a> (const uint8_t *buffer, size_t size)</td></tr>
+<tr class="memdesc:a1df82dcb0b03a33f8ec96893b0edd619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the bind with the current state.  <br /></td></tr>
+<tr class="separator:a1df82dcb0b03a33f8ec96893b0edd619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda0a4034815d28a1e7cf324bfabcdf2" id="r_aeda0a4034815d28a1e7cf324bfabcdf2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">init</a> (Stream *stream, void(*setupCallback)(int16_t, int16_t))</td></tr>
 <tr class="memdesc:aeda0a4034815d28a1e7cf324bfabcdf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework with communication and screen setup.  <br /></td></tr>
 <tr class="separator:aeda0a4034815d28a1e7cf324bfabcdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -806,7 +809,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="ada2b21bda8d982949f0de94b1877bed3" name="ada2b21bda8d982949f0de94b1877bed3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada2b21bda8d982949f0de94b1877bed3">&#9670;&#160;</a></span>sync() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ada2b21bda8d982949f0de94b1877bed3">&#9670;&#160;</a></span>sync() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -821,12 +824,13 @@ Sample app created by Bind</div></div>
 </div><div class="memdoc">
 
 <p>Synchronizes the bind with the current state. </p>
-<p>This function synchronizes the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> object with the current state by reading data from the canvas and managing user interactions with <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> views, such as button presses or connection requests. In simpler terms, it reads the screen. </p><dl class="section attention"><dt>Attention</dt><dd>: To ensure smooth operation and prevent data loss or lag, regularly run the following line of code. It's recommended to execute it a few times per second, and faster is even better! Try to achieve a rate more than 10Hz for optimal performance." </dd></dl>
+<p>This function synchronizes the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> object with the current state by reading data from the canvas and managing user interactions with <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> views, such as button presses or connection requests. In simpler terms, it reads the screen. </p><dl class="section attention"><dt>Attention</dt><dd>To ensure smooth operation and prevent data loss or lag, regularly run the following line of code. It's recommended to execute it a few times per second, and faster is even better! Try to achieve a rate more than 10Hz for optimal performance." </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Not needed if using ESP32 as the sync function is called automatically. </dd></dl>
 
 </div>
 </div>
 <a id="a01f903560a2f04b31b97602813f73372" name="a01f903560a2f04b31b97602813f73372"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01f903560a2f04b31b97602813f73372">&#9670;&#160;</a></span>sync() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f903560a2f04b31b97602813f73372">&#9670;&#160;</a></span>sync() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -853,7 +857,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="aa41b7fbed8b4621d141f8ba71415fec5" name="aa41b7fbed8b4621d141f8ba71415fec5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa41b7fbed8b4621d141f8ba71415fec5">&#9670;&#160;</a></span>sync() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41b7fbed8b4621d141f8ba71415fec5">&#9670;&#160;</a></span>sync() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -891,7 +895,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a8d7445fcfe17448b1e5f95386f9c8638" name="a8d7445fcfe17448b1e5f95386f9c8638"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d7445fcfe17448b1e5f95386f9c8638">&#9670;&#160;</a></span>sync() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d7445fcfe17448b1e5f95386f9c8638">&#9670;&#160;</a></span>sync() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -963,8 +967,46 @@ Sample app created by Bind</div></div>
 
 </div>
 </div>
+<a id="a1df82dcb0b03a33f8ec96893b0edd619" name="a1df82dcb0b03a33f8ec96893b0edd619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df82dcb0b03a33f8ec96893b0edd619">&#9670;&#160;</a></span>sync() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bind::sync </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Synchronizes the bind with the current state. </p>
+<p>Similar to <a class="el" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3" title="Synchronizes the bind with the current state.">sync()</a> but uses the buffer directly to be used in some cases that the regular stream object is not available. for example ble, wifi or any other custom communication.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>a pointer to the buffer that contains the data to be processed. </td></tr>
+    <tr><td class="paramname">size</td><td>size of the buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a2875fc428d46a8bcd0972755dd6148e7" name="a2875fc428d46a8bcd0972755dd6148e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2875fc428d46a8bcd0972755dd6148e7">&#9670;&#160;</a></span>sync() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2875fc428d46a8bcd0972755dd6148e7">&#9670;&#160;</a></span>sync() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1002,7 +1044,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_bind_8hpp_source.html">Bind.hpp</a></li>
+<li><a class="el" href="_bind_8h_source.html">Bind.h</a></li>
 <li><b>Bind.cpp</b></li>
 </ul>
 </div><!-- contents -->
