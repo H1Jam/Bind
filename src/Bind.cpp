@@ -1,4 +1,4 @@
-#include "Bind.hpp"
+#include "bind.h"
 #include "Arduino.h"
 
 bool Bind::init(Stream &stream, void (&_setupCallback)(int16_t, int16_t))
