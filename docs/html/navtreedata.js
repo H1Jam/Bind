@@ -42,11 +42,13 @@ var NAVTREE =
     [ "PrivacyPolicy", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_privacy_policy.html", null ],
     [ "README", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html", [
       [ "Bind: C++ UI Toolkit for Arduino", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md11", [
-        [ "Compatibility", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md12", null ],
-        [ "Getting Started", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md13", null ],
-        [ "Example Usage 1 (Using Serial port over USB for all boards)", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md14", null ],
-        [ "Example Usage 2 (Using Bluetooth for ESP32)", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md15", null ],
-        [ "Contribution", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17", null ]
+        [ "Installation:", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md12", null ],
+        [ "Usage", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md13", null ],
+        [ "Compatibility", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md14", null ],
+        [ "Getting Started", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md15", null ],
+        [ "Example Usage 1 (Using Serial port over USB for all boards)", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16", null ],
+        [ "Example Usage 2 (Using Bluetooth for ESP32)", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17", null ],
+        [ "Contribution", "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md19", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -67,8 +69,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_bind_8hpp_source.html",
-"class_joystick_handler.html"
+"_bind_8h_source.html",
+"class_color_picker_handler.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

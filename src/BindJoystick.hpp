@@ -7,6 +7,8 @@
  *
  * The `BindJoystick` class is a part of the Bind framework for Arduino, designed to creat a
  * joystick element that can be displayed and controlled on the BindCanvas Android app interface.
+ * 
+ * @note The joystick ranges from -100 to 100 on both the X and Y axes.
  *
  * @note Possible cmdId values for a BindView and corresponding effects:
  *  - BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.

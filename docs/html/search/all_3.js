@@ -23,10 +23,10 @@ var searchData=
   ['bindtextlabel_20',['bindtextlabel',['../class_bind_text_label.html',1,'BindTextLabel'],['../class_bind_text_label.html#a7b2da0f9d627d9a7fb60c2774fd566d7',1,'BindTextLabel::BindTextLabel(const char *cstr)'],['../class_bind_text_label.html#aae25a6c23c60bf7aa7114c88562fd41e',1,'BindTextLabel::BindTextLabel()']]],
   ['bindview_21',['BindView',['../class_bind_view.html',1,'']]],
   ['blue_22',['blue',['../class_bind_color_picker.html#a3e5df0041a59f1c136a64356c9c4b763',1,'BindColorPicker']]],
-  ['bluetooth_20for_20esp32_23',['Example Usage 2 (Using Bluetooth for ESP32)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md15',1,'']]],
-  ['boards_24',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md14',1,'']]],
+  ['bluetooth_20for_20esp32_23',['Example Usage 2 (Using Bluetooth for ESP32)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17',1,'']]],
+  ['boards_24',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16',1,'']]],
   ['bordercolor_25',['borderColor',['../class_bind_rectangle.html#ad258bc696d65cf38f027ad31eaf2921c',1,'BindRectangle']]],
   ['borderwidth_26',['borderWidth',['../class_bind_rectangle.html#aa86525aeda977404b978b4744b7db3f0',1,'BindRectangle']]],
-  ['browse_20the_20example_20folder_20for_20more_20sample_27',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['browse_20the_20example_20folder_20for_20more_20sample_27',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]],
   ['buttonhandler_28',['ButtonHandler',['../class_button_handler.html',1,'']]]
 ];

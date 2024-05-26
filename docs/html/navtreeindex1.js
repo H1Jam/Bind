@@ -1,12 +1,17 @@
 var NAVTREEINDEX1 =
 {
+"class_color_picker_handler.html":[3,0,21],
+"class_data_parser.html":[3,0,22],
+"class_dial_knob_handler.html":[3,0,23],
 "class_joystick_handler.html":[3,0,24],
 "class_s_l_packer.html":[3,0,26],
 "class_seek_bar_handler.html":[3,0,25],
 "class_switch_handler.html":[3,0,27],
+"class_u_d_p_stream.html":[3,0,28],
 "classes.html":[3,1],
-"crc16_8h_source.html":[4,0,0,28],
+"crc16_8h_source.html":[4,0,0,29],
 "dir_68267d1309a1af8e8297ef4c3efbcdba.html":[4,0,0],
+"dir_b2167be0fa40a2d3dce8526d3a4625c3.html":[4,0,0,0],
 "files.html":[4,0],
 "functions.html":[3,3,0],
 "functions_func.html":[3,3,1],
@@ -32,6 +37,8 @@ var NAVTREEINDEX1 =
 "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md13":[2,0,1],
 "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md14":[2,0,2],
 "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md15":[2,0,3],
-"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17":[2,0,4],
+"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16":[2,0,4],
+"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17":[2,0,5],
+"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md19":[2,0,6],
 "pages.html":[]
 };

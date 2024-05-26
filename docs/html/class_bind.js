@@ -21,5 +21,6 @@ var class_bind =
     [ "sync", "class_bind.html#a01f903560a2f04b31b97602813f73372", null ],
     [ "sync", "class_bind.html#aa41b7fbed8b4621d141f8ba71415fec5", null ],
     [ "sync", "class_bind.html#a8d7445fcfe17448b1e5f95386f9c8638", null ],
+    [ "sync", "class_bind.html#a1df82dcb0b03a33f8ec96893b0edd619", null ],
     [ "sync", "class_bind.html#a2875fc428d46a8bcd0972755dd6148e7", null ]
 ];
