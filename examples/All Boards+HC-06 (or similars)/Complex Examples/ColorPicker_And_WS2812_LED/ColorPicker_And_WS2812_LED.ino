@@ -3,7 +3,7 @@
 #include <SoftwareSerial.h>
 #endif
 
-#include "Bind.hpp"
+#include "Bind.h"
 #include <Adafruit_NeoPixel.h>
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.

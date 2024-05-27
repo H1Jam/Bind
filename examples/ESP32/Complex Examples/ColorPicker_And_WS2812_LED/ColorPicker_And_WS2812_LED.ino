@@ -1,7 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
-#include "Bind.hpp"
-#include "BindUtil/esp32ble.h"  // For BLE
+#include "Bind.h"
+#include "BindUtil/BindOverBLE.h"  // For BLE
 // If you want to use Bluetooth Classic (which is faster), uncomment the
 // following two lines. However, please note that Bluetooth Classic is not
 // compatible with ESP32-C3 or ESP32-S3 models (BLE only). 

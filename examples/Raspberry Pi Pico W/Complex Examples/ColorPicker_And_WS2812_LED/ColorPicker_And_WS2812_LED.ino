@@ -5,7 +5,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <SerialBT.h>
 
-#include "Bind.hpp"
+#include "Bind.h"
 
 Bind bind;
 BindColorPicker colorPicker1;

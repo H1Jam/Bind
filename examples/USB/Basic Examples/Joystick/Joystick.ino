@@ -1,4 +1,4 @@
-#include "Bind.hpp"
+#include "Bind.h"
 
 Bind bind;
 BindJoystick joystick1;

@@ -1,7 +1,7 @@
 // Atention: For Raspberry Pi Pico W, this library needs Bluetooth enabled.
 // Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x +
 // Bluetooth).
-#include "Bind.hpp"
+#include "Bind.h"
 #include <SerialBT.h>
 
 Bind bind;

@@ -3,7 +3,7 @@
 #include <SoftwareSerial.h>
 #endif
 
-#include "Bind.hpp"
+#include "Bind.h"
 
 // Note: Adjust the pins to match your Bluetooth module's configuration.
 // We may use SoftwareSerial for AVR Arduinos or ESP8266.

@@ -1,4 +1,4 @@
-#include "Bind.hpp"
+#include "Bind.h"
 // Note: This logic can be applied to all Bind objects; I used bind button (button1) here.
 // Note: Check the button sample for a better understanding of how Bind buttons work.
 #ifndef LED_BUILTIN

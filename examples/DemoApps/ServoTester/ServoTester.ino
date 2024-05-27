@@ -11,7 +11,7 @@
  * Note: For Raspberry Pi Pico W. Enable Bluetooth using the IDE menu.
  * Use the 'Tools->IP/Bluetooth Stack' menu in the IDE to enable it (x + Bluetooth).
  */
-#include "Bind.hpp"
+#include "Bind.h"
 
 // Include libraries based on the board.
 #ifdef __AVR__

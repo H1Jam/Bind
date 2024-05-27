@@ -1,4 +1,4 @@
-#include "Bind.hpp"
+#include "Bind.h"
 #include <Adafruit_NeoPixel.h>
 
 Bind bind;

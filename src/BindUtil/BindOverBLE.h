@@ -8,7 +8,7 @@
 #include <BLE2902.h>
 #include <Arduino.h>
 #include "Stream.h"
-#include "bind.h"
+#include "Bind.h"
 
 extern BLEServer *pServer;
 extern BLECharacteristic *pTxCharacteristic;

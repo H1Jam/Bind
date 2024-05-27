@@ -1,4 +1,4 @@
-#include "bind.h"
+#include "Bind.h"
 
 
 Bind bind;

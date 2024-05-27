@@ -4,7 +4,7 @@
 
 #include <SerialBT.h>
 
-#include "Bind.hpp"
+#include "Bind.h"
 
 Bind bind;
 BindGaugeCompact speedGauge;
