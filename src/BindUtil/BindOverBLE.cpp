@@ -4,19 +4,6 @@
 #define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
 #define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
 
-
-// void sendData(uint8_t *data, size_t size)
-// {
-//     if (deviceConnected)
-//     {
-//         pTxCharacteristic->setValue(data, size);
-//         pTxCharacteristic->notify();
-//         // Add a small delay to prevent congestion in the Bluetooth stack.
-//         delay(10);
-//     }
-// }
-
-
 bool BleStream::begin(const char *deviceName, Bind &bind)
 {
     this->rxCallbacks = new BleRXCallbacks(bind);
@@ -52,6 +39,26 @@ bool BleStream::begin(const char *deviceName, Bind &bind)
 bool BleStream::begin(Bind &bind, const char *deviceName)
 {
     return begin(deviceName, bind);
+}
+
+size_t BleStream::write(const uint8_t *buffer, size_t size) 
+{
+    if (!this->deviceConnected)
+    {
+        return 0;
+    }
+    this->pTxCharacteristic->setValue((uint8_t *)buffer, size);
+    this->pTxCharacteristic->notify();
+    return size;
+}
+
+void BleRXCallbacks::onWrite(BLECharacteristic *pCharacteristic)
+{
+    size_t dataln = pCharacteristic->getLength();
+    if (dataln > 0)
+    {
+        this->_bind->sync(pCharacteristic->getData(), dataln);
+    }
 }
 
 #endif // ARDUINO_ARCH_ESP32
