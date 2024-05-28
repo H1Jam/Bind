@@ -4,40 +4,39 @@
 #define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
 #define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
 
-BLEServer *pServer = NULL;
-BLECharacteristic *pTxCharacteristic;
-bool deviceConnected = false;
-bool oldDeviceConnected = false;
 
-void sendData(uint8_t *data, size_t size)
-{
-    if (deviceConnected)
-    {
-        pTxCharacteristic->setValue(data, size);
-        pTxCharacteristic->notify();
-        // Add a small delay to prevent congestion in the Bluetooth stack.
-        delay(10);
-    }
-}
+// void sendData(uint8_t *data, size_t size)
+// {
+//     if (deviceConnected)
+//     {
+//         pTxCharacteristic->setValue(data, size);
+//         pTxCharacteristic->notify();
+//         // Add a small delay to prevent congestion in the Bluetooth stack.
+//         delay(10);
+//     }
+// }
 
-BleStream* ble_init(Bind &bind, std::string deviceName)
+
+bool BleStream::begin(const char *deviceName, Bind &bind)
 {
-    BLEDevice::init(deviceName);
-    pServer = BLEDevice::createServer();
-    pServer->setCallbacks(new BleCallbacks());
+    this->rxCallbacks = new BleRXCallbacks(bind);
+    BLEDevice::init(std::string(deviceName));
+    this->pServer = BLEDevice::createServer();
+    this->bleCallbacks = new BleCallbacks(this->deviceConnected);
+    this->pServer->setCallbacks(this->bleCallbacks);
     BLEService *pService = pServer->createService(SERVICE_UUID);
 
-    pTxCharacteristic = pService->createCharacteristic(
+    this->pTxCharacteristic = pService->createCharacteristic(
         CHARACTERISTIC_UUID_TX,
         BLECharacteristic::PROPERTY_NOTIFY);
 
-    pTxCharacteristic->addDescriptor(new BLE2902());
+    this->pTxCharacteristic->addDescriptor(new BLE2902());
 
     BLECharacteristic *pRxCharacteristic = pService->createCharacteristic(
         CHARACTERISTIC_UUID_RX,
         BLECharacteristic::PROPERTY_WRITE);
 
-    pRxCharacteristic->setCallbacks(new BleRXCallbacks(bind));
+    pRxCharacteristic->setCallbacks(rxCallbacks);
 
     pService->start();
 
@@ -47,7 +46,12 @@ BleStream* ble_init(Bind &bind, std::string deviceName)
     pAdvertising->setMinPreferred(0x06);
     pAdvertising->setMaxPreferred(0x12);
     BLEDevice::startAdvertising();
-    return new BleStream(sendData);
+    return true;
+}
+
+bool BleStream::begin(Bind &bind, const char *deviceName)
+{
+    return begin(deviceName, bind);
 }
 
 #endif // ARDUINO_ARCH_ESP32
