@@ -49,6 +49,7 @@ size_t BleStream::write(const uint8_t *buffer, size_t size)
     }
     this->pTxCharacteristic->setValue((uint8_t *)buffer, size);
     this->pTxCharacteristic->notify();
+    delay(10);
     return size;
 }
 
