@@ -10,7 +10,6 @@
 #include <Arduino.h>
 #include "Stream.h"
 
-
 class BleCallbacks : public BLEServerCallbacks
 {
 private:
@@ -18,7 +17,7 @@ private:
 public:
     // Get _deviceConnected pointer
     BleCallbacks(bool &deviceConnected) : _deviceConnected(&deviceConnected){
-        
+
     }
 
     void onConnect(BLEServer *pServer)
@@ -45,15 +44,7 @@ public:
         this->_bind = &bind;
     }
 
-    void onWrite(BLECharacteristic *pCharacteristic) override
-    {
-        uint8_t *data = pCharacteristic->getData();
-        size_t dataln = pCharacteristic->getLength();
-        if (dataln > 0)
-        {
-            this->_bind->sync(data, dataln);
-        }
-    }
+    void onWrite(BLECharacteristic *pCharacteristic) override;
 };
 
 /**
@@ -93,17 +84,7 @@ public:
 
     // Same as above but with different order of arguments
     bool begin(Bind &bind, const char *bindname);
-    size_t write(const uint8_t *buffer, size_t size) override
-    {
-        if (this->deviceConnected)
-        {
-            this->pTxCharacteristic->setValue((uint8_t *)buffer, size);
-            this->pTxCharacteristic->notify();
-            // Add a small delay to prevent congestion in the Bluetooth stack.
-            delay(10);
-        }
-        return size;
-    }
+    size_t write(const uint8_t *buffer, size_t size) override;
     int available() override { return 0; }
     int read() override { return 0; }
     int peek() override { return 0; }
