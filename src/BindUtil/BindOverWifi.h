@@ -1,10 +1,11 @@
 #ifndef BINDOVERUDP_H
 #define BINDOVERUDP_H
-
+#ifdef ARDUINO_ARCH_ESP32
+#include "Bind.h"
 #include <Arduino.h>
 #include <Stream.h>
 #include <AsyncUDP.h>
-#include "Bind.h"
+
 #define UDP_DEBUG_MSG 0 // Set to 1 to enable debug messages
 
 /*
@@ -36,4 +37,5 @@ public:
     void flush() override {}
     size_t write(uint8_t) override { return 0; }
 };
+#endif // ARDUINO_ARCH_ESP32
 #endif // BINDOVERUDP_H
