@@ -16,9 +16,7 @@ private:
     bool *_deviceConnected;
 public:
     // Get _deviceConnected pointer
-    BleCallbacks(bool &deviceConnected) : _deviceConnected(&deviceConnected){
-
-    }
+    BleCallbacks(bool &deviceConnected) : _deviceConnected(&deviceConnected){}
 
     void onConnect(BLEServer *pServer)
     {
@@ -52,11 +50,6 @@ public:
  *
  * @details This class is used to create a stream object that can be used to
  * send data over BLE.
- *
- * @param writeCallback The callback function that will be called when need to
- * write data to the stream.
- *
- * @return The stream object.
  */
 class BleStream : public Stream
 {
@@ -91,9 +84,6 @@ public:
     void flush() override {}
     size_t write(uint8_t) override { return 0; }
 };
-
-// void sendData(uint8_t *data, size_t size);
-
 
 #endif // ARDUINO_ARCH_ESP32
 #endif // __ESP32BLE_H__
