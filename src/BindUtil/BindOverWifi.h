@@ -1,6 +1,7 @@
 #ifndef BINDOVERUDP_H
 #define BINDOVERUDP_H
 #ifdef ARDUINO_ARCH_ESP32
+#ifndef BL_ONLY_BIND
 #include "Bind.h"
 #include <Arduino.h>
 #include <Stream.h>
@@ -37,5 +38,6 @@ public:
     void flush() override {}
     size_t write(uint8_t) override { return 0; }
 };
+#endif // BL_ONLY_BIND
 #endif // ARDUINO_ARCH_ESP32
 #endif // BINDOVERUDP_H
