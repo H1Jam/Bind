@@ -1,7 +1,7 @@
-#ifndef __ESP32BLE_H__
-#define __ESP32BLE_H__
+#ifndef BINDOVERBLE_H
+#define BINDOVERBLE_H
 #ifdef ARDUINO_ARCH_ESP32
-
+#ifndef WIFI_ONLY_BIND
 #include "Bind.h"
 #include <BLEDevice.h>
 #include <BLEServer.h>
@@ -84,6 +84,6 @@ public:
     void flush() override {}
     size_t write(uint8_t) override { return 0; }
 };
-
+#endif // WIFI_ONLY_BIND
 #endif // ARDUINO_ARCH_ESP32
-#endif // __ESP32BLE_H__
+#endif // BINDOVERBLE_H
