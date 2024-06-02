@@ -133,22 +133,22 @@ Usage</h2>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Compatibility</h2>
 <ul>
-<li><b>Communication Methods:</b> <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> currently supports Bluetooth (Classic) and Serial port (over USB) for seamless interactions. Support for Wi-Fi and internet (MQTT) interfaces will be integrated soon. Yet, if needed, you have the flexibility to create your custom interface or module by leveraging the existing communication methods.</li>
+<li><b>Communication Methods:</b> <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> currently supports Bluetooth (Classic and BLE), Wifi , and Serial port (over USB) for communication. Support for IoT (MQTT) interfaces will be integrated soon.</li>
 <li><b>Hardware Support:</b></li>
 </ul>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadCenter">Board   </th><th class="markdownTableHeadCenter">USB   </th><th class="markdownTableHeadCenter">Bluetooth dongle (HC-06, HM-10, or similar)   </th><th class="markdownTableHeadCenter">Built-in Bluetooth   </th><th class="markdownTableHeadCenter">Note    </th></tr>
+<th class="markdownTableHeadCenter">Board   </th><th class="markdownTableHeadCenter">USB   </th><th class="markdownTableHeadCenter">Bluetooth dongle (HC-06, HM-10, or similar)   </th><th class="markdownTableHeadCenter">Built-in Bluetooth   </th><th class="markdownTableHeadCenter">Wifi   </th><th class="markdownTableHeadCenter">Note    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">Avr Arduino (Uno, Pro Micro,...)   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">Works OK but has a very limited RAM.    </td></tr>
+<td class="markdownTableBodyCenter">Avr Arduino (Uno, Pro Micro,...)   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">Works OK but has a very limited RAM.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">ESP32   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Board of choice. ESP32-C3 and S3 bluetooth are also supported now.    </td></tr>
+<td class="markdownTableBodyCenter">ESP32   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Board of choice.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">Raspberry Pi Pico W   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare).    </td></tr>
+<td class="markdownTableBodyCenter">Raspberry Pi Pico W   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">No example code is avaliable yet   </td><td class="markdownTableBodyCenter">Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare).    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">ESP8266   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter"></td></tr>
+<td class="markdownTableBodyCenter">ESP8266   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">No example code is avaliable yet   </td><td class="markdownTableBodyCenter"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">Other Boards   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">TBD   </td><td class="markdownTableBodyCenter">USB serial port and external Bluetooth dongle should work with all boards.   </td></tr>
+<td class="markdownTableBodyCenter">Other Boards   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">TBD   </td><td class="markdownTableBodyCenter">USB serial port and external Bluetooth dongle should work with all boards.   </td></tr>
 </table>
 <ul>
 <li><b>Android Compatibility:</b> Designed for Android 6 Marshmallow and later versions (API Level 23+), ensuring compatibility with a broad range of new devices and most of still-alive aging Android devices.</li>
@@ -159,7 +159,7 @@ Getting Started</h2>
 <p><b>Installation</b>: Include the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> library in your Arduino IDE and install the BindCanvas app from google play on your phone to get started.</p>
 <h2><a class="anchor" id="autotoc_md16"></a>
 Example Usage 1 (Using Serial port over USB for all boards)</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;bind.h&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Bind.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_bind.html">Bind</a> bind;</div>
 <div class="line"><a class="code hl_class" href="class_bind_button.html">BindButton</a> myButton;</div>
@@ -211,7 +211,7 @@ Example Usage 1 (Using Serial port over USB for all boards)</h2>
 <div class="ttc" id="aclass_bind_html_afe12e24da26fa46de636c3717c32460a"><div class="ttname"><a href="class_bind.html#afe12e24da26fa46de636c3717c32460a">Bind::join</a></div><div class="ttdeci">void join(BindButton *screenButton, void(*clickCallback)(void))</div><div class="ttdoc">Binds a Button object to a click callback function.</div><div class="ttdef"><b>Definition</b> Bind.cpp:112</div></div>
 </div><!-- fragment --> <h2><a class="anchor" id="autotoc_md17"></a>
 Example Usage 2 (Using Bluetooth for ESP32)</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;bind.h&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Bind.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;BindUtil/BindOverBLE.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_bind.html">Bind</a> bind;</div>

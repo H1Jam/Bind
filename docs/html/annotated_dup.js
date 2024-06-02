@@ -27,6 +27,5 @@ var annotated_dup =
     [ "JoystickHandler", "class_joystick_handler.html", null ],
     [ "SeekBarHandler", "class_seek_bar_handler.html", null ],
     [ "SLPacker", "class_s_l_packer.html", null ],
-    [ "SwitchHandler", "class_switch_handler.html", null ],
-    [ "UDPStream", "class_u_d_p_stream.html", null ]
+    [ "SwitchHandler", "class_switch_handler.html", null ]
 ];
