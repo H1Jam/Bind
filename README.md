@@ -41,7 +41,7 @@ This simplifies the process, allowing you to focus on defining your UI elements 
 Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) or examples (under **File > Examples > Bind**) for more information.
 ## Compatibility
 
-- **Communication Methods:** Bind currently supports Bluetooth (Classic) and Serial port (over USB) for seamless interactions. Support for Wi-Fi and internet (MQTT) interfaces will be integrated soon. Yet, if needed, you have the flexibility to create your custom interface or module by leveraging the existing communication methods.
+- **Communication Methods:** Bind currently supports Bluetooth (Classic and BLE), Wifi , and Serial port (over USB) for communication. Support for IOT (MQTT) interfaces will be integrated soon. Yet, if needed, you have the flexibility to create your custom interface or module by leveraging the existing communication methods.
 
 - **Hardware Support:**
 
