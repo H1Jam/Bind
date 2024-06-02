@@ -46,12 +46,12 @@ Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) 
 - **Hardware Support:**
 
 | Board | USB | Bluetooth dongle (HC-06, HM-10, or similar) | Built-in Bluetooth | Note |
-|:---:|:---:|:---:|:---:|:---:|
-| Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | Works OK but has a very limited RAM. |
-| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. ESP32-C3 and S3 bluetooth are also supported now.|
-| Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare). |
-| ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A |  |
-| Other Boards | :heavy_check_mark: | :heavy_check_mark: | TBD | USB serial port and external Bluetooth dongle should work with all boards. |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | N/A | Works OK but has a very limited RAM. |
+| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. |
+| Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | No example code is avaliable yet | Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare). |
+| ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A | No example code is avaliable yet |  |
+| Other Boards | :heavy_check_mark: | :heavy_check_mark: | N/A | TBD | USB serial port and external Bluetooth dongle should work with all boards. |
 
 
 - **Android Compatibility:** Designed for Android 6 Marshmallow and later versions (API Level 23+), ensuring compatibility with a broad range of new devices and most of still-alive aging Android devices.
