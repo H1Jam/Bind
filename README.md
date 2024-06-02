@@ -45,7 +45,7 @@ Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) 
 
 - **Hardware Support:**
 
-| Board | USB | Bluetooth dongle (HC-06, HM-10, or similar) | Built-in Bluetooth | Note |
+| Board | USB | Bluetooth dongle (HC-06, HM-10, or similar) | Built-in Bluetooth| Wifi | Note |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | N/A | Works OK but has a very limited RAM. |
 | ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. |
