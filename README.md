@@ -119,6 +119,8 @@ void loop() {
 #include "BindUtil/BindOverBLE.h"
 
 Bind bind;
+BleStream bleStream;
+
 BindButton myButton;
 const int ledPin = 2;
 bool led_is_on = false;
@@ -127,10 +129,10 @@ void setup() {
     pinMode(ledPin, OUTPUT);
 
     //Initialize the BLE device:
-    BleStream* SerialBT = ble_init(bind, "BindOnESP32_ble");
+    bleStream.begin("YOUR_DEVICE_NAME", bind);
   
     // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
-    bind.init(SerialBT, onConnection);
+    bind.init(bleStream, onConnection);
 
     // Connect the callback functions with the Bind objects.
     bind.join(myButton, myButtonClicked);
@@ -163,8 +165,7 @@ void myButtonClicked() {
 }
 
 void loop() {
-    // calling sync() is not needed while using ESP32 over BLE.
-    // Other loop logic
+    //Do something here
 }
 ```
 #### Browse the example folder for more sample.
