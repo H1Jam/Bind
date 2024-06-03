@@ -9,7 +9,7 @@ bool BleStream::begin(const char *deviceName, Bind &bind)
 {
     this->rxCallbacks = new BleRXCallbacks(bind);
     BLEDevice::init(std::string(deviceName));
-    BLEDevice::setMTU(64);
+    BLEDevice::setMTU(100);
     this->pServer = BLEDevice::createServer();
     this->bleCallbacks = new BleCallbacks(this->deviceConnected);
     this->pServer->setCallbacks(this->bleCallbacks);
