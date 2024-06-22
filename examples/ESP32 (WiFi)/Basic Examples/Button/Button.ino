@@ -71,6 +71,7 @@ void setup() {
 
   // Initialize the Bind object and specify the communication method  and callback function (onConnection).
   // Start WiFi
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
