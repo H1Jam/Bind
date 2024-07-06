@@ -69,14 +69,14 @@ public:
      * You can pass the returning object to bind.init function.
      *
      * @param bind The bind object.
-     * @param bindname The name of the device.
+     * @param deviceName The name of the device.
      *
      * @return The BLE stream object.
      */
-    bool begin(const char *bindname, Bind &bind);
+    bool begin(const char *deviceName, Bind &bind);
 
     // Same as above but with different order of arguments
-    bool begin(Bind &bind, const char *bindname);
+    bool begin(Bind &bind, const char *deviceName);
     size_t write(const uint8_t *buffer, size_t size) override;
     int available() override { return 0; }
     int read() override { return 0; }
