@@ -163,6 +163,20 @@ void Bind::join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_
   }
 }
 
+void Bind::join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t))
+{
+  if (textInputHandlerIndex < MAX_HANDLERS && screenTextInput->tag == 0)
+  {
+    screenTextInput->tag = textInputHandlerIndex++;
+    textInputHandlers[screenTextInput->tag] = TextInputHandler(screenTextInput->text, changeCallback);
+  }
+}
+
+void Bind::join(BindTextInput &screenTextInput, void (&changeCallback)(const char *, uint8_t))
+{
+  join(&screenTextInput, &changeCallback);
+}
+
 int Bind::updateScreen(uint8_t inp)
 {
   if (dataParser.update(inp) > 0)
@@ -190,6 +204,7 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
     delay(5);
   }
   lastMs = millis();
+  uint8_t textLength = 0;
   switch (dataFrame[2])
   {
   case BIND_ID_SETUP_CMD:
@@ -221,6 +236,10 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
     valTmp2 = (dataFrame[6] & 0xFF);
     valTmp3 = (dataFrame[7] & 0xFF);
     updateColorPicker(dataFrame[3], valTmp1, valTmp2, valTmp3);
+    break;
+  case BIND_ID_TEXTINPUT:
+    textLength = dataFrame[4];
+    updateTextInput(dataFrame[3], (const char *)&dataFrame[5], textLength);
     break;
   default:
     return 0;
@@ -282,5 +301,13 @@ void Bind::updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b)
   if (tag < MAX_HANDLERS)
   {
     colorPickerHandlers[tag].update(r, g, b);
+  }
+}
+
+void Bind::updateTextInput(uint8_t tag, const char *val, uint8_t length)
+{
+  if (tag < MAX_HANDLERS)
+  {
+    textInputHandlers[tag].update(val, length);
   }
 }
