@@ -25,5 +25,7 @@
 #include "BindButton.hpp"
 #include "BindKnob.hpp"
 #include "BindTextLabel.hpp"
+#include "BindTextInput.hpp"
+#include "BindTextInputHandler.hpp"
 
 #endif /* __BINDWIDGETS_H */
