@@ -354,6 +354,9 @@ public:
    */
   void join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_t, uint8_t, uint8_t));
 
+  void join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t));
+  void join(BindTextInput &screenTextInput, void (&changeCallback)(const char *, uint8_t));
+  
   /**
    * @brief Synchronizes chart data of a BindChart object.
    *
@@ -414,12 +417,14 @@ private:
   SeekBarHandler *seekBarHandlers;
   JoystickHandler *joystickHandlers;
   ColorPickerHandler *colorPickerHandlers;
+  TextInputHandler *textInputHandlers;
   uint8_t buttonIndex = 1;
   uint8_t dialKnobIndex = 1;
   uint8_t switchIndex = 1;
   uint8_t seekBarIndex = 1;
   uint8_t joystickHandlerIndex = 1;
   uint8_t colorPickerHandlerIndex = 1;
+  uint8_t textInputHandlerIndex = 1;
   bool isInitialized = false;
   void (*setupCallback)(int16_t, int16_t);
   void screenInit(int16_t w, int16_t h);
@@ -433,6 +438,7 @@ private:
   void knobChanged(int8_t tag, int val);
   void clickButton(uint8_t tag);
   void updateSwitch(uint8_t tag, bool val);
+  void updateTextInput(uint8_t tag, const char *val, uint8_t length);
 };
 
 #endif /* __BIND_H */
