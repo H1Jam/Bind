@@ -67,6 +67,7 @@ public:
     seekBarHandlers = new SeekBarHandler[MAX_HANDLERS];
     joystickHandlers = new JoystickHandler[MAX_HANDLERS];
     colorPickerHandlers = new ColorPickerHandler[MAX_HANDLERS];
+    textInputHandlers = new TextInputHandler[MAX_HANDLERS];
   }
 
   /**
