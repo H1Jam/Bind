@@ -1,7 +1,7 @@
 #include "DataProtocol.h"
 #include "Arduino.h"
 #include "crc16.h"
-// #define DEBUG_MSG
+//#define DEBUG_MSG
 uint16_t crcCalc;
 uint16_t crcRcv;
 
