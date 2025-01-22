@@ -76,7 +76,7 @@ public:
     int16_t x; ///< X-coordinate position of the text input.
     int16_t y; ///< Y-coordinate position of the text input.
     uint8_t cmdId; ///< Command ID for the text input.
-    int16_t fontSize; ///< Font size for the text input.
+    int16_t fontSize = 18; ///< Font size for the text input.
     int32_t textColor = WHITE; ///< Text color for the text input.
     int32_t backColor = TRANSPARENT; ///< Background color for the text input.
     uint8_t widthChars; ///< Width of the text input in characters.
@@ -88,7 +88,6 @@ private:
     uint16_t offset = 0; ///< Offset for the byte array.
     int strLength = 0; ///< Length of the text string.
     const char *hint; ///< Hint text for the text input
-    static int16_t tagIndex; ///< Static tag index for the text input.
 };
 
 #endif /* __BINDTEXTINPUT_H */
