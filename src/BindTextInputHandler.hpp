@@ -6,27 +6,24 @@
 class TextInputHandler
 {
 private:
-    const char *value = NULL;
     void (*changeCallback)(const char *, uint8_t);
-
 public:
     TextInputHandler()
     {
-        TextInputHandler(NULL, NULL);
+        TextInputHandler(NULL);
     }
-    TextInputHandler(const char *val, void (*_changeCallback)(const char *, uint8_t))
+    TextInputHandler(void (*_changeCallback)(const char *, uint8_t))
     {
-        value = val;
         changeCallback = _changeCallback;
     }
     void update(const char *val, uint8_t length)
     {
-        if (value != NULL)
-        {
-            strncpy((char*)value, val, length);
-            ((char*)value)[length] = '\0'; // Null-terminate the string
-        }
-        if (changeCallback != NULL)
+        // if (value != NULL)
+        // {
+        //     strncpy((char*)value, val, length);
+        //     ((char*)value)[length] = '\0'; // Null-terminate the string
+        // }
+        if (*changeCallback != NULL)
         {
             changeCallback(val, length);
         }
