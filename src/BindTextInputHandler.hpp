@@ -23,9 +23,11 @@ public:
         //     strncpy((char*)value, val, length);
         //     ((char*)value)[length] = '\0'; // Null-terminate the string
         // }
-        if (*changeCallback != NULL)
+        if (*changeCallback != NULL && val != NULL && length >= 0)
         {
-            changeCallback(val, length);
+            char value[length + 1];
+            strncpy((char*)value, val, length);
+            changeCallback(value, length);
         }
     }
 };
