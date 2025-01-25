@@ -308,6 +308,6 @@ void Bind::updateTextInput(uint8_t tag, const char *val, uint8_t length)
 {
   if (tag < MAX_HANDLERS)
   {
-    textInputHandlers[1].update(val, length);
+    textInputHandlers[tag].update(val, length);
   }
 }
