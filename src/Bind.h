@@ -355,7 +355,9 @@ public:
    */
   void join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_t, uint8_t, uint8_t));
 
+  
   void join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t));
+
   void join(BindTextInput &screenTextInput, void (&changeCallback)(const char *, uint8_t));
   
   /**
