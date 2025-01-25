@@ -32,11 +32,15 @@ uint16_t BindTextInput::getBytes(uint8_t *out)
     copyAndOffset(out, &offset, &widthChars, sizeof(widthChars));
     copyAndOffset(out, &offset, &numberOnly, sizeof(numberOnly));
     copyAndOffset(out, &offset, text, strLength);
+    // add a 0 byte to terminate the string
+    copyAndOffset(out, &offset, "\0", 1);
     strLength = strlen(hint);
     if (strLength > MAX_STRING_LENGTH_TERMINAL)
     {
         strLength = MAX_STRING_LENGTH_TERMINAL;
     }
     copyAndOffset(out, &offset, hint, strLength);
+    // add a 0 byte to terminate the string
+    copyAndOffset(out, &offset, "\0", 1);
     return offset;
 }
