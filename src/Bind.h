@@ -355,11 +355,28 @@ public:
    */
   void join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_t, uint8_t, uint8_t));
 
-  
+  /**
+   * @brief Joins a BindTextInput object with a change callback function.
+   *
+   * This function associates a BindTextInput object with a callback function that is triggered
+   * when the text input value changes. The callback function receives the new text value and its length.
+   *
+   * @param screenTextInput A pointer to the BindTextInput object.
+   * @param changeCallback A pointer to the callback function that handles text input changes.
+   */
   void join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t));
 
+  /**
+   * @brief Joins a BindTextInput object with a change callback function.
+   *
+   * This function associates a BindTextInput object with a callback function that is triggered
+   * when the text input value changes. The callback function receives the new text value and its length.
+   *
+   * @param screenTextInput A reference to the BindTextInput object.
+   * @param changeCallback A reference to the callback function that handles text input changes.
+   */
   void join(BindTextInput &screenTextInput, void (&changeCallback)(const char *, uint8_t));
-  
+
   /**
    * @brief Synchronizes chart data of a BindChart object.
    *
