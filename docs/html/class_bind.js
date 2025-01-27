@@ -16,6 +16,8 @@ var class_bind =
     [ "join", "class_bind.html#ad857652ace3679213497cf8c5370ef0e", null ],
     [ "join", "class_bind.html#a68d23a109fae637d290c8c76a202e7af", null ],
     [ "join", "class_bind.html#a5d59dbb6ac676894dfb02122457481e9", null ],
+    [ "join", "class_bind.html#a16cf0c7f65873adf7fac15257c655d23", null ],
+    [ "join", "class_bind.html#a8498b9a79cf60c9348509a9b2db6c77c", null ],
     [ "sync", "class_bind.html#ada2b21bda8d982949f0de94b1877bed3", null ],
     [ "sync", "class_bind.html#a499a45edadc5ff67b847943b8d77b936", null ],
     [ "sync", "class_bind.html#a01f903560a2f04b31b97602813f73372", null ],

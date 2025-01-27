@@ -25,6 +25,8 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "BindSwitch.hpp", "_bind_switch_8hpp_source.html", null ],
     [ "BindSwitchHandler.hpp", "_bind_switch_handler_8hpp_source.html", null ],
     [ "BindTerminal.hpp", "_bind_terminal_8hpp_source.html", null ],
+    [ "BindTextInput.hpp", "_bind_text_input_8hpp_source.html", null ],
+    [ "BindTextInputHandler.hpp", "_bind_text_input_handler_8hpp_source.html", null ],
     [ "BindTextLabel.hpp", "_bind_text_label_8hpp_source.html", null ],
     [ "BindUtils.hpp", "_bind_utils_8hpp_source.html", null ],
     [ "BindView.hpp", "_bind_view_8hpp_source.html", null ],

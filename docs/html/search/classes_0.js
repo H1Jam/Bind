@@ -18,7 +18,8 @@ var searchData=
   ['bindseekbar_15',['BindSeekBar',['../class_bind_seek_bar.html',1,'']]],
   ['bindswitch_16',['BindSwitch',['../class_bind_switch.html',1,'']]],
   ['bindterminal_17',['BindTerminal',['../class_bind_terminal.html',1,'']]],
-  ['bindtextlabel_18',['BindTextLabel',['../class_bind_text_label.html',1,'']]],
-  ['bindview_19',['BindView',['../class_bind_view.html',1,'']]],
-  ['buttonhandler_20',['ButtonHandler',['../class_button_handler.html',1,'']]]
+  ['bindtextinput_18',['BindTextInput',['../class_bind_text_input.html',1,'']]],
+  ['bindtextlabel_19',['BindTextLabel',['../class_bind_text_label.html',1,'']]],
+  ['bindview_20',['BindView',['../class_bind_view.html',1,'']]],
+  ['buttonhandler_21',['ButtonHandler',['../class_button_handler.html',1,'']]]
 ];

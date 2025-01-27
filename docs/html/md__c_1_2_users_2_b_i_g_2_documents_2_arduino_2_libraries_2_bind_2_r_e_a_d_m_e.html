@@ -142,7 +142,7 @@ Compatibility</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">Avr Arduino (Uno, Pro Micro,...)   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">Works OK but has a very limited RAM.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">ESP32   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Board of choice.    </td></tr>
+<td class="markdownTableBodyCenter">ESP32   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Board of choice. (Use The Arduino ESP32 v3.0.1 or higher)    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">Raspberry Pi Pico W   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">No example code is avaliable yet   </td><td class="markdownTableBodyCenter">Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare).    </td></tr>
 <tr class="markdownTableRowEven">
@@ -215,6 +215,8 @@ Example Usage 2 (Using Bluetooth for ESP32)</h2>
 <div class="line"><span class="preprocessor">#include &quot;BindUtil/BindOverBLE.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_bind.html">Bind</a> bind;</div>
+<div class="line">BleStream bleStream;</div>
+<div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_bind_button.html">BindButton</a> myButton;</div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> ledPin = 2;</div>
 <div class="line"><span class="keywordtype">bool</span> led_is_on = <span class="keyword">false</span>;</div>
@@ -223,10 +225,10 @@ Example Usage 2 (Using Bluetooth for ESP32)</h2>
 <div class="line">    pinMode(ledPin, OUTPUT);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">//Initialize the BLE device:</span></div>
-<div class="line">    BleStream* SerialBT = ble_init(bind, <span class="stringliteral">&quot;BindOnESP32_ble&quot;</span>);</div>
+<div class="line">    bleStream.begin(<span class="stringliteral">&quot;YOUR_DEVICE_NAME&quot;</span>, bind);</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).</span></div>
-<div class="line">    bind.<a class="code hl_function" href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">init</a>(SerialBT, onConnection);</div>
+<div class="line">    bind.<a class="code hl_function" href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">init</a>(bleStream, onConnection);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Connect the callback functions with the Bind objects.</span></div>
 <div class="line">    bind.<a class="code hl_function" href="class_bind.html#afe12e24da26fa46de636c3717c32460a">join</a>(myButton, myButtonClicked);</div>
@@ -254,8 +256,7 @@ Example Usage 2 (Using Bluetooth for ESP32)</h2>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
-<div class="line">    <span class="comment">// calling sync() is not needed while using ESP32 over BLE.</span></div>
-<div class="line">    <span class="comment">// Other loop logic</span></div>
+<div class="line">    <span class="comment">//Do something here</span></div>
 <div class="line">}</div>
 </div><!-- fragment --> <h4><a class="anchor" id="autotoc_md18"></a>
 Browse the example folder for more sample.</h4>

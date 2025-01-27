@@ -18,6 +18,7 @@ var annotated_dup =
     [ "BindSeekBar", "class_bind_seek_bar.html", "class_bind_seek_bar" ],
     [ "BindSwitch", "class_bind_switch.html", "class_bind_switch" ],
     [ "BindTerminal", "class_bind_terminal.html", "class_bind_terminal" ],
+    [ "BindTextInput", "class_bind_text_input.html", "class_bind_text_input" ],
     [ "BindTextLabel", "class_bind_text_label.html", "class_bind_text_label" ],
     [ "BindView", "class_bind_view.html", "class_bind_view" ],
     [ "ButtonHandler", "class_button_handler.html", null ],
@@ -27,5 +28,6 @@ var annotated_dup =
     [ "JoystickHandler", "class_joystick_handler.html", null ],
     [ "SeekBarHandler", "class_seek_bar_handler.html", null ],
     [ "SLPacker", "class_s_l_packer.html", null ],
-    [ "SwitchHandler", "class_switch_handler.html", null ]
+    [ "SwitchHandler", "class_switch_handler.html", null ],
+    [ "TextInputHandler", "class_text_input_handler.html", null ]
 ];

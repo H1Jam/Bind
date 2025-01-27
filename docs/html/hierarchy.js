@@ -19,6 +19,7 @@ var hierarchy =
       [ "BindSeekBar", "class_bind_seek_bar.html", null ],
       [ "BindSwitch", "class_bind_switch.html", null ],
       [ "BindTerminal", "class_bind_terminal.html", null ],
+      [ "BindTextInput", "class_bind_text_input.html", null ],
       [ "BindTextLabel", "class_bind_text_label.html", null ]
     ] ],
     [ "ButtonHandler", "class_button_handler.html", null ],
@@ -28,5 +29,6 @@ var hierarchy =
     [ "JoystickHandler", "class_joystick_handler.html", null ],
     [ "SeekBarHandler", "class_seek_bar_handler.html", null ],
     [ "SLPacker", "class_s_l_packer.html", null ],
-    [ "SwitchHandler", "class_switch_handler.html", null ]
+    [ "SwitchHandler", "class_switch_handler.html", null ],
+    [ "TextInputHandler", "class_text_input_handler.html", null ]
 ];
