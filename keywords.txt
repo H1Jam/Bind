@@ -23,6 +23,7 @@ BindChart	KEYWORD1
 BindRectangle	KEYWORD1
 BindTerminal	KEYWORD1
 BindCanvasSettings	KEYWORD1
+BindTextInput KEYWORD1
 
 #######################################
 # Methods and Functions
