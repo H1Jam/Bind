@@ -94,7 +94,7 @@ void addButton() {
   // Set the Button's position on the screen.
   myButton.x = 30;
   myButton.y = 150;
-  myButton.setlabel("LED");
+  myButton.setlabel("Toggle LED");
   myButton.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the myButton object with BindCanvas.
   bind.sync(myButton);
@@ -151,7 +151,7 @@ void addButton() {
   // Set the Button's position on the screen.
   myButton.x = 30;
   myButton.y = 150;
-  myButton.setlabel("LED");
+  myButton.setlabel("Toggle LED");
   myButton.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Synchronize the myButton object with BindCanvas.
   bind.sync(myButton);
