@@ -165,10 +165,9 @@ void Bind::join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_
 
 void Bind::join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t))
 {
-  if (textInputHandlerIndex < MAX_HANDLERS && screenTextInput->tag == 0)
+  if (screenTextInput->tag < MAX_HANDLERS)
   {
-    screenTextInput->tag = textInputHandlerIndex++;
-    textInputHandlers[screenTextInput->tag] = TextInputHandler(changeCallback);
+    textInputHandlers[screenTextInput->tag] = TextInputHandler(changeCallback, screenTextInput);
   }
 }
 
