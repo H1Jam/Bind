@@ -2,27 +2,31 @@
 #define __BINDTEXTINPUTHANDLER_H
 
 #include "Stream.h"
+#include "BindTextInput.hpp"
 
 class TextInputHandler
 {
 private:
     void (*changeCallback)(const char *, uint8_t);
+    BindTextInput* obj;
 public:
     TextInputHandler()
     {
         TextInputHandler(NULL);
     }
-    TextInputHandler(void (*_changeCallback)(const char *, uint8_t))
+    TextInputHandler(void (*_changeCallback)(const char *, uint8_t), BindTextInput* bindTextInput = NULL)
     {
         changeCallback = _changeCallback;
+        obj = bindTextInput;
     }
+
     void update(const char *val, uint8_t length)
     {
-        // if (value != NULL)
-        // {
-        //     strncpy((char*)value, val, length);
-        //     ((char*)value)[length] = '\0'; // Null-terminate the string
-        // }
+        if (obj != NULL)
+        {
+            obj->setText(val, length);
+        }
+
         if (*changeCallback != NULL && val != NULL && length >= 0)
         {
             char value[length + 1];
