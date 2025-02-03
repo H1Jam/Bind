@@ -3,7 +3,7 @@
 
 #include "BindView.hpp"
 #include "BindUtils.hpp"
-
+#include "Arduino.h"
 /**
  * @brief The BindTextInput class represents a text input UI element for use with BindCanvas.
  *
@@ -37,7 +37,7 @@ public:
      * @param widthChars Width of the text input in characters.
      * @param numberOnly Whether the text input should accept only numbers.
      */
-    BindTextInput(int16_t x, int16_t y, int16_t tag, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor = 0, int32_t backColor = 0, uint8_t widthChars = 0, bool numberOnly = false);
+    BindTextInput(int16_t x, int16_t y, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor = 0, int32_t backColor = 0, uint8_t widthChars = 0, bool numberOnly = false);
 
     /**
      * @brief Sets the text content for the text input.
@@ -51,6 +51,12 @@ public:
         text = cstr;
     }
 
+    void setText(const char *cstr, int length)
+    {
+        text = cstr;
+        strLength = length;
+    }
+
     /**
      * @brief Sets the hint text for the text input.
      *
@@ -61,6 +67,11 @@ public:
     void setHint(const char *cstr)
     {
         hint = cstr;
+    }
+
+    const char* getText() const
+    {
+        return text;
     }
 
     /**
@@ -82,12 +93,14 @@ public:
     uint8_t widthChars; ///< Width of the text input in characters.
     bool numberOnly = false;
     const char *text; ///< Text content of the text input.
+    
 
 private:
     uint8_t objID = BIND_ID_TEXTINPUT; ///< Object ID for the text input.
     uint16_t offset = 0; ///< Offset for the byte array.
     int strLength = 0; ///< Length of the text string.
     const char *hint; ///< Hint text for the text input
+    static int16_t tagIndex; ///< Tag index for the text input.
 };
 
 #endif /* __BINDTEXTINPUT_H */
