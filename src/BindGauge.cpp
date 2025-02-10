@@ -1,6 +1,6 @@
 #include "BindGauge.hpp"
 
-int16_t BindGauge::tagIndex = 1;
+// int16_t BindGauge::tagIndex = 1;
 
 BindGauge::BindGauge(const char *cstr)
 {
