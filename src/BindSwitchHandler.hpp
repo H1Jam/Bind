@@ -1,12 +1,13 @@
 #ifndef __BINDSWITCHHANDLER_H
 #define __BINDSWITCHHANDLER_H
 #include "Stream.h"
+#include "BindSwitch.hpp"
 // TODO: Extract the class to a serprate .h and .c file! Now!
 // TODO: Add the class summaries!
 class SwitchHandler
 {
 private:
-  bool *value = NULL;
+  BindSwitch *screenSwitch = NULL;
   void (*clickCallback)(bool);
 
 public:
@@ -14,16 +15,18 @@ public:
   {
     SwitchHandler(NULL, NULL);
   }
-  SwitchHandler(bool *val, void (*_clickCallback)(bool))
+
+  SwitchHandler(void (*_clickCallback)(bool), BindSwitch *_screenSwitch = NULL)
   {
-    value = val;
+    this->screenSwitch = _screenSwitch;
     clickCallback = _clickCallback;
   }
+
   void update(bool val)
   {
-    if (value != NULL)
+    if (this->screenSwitch != NULL)
     {
-      *value = val;
+      this->screenSwitch->switchValue = val;
     }
     if (*clickCallback != NULL)
     {
@@ -31,4 +34,5 @@ public:
     }
   }
 };
+
 #endif /* __BINDSWITCHHANDLER_H */
