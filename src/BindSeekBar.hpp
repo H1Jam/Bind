@@ -23,6 +23,12 @@ class BindSeekBar : public BindView
 {
 
 public:
+    /**
+     * @brief Default constructor to create a `BindSeekBar` with default properties.
+     */
+    BindSeekBar(){
+        this->tag = tagIndex++;
+    }
     int16_t x;              ///< X-coordinate position of the SeekBar.
     int16_t y;              ///< Y-coordinate position of the SeekBar.
     uint8_t cmdId = 0;      ///< Command identifier. See the notes for possible cmdId values.
@@ -57,6 +63,7 @@ public:
 private:
     uint8_t objID = BIND_ID_SEEK_BAR; ///< Unique identifier for the SeekBar.
     uint16_t offset = 0;              ///< Offset for serialization.
+    static int16_t tagIndex;          ///< Tag index for the SeekBar.
 };
 
 #endif /* __BINDSEEKBAR_HPP */
