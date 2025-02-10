@@ -90,6 +90,7 @@ public:
 private:
     uint8_t objID = BIND_ID_JOYSTICK;
     uint16_t offset = 0;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDJOYSTICK_HPP */
