@@ -1,37 +1,35 @@
 #ifndef __BINDJOYSTICKHANDLER_H
 #define __BINDJOYSTICKHANDLER_H
 #include "Stream.h"
+#include "BindJoystick.hpp"
 // TODO: Extract the class to a serprate .h and .c file! Now!
 // TODO: Add the class summaries!
 class JoystickHandler
 {
 private:
-  int16_t *valueX = NULL;
-  int16_t *valueY = NULL;
-  void (*changeCallback)(int16_t, int16_t);
+  BindJoystick *screenJoystick = NULL;
+  void (*changeCallback)(int16_t, int16_t) = NULL;
 
 public:
-  JoystickHandler()
+
+  JoystickHandler(BindJoystick *_screenJoystick = NULL, void (*_changeCallback)(int16_t, int16_t) = NULL)
   {
-    JoystickHandler(NULL, NULL, NULL);
+    this->screenJoystick = _screenJoystick;
+    this->changeCallback = _changeCallback;
   }
-  JoystickHandler(int16_t *valX, int16_t *valY, void (*_changeCallback)(int16_t, int16_t))
-  {
-    valueX = valX;
-    valueY = valY;
-    changeCallback = _changeCallback;
-  }
+
   void update(int16_t valX, int16_t valY)
   {
-    if (valueX != NULL && valueY != NULL)
+    if (this->screenJoystick != NULL)
     {
-      *valueX = valX;
-      *valueY = valY;
+      this->screenJoystick->sX = valX;
+      this->screenJoystick->sY = valY;
     }
-    if (changeCallback != NULL)
+    if (this->changeCallback != NULL)
     {
-      changeCallback(valX, valY);
+      this->changeCallback(valX, valY);
     }
   }
 };
+
 #endif /* __BINDJOYSTICKHANDLER_H */
