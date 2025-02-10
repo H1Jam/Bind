@@ -1,39 +1,34 @@
 #ifndef __BINDCOLORPICKERHANDLER_H
 #define __BINDCOLORPICKERHANDLER_H
 #include "Stream.h"
+#include "BindColorPicker.hpp"
 // TODO: Extract the class to a serprate .h and .c file! Now!
 // TODO: Add the class summaries!
 class ColorPickerHandler
 {
 private:
-  void (*clickCallback)(uint8_t, uint8_t, uint8_t);
-  uint8_t *red = NULL;
-  uint8_t *green = NULL;
-  uint8_t *blue = NULL;
+  void (*clickCallback)(uint8_t, uint8_t, uint8_t) = NULL;
+  BindColorPicker *screenColorPicker = NULL;
 
 public:
-  ColorPickerHandler()
+  
+  ColorPickerHandler(BindColorPicker *screenColorPicker = NULL, void (*_clickCallback)(uint8_t, uint8_t, uint8_t) = NULL)
   {
-    ColorPickerHandler(NULL, NULL, NULL, NULL);
+    this->screenColorPicker = screenColorPicker;
+    this->clickCallback = _clickCallback;
   }
-  ColorPickerHandler(uint8_t *r, uint8_t *g, uint8_t *b, void (*_clickCallback)(uint8_t, uint8_t, uint8_t))
-  {
-    red = r;
-    green = g;
-    blue = b;
-    clickCallback = _clickCallback;
-  }
+
   void update(uint8_t r, uint8_t g, uint8_t b)
   {
-    if (red != NULL && green != NULL && blue != NULL)
+    if (this->screenColorPicker != NULL)
     {
-      *red = r;
-      *green = g;
-      *blue = b;
+      this->screenColorPicker->red = r;
+      this->screenColorPicker->green  = g;
+      this->screenColorPicker->blue = b;
     }
-    if (*clickCallback != NULL)
+    if (this->clickCallback != NULL)
     {
-      clickCallback(r, g, b);
+      this->clickCallback(r, g, b);
     }
   }
 };
