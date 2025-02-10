@@ -2,23 +2,18 @@
 // TODO: Add the class summaries!
 void DialKnobHandler::changed(int16_t val)
 {
-  if (value != NULL)
+  if (this->screenKnob != NULL)
   {
-    *value = val;
+    this->screenKnob->value = val;
   }
-  if (changeCallback != NULL)
+  if (this->changeCallback != NULL)
   {
-    changeCallback(val);
+    this->changeCallback(val);
   }
 }
 
-DialKnobHandler::DialKnobHandler()
+DialKnobHandler::DialKnobHandler(BindKnob *screenKnob, void (*_changeCallback)(int16_t))
 {
-  DialKnobHandler(NULL, NULL);
-}
-
-DialKnobHandler::DialKnobHandler(int16_t *val, void (*_changeCallback)(int16_t))
-{
-  value = val;
-  changeCallback = _changeCallback;
+  this->screenKnob = screenKnob;
+  this->changeCallback = _changeCallback;
 }
