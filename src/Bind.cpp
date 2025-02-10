@@ -1,6 +1,25 @@
 #include "Bind.h"
 #include "Arduino.h"
 
+// Set the initial value of tagIndexes to 1.
+int16_t BindSeekBar::tagIndex = 1;
+int16_t BindSwitch::tagIndex = 1;
+int16_t BindButton::tagIndex = 1;
+int16_t BindKnob::tagIndex = 1;
+int16_t BindJoystick::tagIndex = 1;
+int16_t BindColorPicker::tagIndex = 1;
+int16_t BindTextInput::tagIndex = 1;
+int16_t BindGaugeSimple::tagIndex = 1;
+int16_t BindTextLabel::tagIndex = 1;
+int16_t BindTerminal::tagIndex = 1;
+int16_t BindChart::tagIndex = 1;
+int16_t BindAttitudeIndicator::tagIndex = 1;
+int16_t BindGauge::tagIndex = 1;
+int16_t BindGaugeCompact::tagIndex = 1;
+int16_t BindHeadingIndicator::tagIndex = 1;
+int16_t BindMapMarker::tagIndex = 1;
+int16_t BindRectangle::tagIndex = 1;
+
 bool Bind::init(Stream &stream, void (&_setupCallback)(int16_t, int16_t))
 {
   return init(&stream, &_setupCallback);
@@ -89,9 +108,9 @@ void Bind::join(BindKnob &screenKnob, void (&changeCallback)(int16_t))
   join(&screenKnob, &changeCallback);
 }
 
-void Bind::join(BindSwitch &screenSwitch, void (&clickCallback)(bool))
+void Bind::join(BindSwitch &screenSwitch, void (*clickCallback)(bool))
 {
-  join(&screenSwitch, &clickCallback);
+  join(&screenSwitch, clickCallback);
 }
 
 void Bind::join(BindSeekBar &screenSeekBar, void (&changeCallback)(int16_t))
@@ -111,55 +130,50 @@ void Bind::join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_
 
 void Bind::join(BindButton *screenButton, void (*clickCallback)(void))
 {
-  if (buttonIndex < MAX_HANDLERS && screenButton->tag == 0)
+  if (screenButton->tag < MAX_HANDLERS)
   {
-    screenButton->tag = buttonIndex++;
     buttons[screenButton->tag] = ButtonHandler(clickCallback);
   }
 }
 
 void Bind::join(BindKnob *screenKnob, void (*changeCallback)(int16_t))
 {
-  if (dialKnobIndex < MAX_HANDLERS && screenKnob->tag == 0)
+  if (screenKnob->tag < MAX_HANDLERS)
   {
-    screenKnob->tag = dialKnobIndex++;
-    dialKnobHandlers[screenKnob->tag] = DialKnobHandler(&screenKnob->value, changeCallback);
+    dialKnobHandlers[screenKnob->tag] = DialKnobHandler(screenKnob, changeCallback);
   }
 }
 
 void Bind::join(BindSwitch *screenSwitch, void (*clickCallback)(bool))
 {
-  if (switchIndex < MAX_HANDLERS && screenSwitch->tag == 0)
+  if (screenSwitch->tag < MAX_HANDLERS)
   {
-    screenSwitch->tag = switchIndex++;
-    switchHandlers[screenSwitch->tag] = SwitchHandler(&screenSwitch->switchValue, clickCallback);
+    switchHandlers[screenSwitch->tag] = SwitchHandler(clickCallback, screenSwitch);
   }
 }
 
 void Bind::join(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t))
 {
-  if (seekBarIndex < MAX_HANDLERS && screenSeekBar->tag == 0)
+  if (screenSeekBar->tag < MAX_HANDLERS)
   {
-    screenSeekBar->tag = seekBarIndex++;
-    seekBarHandlers[screenSeekBar->tag] = SeekBarHandler(&screenSeekBar->seekValue, changeCallback);
+
+    seekBarHandlers[screenSeekBar->tag] = SeekBarHandler(screenSeekBar, changeCallback);
   }
 }
 
 void Bind::join(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t))
 {
-  if (joystickHandlerIndex < MAX_HANDLERS && screenJoystick->tag == 0)
+  if (screenJoystick->tag < MAX_HANDLERS)
   {
-    screenJoystick->tag = joystickHandlerIndex++;
-    joystickHandlers[screenJoystick->tag] = JoystickHandler(&screenJoystick->sX, &screenJoystick->sY, changeCallback);
+    joystickHandlers[screenJoystick->tag] = JoystickHandler(screenJoystick, changeCallback);
   }
 }
 
 void Bind::join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t))
 {
-  if (colorPickerHandlerIndex < MAX_HANDLERS && screenColorPicker->tag == 0)
+  if (screenColorPicker->tag < MAX_HANDLERS)
   {
-    screenColorPicker->tag = colorPickerHandlerIndex++;
-    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(&screenColorPicker->red, &screenColorPicker->green, &screenColorPicker->blue, clickCallback);
+    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(screenColorPicker, clickCallback);
   }
 }
 
