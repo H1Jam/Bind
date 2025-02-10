@@ -1,6 +1,6 @@
 #include "BindRectangle.hpp"
 
-int16_t BindRectangle::tagIndex = 1;
+// int16_t BindRectangle::tagIndex = 1;
 
 BindRectangle::BindRectangle()
 {
