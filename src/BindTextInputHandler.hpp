@@ -7,8 +7,8 @@
 class TextInputHandler
 {
 private:
-    void (*changeCallback)(const char *, uint8_t);
-    BindTextInput* obj;
+    void (*changeCallback)(const char *, uint8_t) = NULL;
+    BindTextInput* obj = NULL;
 public:
     TextInputHandler()
     {
