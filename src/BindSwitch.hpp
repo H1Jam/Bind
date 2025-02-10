@@ -38,7 +38,8 @@ public:
      */
     BindSwitch(const char *cstr)
     {
-        setlabel(cstr);
+        this->tag = tagIndex++;
+        setLabel(cstr);
     }
 
     /**
@@ -46,7 +47,11 @@ public:
      */
     BindSwitch()
     {
-        setlabel("Switch");
+        this->tag = tagIndex++;
+        // add a default label for the switch  + "SW-[tag]" so like "Switch_1"
+        char label[20];
+        sprintf(label, "SW-%d", this->tag);
+        setLabel(label);
     }
 
     int16_t x; ///< X-coordinate position of the toggle switch.
@@ -61,9 +66,15 @@ public:
      *
      * @param cstr The label text for the toggle switch.
      */
-    void setlabel(const char *cstr)
+    void setLabel(const char *cstr)
     {
         str = cstr;
+    }
+
+    //backwards compatibility
+    void setlabel(const char *cstr)
+    {
+        setLabel(cstr);
     }
 
     /**
@@ -100,6 +111,7 @@ private:
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;
+    static int16_t tagIndex;
 };
 
 #endif /* __BINDSWITCH_HPP */
