@@ -1,7 +1,5 @@
 #include "BindTextInput.hpp"
 
-int16_t BindTextInput::tagIndex = 1;
-
 BindTextInput::BindTextInput(int16_t x, int16_t y, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor, int32_t backColor, uint8_t widthChars, bool numberOnly)
     : x(x), y(y), cmdId(cmdId), fontSize(fontSize), textColor(textColor), backColor(backColor), widthChars(widthChars), numberOnly(numberOnly)
 {
