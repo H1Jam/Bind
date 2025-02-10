@@ -254,7 +254,7 @@ public:
    * @param screenSwitch A pointer to the 'BindSwitch' object to bind.
    * @param clickCallback A pointer to the callback function that responds to switch state changes.
    */
-  void join(BindSwitch *screenSwitch, void (*clickCallback)(bool));
+  void join(BindSwitch *screenSwitch, void (*clickCallback)(bool) = NULL);
 
   /**
    * @brief Binds a ON/OFF Switch object to a click callback function.
@@ -267,7 +267,7 @@ public:
    * @param screenSwitch A reference to the 'BindSwitch' object to bind.
    * @param clickCallback A reference to the callback function that responds to switch state changes.
    */
-  void join(BindSwitch &screenSwitch, void (&clickCallback)(bool));
+  void join(BindSwitch &screenSwitch, void (*clickCallback)(bool) = NULL);
 
   /**
    * @brief Binds a SeekBar object to a change callback function.
