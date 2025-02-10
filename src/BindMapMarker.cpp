@@ -1,6 +1,6 @@
 #include "BindMapMarker.hpp"
 
-int16_t BindMapMarker::tagIndex = 1;
+// int16_t BindMapMarker::tagIndex = 1;
 
 BindMapMarker::BindMapMarker()
 {
