@@ -98,5 +98,6 @@ private:
   uint16_t offset = 0;
   int strLength = 0;
   const char *str;
+  static int16_t tagIndex;
 };
 #endif /* __BINDBUTTON_H */
