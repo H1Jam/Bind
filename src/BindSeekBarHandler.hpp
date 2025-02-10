@@ -1,33 +1,32 @@
 #ifndef __BINDSEEKBARHANDLER_H
 #define __BINDSEEKBARHANDLER_H
 #include "Stream.h"
+#include "BindSeekBar.hpp"
 // TODO: Extract the class to a serprate .h and .c file! Now!
 // TODO: Add the class summaries!
 class SeekBarHandler
 {
 private:
-  int16_t *value = NULL;
-  void (*changeCallback)(int16_t);
+BindSeekBar *screenSeekBar = NULL;
+void (*changeCallback)(int16_t) = NULL;
 
 public:
-  SeekBarHandler()
+
+  SeekBarHandler(BindSeekBar *_screenSeekBar = NULL, void (*_changeCallback)(int16_t) = NULL)
   {
-    SeekBarHandler(NULL, NULL);
+    this->screenSeekBar = _screenSeekBar;
+    this->changeCallback = _changeCallback;
   }
-  SeekBarHandler(int16_t *val, void (*_changeCallback)(int16_t))
-  {
-    value = val;
-    changeCallback = _changeCallback;
-  }
+
   void update(int16_t val)
   {
-    if (value != NULL)
+    if (this->screenSeekBar != NULL)
     {
-      *value = val;
+      this->screenSeekBar->seekValue = val;
     }
-    if (changeCallback != NULL)
+    if (this->changeCallback != NULL)
     {
-      changeCallback(val);
+      this->changeCallback(val);
     }
   }
 };
