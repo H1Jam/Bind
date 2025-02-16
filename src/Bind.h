@@ -61,13 +61,26 @@ public:
   Bind()
   {
     setupCallback = NULL;
-    buttons = new ButtonHandler[MAX_HANDLERS];
-    dialKnobHandlers = new DialKnobHandler[MAX_HANDLERS];
-    switchHandlers = new SwitchHandler[MAX_HANDLERS];
-    seekBarHandlers = new SeekBarHandler[MAX_HANDLERS];
-    joystickHandlers = new JoystickHandler[MAX_HANDLERS];
-    colorPickerHandlers = new ColorPickerHandler[MAX_HANDLERS];
-    textInputHandlers = new TextInputHandler[MAX_HANDLERS];
+    // Allocate memory for an array of pointers to Bind objects
+    switchObjects = new BindSwitch*[MAX_HANDLERS]; 
+    buttonObjects = new BindButton*[MAX_HANDLERS]; 
+    knobObjects = new BindKnob*[MAX_HANDLERS];
+    seekBarObjects = new BindSeekBar*[MAX_HANDLERS];
+    joystickObjects = new BindJoystick*[MAX_HANDLERS];
+    colorPickerObjects = new BindColorPicker*[MAX_HANDLERS];
+    textInputObjects = new BindTextInput*[MAX_HANDLERS];
+
+    for (int i = 0; i < MAX_HANDLERS; ++i)
+    {
+      // Initialize each pointer to nullptr
+      switchObjects[i] = nullptr; 
+      buttonObjects[i] = nullptr;
+      knobObjects[i] = nullptr;
+      seekBarObjects[i] = nullptr;
+      joystickObjects[i] = nullptr;
+      colorPickerObjects[i] = nullptr;
+      textInputObjects[i] = nullptr;
+    }
   }
 
   /**
@@ -97,16 +110,6 @@ public:
   {
     return isInitialized;
   }
-
-  /**
-   * @brief Synchronizes a BindView object with the BindCanvas screen.
-   *
-   * This function synchronizes a 'BindView' object, 'obj,' with the BindCanvas screen, ensuring that
-   * the object reflects the most up-to-date data and appearance as intended.
-   *
-   * @param obj A pointer to the 'BindView' object (e.g. BindButton, BindSeekbar) to synchronize.
-   */
-  void sync(BindView *obj);
 
   /**
    * @brief Synchronizes a BindView object with the BindCanvas screen.
@@ -192,192 +195,6 @@ public:
   bool init(Stream &stream, void (&setupCallback)(int16_t, int16_t));
 
   /**
-   * @brief Binds a Button object to a click callback function.
-   *
-   * This function establishes a connection between a Button object and a click callback function.
-   * It takes two parameters: a pointer to the 'BindButton' object, 'screenButton,' and a pointer
-   * to a callback function, 'clickCallback,' which handles button click events.
-   *
-   * @param screenButton A pointer to the 'BindButton' object to bind.
-   * @param clickCallback A pointer to the callback function that responds to button clicks.
-   */
-  void join(BindButton *screenButton, void (*clickCallback)(void));
-
-  /**
-   * @brief Binds a Button object to a click callback function.
-   *
-   * This function establishes a connection between a Button object and a click callback function.
-   * It takes two parameters: a reference to the 'BindButton' object, 'screenButton,' and a reference
-   * to a callback function, 'clickCallback,' which handles button click events.
-   *
-   * @param screenButton A reference to the 'BindButton' object to bind.
-   * @param clickCallback A reference to the callback function that responds to button clicks.
-   */
-  void join(BindButton &screenButton, void (&clickCallback)(void));
-
-  /**
-   * @brief Binds a Dial Knob object to a change callback function.
-   *
-   * This function establishes a connection between a Dial Knob object and a change callback function.
-   * It takes two parameters: a pointer to the 'BindKnob' object, 'screenKnob,' and a pointer to a
-   * callback function, 'changeCallback,' which handles changes in the dial knob's value.
-   * @attention The changeCallback receives a 16-bit integer representing the knob angle,
-   * and the range of values depends on the user's configuration for that knob.
-   *
-   * @param screenKnob A pointer to the 'BindKnob' object to bind.
-   * @param changeCallback A pointer to the callback function that responds to dial knob value changes.
-   */
-  void join(BindKnob *screenKnob, void (*changeCallback)(int16_t));
-
-  /**
-   * @brief Binds a Dial Knob object to a change callback function.
-   *
-   * This function establishes a connection between a Dial Knob object and a change callback function.
-   * It takes two parameters: a reference to the 'BindKnob' object, 'screenKnob,' and a reference to a
-   * callback function, 'changeCallback,' which handles changes in the dial knob's value.
-   * @attention The changeCallback receives a 16-bit integer representing the knob angle,
-   * and the range of values depends on the user's configuration for that knob.
-   *
-   * @param screenKnob A reference to the 'BindKnob' object to bind.
-   * @param changeCallback A reference to the callback function that responds to dial knob value changes.
-   */
-  void join(BindKnob &screenKnob, void (&changeCallback)(int16_t));
-
-  /**
-   * @brief Binds a ON/OFF Switch object to a click callback function.
-   *
-   * This function establishes a connection between a Switch object and a click callback function.
-   * It takes two parameters: a pointer to the 'BindSwitch' object, 'screenSwitch,' and a pointer
-   * to a callback function, 'clickCallback,' which handles switch state changes.
-   * @attention The clickCallback receives a boolean representing the state of the switch.
-   *
-   * @param screenSwitch A pointer to the 'BindSwitch' object to bind.
-   * @param clickCallback A pointer to the callback function that responds to switch state changes.
-   */
-  void join(BindSwitch *screenSwitch, void (*clickCallback)(bool) = NULL);
-
-  /**
-   * @brief Binds a ON/OFF Switch object to a click callback function.
-   *
-   * This function establishes a connection between a Switch object and a click callback function.
-   * It takes two parameters: a reference to the 'BindSwitch' object, 'screenSwitch,' and a reference
-   * to a callback function, 'clickCallback,' which handles switch state changes.
-   * @attention The clickCallback receives a boolean representing the state of the switch.
-   *
-   * @param screenSwitch A reference to the 'BindSwitch' object to bind.
-   * @param clickCallback A reference to the callback function that responds to switch state changes.
-   */
-  void join(BindSwitch &screenSwitch, void (*clickCallback)(bool) = NULL);
-
-  /**
-   * @brief Binds a SeekBar object to a change callback function.
-   *
-   * This function establishes a connection between a SeekBar object and a change callback function.
-   * It takes two parameters: a pointer to the 'BindSeekBar' object, 'screenSeekBar,' and a pointer
-   * to a callback function, 'changeCallback,' which handles SeekBar value changes.
-   * The callback receives an integer parameter representing the new value of the seekbar.
-   * @attention The clickCallback receives a 16-bit integer representing the progress of
-   * the seekbar, and the range of values depends on the user's configuration for that seekbar.
-   *
-   * @param screenSeekBar A pointer to the 'BindSeekBar' object to bind.
-   * @param changeCallback A pointer to the callback function that responds to SeekBar changes.
-   */
-  void join(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t));
-
-  /**
-   * @brief Binds a SeekBar object to a change callback function.
-   *
-   * This function establishes a connection between a SeekBar object and a change callback function.
-   * It takes two parameters: a reference to the 'BindSeekBar' object, 'screenSeekBar,' and a reference
-   * to a callback function, 'changeCallback,' which handles SeekBar value changes.
-   * The callback receives an integer parameter representing the new value of the seekbar.
-   * @attention The clickCallback receives a 16-bit integer representing the progress of
-   * the seekbar, and the range of values depends on the user's configuration for that seekbar.
-   *
-   * @param screenSeekBar A reference to the 'BindSeekBar' object to bind.
-   * @param changeCallback A reference to the callback function that responds to SeekBar changes.
-   */
-  void join(BindSeekBar &screenSeekBar, void (&changeCallback)(int16_t));
-
-  /**
-   * @brief Binds a Joystick object to a change callback function.
-   *
-   * This function establishes a connection between a Joystick object and a change callback function.
-   * It takes two parameters: a pointer to the 'BindJoystick' object, 'screenJoystick,' and a pointer
-   * to a callback function, 'changeCallback,' which handles changes in the joystick's position.
-   * @attention The clickCallback receives two 16-bit integers representing
-   * the X and Y axes of the joystick, with each axis ranging from -100 to 100.
-   *
-   * @param screenJoystick A pointer to the 'BindJoystick' object to bind.
-   * @param changeCallback A pointer to the callback function that responds to joystick position changes.
-   */
-  void join(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t));
-
-  /**
-   * @brief Binds a Joystick object to a change callback function.
-   *
-   * This function establishes a connection between a Joystick object and a change callback function.
-   * It takes two parameters: a reference to the 'BindJoystick' object, 'screenJoystick,' and a reference
-   * to a callback function, 'changeCallback,' which handles changes in the joystick's position.
-   * @attention The clickCallback receives two 16-bit integers representing
-   * the X and Y axes of the joystick, with each axis ranging from -100 to 100.
-   *
-   * @param screenJoystick A reference to the 'BindJoystick' object to bind.
-   * @param changeCallback A reference to the callback function that responds to joystick position changes.
-   */
-  void join(BindJoystick &screenJoystick, void (&changeCallback)(int16_t, int16_t));
-
-  /**
-   * @brief Binds a Color Picker object to a click callback function.
-   *
-   * This function establishes a connection between a Color Picker object and a click callback function.
-   * It takes two parameters: a pointer to the 'BindColorPicker' object, 'screenColorPicker,' and a pointer
-   * to a callback function, 'clickCallback,' which handles color selection events.
-   * @attention The clickCallback receives three 8-bit integers (ranging from 0 to 255)
-   * that represent the Red, Green, and Blue elements of the selected color.
-   *
-   * @param screenColorPicker A pointer to the 'BindColorPicker' object to bind.
-   * @param clickCallback A pointer to the callback function that responds to color selection events.
-   */
-  void join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t));
-
-  /**
-   * @brief Binds a Color Picker object to a click callback function.
-   *
-   * This function establishes a connection between a Color Picker object and a click callback function.
-   * It takes two parameters: a reference to the 'BindColorPicker' object, 'screenColorPicker,' and a reference
-   * to a callback function, 'clickCallback,' which handles color selection events.
-   * @attention The clickCallback receives three 8-bit integers (ranging from 0 to 255)
-   * that represent the Red, Green, and Blue elements of the selected color.
-   *
-   * @param screenColorPicker A reference to the 'BindColorPicker' object to bind.
-   * @param clickCallback A reference to the callback function that responds to color selection events.
-   */
-  void join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_t, uint8_t, uint8_t));
-
-  /**
-   * @brief Joins a BindTextInput object with a change callback function.
-   *
-   * This function associates a BindTextInput object with a callback function that is triggered
-   * when the text input value changes. The callback function receives the new text value and its length.
-   *
-   * @param screenTextInput A pointer to the BindTextInput object.
-   * @param changeCallback A pointer to the callback function that handles text input changes.
-   */
-  void join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t));
-
-  /**
-   * @brief Joins a BindTextInput object with a change callback function.
-   *
-   * This function associates a BindTextInput object with a callback function that is triggered
-   * when the text input value changes. The callback function receives the new text value and its length.
-   *
-   * @param screenTextInput A reference to the BindTextInput object.
-   * @param changeCallback A reference to the callback function that handles text input changes.
-   */
-  void join(BindTextInput &screenTextInput, void (&changeCallback)(const char *, uint8_t));
-
-  /**
    * @brief Synchronizes chart data of a BindChart object.
    *
    * This function synchronizes the chart data represented by a float value with a 'BindChart' object.
@@ -420,6 +237,14 @@ public:
    */
   void sync(const char *str, BindTerminal &obj);
 
+  void sync(BindSwitch &obj);
+  void sync(BindButton &obj);
+  void sync(BindKnob &obj);
+  void sync(BindSeekBar &obj);
+  void sync(BindJoystick &obj);
+  void sync(BindColorPicker &obj);
+  void sync(BindTextInput &obj);
+
 private:
   // Private member variables and functions...
   uint8_t bufFrame[MAX_DATA_LENGHT];
@@ -430,14 +255,14 @@ private:
   int dataLen = 0;
   uint32_t lastMs = 0;
   uint32_t deltaMs = 0;
+  BindSwitch** switchObjects;
+  BindButton** buttonObjects;
+  BindKnob** knobObjects;
+  BindSeekBar** seekBarObjects;
+  BindJoystick** joystickObjects;
+  BindColorPicker** colorPickerObjects;
+  BindTextInput** textInputObjects;
   DataParser dataParser;
-  ButtonHandler *buttons;
-  DialKnobHandler *dialKnobHandlers;
-  SwitchHandler *switchHandlers;
-  SeekBarHandler *seekBarHandlers;
-  JoystickHandler *joystickHandlers;
-  ColorPickerHandler *colorPickerHandlers;
-  TextInputHandler *textInputHandlers;
   uint8_t buttonIndex = 1;
   uint8_t dialKnobIndex = 1;
   uint8_t switchIndex = 1;
@@ -459,6 +284,7 @@ private:
   void clickButton(uint8_t tag);
   void updateSwitch(uint8_t tag, bool val);
   void updateTextInput(uint8_t tag, const char *val, uint8_t length);
+  void internalSync(BindView *obj);
 };
 
 #endif /* __BIND_H */
