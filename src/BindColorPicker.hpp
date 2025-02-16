@@ -53,6 +53,12 @@ class BindColorPicker : public BindView
 {
 
 public:
+
+    BindColorPicker()
+    {
+        this->tag = tagIndex++;
+    }
+
     int16_t x = 0;         ///< The x-coordinate position of the color picker on the screen.
     int16_t y = 0;         ///< The y-coordinate position of the color picker on the screen.
     uint8_t cmdId = 0;     ///< Command identifier to add or refresh the color picker. See the notes for possible cmdId values.
@@ -61,6 +67,22 @@ public:
     uint8_t green = 0;     ///< The initial value for the green component of the selected color (0-255).
     uint8_t blue = 0;      ///< The initial value for the blue component of the selected color (0-255).
 
+    void setCallback(void (*callback)(uint8_t, uint8_t, uint8_t))
+    {
+        clickCallback = callback;
+    }
+
+    void invokeCallback(uint8_t redIn, uint8_t greenIn, uint8_t blueIn)
+    {
+        this->red = redIn;
+        this->green = greenIn;
+        this->blue = blueIn;
+        if (clickCallback != nullptr)
+        {
+            clickCallback(redIn, greenIn, blueIn);
+        }
+    }
+    
     /**
      * @brief Serialize the color picker object into bytes.
      *
@@ -88,6 +110,7 @@ private:
     uint8_t objID = BIND_ID_COLOR_PICKER;
     uint16_t offset = 0;
     static int16_t tagIndex;
+    void (*clickCallback)(uint8_t, uint8_t, uint8_t) = nullptr;
 };
 
 #endif /* __BINDCOLORPICKER_HPP */
