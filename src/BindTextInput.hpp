@@ -39,6 +39,20 @@ public:
      */
     BindTextInput(int16_t x, int16_t y, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor = 0, int32_t backColor = 0, uint8_t widthChars = 0, bool numberOnly = false);
 
+    void setCallback(void (*callback)(const char *, uint8_t))
+    {
+        changeCallback = callback;
+    }
+
+    void invokeCallback(const char *val, uint8_t length)
+    {
+        setText(val, length);
+        if (changeCallback != nullptr)
+        {
+            changeCallback(val, length);
+        }
+    }
+
     /**
      * @brief Sets the text content for the text input.
      *
@@ -48,12 +62,22 @@ public:
      */
     void setText(const char *cstr)
     {
-        text = cstr;
+        setText(cstr, strlen(cstr));
     }
 
     void setText(const char *cstr, int length)
     {
-        text = cstr;
+        if (cstr == text || length < 0) {
+            return; // Handle self-assignment
+        }
+        
+        // Allocate memory for the new text
+        if (text != nullptr) {
+            delete[] text;
+        }
+        text = new char[length + 1];
+        strncpy(text, cstr, length);
+        text[length] = '\0'; // Null-terminate the string
         strLength = length;
     }
 
@@ -92,7 +116,7 @@ public:
     int32_t backColor = TRANSPARENT; ///< Background color for the text input.
     uint8_t widthChars; ///< Width of the text input in characters.
     bool numberOnly = false;
-    const char *text; ///< Text content of the text input.
+    char *text = nullptr; ///< Text content of the text input.
     
 
 private:
@@ -101,6 +125,7 @@ private:
     int strLength = 0; ///< Length of the text string.
     const char *hint; ///< Hint text for the text input
     static int16_t tagIndex; ///< Tag index for the text input.
+    void (*changeCallback)(const char *, uint8_t) = nullptr;
 };
 
 #endif /* __BINDTEXTINPUT_H */
