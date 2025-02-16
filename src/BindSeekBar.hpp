@@ -29,12 +29,27 @@ public:
     BindSeekBar(){
         this->tag = tagIndex++;
     }
+    
     int16_t x;              ///< X-coordinate position of the SeekBar.
     int16_t y;              ///< Y-coordinate position of the SeekBar.
     uint8_t cmdId = 0;      ///< Command identifier. See the notes for possible cmdId values.
     int16_t seekValue = 0;  ///< Current value selected on the SeekBar.
     int16_t maxValue = 100; ///< Maximum value of the SeekBar.
     int16_t width = 200;    ///< Width of the SeekBar.
+
+    void setCallback(void (*callback)(int16_t))
+    {
+        changeCallback = callback;
+    }
+
+    void invokeCallback(int16_t valueIn)
+    {
+        this->seekValue = valueIn;
+        if (changeCallback != NULL)
+        {
+            changeCallback(valueIn);
+        }
+    }
 
     /**
      * @brief Serialize the SeekBar data into a byte array.
@@ -64,6 +79,7 @@ private:
     uint8_t objID = BIND_ID_SEEK_BAR; ///< Unique identifier for the SeekBar.
     uint16_t offset = 0;              ///< Offset for serialization.
     static int16_t tagIndex;          ///< Tag index for the SeekBar.
+    void (*changeCallback)(int16_t) = NULL;
 };
 
 #endif /* __BINDSEEKBAR_HPP */
