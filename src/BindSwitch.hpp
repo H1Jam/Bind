@@ -40,6 +40,7 @@ public:
     {
         this->tag = tagIndex++;
         setLabel(cstr);
+        this->changeCallback = nullptr;
     }
 
     /**
@@ -52,6 +53,7 @@ public:
         char label[20];
         sprintf(label, "SW-%d", this->tag);
         setLabel(label);
+        this->changeCallback = nullptr;
     }
 
     int16_t x; ///< X-coordinate position of the toggle switch.
@@ -77,6 +79,20 @@ public:
         setLabel(cstr);
     }
 
+    void setCallback(void (*callback)(bool))
+    {
+        this->changeCallback = callback;
+    }
+
+    void invokeCallback(bool val)
+    {
+        this->switchValue = val;
+        if (this->changeCallback != nullptr)
+        {
+            this->changeCallback(val);
+        }
+    }
+    
     /**
      * @brief Generates and returns the byte data representing the toggle switch configuration.
      *
@@ -111,6 +127,7 @@ private:
     uint16_t offset = 0;
     int strLength = 0;
     const char *str;
+    void (*changeCallback)(bool) = nullptr;
     static int16_t tagIndex;
 };
 
