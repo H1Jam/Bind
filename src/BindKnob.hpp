@@ -39,6 +39,7 @@ public:
    */
   BindKnob(const char *cstr)
   {
+    this->tag = tagIndex++;
     setlabel(cstr);
   }
 
@@ -70,6 +71,20 @@ public:
   void setlabel(const char *cstr)
   {
     str = cstr;
+  }
+
+  void setCallback(void (*callback)(int16_t))
+  {
+    changeCallback = callback;
+  }
+
+  void invokeCallback(int16_t valueIn)
+  {
+    this->value = valueIn;
+    if (changeCallback != nullptr)
+    {
+      changeCallback(valueIn);
+    }
   }
 
   /**
@@ -108,5 +123,6 @@ private:
   int strLength = 0;
   const char *str;
   static int16_t tagIndex;
+  void (*changeCallback)(int16_t) = nullptr;
 };
 #endif /* __BINDKNOB_H */
