@@ -58,6 +58,11 @@ class BindJoystick : public BindView
 {
 
 public:
+    BindJoystick()
+    {
+        this->tag = tagIndex++;
+    }
+
     int16_t x = 0; ///< The x-coordinate position of the joystick on the screen.
     int16_t y = 0; ///< The y-coordinate position of the joystick on the screen.
     uint8_t cmdId = 0; ///< Command identifier to add or refresh the joystick. See the notes for possible cmdId values.
@@ -66,6 +71,21 @@ public:
     int16_t sY = 0; ///< The joystick's current Y-axis position (internal).
     bool springed = true; ///< Indicates whether the joystick returns to the center automatically when released.
     
+    void setCallback(void (*callback)(int16_t, int16_t))
+    {
+        changeCallback = callback;
+    }
+
+    void invokeCallback(int16_t xIn, int16_t yIn)
+    {
+        this->sX = xIn;
+        this->sY = yIn;
+        if (changeCallback != nullptr)
+        {
+            changeCallback(xIn, yIn);
+        }
+    }
+
     /**
      * @brief Serialize the joystick object into bytes.
      *
@@ -91,6 +111,7 @@ private:
     uint8_t objID = BIND_ID_JOYSTICK;
     uint16_t offset = 0;
     static int16_t tagIndex;
+    void (*changeCallback)(int16_t, int16_t) = nullptr;
 };
 
 #endif /* __BINDJOYSTICK_HPP */
