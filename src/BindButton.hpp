@@ -37,11 +37,13 @@ public:
   BindButton(const char *cstr)
   {
     setlabel(cstr);
+    this->tag = tagIndex++;
   }
 
   BindButton()
   {
     setlabel("Button");
+    this->tag = tagIndex++;
   }
 
   int16_t x;         ///< X-coordinate position of the button
@@ -62,6 +64,19 @@ public:
   void setlabel(const char *cstr)
   {
     str = cstr;
+  }
+
+  void setCallback(void (*callback)(void))
+  {
+    clickCallback = callback;
+  }
+
+  void invokeCallback()
+  {
+    if (clickCallback != nullptr)
+    {
+      clickCallback();
+    }
   }
 
   /**
@@ -99,5 +114,6 @@ private:
   int strLength = 0;
   const char *str;
   static int16_t tagIndex;
+  void (*clickCallback)(void) = nullptr;
 };
 #endif /* __BINDBUTTON_H */
