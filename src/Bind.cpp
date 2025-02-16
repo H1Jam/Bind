@@ -62,18 +62,61 @@ void Bind::sync(const char *str, BindTerminal &obj)
   sync(str, WHITE, true, true, false, false, obj);
 }
 
-void Bind::sync(BindView &obj)
-{
-  sync(&obj);
-}
-
-void Bind::sync(BindView *obj)
+void Bind::internalSync(BindView *obj)
 {
   if (bindStream != NULL)
   {
     dataLen = obj->getBytes(bufFrame);
     DataParser::sendFrame(frameTXBuffer, bufFrame, dataLen, bindStream);
   }
+}
+
+void Bind::sync(BindView &obj)
+{
+  internalSync(&obj);
+}
+
+void Bind::sync(BindSwitch &obj)
+{
+  switchObjects[obj.tag] = &obj;
+  internalSync(&obj);
+
+}
+
+void Bind::sync(BindButton &obj)
+{
+  buttonObjects[obj.tag] = &obj;
+  internalSync(&obj);
+}
+
+void Bind::sync(BindKnob &obj)
+{
+  knobObjects[obj.tag] = &obj;
+  internalSync(&obj);
+}
+
+void Bind::sync(BindSeekBar &obj)
+{
+  seekBarObjects[obj.tag] = &obj;
+  internalSync(&obj);
+}
+
+void Bind::sync(BindJoystick &obj)
+{
+  joystickObjects[obj.tag] = &obj;
+  internalSync(&obj);
+}
+
+void Bind::sync(BindColorPicker &obj)
+{
+  colorPickerObjects[obj.tag] = &obj;
+  internalSync(&obj);
+}
+
+void Bind::sync(BindTextInput &obj)
+{
+  textInputObjects[obj.tag] = &obj;
+  internalSync(&obj);
 }
 
 void Bind::sync(const uint8_t *buffer, size_t size)
@@ -94,100 +137,6 @@ void Bind::sync()
       updateScreen(bindStream->read());
     }
   }
-}
-
-// Auxiliary functions to prevent common mistakes of calling by reference or pointer.
-
-void Bind::join(BindButton &screenButton, void (&clickCallback)(void))
-{
-  join(&screenButton, &clickCallback);
-}
-
-void Bind::join(BindKnob &screenKnob, void (&changeCallback)(int16_t))
-{
-  join(&screenKnob, &changeCallback);
-}
-
-void Bind::join(BindSwitch &screenSwitch, void (*clickCallback)(bool))
-{
-  join(&screenSwitch, clickCallback);
-}
-
-void Bind::join(BindSeekBar &screenSeekBar, void (&changeCallback)(int16_t))
-{
-  join(&screenSeekBar, &changeCallback);
-}
-
-void Bind::join(BindJoystick &screenJoystick, void (&changeCallback)(int16_t, int16_t))
-{
-  join(&screenJoystick, &changeCallback);
-}
-
-void Bind::join(BindColorPicker &screenColorPicker, void (&clickCallback)(uint8_t, uint8_t, uint8_t))
-{
-  join(&screenColorPicker, &clickCallback);
-}
-
-void Bind::join(BindButton *screenButton, void (*clickCallback)(void))
-{
-  if (screenButton->tag < MAX_HANDLERS)
-  {
-    buttons[screenButton->tag] = ButtonHandler(clickCallback);
-  }
-}
-
-void Bind::join(BindKnob *screenKnob, void (*changeCallback)(int16_t))
-{
-  if (screenKnob->tag < MAX_HANDLERS)
-  {
-    dialKnobHandlers[screenKnob->tag] = DialKnobHandler(screenKnob, changeCallback);
-  }
-}
-
-void Bind::join(BindSwitch *screenSwitch, void (*clickCallback)(bool))
-{
-  if (screenSwitch->tag < MAX_HANDLERS)
-  {
-    switchHandlers[screenSwitch->tag] = SwitchHandler(clickCallback, screenSwitch);
-  }
-}
-
-void Bind::join(BindSeekBar *screenSeekBar, void (*changeCallback)(int16_t))
-{
-  if (screenSeekBar->tag < MAX_HANDLERS)
-  {
-
-    seekBarHandlers[screenSeekBar->tag] = SeekBarHandler(screenSeekBar, changeCallback);
-  }
-}
-
-void Bind::join(BindJoystick *screenJoystick, void (*changeCallback)(int16_t, int16_t))
-{
-  if (screenJoystick->tag < MAX_HANDLERS)
-  {
-    joystickHandlers[screenJoystick->tag] = JoystickHandler(screenJoystick, changeCallback);
-  }
-}
-
-void Bind::join(BindColorPicker *screenColorPicker, void (*clickCallback)(uint8_t, uint8_t, uint8_t))
-{
-  if (screenColorPicker->tag < MAX_HANDLERS)
-  {
-    colorPickerHandlers[screenColorPicker->tag] = ColorPickerHandler(screenColorPicker, clickCallback);
-  }
-}
-
-void Bind::join(BindTextInput *screenTextInput, void (*changeCallback)(const char *, uint8_t))
-{
-  if (screenTextInput->tag < MAX_HANDLERS)
-  {
-    textInputHandlers[screenTextInput->tag] = TextInputHandler(changeCallback, screenTextInput);
-  }
-}
-
-void Bind::join(BindTextInput &screenTextInput, void (&changeCallback)(const char *, uint8_t))
-{
-  join(&screenTextInput, &changeCallback);
 }
 
 int Bind::updateScreen(uint8_t inp)
@@ -251,7 +200,7 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
     updateColorPicker(dataFrame[3], valTmp1, valTmp2, valTmp3);
     break;
   case BIND_ID_TEXTINPUT:
-      updateTextInput(dataFrame[3], (const char *)&dataFrame[6], dataFrame[5]);
+    updateTextInput(dataFrame[3], (const char *)&dataFrame[6], dataFrame[5]);
     break;
   default:
     return 0;
@@ -271,56 +220,60 @@ void Bind::screenInit(int16_t w, int16_t h)
 
 void Bind::knobChanged(int8_t tag, int val)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && knobObjects[tag] != nullptr)
   {
-    dialKnobHandlers[tag].changed(val);
+    knobObjects[tag]->invokeCallback(val);
   }
+
 }
 
 void Bind::clickButton(uint8_t tag)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && buttonObjects[tag] != nullptr)
   {
-    buttons[tag].clicked();
+    buttonObjects[tag]->invokeCallback();
   }
 }
 
 void Bind::updateSwitch(uint8_t tag, bool val)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && switchObjects[tag] != nullptr)
   {
-    switchHandlers[tag].update(val);
+    switchObjects[tag]->invokeCallback(val);
   }
 }
 
 void Bind::updateSeekBar(uint8_t tag, int16_t val)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && seekBarObjects[tag] != nullptr)
   {
-    seekBarHandlers[tag].update(val);
+    seekBarObjects[tag]->invokeCallback(val);
   }
 }
 
 void Bind::updateJoystick(uint8_t tag, int16_t valX, int16_t valY)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && joystickObjects[tag] != nullptr)
   {
-    joystickHandlers[tag].update(valX, valY);
+    joystickObjects[tag]->invokeCallback(valX, valY);
   }
 }
 
 void Bind::updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && colorPickerObjects[tag] != nullptr)
   {
-    colorPickerHandlers[tag].update(r, g, b);
+    colorPickerObjects[tag]->invokeCallback(r, g, b);
   }
 }
 
 void Bind::updateTextInput(uint8_t tag, const char *val, uint8_t length)
 {
-  if (tag < MAX_HANDLERS)
+  if (tag < MAX_HANDLERS && textInputObjects[tag] != nullptr)
   {
-    textInputHandlers[tag].update(val, length);
+    char value[length +1];
+    strncpy((char*)value, val, length);
+    value[length] = '\0';
+    textInputObjects[tag]->invokeCallback(value, length);
   }
 }
