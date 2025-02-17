@@ -6,9 +6,13 @@
 #include "DataProtocol.h"
 #include "BindUtils.hpp"
 #include "BindWidgets.hpp"
-/// \brief Maximum number of object handlers
 
+/// \brief Maximum number of object handlers
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_STM32)
+#define MAX_HANDLERS 32
+#else
 #define MAX_HANDLERS 16
+#endif
 
 /// \brief This command either adds the object to the canvas (screen) or refreshes the existing one.
 #define BIND_ADD_OR_REFRESH_CMD 0
