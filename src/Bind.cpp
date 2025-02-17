@@ -80,7 +80,6 @@ void Bind::sync(BindSwitch &obj)
 {
   switchObjects[obj.tag] = &obj;
   internalSync(&obj);
-
 }
 
 void Bind::sync(BindButton &obj)
