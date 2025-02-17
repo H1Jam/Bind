@@ -73,6 +73,8 @@ void addButton1() {
   button1.backColor = RGB(153, 204, 255);  // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Set the callback function for the Button 1 object.
+  button1.setCallback(button1_pressed);
   // Synchronize the button1 object with BindCanvas.
   bind.sync(button1);
 }
@@ -89,6 +91,7 @@ void addButtonShowHide() {
   buttonShowHide.backColor = YELLOW;     // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   buttonShowHide.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  buttonShowHide.setCallback(buttonShowHide_pressed);
   // Synchronize the button1 object with BindCanvas.
   bind.sync(buttonShowHide);
 }
@@ -105,6 +108,7 @@ void addButtonDisableEnable() {
   buttonDisableEnable.backColor = YELLOW;          // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   buttonDisableEnable.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  buttonDisableEnable.setCallback(buttonDisableEnable_pressed);
   // Synchronize the button1 object with BindCanvas.
   bind.sync(buttonDisableEnable);
 }
@@ -124,11 +128,6 @@ void setup() {
   // Initialize the Bind object and specify the communication method (bleStream) and callback function (onConnection).
   bleStream.begin("YOUR_DEVICE_NAME", bind);
 	bind.init(bleStream, onConnection);
-
-  // Connect the callback functions with the Bind objects.
-  bind.join(button1, button1_pressed);
-  bind.join(buttonShowHide, buttonShowHide_pressed);
-  bind.join(buttonDisableEnable, buttonDisableEnable_pressed);
 }
 
 void loop() {
