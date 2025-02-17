@@ -32,11 +32,12 @@
  *
  * Example usage:
  * ```cpp
- *      BindColorPicker colorPicker;
- * - in your Setup() function:
- * bind.join(&colorPicker, &colorPicker_changed);
- * - colorPicker_changed is callback function like this:
- * void colorPicker_changed(uint8_t red, uint8_t green, uint8_t blue)
+ * BindColorPicker colorPicker;
+ * 
+ * void colorPicker_changed(uint8_t red, uint8_t green, uint8_t blue){
+ *    // custom actions based on the color picker value
+ *  }
+ * 
  * - and in the onConnection() callback:
  * colorPicker.x = 30;
  * colorPicker.y = 100;
@@ -45,7 +46,8 @@
  * colorPicker.green = 0;
  * colorPicker.blue = 0;
  * colorPicker.cmdId = BIND_ADD_OR_REFRESH_CMD;
- * bind.sync(&colorPicker);
+ * colorPicker.setCallback(colorPicker_changed);
+ * bind.sync(colorPicker);
  * ```
  * @note check the BindColorPicker examples for more information.
  */

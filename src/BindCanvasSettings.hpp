@@ -49,7 +49,7 @@
  * - Create a `BindCanvasSettings` object to specify screen configuration.
  * - Set screen orientation, background color, and action bar color as needed.
  * - Optionally, enable the screen reset feature to restore the default state (will remove all BindViews).
- * - Use the `bind.sync(&myScreenSettings)` function to apply the settings.
+ * - Use the `bind.sync(myScreenSettings)` function to apply the settings.
  *
  * @see Bind for creating Bind UI elements
  * @attention the app label has been removed for now but may return in future thus kept it here.

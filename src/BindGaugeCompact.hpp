@@ -35,7 +35,7 @@
  * gauge.maxValue = 100.0f;
  *
  * // Bind the gauge to the canvas and display it
- * bind.sync(&gauge);
+ * bind.sync(gauge);
  * @endcode
  */
 class BindGaugeCompact : public BindView

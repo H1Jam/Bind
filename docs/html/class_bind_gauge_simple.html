@@ -197,7 +197,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 </ul>
 </dd></dl>
 <p>The gauge's properties can be customized by setting attributes such as the position (x and y coordinates), dimensions (size), minimum and maximum values for the gauge, current value, style (e.g., arc, horizontal, or vertical), whether it's symmetrical or not (center is zero), color, and label text.</p>
-<p>To use the <code><a class="el" href="class_bind_gauge_simple.html" title="BindGaugeSimple Class.">BindGaugeSimple</a></code> class effectively, you can create an instance, set its attributes, and call <code>bind.sync(&amp;your_gauge)</code> to synchronize it with BindCanvas.</p>
+<p>To use the <code><a class="el" href="class_bind_gauge_simple.html" title="BindGaugeSimple Class.">BindGaugeSimple</a></code> class effectively, you can create an instance, set its attributes, and call <code>bind.sync(your_gauge)</code> to synchronize it with BindCanvas.</p>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="class_bind_gauge_simple.html">BindGaugeSimple</a> gauge(<span class="stringliteral">&quot;Temperature&quot;</span>);</div>
 <div class="line">gauge.x = 30;</div>
 <div class="line">gauge.y = 100;</div>
@@ -209,7 +209,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <div class="line">gauge.isSymmetrical = <span class="keyword">true</span>;</div>
 <div class="line">gauge.color = YELLOW;</div>
 <div class="line">gauge.cmdId = BIND_ADD_OR_REFRESH_CMD;</div>
-<div class="line">bind.sync(&amp;gauge);</div>
+<div class="line">bind.sync(gauge);</div>
 <div class="ttc" id="aclass_bind_gauge_simple_html"><div class="ttname"><a href="class_bind_gauge_simple.html">BindGaugeSimple</a></div><div class="ttdoc">BindGaugeSimple Class.</div><div class="ttdef"><b>Definition</b> BindGaugeSimple.hpp:50</div></div>
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>check the examples for more information. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

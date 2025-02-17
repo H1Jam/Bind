@@ -192,8 +192,8 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 <p>Example usage:</p><ul>
 <li>Create a toggle switch with specific settings.</li>
 <li>Set its position, label, and appearance properties.</li>
-<li>Register a callback function to handle state changes when users interact with the switch: Bind.join(&amp;mySwitchObj, &amp;onChange)</li>
-<li>Synchronize the switch with the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework using <code>bind.sync(&amp;mySwitchObj)</code> to enable user interactions.</li>
+<li>Register a callback function to handle state changes when users interact with the switch: <code>mySwitchObj.setCallback(mySwitchCallback)</code>.</li>
+<li>Synchronize the switch with the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework using <code>bind.sync(mySwitchObj)</code> to enable user interactions.</li>
 </ul>
 <p>Note: To receive touch events and user interactions, you must regularly call <code>bind.sync()</code> in your main loop.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> for more information on using <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> UI elements. </dd></dl>

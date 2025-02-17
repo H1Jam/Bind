@@ -27,7 +27,7 @@
  * whether it's symmetrical or not (center is zero), color, and label text.
  *
  * To use the `BindGaugeSimple` class effectively, you can create an instance, set its attributes,
- * and call `bind.sync(&your_gauge)` to synchronize it with BindCanvas.
+ * and call `bind.sync(your_gauge)` to synchronize it with BindCanvas.
  *
  * Example usage:
  * ```cpp
@@ -42,7 +42,7 @@
  * gauge.isSymmetrical = true;
  * gauge.color = YELLOW;
  * gauge.cmdId = BIND_ADD_OR_REFRESH_CMD;
- * bind.sync(&gauge);
+ * bind.sync(gauge);
  * ```
  * @note check the examples for more information.
  */

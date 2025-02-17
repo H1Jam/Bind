@@ -21,8 +21,8 @@
  * Example usage:
  * - Create a toggle switch with specific settings.
  * - Set its position, label, and appearance properties.
- * - Register a callback function to handle state changes when users interact with the switch: Bind.join(&mySwitchObj, &onChange)
- * - Synchronize the switch with the Bind framework using `bind.sync(&mySwitchObj)` to enable user interactions.
+ * - Register a callback function to handle state changes when users interact with the switch: `mySwitchObj.setCallback(mySwitchCallback)`.
+ * - Synchronize the switch with the Bind framework using `bind.sync(mySwitchObj)` to enable user interactions.
  *
  * Note: To receive touch events and user interactions, you must regularly call `bind.sync()` in your main loop.
  *

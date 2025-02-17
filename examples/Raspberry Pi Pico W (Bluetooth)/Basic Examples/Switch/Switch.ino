@@ -21,13 +21,8 @@ unsigned long lastMs = 0;
  * This function is automatically triggered when Switch 1's value changes on the screen.
  * It receives a boolean parameter, 'state,' representing the new state of Switch 1 (ON or OFF).
  * You can define specific actions based on this state to respond to Switch changes.
- * To link this callback function with the Bind object, use the following syntax (in the Setup()):
- * `bind.join(your_switch_object, switch1_changed);`
- * Make sure to include the '&' symbols as they indicate pointers to the function and object.
- * @note Ensure you call "// Synchronize Bind UI Events (Not required on ESP32 when using BindOverBLE or BindOverWifi)
-  // Callin bind.sync() regularly is crucial to handle of user inputs and touch events.
-  // It's recommended to call bind.sync() a couple of times per second, but the faster, the better!
-  bind.sync();" in the main loop to get the callback and change events.
+ * To link this callback function with the Bind object, use setCallback() function as follows:
+ * `switch1.setCallback(switch1_changed);` before synchronizing the Switch object with BindCanvas.
  *
  * @param state The new state of Switch 1 (true for ON, false for OFF).
  */

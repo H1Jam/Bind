@@ -23,9 +23,8 @@ unsigned long lastMs = 0;
  * This function is automatically triggered when Seekbar 1's value changes on the screen.
  * It receives an integer parameter, 'val,' representing the new value of Seekbar 1.
  * You can define specific actions based on this value to respond to Seekbar changes.
- * To link this callback function with the Bind object, use the following syntax (in the Setup()):
- * `bind.join(your_seekbar_object, seekbar1_changed);`
- * Make sure to include the '&' symbols as they indicate pointers to the function and object.
+ * To link this callback function with the Bind object, use setCallback() function as follows:
+ * `seekBar1.setCallback(seekbar1_changed);` before synchronizing the SeekBar object with BindCanvas
  *
  * @param val The new value of Seekbar 1.
  */

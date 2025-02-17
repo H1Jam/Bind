@@ -30,7 +30,9 @@ Using Bind is easy, requiring just three fundamental functions: `init`, `join`, 
 
 No need to delve into data parsing or protocol handling, everything is internally managed by the Bind library. Simply define your objects, set attributes like location, size, and color, and call `bind.sync(myBindObject)` to display them on the screen.
 
-For interactive elements like buttons or color pickers where you expect user input in your C++ code, set a callback function using `bind.join(myButton, myButtonClicked)` In this context,`myButtonClicked` is a function like:
+For interactive elements like buttons or color pickers where you expect user input in your C++ code, set a callback function using their `setCallback` function, for example for buttons we can do this like: 
+```myButton.setCallback(myButtonClicked)```
+ In this context,`myButtonClicked` is a function like:
 ```cpp
 void myButtonClicked() {
     // Your custom logic when the button is clicked
@@ -77,8 +79,6 @@ void setup() {
     pinMode(ledPin, OUTPUT);
     // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
     bind.init(Serial, onConnection);
-    // Connect the callback functions with the Bind objects.
-    bind.join(myButton, myButtonClicked);
 }
 
 /**
@@ -96,6 +96,8 @@ void addButton() {
   myButton.y = 150;
   myButton.setlabel("Toggle LED");
   myButton.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Setting the click callback
+  myButton.setCallback(myButtonClicked);
   // Synchronize the myButton object with BindCanvas.
   bind.sync(myButton);
 }
@@ -133,9 +135,6 @@ void setup() {
   
     // Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
     bind.init(bleStream, onConnection);
-
-    // Connect the callback functions with the Bind objects.
-    bind.join(myButton, myButtonClicked);
 }
 
 /**
@@ -153,6 +152,8 @@ void addButton() {
   myButton.y = 150;
   myButton.setlabel("Toggle LED");
   myButton.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Setting the click callback
+  myButton.setCallback(myButtonClicked);
   // Synchronize the myButton object with BindCanvas.
   bind.sync(myButton);
 }

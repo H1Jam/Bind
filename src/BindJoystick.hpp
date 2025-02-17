@@ -29,19 +29,18 @@
  * create an instance,
  * set the callback function,
  * set its attributes,
- * and call `bind.sync(&your_joystick)` to synchronize it with BindCanvas.
+ * and call `bind.sync(your_joystick)` to synchronize it with BindCanvas.
  *
  * Example usage:
  * ```cpp
  * BindJoystick joystick;
- * ...
- * bind.join(joystick1, joystick1_onChange);
  * ...
  * joystick.x = 30;
  * joystick.y = 100;
  * joystick.dimSize = 200;
  * joystick.springed = true;
  * joystick.cmdId = BIND_ADD_OR_REFRESH_CMD;
+ * joystick.setCallback(joystick1_onChange);
  * bind.sync(joystick);
  * ...
  * void joystick1_onChange(int16_t x, int16_t y) {

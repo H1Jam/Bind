@@ -22,7 +22,7 @@
  * - Create an attitude indicator with specific settings.
  * - Set its position and dimensions on the screen.
  * - Configure the roll and pitch values to visualize the object's orientation.
- * - Synchronize the attitude indicator with the Bind framework using `bind.sync(&myIndicator)` when you need to refresh the values.
+ * - Synchronize the attitude indicator with the Bind framework using `bind.sync(myIndicator)` when you need to refresh the values.
  *
  */
 class BindAttitudeIndicator : public BindView

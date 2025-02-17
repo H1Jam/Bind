@@ -17,12 +17,11 @@ unsigned long lastMs = 0;
 /**
  * @brief Callback for Switch 1 Value Change
  *
- * This function is automatically triggered when Switch 1's value changes on the screen.
- * It receives a boolean parameter, 'state,' representing the new state of Switch 1 (ON or OFF).
+ * This function is automatically triggered when switch1's value changes on the screen.
+ * It receives a boolean parameter, 'state,' representing the new state of switch1 (ON or OFF).
  * You can define specific actions based on this state to respond to Switch changes.
- * To link this callback function with the Bind object, use the following syntax (in the Setup()):
- * `bind.join(your_switch_object, switch1_changed);`
- * Make sure to include the '&' symbols as they indicate pointers to the function and object.
+ * To link this callback function with the Bind object, use setCallback() function as follows:
+ * `switch1.setCallback(switch1_changed);` before synchronizing the Switch object with BindCanvas.
  *
  * @param state The new state of Switch 1 (true for ON, false for OFF).
  */

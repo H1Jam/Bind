@@ -23,7 +23,7 @@
  * - Create a `BindChart` object to represent the chart element.
  * - Configure the chart's position, dimensions, color, and data ranges.
  * - Optionally, set the chart to automatically adjust its size based on data.
- * - Synchronize the chart with the BindCanvas using `bind.sync(&myChart)`.
+ * - Synchronize the chart with the BindCanvas using `bind.sync(myChart)`.
  * - Update the chart's data in real-time using the `bind.sync(136.36f, &myChart)` function.
  *
  */
