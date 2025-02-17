@@ -11,7 +11,17 @@
 Bind bind;
 BindTextInput textInput1;
 BindTextInput textInput2;
-const int ledPin = 2; // change this to the pin where your LED is connected.
+
+// if the LED_BUILTIN is not defined by the board, define it as pin 2
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
+const int ledPin = LED_BUILTIN; // change this to the pin where your LED is connected.
+unsigned long lastMs = 0;
+
+// Atention: If you are using this Serial port for Bind,
+// you should comment all Serial.print(...)/println(...) lines to avoid conflicts.
 
 /**
  * @brief Callback for TextInput Value Change
@@ -27,6 +37,14 @@ const int ledPin = 2; // change this to the pin where your LED is connected.
  * @param length The length of the new value.
  */
 void textInput1_changed(const char *val, uint8_t length) {
+  // If using Serial Port as Bind stream, 
+  // comment the following line with Serial.print/write to avoid errors.
+  Serial.print("TextInput1 changed: [");
+  Serial.print(length);
+  Serial.print("]:");
+  Serial.write(val, length);
+  Serial.print("\n");
+
   // Example action: Turn on the LED if the text input is "ON", otherwise turn it off.
   if (strcmp(val, "ON") == 0) {
     digitalWrite(ledPin, HIGH);
@@ -70,6 +88,8 @@ void addTextInput1() {
   textInput1.backColor = WHITE;
   // Specify the command to either add the object to the BindCanvas(screen) or refresh the existing one.
   textInput1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Set the callback function for the TextInput object.
+  textInput1.setCallback(textInput1_changed);
   // Synchronize the textInput1 object with BindCanvas.
   bind.sync(textInput1);
 }
@@ -85,6 +105,7 @@ void addTextInput2(){
   textInput2.textColor = BLACK;
   textInput2.backColor = WHITE;
   textInput2.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  textInput2.setCallback(textInput2_changed);
   bind.sync(textInput2);
 }
 
@@ -116,10 +137,6 @@ void setup() {
 
   // Initialize the Bind object and specify the communication method  and callback function (onConnection).
   bind.init(Serial, onConnection);
-
-  // Connect the callback function with the BindTextInput object.
-  bind.join(textInput1, textInput1_changed);
-  bind.join(textInput2, textInput2_changed);
 }
 
 void loop() {
@@ -130,4 +147,13 @@ void loop() {
   // This delay is not an essential part of the code
   // but is included here to simulate the other work you may want to do.
   delay(10);
+  // you access the text input values in the main loop as well.
+  if (millis() - lastMs > 1000) {
+    lastMs = millis();
+    // Print the current values of the text inputs
+    Serial.print("TextInput1 value: ");
+    Serial.print(textInput1.getText());
+    Serial.print("\tTextInput2 value: ");
+    Serial.println(textInput2.getText());
+  }
 }

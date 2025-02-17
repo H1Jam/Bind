@@ -12,7 +12,13 @@ Bind bind;
 BindSeekBar seekBar1;
 BindSeekBar seekBar2;
 
-const int ledPin = 2;
+// if the LED_BUILTIN is not defined by the board, define it as pin 2
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
+const int ledPin = LED_BUILTIN; // change this to the pin where your LED is connected.
+unsigned long lastMs = 0;
 
 /**
  * @brief Callback for Seekbar 1 Value Change
@@ -68,6 +74,8 @@ void addSeekBars() {
   seekBar1.seekValue = 0;
   /// Specify the command to either add the object to the BindCanvas(screen) or refresh the existing one.
   seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  /// Set the callback function for the SeekBar 1 object.
+  seekBar1.setCallback(seekbar1_changed);
   /// Synchronize the seekBar1 object with BindCanvas.
   bind.sync(seekBar1);
 
@@ -78,6 +86,7 @@ void addSeekBars() {
   seekBar2.seekValue = 0;
   seekBar2.maxValue = 100;
   seekBar2.width = 150;
+  seekBar2.setCallback(seekbar2_changed);
   /// Synchronize the seekBar2 object with BindCanvas.
   bind.sync(seekBar2);
 }
@@ -109,10 +118,6 @@ void setup() {
 
   /// Initialize the Bind object and specify the communication method (Serial) and callback function (onConnection).
 	bind.init(Serial, onConnection);
-
-  /// Connect the callback functions with the Bind objects.
-  bind.join(seekBar1, seekbar1_changed);
-  bind.join(seekBar2, seekbar2_changed);
 }
 
 void loop() {
@@ -124,4 +129,14 @@ void loop() {
   // This delay is not an essential part of the code
   // but is included here to simulate a brief pause..
   delay(10);
+  // uncomment the following lines to print the SeekBar values,
+  // if you don't use Serial for Bind.
+  // if (millis() - lastMs > 1000) {
+  //   lastMs = millis();
+  //   Print the current values of the SeekBars
+  //   Serial.print("SeekBar 1 value: ");
+  //   Serial.print(seekBar1.seekValue);
+  //   Serial.print("\tSeekBar 2 value: ");
+  //   Serial.println(seekBar2.seekValue);
+  // }
 }
