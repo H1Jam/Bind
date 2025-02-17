@@ -7,6 +7,7 @@
 #include "BindUtils.hpp"
 #include "BindWidgets.hpp"
 /// \brief Maximum number of object handlers
+
 #define MAX_HANDLERS 16
 
 /// \brief This command either adds the object to the canvas (screen) or refreshes the existing one.
@@ -111,42 +112,7 @@ public:
     return isInitialized;
   }
 
-  /**
-   * @brief Synchronizes a BindView object with the BindCanvas screen.
-   * Same as sync(BindView *obj) but uses the object refrence to prevent common mistakes.
-   */
-  void sync(BindView &obj);
-
-  /**
-   * @brief Synchronizes the bind with the current state.
-   *
-   * This function synchronizes the Bind object with the current state by
-   * reading data from the canvas and managing user interactions with Bind
-   * views, such as button presses or connection requests.
-   * In simpler terms, it reads the screen.
-   * @attention To ensure smooth operation and prevent data loss or lag,
-   * regularly run the following line of code. It's recommended to execute it
-   * a few times per second, and faster is even better!
-   * Try to achieve a rate more than 10Hz for optimal performance."
-   * @note Not needed if using ESP32 as the sync function is called automatically.
-   */
-  void sync();
-
-  /**
-   * @brief Synchronizes the bind with the current state.
-   * 
-   * Similar to sync() but uses the buffer directly to be used in some cases 
-   * that the regular stream object is not available. for example ble, wifi or
-   * any other custom communication.
-   * 
-   * @param buffer a pointer to the buffer that contains the data to be processed.
-   * @param size size of the buffer.
-   */
-  void sync(const uint8_t *buffer, size_t size);
-
-  // Binding functions for UI elements...
-
-  /**
+    /**
    * @brief Initializes the Bind framework with communication and screen setup.
    *
    * This function serves a dual purpose:
@@ -194,6 +160,40 @@ public:
    */
   bool init(Stream &stream, void (&setupCallback)(int16_t, int16_t));
 
+
+  /**
+   * @brief Synchronizes a BindView object with the BindCanvas screen.
+   * Same as sync(BindView *obj) but uses the object refrence to prevent common mistakes.
+   */
+  void sync(BindView &obj);
+
+  /**
+   * @brief Synchronizes the bind with the current state.
+   *
+   * This function synchronizes the Bind object with the current state by
+   * reading data from the canvas and managing user interactions with Bind
+   * views, such as button presses or connection requests.
+   * In simpler terms, it reads the screen.
+   * @attention To ensure smooth operation and prevent data loss or lag,
+   * regularly run the following line of code. It's recommended to execute it
+   * a few times per second, and faster is even better!
+   * Try to achieve a rate more than 10Hz for optimal performance."
+   * @note Not needed if using ESP32 as the sync function is called automatically.
+   */
+  void sync();
+
+  /**
+   * @brief Synchronizes the bind with the current state.
+   * 
+   * Similar to sync() but uses the buffer directly to be used in some cases 
+   * that the regular stream object is not available. for example ble, wifi or
+   * any other custom communication.
+   * 
+   * @param buffer a pointer to the buffer that contains the data to be processed.
+   * @param size size of the buffer.
+   */
+  void sync(const uint8_t *buffer, size_t size);
+
   /**
    * @brief Synchronizes chart data of a BindChart object.
    *
@@ -237,12 +237,74 @@ public:
    */
   void sync(const char *str, BindTerminal &obj);
 
+  /**
+   * @brief Synchronizes the BindSwitch object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindSwitch object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindSwitch' object for data synchronization.
+   */
   void sync(BindSwitch &obj);
+
+  /**
+   * @brief Synchronizes the BindButton object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindButton object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindButton' object for data synchronization.
+   */
   void sync(BindButton &obj);
+
+  /**
+   * @brief Synchronizes the BindKnob object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindKnob object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindKnob' object for data synchronization.
+   */
   void sync(BindKnob &obj);
+
+  /**
+   * @brief Synchronizes the BindSeekBar object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindSeekBar object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindSeekBar' object for data synchronization.
+   */
   void sync(BindSeekBar &obj);
+
+  /**
+   * @brief Synchronizes the BindJoystick object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindJoystick object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindJoystick' object for data synchronization.
+   */
   void sync(BindJoystick &obj);
+
+  /**
+   * @brief Synchronizes the BindColorPicker object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindColorPicker object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindColorPicker' object for data synchronization.
+   */
   void sync(BindColorPicker &obj);
+
+  /**
+   * @brief Synchronizes the BindTextInput object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindTextInput object with the BindCanvas screen.
+   * It adds the object to the canvas, refreshes the existing object, or removes it.
+   *
+   * @param obj A reference to the 'BindTextInput' object for data synchronization.
+   */
   void sync(BindTextInput &obj);
 
 private:
