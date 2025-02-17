@@ -12,7 +12,12 @@ Bind bind;
 BindButton button1;
 BindButton button2;
 
-const int ledPin = 2; // change this to the pin where your LED is connected.
+// if the LED_BUILTIN is not defined by the board, define it as pin 2
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
+const int ledPin = LED_BUILTIN; // change this to the pin where your LED is connected.
 
 // This function is automatically triggered when Button 1 is pressed on the screen.
 void button1_pressed() {
@@ -43,6 +48,8 @@ void addButton1() {
   button1.backColor = GREEN;  // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Set the callback function for the Button 1 object.
+  button1.setCallback(button1_pressed);
   // Synchronize the button1 object with BindCanvas.
   bind.sync(button1);
 }
@@ -59,6 +66,8 @@ void addButton2() {
   button2.backColor = YELLOW;  // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button2.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Set the callback function for the Button 2 object.
+  button2.setCallback(button2_pressed);
   // Synchronize the button1 object with BindCanvas.
   bind.sync(button2);
 }
@@ -73,11 +82,7 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 
   // Initialize the Bind object and specify the communication method  and callback function (onConnection).
-	bind.init(Serial, onConnection);
-
-  // Connect the callback functions with the Bind objects.
-  bind.join(button1, button1_pressed);
-  bind.join(button2, button2_pressed);
+  bind.init(Serial, onConnection);
 }
 
 void loop() {
