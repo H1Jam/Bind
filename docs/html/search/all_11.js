@@ -1,10 +1,19 @@
 var searchData=
 [
-  ['readme_0',['README',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html',1,'']]],
-  ['red_1',['red',['../class_bind_color_picker.html#ac3ad75c56c995042c751e66345abfed8',1,'BindColorPicker']]],
-  ['resetscreen_2',['resetScreen',['../class_bind_canvas_settings.html#ae1fc38607be9cde8b0608a7652ee99ab',1,'BindCanvasSettings']]],
-  ['responsibility_20disclaimer_3',['No Responsibility Disclaimer',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_e_u_l_a.html#autotoc_md8',1,'']]],
-  ['risk_20disclaimer_4',['&quot;Use at Your Own Risk&quot; Disclaimer',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_e_u_l_a.html#autotoc_md9',1,'']]],
-  ['roll_5',['roll',['../class_bind_attitude_indicator.html#a50e88804554ef423c2ed479d4a649ce6',1,'BindAttitudeIndicator']]],
-  ['rotation_6',['rotation',['../class_bind_map_marker.html#a3da96e53a398427f02052d02366e3eae',1,'BindMapMarker']]]
+  ['sample_0',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]],
+  ['scale_1',['scale',['../class_bind_map_marker.html#a514a3626f105db11354d48cb4294d2c8',1,'BindMapMarker']]],
+  ['screenorientation_2',['screenOrientation',['../class_bind_canvas_settings.html#a94af8f4312e0394bafe409b16ae15c62',1,'BindCanvasSettings']]],
+  ['seekvalue_3',['seekValue',['../class_bind_seek_bar.html#ae35712810180bd650495dc85daef3189',1,'BindSeekBar']]],
+  ['serial_20port_20over_20usb_20for_20all_20boards_4',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['sethint_5',['setHint',['../class_bind_text_input.html#aa63840de6a9e7b063e4e8589a9087ef1',1,'BindTextInput']]],
+  ['setlabel_6',['setlabel',['../class_bind_button.html#ab58068bba38344cc20a93df7726140d9',1,'BindButton::setlabel()'],['../class_bind_canvas_settings.html#ac75dc3d88b4f14bb94ceaefa7da191bc',1,'BindCanvasSettings::setlabel()'],['../class_bind_gauge.html#a249188b59a2748f76a416990710f0933',1,'BindGauge::setlabel()'],['../class_bind_gauge_compact.html#ab567734f2b0d2085cabe45b400d6d0f0',1,'BindGaugeCompact::setlabel()'],['../class_bind_gauge_simple.html#aa80c8cdcccaf42e3aa2d7817bde1843c',1,'BindGaugeSimple::setlabel()'],['../class_bind_knob.html#a2f39b8fafd62bc875553bbfcee9359df',1,'BindKnob::setlabel()'],['../class_bind_text_label.html#ab1a82e2501ca645fe932f73b1c7d6c32',1,'BindTextLabel::setlabel()'],['../class_bind_switch.html#a77970556e5610095a9883cab8cf3eddd',1,'BindSwitch::setLabel()']]],
+  ['settext_7',['setText',['../class_bind_text_input.html#abe94b5f75ebe1b6be835179744ac71a8',1,'BindTextInput']]],
+  ['slpacker_8',['SLPacker',['../class_s_l_packer.html',1,'']]],
+  ['springed_9',['springed',['../class_bind_joystick.html#ac5ae4475e144d0a1a81f7173f226ed8b',1,'BindJoystick']]],
+  ['started_10',['Getting Started',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md15',1,'']]],
+  ['style_11',['style',['../class_bind_gauge_simple.html#a1202f81ef39b2c1229bbe60d2491f58e',1,'BindGaugeSimple']]],
+  ['switchvalue_12',['switchValue',['../class_bind_switch.html#a85fc77eff2fe3c7587be3a73f584a723',1,'BindSwitch']]],
+  ['sx_13',['sX',['../class_bind_joystick.html#a0dd8b4eea5818182ec452d9918cf73b7',1,'BindJoystick']]],
+  ['sy_14',['sY',['../class_bind_joystick.html#aea7d2a50317a32aa1cc6f437a0b76f44',1,'BindJoystick']]],
+  ['sync_15',['sync',['../class_bind.html#a499a45edadc5ff67b847943b8d77b936',1,'Bind::sync(BindView &amp;obj)'],['../class_bind.html#ada2b21bda8d982949f0de94b1877bed3',1,'Bind::sync()'],['../class_bind.html#a1df82dcb0b03a33f8ec96893b0edd619',1,'Bind::sync(const uint8_t *buffer, size_t size)'],['../class_bind.html#a2875fc428d46a8bcd0972755dd6148e7',1,'Bind::sync(float chartData, BindChart &amp;obj)'],['../class_bind.html#a8d7445fcfe17448b1e5f95386f9c8638',1,'Bind::sync(const char *str, int32_t textColor, bool autoScroll, bool newLine, bool bold, bool italic, BindTerminal &amp;obj)'],['../class_bind.html#aa41b7fbed8b4621d141f8ba71415fec5',1,'Bind::sync(const char *str, BindTerminal &amp;obj)'],['../class_bind.html#aa6e7900710d176e54192ccfd3ad864d5',1,'Bind::sync(BindSwitch &amp;obj)'],['../class_bind.html#a4a6a185d85cd3f585aadf95fbf9fc4cb',1,'Bind::sync(BindButton &amp;obj)'],['../class_bind.html#a83f108de7c020b7a2e4dcc6d4e84ca89',1,'Bind::sync(BindKnob &amp;obj)'],['../class_bind.html#a0ac7d7ffcd3938794b827489541b999f',1,'Bind::sync(BindSeekBar &amp;obj)'],['../class_bind.html#a2a98c3ffb0cf1fe0184ff6531527bd73',1,'Bind::sync(BindJoystick &amp;obj)'],['../class_bind.html#a32f30ce88c898c30f08bd9f802b5b97d',1,'Bind::sync(BindColorPicker &amp;obj)'],['../class_bind.html#ac0ba3ec428236c0b126b21399dd7ffda',1,'Bind::sync(BindTextInput &amp;obj)']]]
 ];

@@ -129,9 +129,18 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BindSwitch</b> ()</td></tr>
 <tr class="memdesc:a450bb1b4c5856fe056fcbd0ee43f3341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor to create a <code><a class="el" href="class_bind_switch.html" title="Represents a toggle switch UI element in the Bind framework.">BindSwitch</a></code> with a default label ("Switch"). <br /></td></tr>
 <tr class="separator:a450bb1b4c5856fe056fcbd0ee43f3341"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab087d9db980154400c524457ade32d29" id="r_ab087d9db980154400c524457ade32d29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_switch.html#ab087d9db980154400c524457ade32d29">setlabel</a> (const char *cstr)</td></tr>
-<tr class="memdesc:ab087d9db980154400c524457ade32d29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the label text for the toggle switch.  <br /></td></tr>
+<tr class="memitem:a77970556e5610095a9883cab8cf3eddd" id="r_a77970556e5610095a9883cab8cf3eddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_switch.html#a77970556e5610095a9883cab8cf3eddd">setLabel</a> (const char *cstr)</td></tr>
+<tr class="memdesc:a77970556e5610095a9883cab8cf3eddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the label text for the toggle switch.  <br /></td></tr>
+<tr class="separator:a77970556e5610095a9883cab8cf3eddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab087d9db980154400c524457ade32d29" id="r_ab087d9db980154400c524457ade32d29"><td class="memItemLeft" align="right" valign="top"><a id="ab087d9db980154400c524457ade32d29" name="ab087d9db980154400c524457ade32d29"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setlabel</b> (const char *cstr)</td></tr>
 <tr class="separator:ab087d9db980154400c524457ade32d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853067383dbb836198ca9327c11bf959" id="r_a853067383dbb836198ca9327c11bf959"><td class="memItemLeft" align="right" valign="top"><a id="a853067383dbb836198ca9327c11bf959" name="a853067383dbb836198ca9327c11bf959"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(bool))</td></tr>
+<tr class="separator:a853067383dbb836198ca9327c11bf959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0fbc2dfb30b7d36f3e5244a41108ed" id="r_a2d0fbc2dfb30b7d36f3e5244a41108ed"><td class="memItemLeft" align="right" valign="top"><a id="a2d0fbc2dfb30b7d36f3e5244a41108ed" name="a2d0fbc2dfb30b7d36f3e5244a41108ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCallback</b> (bool val)</td></tr>
+<tr class="separator:a2d0fbc2dfb30b7d36f3e5244a41108ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55812d55dff7caa28bc8b82907904ac4" id="r_a55812d55dff7caa28bc8b82907904ac4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_switch.html#a55812d55dff7caa28bc8b82907904ac4">getBytes</a> (uint8_t *out) override</td></tr>
 <tr class="memdesc:a55812d55dff7caa28bc8b82907904ac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates and returns the byte data representing the toggle switch configuration.  <br /></td></tr>
 <tr class="separator:a55812d55dff7caa28bc8b82907904ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,8 +271,8 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 
 </div>
 </div>
-<a id="ab087d9db980154400c524457ade32d29" name="ab087d9db980154400c524457ade32d29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab087d9db980154400c524457ade32d29">&#9670;&#160;</a></span>setlabel()</h2>
+<a id="a77970556e5610095a9883cab8cf3eddd" name="a77970556e5610095a9883cab8cf3eddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77970556e5610095a9883cab8cf3eddd">&#9670;&#160;</a></span>setLabel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -272,7 +281,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void BindSwitch::setlabel </td>
+          <td class="memname">void BindSwitch::setLabel </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>cstr</em></td><td>)</td>
@@ -296,8 +305,9 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_bind_switch_8hpp_source.html">BindSwitch.hpp</a></li>
+<li><b>Bind.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

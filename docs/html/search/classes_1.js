@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['colorpickerhandler_0',['ColorPickerHandler',['../class_color_picker_handler.html',1,'']]]
+  ['dataparser_0',['DataParser',['../class_data_parser.html',1,'']]]
 ];

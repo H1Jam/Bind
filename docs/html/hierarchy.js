@@ -22,13 +22,6 @@ var hierarchy =
       [ "BindTextInput", "class_bind_text_input.html", null ],
       [ "BindTextLabel", "class_bind_text_label.html", null ]
     ] ],
-    [ "ButtonHandler", "class_button_handler.html", null ],
-    [ "ColorPickerHandler", "class_color_picker_handler.html", null ],
     [ "DataParser", "class_data_parser.html", null ],
-    [ "DialKnobHandler", "class_dial_knob_handler.html", null ],
-    [ "JoystickHandler", "class_joystick_handler.html", null ],
-    [ "SeekBarHandler", "class_seek_bar_handler.html", null ],
-    [ "SLPacker", "class_s_l_packer.html", null ],
-    [ "SwitchHandler", "class_switch_handler.html", null ],
-    [ "TextInputHandler", "class_text_input_handler.html", null ]
+    [ "SLPacker", "class_s_l_packer.html", null ]
 ];

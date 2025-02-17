@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['backcolor_0',['backcolor',['../class_bind_text_input.html#a60e7d67965a6a5ca3ba4fb79e67fe27e',1,'BindTextInput::backColor'],['../class_bind_button.html#a4e8d22817e146abd045f9ae4b2d9a4d7',1,'BindButton::backColor'],['../class_bind_canvas_settings.html#a10cc91841f5aa1f87a9a921b021a681d',1,'BindCanvasSettings::backColor'],['../class_bind_terminal.html#ad2271ab886fc57d990052a512569afde',1,'BindTerminal::backColor']]],
+  ['backcolor_0',['backcolor',['../class_bind_button.html#a4e8d22817e146abd045f9ae4b2d9a4d7',1,'BindButton::backColor'],['../class_bind_canvas_settings.html#a10cc91841f5aa1f87a9a921b021a681d',1,'BindCanvasSettings::backColor'],['../class_bind_terminal.html#ad2271ab886fc57d990052a512569afde',1,'BindTerminal::backColor'],['../class_bind_text_input.html#a60e7d67965a6a5ca3ba4fb79e67fe27e',1,'BindTextInput::backColor']]],
   ['bind_1',['bind',['../class_bind.html',1,'Bind'],['../class_bind.html#af2a6815234660ac1c44efb3bcab6bd35',1,'Bind::Bind()']]],
   ['bind_3a_20c_20ui_20toolkit_20for_20arduino_2',['Bind: C++ UI Toolkit for Arduino',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md11',1,'']]],
   ['bindattitudeindicator_3',['BindAttitudeIndicator',['../class_bind_attitude_indicator.html',1,'']]],
@@ -9,7 +9,7 @@ var searchData=
   ['bindchart_6',['BindChart',['../class_bind_chart.html',1,'']]],
   ['bindcolorpicker_7',['BindColorPicker',['../class_bind_color_picker.html',1,'']]],
   ['bindgauge_8',['bindgauge',['../class_bind_gauge.html',1,'BindGauge'],['../class_bind_gauge.html#a97c8de93feb82557f99993bf6544ec3e',1,'BindGauge::BindGauge(const char *cstr)'],['../class_bind_gauge.html#ac79f5007c767557d2d6d8ac0c94f9c79',1,'BindGauge::BindGauge()']]],
-  ['bindgaugecompact_9',['bindgaugecompact',['../class_bind_gauge_compact.html',1,'BindGaugeCompact'],['../class_bind_gauge_compact.html#a118db001f13c1cade6e8091db5f279b1',1,'BindGaugeCompact::BindGaugeCompact()'],['../class_bind_gauge_compact.html#a473ff7bef7dabad7da8d567fa9e2b8d3',1,'BindGaugeCompact::BindGaugeCompact(const char *cstr)']]],
+  ['bindgaugecompact_9',['bindgaugecompact',['../class_bind_gauge_compact.html',1,'BindGaugeCompact'],['../class_bind_gauge_compact.html#a473ff7bef7dabad7da8d567fa9e2b8d3',1,'BindGaugeCompact::BindGaugeCompact(const char *cstr)'],['../class_bind_gauge_compact.html#a118db001f13c1cade6e8091db5f279b1',1,'BindGaugeCompact::BindGaugeCompact()']]],
   ['bindgaugesimple_10',['bindgaugesimple',['../class_bind_gauge_simple.html',1,'BindGaugeSimple'],['../class_bind_gauge_simple.html#a77e675415dcba699bd0035de3ed31d89',1,'BindGaugeSimple::BindGaugeSimple(const char *cstr)'],['../class_bind_gauge_simple.html#aa1609d30425bbcabb716e02237ff929c',1,'BindGaugeSimple::BindGaugeSimple()']]],
   ['bindheadingindicator_11',['BindHeadingIndicator',['../class_bind_heading_indicator.html',1,'']]],
   ['bindjoystick_12',['BindJoystick',['../class_bind_joystick.html',1,'']]],
@@ -17,10 +17,10 @@ var searchData=
   ['bindmap_14',['BindMap',['../class_bind_map.html',1,'']]],
   ['bindmapmarker_15',['BindMapMarker',['../class_bind_map_marker.html',1,'']]],
   ['bindrectangle_16',['BindRectangle',['../class_bind_rectangle.html',1,'']]],
-  ['bindseekbar_17',['BindSeekBar',['../class_bind_seek_bar.html',1,'']]],
+  ['bindseekbar_17',['bindseekbar',['../class_bind_seek_bar.html#aa384590f6368076a70007a4d4442007e',1,'BindSeekBar::BindSeekBar()'],['../class_bind_seek_bar.html',1,'BindSeekBar']]],
   ['bindswitch_18',['bindswitch',['../class_bind_switch.html',1,'BindSwitch'],['../class_bind_switch.html#af252a5152999058de346c6bff8183fc6',1,'BindSwitch::BindSwitch(const char *cstr)'],['../class_bind_switch.html#a450bb1b4c5856fe056fcbd0ee43f3341',1,'BindSwitch::BindSwitch()']]],
   ['bindterminal_19',['BindTerminal',['../class_bind_terminal.html',1,'']]],
-  ['bindtextinput_20',['bindtextinput',['../class_bind_text_input.html',1,'BindTextInput'],['../class_bind_text_input.html#a8de4ffd23256fa228cbe3088e0243ba7',1,'BindTextInput::BindTextInput()'],['../class_bind_text_input.html#ac851122654c17c64fa3d2571d1fffc4b',1,'BindTextInput::BindTextInput(int16_t x, int16_t y, int16_t tag, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor=0, int32_t backColor=0, uint8_t widthChars=0, bool numberOnly=false)']]],
+  ['bindtextinput_20',['bindtextinput',['../class_bind_text_input.html',1,'BindTextInput'],['../class_bind_text_input.html#a8de4ffd23256fa228cbe3088e0243ba7',1,'BindTextInput::BindTextInput()'],['../class_bind_text_input.html#a4c7cf79e1bcd0f13491fb620667a8f42',1,'BindTextInput::BindTextInput(int16_t x, int16_t y, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor=0, int32_t backColor=0, uint8_t widthChars=0, bool numberOnly=false)']]],
   ['bindtextlabel_21',['bindtextlabel',['../class_bind_text_label.html',1,'BindTextLabel'],['../class_bind_text_label.html#a7b2da0f9d627d9a7fb60c2774fd566d7',1,'BindTextLabel::BindTextLabel(const char *cstr)'],['../class_bind_text_label.html#aae25a6c23c60bf7aa7114c88562fd41e',1,'BindTextLabel::BindTextLabel()']]],
   ['bindview_22',['BindView',['../class_bind_view.html',1,'']]],
   ['blue_23',['blue',['../class_bind_color_picker.html#a3e5df0041a59f1c136a64356c9c4b763',1,'BindColorPicker']]],
@@ -28,6 +28,5 @@ var searchData=
   ['boards_25',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16',1,'']]],
   ['bordercolor_26',['borderColor',['../class_bind_rectangle.html#ad258bc696d65cf38f027ad31eaf2921c',1,'BindRectangle']]],
   ['borderwidth_27',['borderWidth',['../class_bind_rectangle.html#aa86525aeda977404b978b4744b7db3f0',1,'BindRectangle']]],
-  ['browse_20the_20example_20folder_20for_20more_20sample_28',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]],
-  ['buttonhandler_29',['ButtonHandler',['../class_button_handler.html',1,'']]]
+  ['browse_20the_20example_20folder_20for_20more_20sample_28',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]]
 ];

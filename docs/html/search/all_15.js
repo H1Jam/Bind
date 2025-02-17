@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value_0',['value',['../class_bind_gauge.html#ab5d8970c0a46d302acd02b2731909d04',1,'BindGauge::value'],['../class_bind_gauge_compact.html#a110d0fe6e3b8d06dd47a1f0af8bd7e90',1,'BindGaugeCompact::value'],['../class_bind_gauge_simple.html#aee52667add9788f1c681fb5d6fbc1ed8',1,'BindGaugeSimple::value'],['../class_bind_knob.html#a92a9f830bb2e7e74034ad82c56fd6ecc',1,'BindKnob::value']]],
-  ['views_20expressed_20disclaimer_1',['Views Expressed Disclaimer',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_e_u_l_a.html#autotoc_md7',1,'']]]
+  ['width_0',['width',['../class_bind_chart.html#a855e6e5213530df6bab533eb80325133',1,'BindChart::width'],['../class_bind_map.html#a8c5650cd00146a643ab789e1f0954753',1,'BindMap::width'],['../class_bind_rectangle.html#a77b93d22c68382e879d9b76933409b92',1,'BindRectangle::width'],['../class_bind_seek_bar.html#a584257766e66b89168aefe6bd4bdcbd5',1,'BindSeekBar::width'],['../class_bind_terminal.html#a9bccd4e51b95ed8cecf054e7da5b2f6b',1,'BindTerminal::width']]],
+  ['widthchars_1',['widthChars',['../class_bind_text_input.html#a5590bd203836c86d68b7f32735a323f7',1,'BindTextInput']]]
 ];
