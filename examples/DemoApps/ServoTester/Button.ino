@@ -12,6 +12,7 @@ void addButton1() {
   button1.backColor = GREEN;  // button color
   // Specify the command to either add the object to the BindCanvas or refresh the existing one.
   button1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  button1.setCallback(button1_pressed);
   // Synchronize the button1 object with BindCanvas.
   bind.sync(button1);
 }

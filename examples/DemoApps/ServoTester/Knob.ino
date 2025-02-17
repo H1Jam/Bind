@@ -11,6 +11,7 @@ void addKnob()
   knob1.maxValue = 90;
   knob1.value = 0; // Initial value
   knob1.setlabel("Servo\n Deg");
+  knob1.setCallback(knob1_changed);
   bind.sync(knob1);
 }
 

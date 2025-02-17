@@ -93,9 +93,6 @@ void setup()
   // Initialize the Bind object and specify the communication method (bindPort) and callback function (onConnection).
   bind.init(bindPort, onConnection);
   // Note: It was bindPort here, but it could be any serial port, including hardware and software serial.
-  // Connect the callback functions with the Bind objects.
-  bind.join(button1, button1_pressed);
-  bind.join(knob1, knob1_changed);
 }
 
 void loop()
