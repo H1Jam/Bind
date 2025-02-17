@@ -72,9 +72,20 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
     udpStream.udp.writeTo((uint8_t*)buffer, strlen(buffer), packet.remoteIP(), packet.localPort());
   }
 
+  if (udpStream.lastHeartbeat + 5000 < millis()) {
+    udpStream.sendPackets = false;
+    udpStream.canvasIP = IPAddress(0, 0, 0, 0);
+    #if UDP_DEBUG_MSG
+    Serial.print("BindTimeout: ");
+    Serial.print(udpStream.lastHeartbeat);
+    Serial.print(" - ");
+    Serial.println(udpStream.bindname);
+    #endif
+  }
+
   if (memcmp(packet.data(), udpStream.connectMsg, sizeof(udpStream.connectMsg)) == 0) {
-    // Todo: Check if is already connected or not!  millis() - lastHeartbeat > 5000 => disconnected and sendPackets = false
-    if (udpStream.canvasIP == IPAddress(0, 0, 0, 0)) {
+    // Todo: Check if is already connected or not!
+    if (udpStream.canvasIP == IPAddress(0, 0, 0, 0) || udpStream.canvasIP == packet.remoteIP()) {
       udpStream.lastHeartbeat = millis();
       udpStream.canvasIP = packet.remoteIP();
       udpStream.sendPackets = true;
@@ -85,8 +96,8 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
       #endif
       udpStream.udp.writeTo((uint8_t*)buffer, strlen(buffer), udpStream.canvasIP, packet.localPort());
     } else {
-      char buffer[50];
-      sprintf(buffer, "BindConnectionFailed:%s", udpStream.bindname);
+      char buffer[64];
+      sprintf(buffer, "BindConnectionFailed:%s-[%s]", udpStream.bindname, udpStream.canvasIP.toString());
       #if UDP_DEBUG_MSG
       Serial.println(buffer);
       #endif
