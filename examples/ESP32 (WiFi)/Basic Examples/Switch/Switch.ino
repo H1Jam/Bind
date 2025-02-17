@@ -9,7 +9,13 @@ Bind bind;
 BindSwitch switch1;
 BindSwitch switch2;
 
-const int ledPin = 2;
+// if the LED_BUILTIN is not defined by the board, define it as pin 2
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
+const int ledPin = LED_BUILTIN; // change this to the pin where your LED is connected.
+unsigned long lastMs = 0;
 
 /**
  * @brief Callback for Switch 1 Value Change
@@ -69,6 +75,8 @@ void addSwitches() {
   switch1.switchValue = false;
   // Specify the command to either add the object to the BindCanvas screen or refresh the existing one.
   switch1.cmdId = BIND_ADD_OR_REFRESH_CMD;
+  // Set the callback function for the switch1 object.
+  switch1.setCallback(switch1_changed);
   // Synchronize the switch1 object with BindCanvas.
   bind.sync(switch1);
 
@@ -80,6 +88,7 @@ void addSwitches() {
   switch2.setlabel("Enable");
   switch2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   switch2.switchValue = true;
+  switch2.setCallback(switch2_changed);
   // Synchronize the switch2 object with BindCanvas.
   bind.sync(switch2);
 }
@@ -111,7 +120,6 @@ void setup() {
 
   // Initialize the Bind object and specify the communication method (bindUdp) and callback function (onConnection).
   // Start WiFi
-  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -120,12 +128,6 @@ void setup() {
   Serial.println("WiFi connected");
   bindUdp.begin("YOUR_DEVICE_NAME", bind);
 	bind.init(bindUdp, onConnection);
-
-  // Connect the callback functions with the Bind objects.
-  bind.join(switch1, switch1_changed);
-  bind.join(switch2, switch2_changed);
-  // Please ensure that you include the '&' symbols in the function parameters; these are pointers.
-
 }
 
 void loop() {
@@ -133,6 +135,14 @@ void loop() {
 
   // This delay is not an essential part of the code but is included here to simulate a brief pause.
   delay(10);
+  //you can access the switch values in the main loop as well like this:
+  // if (millis() - lastMs > 1000) {
+  //   lastMs = millis();
+  //   Serial.print("Switch 1 value: ");
+  //   Serial.print(switch1.switchValue);
+  //   Serial.print("\tSwitch 2 value: ");
+  //   Serial.println(switch2.switchValue);
+  // }
 }
 
 

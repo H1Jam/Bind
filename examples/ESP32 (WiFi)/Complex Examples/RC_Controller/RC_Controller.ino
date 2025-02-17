@@ -65,6 +65,7 @@ void addJoystickRight(int16_t screenHeight) {
   joystickRight.y = 140;
   joystickRight.cmdId = BIND_ADD_OR_REFRESH_CMD;
   joystickRight.dimSize = 200; // For BindJoystick, dimSize = height = width
+  joystickRight.setCallback(joystickRight_onChange);
   bind.sync(joystickRight);
 }
 
@@ -76,6 +77,7 @@ void addJoystickLeft() {
   joystickLeft.y = 140;
   joystickLeft.cmdId = BIND_ADD_OR_REFRESH_CMD;
   joystickLeft.dimSize = 200; // For BindJoystick, dimSize = height = width
+  joystickLeft.setCallback(joystickLeft_onChange);
   bind.sync(joystickLeft);
 }
 
@@ -162,7 +164,6 @@ void setup() {
   Serial.begin(115200);
 
   // Start WiFi
-  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -171,11 +172,6 @@ void setup() {
   Serial.println("WiFi connected");
   bindUdp.begin("YOUR_DEVICE_NAME", bind);
   bind.init(bindUdp, onConnection);
-
-  //Set the callbacks
-  bind.join(joystickRight, joystickRight_onChange);
-  bind.join(joystickLeft, joystickLeft_onChange);
-
 }
 
 void loop() {

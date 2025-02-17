@@ -42,6 +42,7 @@ void addColorPicker() {
   colorPicker1.green = 190;                      /// The initial value for the green component of the selected color (0-255).
   colorPicker1.blue = 220;                       /// The initial value for the blue component of the selected color (0-255).
   colorPicker1.cmdId = BIND_ADD_OR_REFRESH_CMD;  /// Command identifier to add or refresh the color picker.
+  colorPicker1.setCallback(colorPicker1_changed);/// Set the callback function for the color picker object.
   bind.sync(colorPicker1);
 }
 
@@ -57,7 +58,6 @@ void setup() {
   pixels.begin();  // INITIALIZE NeoPixel strip object (REQUIRED)
   // Initialize the Bind object and specify the communication method (bindUdp) and callback function (onConnection).
   // Start WiFi
-  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -66,9 +66,6 @@ void setup() {
   Serial.println("WiFi connected");
   bindUdp.begin("YOUR_DEVICE_NAME", bind);
   bind.init(bindUdp, onConnection);
-
-  // Connect the callback functions with the Bind objects.
-  bind.join(colorPicker1, colorPicker1_changed);
 }
 
 void loop() {
