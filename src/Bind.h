@@ -116,30 +116,6 @@ public:
     return isInitialized;
   }
 
-    /**
-   * @brief Initializes the Bind framework with communication and screen setup.
-   *
-   * This function serves a dual purpose:
-   * 1. It configures the communication device for the Bind framework using a 'Stream' object.
-   *    The 'stream' can represent any serial port, including hardware, software serial, or
-   *    Bluetooth classic serial.
-   * 2. It sets the screen setup callback. This callback function is automatically invoked by
-   *    BindCanvas upon establishing a connection. It plays a crucial role in configuring the
-   *    screen and ensuring that all screen objects are synchronized properly. You will receive
-   *    two parameters: 'w' for screen width and 'h' for screen height in density-independent pixels (dp).
-   *    These values allow you to maintain consistent object positioning  and size across various devices
-   *    with different screen dimensions.
-   *  @note For more information about density-independent pixels (dp) visit:
-   *                  http://en.wikipedia.org/wiki/Device-independent_pixel
-   *
-   * @param stream A pointer to the 'Stream' object representing the communication device.
-   * @param setupCallback A pointer to the screen setup callback function.
-   *                     This function receives 'w' for width and 'h' for height.
-   *                     It ensures consistent object positioning and size across devices.
-   * @return Returns 'true' if initialization is successful; otherwise, returns 'false'.
-   */
-  bool init(Stream *stream, void (*setupCallback)(int16_t, int16_t));
-
   /**
    * @brief Initializes the Bind framework with communication and screen setup.
    *
@@ -338,6 +314,7 @@ private:
   uint8_t textInputHandlerIndex = 1;
   bool isInitialized = false;
   void (*setupCallback)(int16_t, int16_t);
+  bool internalInit(Stream *stream, void (*setupCallback)(int16_t, int16_t));
   void screenInit(int16_t w, int16_t h);
   Stream *bindStream = NULL;
   int updateScreen(uint8_t inp);
