@@ -17,11 +17,11 @@ unsigned long lastMs = 0;
 /**
  * @brief Callback for Switch 1 Value Change
  *
- * This function is automatically triggered when switch1's value changes on the screen.
- * It receives a boolean parameter, 'state,' representing the new state of switch1 (ON or OFF).
+ * This function is automatically triggered when Switch 1's value changes on the screen.
+ * It receives a boolean parameter, 'state,' representing the new state of Switch 1 (ON or OFF).
  * You can define specific actions based on this state to respond to Switch changes.
- * To link this callback function with the Bind object, use setCallback() function as follows:
- * `switch1.setCallback(switch1_changed);` before synchronizing the Switch object with BindCanvas.
+ * To link this callback function with the Bind object, use the setCallback() function as shown below:
+ * switch1.setCallback(switch1_changed)
  *
  * @param state The new state of Switch 1 (true for ON, false for OFF).
  */
@@ -68,7 +68,7 @@ void addSwitches() {
   switch1.textColor = YELLOW;
   switch1.setlabel("OFF");
   // Set the initial state of the Switch (true for ON, false for OFF).
-  switch1.switchValue = false;
+  switch1.value = false;
   // Specify the command to either add the object to the BindCanvas screen or refresh the existing one.
   switch1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   // Set the callback function for the switch1 object.
@@ -83,7 +83,7 @@ void addSwitches() {
   switch2.textColor = YELLOW;
   switch2.setlabel("Enable");
   switch2.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  switch2.switchValue = true;
+  switch2.value = true;
   switch2.setCallback(switch2_changed);
   // Synchronize the switch2 object with BindCanvas.
   bind.sync(switch2);
@@ -128,9 +128,9 @@ void loop() {
   // if (millis() - lastMs > 1000) {
   //   lastMs = millis();
   //   Serial.print("Switch 1 value: ");
-  //   Serial.print(switch1.switchValue);
+  //   Serial.print(switch1.value);
   //   Serial.print("\tSwitch 2 value: ");
-  //   Serial.println(switch2.switchValue);
+  //   Serial.println(switch2.value);
   // }
 }
 

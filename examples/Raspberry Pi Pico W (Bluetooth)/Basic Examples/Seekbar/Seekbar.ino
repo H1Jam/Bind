@@ -18,11 +18,11 @@ unsigned long lastMs = 0;
 /**
  * @brief Callback for Seekbar 1 Value Change
  *
- * This function is automatically triggered when Seekbar1's value changes on the screen.
+ * This function is automatically triggered when Seekbar 1's value changes on the screen.
  * It receives an integer parameter, 'val,' representing the new value of Seekbar 1.
  * You can define specific actions based on this value to respond to Seekbar changes.
- * To link this callback function with the Bind object, use setCallback() function as follows:
- * `seekBar1.setCallback(seekbar1_changed);` before synchronizing the SeekBar object with BindCanvas
+ * To link this callback function with the Bind object, use the setCallback() function as shown below:
+ * seekBar1.setCallback(seekbar1_changed)
  *
  * @param val The new value of Seekbar 1.
  */
@@ -61,7 +61,7 @@ void addSeekBars() {
   /// Set the maximum value for the SeekBar.
   seekBar1.maxValue = 300;
   /// Set the initial value for the SeekBar.
-  seekBar1.seekValue = 0;
+  seekBar1.value = 0;
   /// Specify the command to either add the object to the BindCanvas(screen) or refresh the existing one.
   seekBar1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   /// Set the callback function for the SeekBar 1 object.
@@ -73,7 +73,7 @@ void addSeekBars() {
   seekBar2.x = 100;
   seekBar2.y = 150;
   seekBar2.cmdId = BIND_ADD_OR_REFRESH_CMD;
-  seekBar2.seekValue = 0;
+  seekBar2.value = 0;
   seekBar2.maxValue = 100;
   seekBar2.width = 150;
   seekBar2.setCallback(seekbar2_changed);
@@ -126,8 +126,8 @@ void loop() {
   //   lastMs = millis();
   //   Print the current values of the SeekBars
   //   Serial.print("SeekBar 1 value: ");
-  //   Serial.print(seekBar1.seekValue);
+  //   Serial.print(seekBar1.value);
   //   Serial.print("\tSeekBar 2 value: ");
-  //   Serial.println(seekBar2.seekValue);
+  //   Serial.println(seekBar2.value);
   // }
 }

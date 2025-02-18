@@ -33,7 +33,7 @@ public:
     int16_t x;              ///< X-coordinate position of the SeekBar.
     int16_t y;              ///< Y-coordinate position of the SeekBar.
     uint8_t cmdId = 0;      ///< Command identifier. See the notes for possible cmdId values.
-    int16_t seekValue = 0;  ///< Current value selected on the SeekBar.
+    int16_t value = 0;  ///< Current value selected on the SeekBar.
     int16_t maxValue = 100; ///< Maximum value of the SeekBar.
     int16_t width = 200;    ///< Width of the SeekBar.
 
@@ -44,7 +44,7 @@ public:
 
     void invokeCallback(int16_t valueIn)
     {
-        this->seekValue = valueIn;
+        this->value = valueIn;
         if (changeCallback != NULL)
         {
             changeCallback(valueIn);
@@ -69,7 +69,7 @@ public:
         copyAndOffset(out, &offset, &y, 2);
         copyAndOffset(out, &offset, &tag, 2);
         copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-        copyAndOffset(out, &offset, &seekValue, sizeof(seekValue));
+        copyAndOffset(out, &offset, &value, sizeof(value));
         copyAndOffset(out, &offset, &maxValue, sizeof(maxValue));
         copyAndOffset(out, &offset, &width, sizeof(width));
         return offset;

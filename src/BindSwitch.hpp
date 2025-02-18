@@ -59,7 +59,7 @@ public:
     int16_t x; ///< X-coordinate position of the toggle switch.
     int16_t y; ///< Y-coordinate position of the toggle switch.
     uint8_t cmdId = 0; ///< Command identifier. See the notes for possible cmdId values.
-    bool switchValue;  ///< The current state (ON/OFF) of the toggle switch.
+    bool value;  ///< The current state (ON/OFF) of the toggle switch.
     int16_t fontSize;  ///< Font size for the switch label.
     int32_t textColor; ///< Text color for the switch label.
 
@@ -86,7 +86,7 @@ public:
 
     void invokeCallback(bool val)
     {
-        this->switchValue = val;
+        this->value = val;
         if (this->changeCallback != nullptr)
         {
             this->changeCallback(val);
@@ -115,7 +115,7 @@ public:
         copyAndOffset(out, &offset, &y, 2);
         copyAndOffset(out, &offset, &tag, 2);
         copyAndOffset(out, &offset, &cmdId, sizeof(cmdId));
-        copyAndOffset(out, &offset, &switchValue, sizeof(switchValue));
+        copyAndOffset(out, &offset, &value, sizeof(value));
         copyAndOffset(out, &offset, &fontSize, sizeof(fontSize));
         copyAndOffset(out, &offset, &textColor, sizeof(textColor));
         copyAndOffset(out, &offset, str, strLength);

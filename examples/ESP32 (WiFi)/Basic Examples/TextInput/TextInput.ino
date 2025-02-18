@@ -26,8 +26,8 @@ unsigned long lastMs = 0;
  * This function is automatically triggered when the text input's value changes on the screen.
  * It receives a string parameter, 'val,' representing the new value of the text input.
  * You can define specific actions based on this value to respond to text input changes.
- * To link this callback function with the Bind object, use the setCallback() function as follows:
- * `textInput1.setCallback(textInput1_changed);` before synchronizing the TextInput object with BindCanvas.
+ * To link this callback function with the Bind object, use the setCallback() function as shown below:
+ * textInput1.setCallback(textInput1_changed)
  *
  * @param val The new value of the text input.
  * @param length The length of the new value.
