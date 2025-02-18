@@ -175,88 +175,87 @@ $(document).ready(function(){initNavTree('_bind_8h_source.html',''); initResizab
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  }</div>
 </div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">init</a>(Stream *stream, <span class="keywordtype">void</span> (*setupCallback)(int16_t, int16_t));</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="class_bind.html#a726c8026427ca83550690596fd53a4fa">init</a>(Stream &amp;stream, <span class="keywordtype">void</span> (&amp;setupCallback)(int16_t, int16_t));</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">init</a>(Stream &amp;stream, <span class="keywordtype">void</span> (&amp;setupCallback)(int16_t, int16_t));</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_view.html">BindView</a> &amp;obj);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>();</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keyword">const</span> uint8_t *buffer, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keywordtype">float</span> chartData, <a class="code hl_class" href="class_bind_chart.html">BindChart</a> &amp;obj);</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, int32_t textColor, <span class="keywordtype">bool</span> autoScroll, <span class="keywordtype">bool</span> newLine, <span class="keywordtype">bool</span> bold, <span class="keywordtype">bool</span> italic, <a class="code hl_class" href="class_bind_terminal.html">BindTerminal</a> &amp;obj);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_view.html">BindView</a> &amp;obj);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>();</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keyword">const</span> uint8_t *buffer, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keywordtype">float</span> chartData, <a class="code hl_class" href="class_bind_chart.html">BindChart</a> &amp;obj);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, int32_t textColor, <span class="keywordtype">bool</span> autoScroll, <span class="keywordtype">bool</span> newLine, <span class="keywordtype">bool</span> bold, <span class="keywordtype">bool</span> italic, <a class="code hl_class" href="class_bind_terminal.html">BindTerminal</a> &amp;obj);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <a class="code hl_class" href="class_bind_terminal.html">BindTerminal</a> &amp;obj);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_switch.html">BindSwitch</a> &amp;obj);</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <a class="code hl_class" href="class_bind_terminal.html">BindTerminal</a> &amp;obj);</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_switch.html">BindSwitch</a> &amp;obj);</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_button.html">BindButton</a> &amp;obj);</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_knob.html">BindKnob</a> &amp;obj);</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_seek_bar.html">BindSeekBar</a> &amp;obj);</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_joystick.html">BindJoystick</a> &amp;obj);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_color_picker.html">BindColorPicker</a> &amp;obj);</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_text_input.html">BindTextInput</a> &amp;obj);</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>  <span class="comment">// Private member variables and functions...</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  uint8_t bufFrame[MAX_DATA_LENGHT];</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>  uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>  int16_t valTmp1 = 0;</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>  int16_t valTmp2 = 0;</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  int16_t valTmp3 = 0;</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>  <span class="keywordtype">int</span> dataLen = 0;</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>  uint32_t lastMs = 0;</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>  uint32_t deltaMs = 0;</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>  <a class="code hl_class" href="class_bind_switch.html">BindSwitch</a>** switchObjects;</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>  <a class="code hl_class" href="class_bind_button.html">BindButton</a>** buttonObjects;</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>  <a class="code hl_class" href="class_bind_knob.html">BindKnob</a>** knobObjects;</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <a class="code hl_class" href="class_bind_seek_bar.html">BindSeekBar</a>** seekBarObjects;</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>  <a class="code hl_class" href="class_bind_joystick.html">BindJoystick</a>** joystickObjects;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <a class="code hl_class" href="class_bind_color_picker.html">BindColorPicker</a>** colorPickerObjects;</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>  <a class="code hl_class" href="class_bind_text_input.html">BindTextInput</a>** textInputObjects;</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>  <a class="code hl_class" href="class_data_parser.html">DataParser</a> dataParser;</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>  uint8_t buttonIndex = 1;</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>  uint8_t dialKnobIndex = 1;</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>  uint8_t switchIndex = 1;</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>  uint8_t seekBarIndex = 1;</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>  uint8_t joystickHandlerIndex = 1;</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>  uint8_t colorPickerHandlerIndex = 1;</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>  uint8_t textInputHandlerIndex = 1;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>  <span class="keywordtype">bool</span> isInitialized = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>  void (*setupCallback)(int16_t, int16_t);</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>  <span class="keywordtype">void</span> screenInit(int16_t w, int16_t h);</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>  Stream *bindStream = NULL;</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>  <span class="keywordtype">int</span> updateScreen(uint8_t inp);</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  <span class="keywordtype">void</span> updateScreen(Stream *stream);</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  <span class="keywordtype">int</span> updateScreenInternal(uint8_t *dataFrame);</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  <span class="keywordtype">void</span> updateJoystick(uint8_t tag, int16_t valX, int16_t valY);</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>  <span class="keywordtype">void</span> updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>  <span class="keywordtype">void</span> updateSeekBar(uint8_t tag, int16_t val);</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>  <span class="keywordtype">void</span> knobChanged(int8_t tag, <span class="keywordtype">int</span> val);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>  <span class="keywordtype">void</span> clickButton(uint8_t tag);</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>  <span class="keywordtype">void</span> updateSwitch(uint8_t tag, <span class="keywordtype">bool</span> val);</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>  <span class="keywordtype">void</span> updateTextInput(uint8_t tag, <span class="keyword">const</span> <span class="keywordtype">char</span> *val, uint8_t length);</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  <span class="keywordtype">void</span> internalSync(<a class="code hl_class" href="class_bind_view.html">BindView</a> *obj);</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>};</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_button.html">BindButton</a> &amp;obj);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_knob.html">BindKnob</a> &amp;obj);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_seek_bar.html">BindSeekBar</a> &amp;obj);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_joystick.html">BindJoystick</a> &amp;obj);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_color_picker.html">BindColorPicker</a> &amp;obj);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">sync</a>(<a class="code hl_class" href="class_bind_text_input.html">BindTextInput</a> &amp;obj);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>  <span class="comment">// Private member variables and functions...</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>  uint8_t bufFrame[MAX_DATA_LENGHT];</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  uint8_t frameTXBuffer[MAX_DATA_LENGHT + 6];</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>  int16_t valTmp1 = 0;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  int16_t valTmp2 = 0;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>  int16_t valTmp3 = 0;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>  <span class="keywordtype">int</span> dataLen = 0;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>  uint32_t lastMs = 0;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>  uint32_t deltaMs = 0;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>  <a class="code hl_class" href="class_bind_switch.html">BindSwitch</a>** switchObjects;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>  <a class="code hl_class" href="class_bind_button.html">BindButton</a>** buttonObjects;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>  <a class="code hl_class" href="class_bind_knob.html">BindKnob</a>** knobObjects;</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>  <a class="code hl_class" href="class_bind_seek_bar.html">BindSeekBar</a>** seekBarObjects;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  <a class="code hl_class" href="class_bind_joystick.html">BindJoystick</a>** joystickObjects;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  <a class="code hl_class" href="class_bind_color_picker.html">BindColorPicker</a>** colorPickerObjects;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>  <a class="code hl_class" href="class_bind_text_input.html">BindTextInput</a>** textInputObjects;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>  <a class="code hl_class" href="class_data_parser.html">DataParser</a> dataParser;</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>  uint8_t buttonIndex = 1;</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>  uint8_t dialKnobIndex = 1;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>  uint8_t switchIndex = 1;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>  uint8_t seekBarIndex = 1;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>  uint8_t joystickHandlerIndex = 1;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>  uint8_t colorPickerHandlerIndex = 1;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>  uint8_t textInputHandlerIndex = 1;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>  <span class="keywordtype">bool</span> isInitialized = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  void (*setupCallback)(int16_t, int16_t);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>  <span class="keywordtype">bool</span> internalInit(Stream *stream, <span class="keywordtype">void</span> (*setupCallback)(int16_t, int16_t));</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>  <span class="keywordtype">void</span> screenInit(int16_t w, int16_t h);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>  Stream *bindStream = NULL;</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  <span class="keywordtype">int</span> updateScreen(uint8_t inp);</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>  <span class="keywordtype">void</span> updateScreen(Stream *stream);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>  <span class="keywordtype">int</span> updateScreenInternal(uint8_t *dataFrame);</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>  <span class="keywordtype">void</span> updateJoystick(uint8_t tag, int16_t valX, int16_t valY);</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>  <span class="keywordtype">void</span> updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>  <span class="keywordtype">void</span> updateSeekBar(uint8_t tag, int16_t val);</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>  <span class="keywordtype">void</span> knobChanged(int8_t tag, <span class="keywordtype">int</span> val);</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <span class="keywordtype">void</span> clickButton(uint8_t tag);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>  <span class="keywordtype">void</span> updateSwitch(uint8_t tag, <span class="keywordtype">bool</span> val);</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <span class="keywordtype">void</span> updateTextInput(uint8_t tag, <span class="keyword">const</span> <span class="keywordtype">char</span> *val, uint8_t length);</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>  <span class="keywordtype">void</span> internalSync(<a class="code hl_class" href="class_bind_view.html">BindView</a> *obj);</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>};</div>
 </div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span><span class="preprocessor">#endif </span><span class="comment">/* __BIND_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span><span class="preprocessor">#endif </span><span class="comment">/* __BIND_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclass_bind_button_html"><div class="ttname"><a href="class_bind_button.html">BindButton</a></div><div class="ttdoc">The BindButton class represents a button UI element for use with BindCanvas.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:26</div></div>
 <div class="ttc" id="aclass_bind_chart_html"><div class="ttname"><a href="class_bind_chart.html">BindChart</a></div><div class="ttdoc">Represents a customizable chart element for BindCanvas.</div><div class="ttdef"><b>Definition</b> BindChart.hpp:31</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html"><div class="ttname"><a href="class_bind_color_picker.html">BindColorPicker</a></div><div class="ttdoc">BindColorPicker Class.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:55</div></div>
 <div class="ttc" id="aclass_bind_html"><div class="ttname"><a href="class_bind.html">Bind</a></div><div class="ttdoc">The Bind class provides a framework for creating interactive applications with BindCanvas.</div><div class="ttdef"><b>Definition</b> Bind.h:62</div></div>
+<div class="ttc" id="aclass_bind_html_a726c8026427ca83550690596fd53a4fa"><div class="ttname"><a href="class_bind.html#a726c8026427ca83550690596fd53a4fa">Bind::init</a></div><div class="ttdeci">bool init(Stream &amp;stream, void(&amp;setupCallback)(int16_t, int16_t))</div><div class="ttdoc">Initializes the Bind framework with communication and screen setup.</div><div class="ttdef"><b>Definition</b> Bind.cpp:23</div></div>
 <div class="ttc" id="aclass_bind_html_a75f1333b64b117919ec86ab319034d19"><div class="ttname"><a href="class_bind.html#a75f1333b64b117919ec86ab319034d19">Bind::isReady</a></div><div class="ttdeci">bool isReady()</div><div class="ttdoc">Checks if the bind object is in a ready state.</div><div class="ttdef"><b>Definition</b> Bind.h:114</div></div>
 <div class="ttc" id="aclass_bind_html_ada2b21bda8d982949f0de94b1877bed3"><div class="ttname"><a href="class_bind.html#ada2b21bda8d982949f0de94b1877bed3">Bind::sync</a></div><div class="ttdeci">void sync()</div><div class="ttdoc">Synchronizes the bind with the current state.</div><div class="ttdef"><b>Definition</b> Bind.cpp:130</div></div>
-<div class="ttc" id="aclass_bind_html_aeda0a4034815d28a1e7cf324bfabcdf2"><div class="ttname"><a href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">Bind::init</a></div><div class="ttdeci">bool init(Stream *stream, void(*setupCallback)(int16_t, int16_t))</div><div class="ttdoc">Initializes the Bind framework with communication and screen setup.</div><div class="ttdef"><b>Definition</b> Bind.cpp:28</div></div>
 <div class="ttc" id="aclass_bind_html_af2a6815234660ac1c44efb3bcab6bd35"><div class="ttname"><a href="class_bind.html#af2a6815234660ac1c44efb3bcab6bd35">Bind::Bind</a></div><div class="ttdeci">Bind(void(*_setupCallback)(int16_t, int16_t))</div><div class="ttdoc">Constructs a Bind object with a setup callback function.</div><div class="ttdef"><b>Definition</b> Bind.h:101</div></div>
 <div class="ttc" id="aclass_bind_joystick_html"><div class="ttname"><a href="class_bind_joystick.html">BindJoystick</a></div><div class="ttdoc">BindJoystick Class.</div><div class="ttdef"><b>Definition</b> BindJoystick.hpp:57</div></div>
 <div class="ttc" id="aclass_bind_knob_html"><div class="ttname"><a href="class_bind_knob.html">BindKnob</a></div><div class="ttdoc">The BindKnob class represents a knob UI element for use with BindCanvas.</div><div class="ttdef"><b>Definition</b> BindKnob.hpp:29</div></div>

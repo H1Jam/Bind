@@ -118,9 +118,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a75f1333b64b117919ec86ab319034d19" id="r_a75f1333b64b117919ec86ab319034d19"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#a75f1333b64b117919ec86ab319034d19">isReady</a> ()</td></tr>
 <tr class="memdesc:a75f1333b64b117919ec86ab319034d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the bind object is in a ready state.  <br /></td></tr>
 <tr class="separator:a75f1333b64b117919ec86ab319034d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeda0a4034815d28a1e7cf324bfabcdf2" id="r_aeda0a4034815d28a1e7cf324bfabcdf2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2">init</a> (Stream *stream, void(*setupCallback)(int16_t, int16_t))</td></tr>
-<tr class="memdesc:aeda0a4034815d28a1e7cf324bfabcdf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework with communication and screen setup.  <br /></td></tr>
-<tr class="separator:aeda0a4034815d28a1e7cf324bfabcdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a726c8026427ca83550690596fd53a4fa" id="r_a726c8026427ca83550690596fd53a4fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#a726c8026427ca83550690596fd53a4fa">init</a> (Stream &amp;stream, void(&amp;setupCallback)(int16_t, int16_t))</td></tr>
 <tr class="memdesc:a726c8026427ca83550690596fd53a4fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework with communication and screen setup.  <br /></td></tr>
 <tr class="separator:a726c8026427ca83550690596fd53a4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,7 +217,7 @@ Sample app created by Bind</div></div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a726c8026427ca83550690596fd53a4fa" name="a726c8026427ca83550690596fd53a4fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a726c8026427ca83550690596fd53a4fa">&#9670;&#160;</a></span>init() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a726c8026427ca83550690596fd53a4fa">&#9670;&#160;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,49 +250,6 @@ Sample app created by Bind</div></div>
   <table class="params">
     <tr><td class="paramname">stream</td><td>A reference to the 'Stream' object representing the communication device. </td></tr>
     <tr><td class="paramname">setupCallback</td><td>A reference to the screen setup callback function. This function receives 'w' for width and 'h' for height. It ensures consistent object positioning and size across devices. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns 'true' if initialization is successful; otherwise, returns 'false'. </dd></dl>
-</li>
-</ol>
-
-</div>
-</div>
-<a id="aeda0a4034815d28a1e7cf324bfabcdf2" name="aeda0a4034815d28a1e7cf324bfabcdf2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeda0a4034815d28a1e7cf324bfabcdf2">&#9670;&#160;</a></span>init() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Bind::init </td>
-          <td>(</td>
-          <td class="paramtype">Stream *&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(int16_t, int16_t)&#160;</td>
-          <td class="paramname"><em>setupCallback</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework with communication and screen setup. </p>
-<p>This function serves a dual purpose:</p><ol type="1">
-<li>It configures the communication device for the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework using a 'Stream' object. The 'stream' can represent any serial port, including hardware, software serial, or Bluetooth classic serial.</li>
-<li>It sets the screen setup callback. This callback function is automatically invoked by BindCanvas upon establishing a connection. It plays a crucial role in configuring the screen and ensuring that all screen objects are synchronized properly. You will receive two parameters: 'w' for screen width and 'h' for screen height in density-independent pixels (dp). These values allow you to maintain consistent object positioning and size across various devices with different screen dimensions. <dl class="section note"><dt>Note</dt><dd>For more information about density-independent pixels (dp) visit: <a href="http://en.wikipedia.org/wiki/Device-independent_pixel">http://en.wikipedia.org/wiki/Device-independent_pixel</a></dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>A pointer to the 'Stream' object representing the communication device. </td></tr>
-    <tr><td class="paramname">setupCallback</td><td>A pointer to the screen setup callback function. This function receives 'w' for width and 'h' for height. It ensures consistent object positioning and size across devices. </td></tr>
   </table>
   </dd>
 </dl>

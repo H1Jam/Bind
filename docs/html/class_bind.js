@@ -2,7 +2,6 @@ var class_bind =
 [
     [ "Bind", "class_bind.html#af2a6815234660ac1c44efb3bcab6bd35", null ],
     [ "init", "class_bind.html#a726c8026427ca83550690596fd53a4fa", null ],
-    [ "init", "class_bind.html#aeda0a4034815d28a1e7cf324bfabcdf2", null ],
     [ "isReady", "class_bind.html#a75f1333b64b117919ec86ab319034d19", null ],
     [ "sync", "class_bind.html#ada2b21bda8d982949f0de94b1877bed3", null ],
     [ "sync", "class_bind.html#a4a6a185d85cd3f585aadf95fbf9fc4cb", null ],

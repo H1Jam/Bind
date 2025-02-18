@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"class_bind_text_label.html#ad0e35a4350fa19cdf6178e48562a6348":[3,0,19,7],
 "class_bind_view.html":[3,0,20],
 "class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f":[3,0,20,0],
 "class_data_parser.html":[3,0,21],
