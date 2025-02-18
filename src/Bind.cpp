@@ -22,10 +22,10 @@ int16_t BindRectangle::tagIndex = 1;
 
 bool Bind::init(Stream &stream, void (&_setupCallback)(int16_t, int16_t))
 {
-  return init(&stream, &_setupCallback);
+  return internalInit(&stream, &_setupCallback);
 }
 
-bool Bind::init(Stream *stream, void (*_setupCallback)(int16_t, int16_t))
+bool Bind::internalInit(Stream *stream, void (*_setupCallback)(int16_t, int16_t))
 {
   if (stream != NULL && _setupCallback != NULL)
   {
