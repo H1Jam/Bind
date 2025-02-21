@@ -41,6 +41,31 @@ void myButtonClicked() {
 This callback function allows you to seamlessly integrate your own logic with the user interactions, defining specific actions to be executed when the associated button is clicked.
 This simplifies the process, allowing you to focus on defining your UI elements and their behavior.
 Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) or examples (under **File > Examples > Bind**) for more information.
+## UI Elements
+|UI element|Description|Documents|Example|
+|:---:|:---:|:---:|:---:|
+## UI Elements
+|UI element|Description|Documents|Example|
+|:---:|:---:|:---:|:---:|
+|Button![BindButton](./img/BindButton.jpg)| The BindButton class represents a button UI element | [BindButton](https://h1jam.github.io/Bind/class_bind_button.html) | [Button.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Button/Button.ino)|
+|Switch![BindSwitch](./img/BindSwitch.jpg)| Represents a toggle switch UI element|[BindSwitch](https://h1jam.github.io/Bind/class_bind_switch.html) | [Switch.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Switch/Switch.ino)|
+|Seekbar![BindSeekbar](./img/BindSeekbar.jpg)| Represents a SeekBar object | [BindSeekBar](https://h1jam.github.io/Bind/class_bind_seek_bar.html) | [Seekbar.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Seekbar/Seekbar.ino)|
+|Knob![BindKnobs](./img/BindKnobs.jpg)| Represents a knob UI element | [BindKnob](https://h1jam.github.io/Bind/class_bind_knob.html) | [Knob.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Knob/Knob.ino)|
+|Chart![BindChart](./img/BindChart.jpg)| Represents a chart UI element | [BindChart](https://h1jam.github.io/Bind/class_bind_chart.html) | [Chart.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Chart/Chart.ino)|
+|ColorPicker![BindColorPicker](./img/BindColorPicker.jpg)| Represents a color picker UI element | [BindColorPicker](https://h1jam.github.io/Bind/class_bind_color_picker.html) | [ColorPicker.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/ColorPicker/ColorPicker.ino)|
+|Gauge1![BindGauge_1](./img/BindGauge_1.jpg)| Represents a gauge UI element | [BindGauge](https://h1jam.github.io/Bind/class_bind_gauge.html) | [Gauges.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Gauges/Gauges.ino)|
+|Gauge2![BindGauge_2](./img/BindGauge_2.jpg)| Represents a compact gauge UI element | [BindGaugeCompact](https://h1jam.github.io/Bind/class_bind_gauge_compact.html) | [Gauges.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Gauges/Gauges.ino)|
+|Gauge3![BindGauge](./img/BindGauge.jpg)| Represents a simple gauge UI element | [BindGaugeSimple](https://h1jam.github.io/Bind/class_bind_gauge_simple.html) | [Gauges.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Gauges/Gauges.ino)|
+|Heading Gauge![BindFlightIndicators](./img/BindFlightIndicators.jpg)| Represents a heading gauge UI element | [BindHeadingIndicator](https://h1jam.github.io/Bind/class_bind_heading_indicator.html) | [FlightIndicators.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/FlightIndicators/FlightIndicators.ino)|
+|Roll Pitch Gauge![BindFlightIndicators_1](./img/BindFlightIndicators_1.jpg)| Represents a roll pitch gauge UI element | [BindAttitudeIndicator ](https://h1jam.github.io/Bind/class_bind_attitude_indicator.html) | [FlightIndicators.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/FlightIndicators/FlightIndicators.ino)|
+|Joystick![BindJoystick](./img/BindJoystic.jpg)| Represents a joystick UI element | [BindJoystick](https://h1jam.github.io/Bind/class_bind_joystick.html) | [Joystick.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Joystick/Joystick.ino)|
+|Street map![BindMap](./img/BindMap.jpg)| Represents a street map UI element | [BindMap](https://h1jam.github.io/Bind/class_bind_map.html) | [StreetMap.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/StreetMap/StreetMap.ino)|
+|Logs![BindTerminal](./img/BindTerminal.jpg)| Represents a terminal log UI element | [BindTerminal](https://h1jam.github.io/Bind/class_bind_terminal.html) | [Logs.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Logs/Logs.ino)|
+|TextInput![BindTextInput](./img/BindTextInput.jpg)| Represents a text input UI element | [BindTextInput](https://h1jam.github.io/Bind/class_bind_text_input.html) | [TextInput.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/TextInput/TextInput.ino)|
+|TextLabel![BindTextLabel](./img/BindTextLabel.jpg)| Represents a text label UI element | [BindTextLabel](https://h1jam.github.io/Bind/class_bind_text_label.html) | [TextLabel.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/TextLabel/TextLabel.ino)|
+|Panels![BindPanels](./img/BindPanels.jpg)| Represents a panel UI element | [BindRectangle](https://h1jam.github.io/Bind/class_bind_rectangle.html) | [DrawBox.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/DrawBox/DrawBox.ino)|
+|Screen Configs| Configuration settings for a BindCanvas application screen.  | [BindCanvasSettings ](https://h1jam.github.io/Bind/class_bind_canvas_settings.html) | [Button.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/ScreenConfigs/ScreenConfigs.ino)|
+
 ## Compatibility
 
 - **Communication Methods:** Bind currently supports Bluetooth (Classic and BLE), Wifi , and Serial port (over USB) for communication. Support for IoT (MQTT) interfaces will be integrated soon.
