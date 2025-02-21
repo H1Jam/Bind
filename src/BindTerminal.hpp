@@ -6,6 +6,7 @@
 /**
  * @brief Represents a terminal display for BindCanvas.
  *
+ * \image html BindTerminal.jpg "BindTerminal"
  * The `BindTerminal` class is designed to create and display a terminal-like text interface
  * within a BindCanvas UI. This terminal can be used for displaying text data, log messages,
  * or other textual information and provides various customization options.
