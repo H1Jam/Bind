@@ -5,6 +5,7 @@
 /**
  * @brief BindJoystick Class
  *
+ * \image html BindJoystick.jpg "BindJoystick"
  * The `BindJoystick` class is a part of the Bind framework for Arduino, designed to creat a
  * joystick element that can be displayed and controlled on the BindCanvas Android app interface.
  * 
