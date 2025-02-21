@@ -44,9 +44,6 @@ Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) 
 ## UI Elements
 |UI element|Description|Documents|Example|
 |:---:|:---:|:---:|:---:|
-## UI Elements
-|UI element|Description|Documents|Example|
-|:---:|:---:|:---:|:---:|
 |![BindButton](./img/BindButton.jpg)| The BindButton class represents a button UI element | [BindButton](https://h1jam.github.io/Bind/class_bind_button.html) | [Button.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Button/Button.ino)|
 |![BindSwitch](./img/BindSwitch.jpg)| Represents a toggle switch UI element|[BindSwitch](https://h1jam.github.io/Bind/class_bind_switch.html) | [Switch.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Switch/Switch.ino)|
 |![BindSeekbar](./img/BindSeekbar.jpg)| Represents a SeekBar object | [BindSeekBar](https://h1jam.github.io/Bind/class_bind_seek_bar.html) | [Seekbar.ino](https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Seekbar/Seekbar.ino)|
