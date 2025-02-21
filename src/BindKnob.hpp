@@ -6,6 +6,7 @@
 /**
  * @brief The BindKnob class represents a knob UI element for use with BindCanvas.
  *
+ * \image html BindKnob.jpg "BindKnob"
  * BindKnob is a class that defines a knob UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize knobs, including setting labels, positions, dimensions, value ranges, and current values.
