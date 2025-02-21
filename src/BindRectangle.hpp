@@ -5,6 +5,7 @@
 /**
  * @brief Represents a Rectangle Object for BindCanvas.
  *
+ * \image html BindRectangle.jpg "BindRectangle"
  * The `BindRectangle` class defines a rectangular object that can be displayed and manipulated
  * on a BindCanvas screen. This object can be used for various purposes, such as drawing shapes,
  * creating backgrounds, or framing other elements. It allows you to control its dimensions, position,
