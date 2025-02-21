@@ -5,6 +5,7 @@
 /**
  * @brief Represents a marker to be used in BindMap (street map) within BindCanvas.
  *
+ * \image html BindMap.jpg "BindMap"
  * This class defines a marker object that can be placed on a BindMap, which is displayed
  * within the BindCanvas framework. Markers can represent points of interest or specific
  * locations on the map. You can chose the icons from several predefined icons
