@@ -7,6 +7,7 @@
 /**
  * @brief Represents a compact gauge view for the BindCanvas framework.
  *
+ * \image html BindGaugeCompact.jpg "BindGaugeCompact"
  * The BindGaugeCompact class is used to create compact gauge views that can be displayed
  * on the BindCanvas screen. These gauges provide visual feedback for values within a specified range.
  * Users can customize the gauge appearance, label, and value range.
