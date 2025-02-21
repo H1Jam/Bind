@@ -5,6 +5,7 @@
 /**
  * @brief Represents a toggle switch UI element in the Bind framework.
  *
+ * \image html BindSwitch.jpg "BindSwitch"
  * The `BindSwitch` class allows you to create toggle switch UI elements within your Arduino projects to be shown in BindCanvas.
  * You can customize the appearance and behavior of the switch, such as its position, label text, size, and colors.
  * Users can interact with the switch to toggle its state, and you can capture and respond to these state changes.
