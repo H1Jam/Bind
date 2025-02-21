@@ -6,6 +6,7 @@
 /**
  * @brief BindColorPicker Class
  *
+ * \image html BindColorPicker.jpg "BindColorPicker"
  * The `BindColorPicker` class is part of the Bind framework for Arduino, designed to facilitate
  * the creation of interactive user interface elements. Specifically, it represents a color picker
  * element that can be displayed and controlled on the BindCanvas Android app interface.
