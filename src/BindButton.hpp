@@ -6,6 +6,7 @@
 /**
  * @brief The BindButton class represents a button UI element for use with BindCanvas.
  *
+ * \image html BindButton.jpg "BindButton"
  * BindButton is a class that defines a button UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize buttons, including setting labels, positions, colors, and sizes.
