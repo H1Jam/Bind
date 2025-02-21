@@ -6,6 +6,7 @@
 /**
  * @brief Represents a heading indicator for BindCanvas.
  *
+ * \image html BindHeadingIndicator.jpg "BindHeadingIndicator"
  * The `BindHeadingIndicator` class is designed to create and display a heading indicator element
  * within a BindCanvas screen. This element allows users to visualize and monitor a vehicle or an object's heading.
  *  
