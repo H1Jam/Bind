@@ -9,6 +9,7 @@
  * The `BindGaugeSimple` class is a part of the Bind framework for Arduino, designed to
  * create a simple gauge element that can be displayed and controlled on the BindCanvas Android app interface.
  *
+ * \image html BindGaugeSimple.jpg "BindGaugeSimple"
  * This class allows you to define the properties of a gauge, including its position, size, value range,
  * current value, style, symmetry, color, and label. You can synchronize these properties with BindCanvas
  * to provide visual gauge displays in your Arduino projects.
