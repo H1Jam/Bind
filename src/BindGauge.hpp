@@ -7,6 +7,7 @@
 /**
  * @brief The BindGauge class represents a gauge UI element for use with BindCanvas.
  *
+ * \image html BindGauge.jpg "BindGauge"
  * BindGauge is a class that defines a gauge UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize gauges, including setting positions, dimensions, value ranges, and appearance.
