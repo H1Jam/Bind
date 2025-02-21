@@ -6,6 +6,7 @@
 /**
  * @brief Represents a customizable chart element for BindCanvas.
  *
+ * \image html BindChart.jpg "BindChart"
  * The `BindChart` class provides the capability to create and display customizable charts within a BindCanvas interface.
  * Users can define various attributes of the chart, such as its position, size, color, data ranges, and more.
  * Additionally, users can dynamically update the chart data using the `bind.sync([float chartData], &myChart)` function.
