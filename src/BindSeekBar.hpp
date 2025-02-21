@@ -5,6 +5,7 @@
 /**
  * @brief Represents a SeekBar object in the Bind framework.
  *
+ * \image html BindSeekBar.jpg "BindSeekBar"
  * The `BindSeekBar` class defines a SeekBar object that can be used in the Bind framework.
  * SeekBars are typically used to select a value within a specified range (determined by maxValue) by dragging a slider.
  * This class provides methods to configure SeekBars on the screen.
