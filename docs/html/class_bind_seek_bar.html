@@ -150,10 +150,10 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
 <tr class="memdesc:a0e47f3e0a9e5305ea5740786d14cf4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:a0e47f3e0a9e5305ea5740786d14cf4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae35712810180bd650495dc85daef3189" id="r_ae35712810180bd650495dc85daef3189"><td class="memItemLeft" align="right" valign="top"><a id="ae35712810180bd650495dc85daef3189" name="ae35712810180bd650495dc85daef3189"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>seekValue</b> = 0</td></tr>
-<tr class="memdesc:ae35712810180bd650495dc85daef3189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current value selected on the SeekBar. <br /></td></tr>
-<tr class="separator:ae35712810180bd650495dc85daef3189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ccc195e9d64b2aa8bb2adc878ad88fe" id="r_a7ccc195e9d64b2aa8bb2adc878ad88fe"><td class="memItemLeft" align="right" valign="top"><a id="a7ccc195e9d64b2aa8bb2adc878ad88fe" name="a7ccc195e9d64b2aa8bb2adc878ad88fe"></a>
+int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> = 0</td></tr>
+<tr class="memdesc:a7ccc195e9d64b2aa8bb2adc878ad88fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current value selected on the SeekBar. <br /></td></tr>
+<tr class="separator:a7ccc195e9d64b2aa8bb2adc878ad88fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f546c96ae485940a5cf91f104b00d7a" id="r_a9f546c96ae485940a5cf91f104b00d7a"><td class="memItemLeft" align="right" valign="top"><a id="a9f546c96ae485940a5cf91f104b00d7a" name="a9f546c96ae485940a5cf91f104b00d7a"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>maxValue</b> = 100</td></tr>
 <tr class="memdesc:a9f546c96ae485940a5cf91f104b00d7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum value of the SeekBar. <br /></td></tr>
@@ -169,7 +169,11 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a SeekBar object in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. </p>
-<p>The <code><a class="el" href="class_bind_seek_bar.html" title="Represents a SeekBar object in the Bind framework.">BindSeekBar</a></code> class defines a SeekBar object that can be used in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. SeekBars are typically used to select a value within a specified range (determined by maxValue) by dragging a slider. This class provides methods to configure SeekBars on the screen.</p>
+<div class="image">
+<img src="BindSeekBar.jpg" alt=""/>
+<div class="caption">
+BindSeekBar</div></div>
+<p> The <code><a class="el" href="class_bind_seek_bar.html" title="Represents a SeekBar object in the Bind framework.">BindSeekBar</a></code> class defines a SeekBar object that can be used in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. SeekBars are typically used to select a value within a specified range (determined by maxValue) by dragging a slider. This class provides methods to configure SeekBars on the screen.</p>
 <dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
 <li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
 <li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>

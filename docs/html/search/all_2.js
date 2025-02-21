@@ -1,7 +1,7 @@
 var searchData=
 [
   ['actionbarcolor_0',['actionBarColor',['../class_bind_canvas_settings.html#a40c9341aad4563232688d6ffe1fe9d86',1,'BindCanvasSettings']]],
-  ['all_20boards_1',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['all_20boards_1',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]],
   ['and_20definitions_2',['Interpretation and Definitions',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_e_u_l_a.html#autotoc_md0',1,'']]],
   ['and_20omissions_20disclaimer_3',['Errors and Omissions Disclaimer',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_e_u_l_a.html#autotoc_md5',1,'']]],
   ['arcgreenmaxval_4',['arcgreenmaxval',['../class_bind_gauge.html#aeb3d53067504ccecae48dfe7375c2e92',1,'BindGauge::arcGreenMaxVal'],['../class_bind_gauge_compact.html#aa25ea0cbcd0be42495fd647d76c67ca5',1,'BindGaugeCompact::arcGreenMaxVal']]],

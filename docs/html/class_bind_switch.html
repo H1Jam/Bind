@@ -159,10 +159,10 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdId</b> = 0</td></tr>
 <tr class="memdesc:a6f14f1ba15a341681259246fd310779b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command identifier. See the notes for possible cmdId values. <br /></td></tr>
 <tr class="separator:a6f14f1ba15a341681259246fd310779b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85fc77eff2fe3c7587be3a73f584a723" id="r_a85fc77eff2fe3c7587be3a73f584a723"><td class="memItemLeft" align="right" valign="top"><a id="a85fc77eff2fe3c7587be3a73f584a723" name="a85fc77eff2fe3c7587be3a73f584a723"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>switchValue</b></td></tr>
-<tr class="memdesc:a85fc77eff2fe3c7587be3a73f584a723"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state (ON/OFF) of the toggle switch. <br /></td></tr>
-<tr class="separator:a85fc77eff2fe3c7587be3a73f584a723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16a7b97839fca75f7c1a79cca7426276" id="r_a16a7b97839fca75f7c1a79cca7426276"><td class="memItemLeft" align="right" valign="top"><a id="a16a7b97839fca75f7c1a79cca7426276" name="a16a7b97839fca75f7c1a79cca7426276"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
+<tr class="memdesc:a16a7b97839fca75f7c1a79cca7426276"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state (ON/OFF) of the toggle switch. <br /></td></tr>
+<tr class="separator:a16a7b97839fca75f7c1a79cca7426276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab61d2ed2b2e198d895406726f3e917a2" id="r_ab61d2ed2b2e198d895406726f3e917a2"><td class="memItemLeft" align="right" valign="top"><a id="ab61d2ed2b2e198d895406726f3e917a2" name="ab61d2ed2b2e198d895406726f3e917a2"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>fontSize</b></td></tr>
 <tr class="memdesc:ab61d2ed2b2e198d895406726f3e917a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Font size for the switch label. <br /></td></tr>
@@ -178,7 +178,11 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a toggle switch UI element in the <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> framework. </p>
-<p>The <code><a class="el" href="class_bind_switch.html" title="Represents a toggle switch UI element in the Bind framework.">BindSwitch</a></code> class allows you to create toggle switch UI elements within your Arduino projects to be shown in BindCanvas. You can customize the appearance and behavior of the switch, such as its position, label text, size, and colors. Users can interact with the switch to toggle its state, and you can capture and respond to these state changes.</p>
+<div class="image">
+<img src="BindSwitch.jpg" alt=""/>
+<div class="caption">
+BindSwitch</div></div>
+<p> The <code><a class="el" href="class_bind_switch.html" title="Represents a toggle switch UI element in the Bind framework.">BindSwitch</a></code> class allows you to create toggle switch UI elements within your Arduino projects to be shown in BindCanvas. You can customize the appearance and behavior of the switch, such as its position, label text, size, and colors. Users can interact with the switch to toggle its state, and you can capture and respond to these state changes.</p>
 <dl class="section note"><dt>Note</dt><dd>Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</a> and corresponding effects:<ul>
 <li>BIND_ADD_OR_REFRESH_CMD: Adds the object to the canvas (screen) or refreshes the existing one.</li>
 <li>BIND_DATA_ONLY_CMD: Refreshes the existing object without moving or resizing; updates data, such as text.</li>
