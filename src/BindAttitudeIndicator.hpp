@@ -5,6 +5,7 @@
 /**
  * @brief Represents an attitude indicator UI element in the Bind framework.
  *
+ * \image html BindAttitudeIndicator.jpg "BindAttitudeIndicator"
  * The `BindAttitudeIndicator` class enables the creation of an attitude indicator within your Arduino projects.
  * This UI element visually displays the roll and pitch of a vehicle or object, providing valuable information about its orientation.
  * You can customize the appearance and behavior of the attitude indicator, such as its position, size, and orientation values.
