@@ -6,6 +6,7 @@
 /**
  * @brief The BindTextLabel class represents a text label UI element for use with BindCanvas.
  *
+ * \image html BindTextLabel.jpg "BindTextLabel"
  * BindTextLabel is a class that defines a text label UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize text labels, including setting labels, positions, font size, and text color.
