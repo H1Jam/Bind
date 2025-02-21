@@ -8,7 +8,8 @@
 
 /**
  * @brief Represents a Map Object for BindCanvas.
- *
+ * 
+ * \image html BindMap.jpg "BindMap"
  * The `BindMap` class is used to display and control a street map within the BindCanvas framework.
  * It allows users to show and interact with maps, including changing the map's location, orientation,
  * and zoom level. Users can manually control the map zoom or use predefined zoom levels.
