@@ -7,6 +7,7 @@
 /**
  * @brief The BindTextInput class represents a text input UI element for use with BindCanvas.
  *
+ * \image html BindTextInput.jpg "BindTextInput"
  * BindTextInput is a class that defines a text input UI element that can be used within BindCanvas-based
  * applications. It inherits from the BindView class and provides functionality to create and
  * customize text inputs, including setting text, hint, positions, font size, text color, and background color.
