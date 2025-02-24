@@ -54,15 +54,22 @@ public:
   int32_t textColor; ///< Text color of the button
   int32_t backColor; ///< Background color of the button
 
+  [[deprecated("Use setLabel instead")]]
+  void setlabel(const char *cstr)
+  {
+    setLabel(cstr);
+  }
+
   /**
-   * @brief Sets the label text for the button.
+   * @brief Sets the callback function for the button.
    *
-   * This function allows you to set the text label for the button.
+   * This function allows you to set a callback function for the button.
+   * The callback function is invoked when the button is clicked.
    * @note You need to sync the button, e.g. call bind.sync(bindButton).
    *
-   * @param cstr A pointer to the character array representing the label text.
+   * @param callback A pointer to the callback function.
    */
-  void setlabel(const char *cstr)
+  void setLabel(const char *cstr)
   {
     str = cstr;
   }
