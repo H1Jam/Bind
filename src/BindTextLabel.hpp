@@ -48,6 +48,12 @@ public:
    */
   BindTextLabel() :BindTextLabel("TextLabel"){}
 
+  [[deprecated("Use setLabel instead")]]
+  void setlabel(const char *cstr)
+  {
+    setLabel(cstr);
+  }
+    
   /**
    * @brief Sets the label text for the text label.
    *
@@ -56,7 +62,7 @@ public:
    *
    * @param cstr A pointer to the character array representing the label text.
    */
-  void setlabel(const char *cstr)
+  void setLabel(const char *cstr)
   {
     str = cstr;
   }
