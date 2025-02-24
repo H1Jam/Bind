@@ -55,7 +55,6 @@ var NAVTREEINDEX1 =
 "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md16":[2,0,4],
 "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17":[2,0,5],
 "md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18":[2,0,6],
-"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md19":[2,0,7],
-"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md21":[2,0,8],
+"md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md20":[2,0,7],
 "pages.html":[]
 };

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['1_20using_20serial_20port_20over_20usb_20for_20all_20boards_0',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]]
+  ['1_20using_20serial_20port_20over_20usb_20for_20all_20boards_0',['Example Usage 1 (Using Serial port over USB for all boards)',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md17',1,'']]]
 ];

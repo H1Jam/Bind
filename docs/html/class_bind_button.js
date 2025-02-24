@@ -2,7 +2,7 @@ var class_bind_button =
 [
     [ "BindButton", "class_bind_button.html#a8f2e93560ecd76810818b7b79ba856f2", null ],
     [ "getBytes", "class_bind_button.html#a5cfba41f0d4b12cc81123edc2a7dd3dc", null ],
-    [ "setlabel", "class_bind_button.html#ab58068bba38344cc20a93df7726140d9", null ],
+    [ "setLabel", "class_bind_button.html#ad3d95ddcbb28bf8029d03ec6434c24c0", null ],
     [ "backColor", "class_bind_button.html#a4e8d22817e146abd045f9ae4b2d9a4d7", null ],
     [ "cmdId", "class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527", null ],
     [ "fontSize", "class_bind_button.html#a53a0f2a26018d2508475b664bea1d325", null ],

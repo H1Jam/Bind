@@ -6,5 +6,5 @@ var searchData=
   ['maxy_3',['maxY',['../class_bind_chart.html#a40a793c164990582d72c5703bc2ea1c1',1,'BindChart']]],
   ['minvalue_4',['minvalue',['../class_bind_gauge_simple.html#a4a1830e99d73f633661f042da7c7c39e',1,'BindGaugeSimple::minValue'],['../class_bind_knob.html#a36672495a95e295855d79a7388c10077',1,'BindKnob::minValue']]],
   ['miny_5',['minY',['../class_bind_chart.html#a248d1f055d13da5accb43477a757e674',1,'BindChart']]],
-  ['more_20sample_6',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md20',1,'']]]
+  ['more_20sample_6',['Browse the example folder for more sample.',['../md__c_1_2_users_2_b_i_g_2_documents_2_arduino_2_libraries_2_bind_2_r_e_a_d_m_e.html#autotoc_md19',1,'']]]
 ];

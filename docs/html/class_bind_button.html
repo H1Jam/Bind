@@ -125,9 +125,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8f2e93560ecd76810818b7b79ba856f2" id="r_a8f2e93560ecd76810818b7b79ba856f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_button.html#a8f2e93560ecd76810818b7b79ba856f2">BindButton</a> (const char *cstr)</td></tr>
 <tr class="memdesc:a8f2e93560ecd76810818b7b79ba856f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_bind_button.html" title="The BindButton class represents a button UI element for use with BindCanvas.">BindButton</a> with a custom label.  <br /></td></tr>
 <tr class="separator:a8f2e93560ecd76810818b7b79ba856f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab58068bba38344cc20a93df7726140d9" id="r_ab58068bba38344cc20a93df7726140d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_button.html#ab58068bba38344cc20a93df7726140d9">setlabel</a> (const char *cstr)</td></tr>
-<tr class="memdesc:ab58068bba38344cc20a93df7726140d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the label text for the button.  <br /></td></tr>
+<tr class="memitem:ab58068bba38344cc20a93df7726140d9" id="r_ab58068bba38344cc20a93df7726140d9"><td class="memItemLeft" align="right" valign="top"><a id="ab58068bba38344cc20a93df7726140d9" name="ab58068bba38344cc20a93df7726140d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setlabel</b> (const char *cstr)</td></tr>
 <tr class="separator:ab58068bba38344cc20a93df7726140d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3d95ddcbb28bf8029d03ec6434c24c0" id="r_ad3d95ddcbb28bf8029d03ec6434c24c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_button.html#ad3d95ddcbb28bf8029d03ec6434c24c0">setLabel</a> (const char *cstr)</td></tr>
+<tr class="memdesc:ad3d95ddcbb28bf8029d03ec6434c24c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for the button.  <br /></td></tr>
+<tr class="separator:ad3d95ddcbb28bf8029d03ec6434c24c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee842be5451ea3f155192671572e61bd" id="r_aee842be5451ea3f155192671572e61bd"><td class="memItemLeft" align="right" valign="top"><a id="aee842be5451ea3f155192671572e61bd" name="aee842be5451ea3f155192671572e61bd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(void))</td></tr>
 <tr class="separator:aee842be5451ea3f155192671572e61bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -261,8 +264,8 @@ BindButton</div></div>
 
 </div>
 </div>
-<a id="ab58068bba38344cc20a93df7726140d9" name="ab58068bba38344cc20a93df7726140d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab58068bba38344cc20a93df7726140d9">&#9670;&#160;</a></span>setlabel()</h2>
+<a id="ad3d95ddcbb28bf8029d03ec6434c24c0" name="ad3d95ddcbb28bf8029d03ec6434c24c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3d95ddcbb28bf8029d03ec6434c24c0">&#9670;&#160;</a></span>setLabel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,7 +274,7 @@ BindButton</div></div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void BindButton::setlabel </td>
+          <td class="memname">void BindButton::setLabel </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>cstr</em></td><td>)</td>
@@ -285,11 +288,11 @@ BindButton</div></div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the label text for the button. </p>
-<p>This function allows you to set the text label for the button. </p><dl class="section note"><dt>Note</dt><dd>You need to sync the button, e.g. call bind.sync(bindButton).</dd></dl>
+<p>Sets the callback function for the button. </p>
+<p>This function allows you to set a callback function for the button. The callback function is invoked when the button is clicked. </p><dl class="section note"><dt>Note</dt><dd>You need to sync the button, e.g. call bind.sync(bindButton).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cstr</td><td>A pointer to the character array representing the label text. </td></tr>
+    <tr><td class="paramname">callback</td><td>A pointer to the callback function. </td></tr>
   </table>
   </dd>
 </dl>
