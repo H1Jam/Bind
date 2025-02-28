@@ -74,6 +74,18 @@ public:
     str = cstr;
   }
 
+
+  /**
+   * @brief Set the press callback function for the button.
+   * 
+   * This callback function is called when the button is pressed.
+   * The signature of the callback function should be like:backColor
+   * @code {.cpp}
+   * void callback()
+   * @endcode
+   * 
+   * @param callback 
+   */
   void setCallback(void (*callback)(void))
   {
     clickCallback = callback;
