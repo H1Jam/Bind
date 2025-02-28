@@ -74,6 +74,17 @@ public:
     str = cstr;
   }
 
+  /**
+   * @brief Set the Callback function for the knob.
+   * 
+   * This callback function is called when the knob value is changed.
+   * The signature of the callback function should be like:
+   * @code {.cpp}
+   * void callback(int16_t value)
+   * @endcode
+   * 
+   * @param callback 
+   */
   void setCallback(void (*callback)(int16_t))
   {
     changeCallback = callback;
