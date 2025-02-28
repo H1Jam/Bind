@@ -71,6 +71,17 @@ public:
     int16_t sY = 0; ///< The joystick's current Y-axis position (internal).
     bool springed = true; ///< Indicates whether the joystick returns to the center automatically when released.
     
+    /**
+     * @brief Set the Callback function for the joystick.
+     * 
+     * This callback function is called when the joystick is moved.
+     * The signature of the callback function should be like:
+     * @code {.cpp}
+     * void callback(int16_t x, int16_t y)
+     * @endcode
+     * 
+     * @param callback 
+     */
     void setCallback(void (*callback)(int16_t, int16_t))
     {
         changeCallback = callback;
