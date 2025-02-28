@@ -70,6 +70,17 @@ public:
     uint8_t green = 0;     ///< The initial value for the green component of the selected color (0-255).
     uint8_t blue = 0;      ///< The initial value for the blue component of the selected color (0-255).
 
+    /**
+     * @brief Set the Callback function for the color picker.
+     * 
+     * This callback function is called when the color picker value is changed.
+     * The signature of the callback function should be like:
+     * @code {.cpp}
+     * void callback(uint8_t red, uint8_t green, uint8_t blue)
+     * @endcode
+     * 
+     * @param callback 
+     */
     void setCallback(void (*callback)(uint8_t, uint8_t, uint8_t))
     {
         clickCallback = callback;
