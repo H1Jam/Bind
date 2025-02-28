@@ -32,6 +32,7 @@
 #define BIND_ID_TERMINAL_DATA 24
 #define BIND_ID_SETTINGS 25
 #define BIND_ID_TEXTINPUT 26
+#define BIND_ID_DIALOG 27
 
 
 #define MARKER_PIN_RED 0
@@ -51,5 +52,5 @@
  @brief TBA
 */
 void copyAndOffset(uint8_t *out, uint16_t *offset, const void *source, size_t num);
-
+void copyStringWithLength(uint8_t *out, uint16_t *offset, const char *str);
 #endif /* __BINDUTILS_H */
