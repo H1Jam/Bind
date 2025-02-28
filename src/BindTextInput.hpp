@@ -40,6 +40,17 @@ public:
      */
     BindTextInput(int16_t x, int16_t y, uint8_t cmdId, const char *text, const char *hint, int16_t fontSize, int32_t textColor = 0, int32_t backColor = 0, uint8_t widthChars = 0, bool numberOnly = false);
 
+    /**
+     * @brief Set the Callback function for the text input.
+     * 
+     * This callback function is called when the text input value is changed.
+     * The signature of the callback function should be like:
+     * @code {.cpp}
+     * void callback(const char *text, uint8_t length)
+     * @endcode
+     * 
+     * @param callback 
+     */
     void setCallback(void (*callback)(const char *, uint8_t))
     {
         changeCallback = callback;
