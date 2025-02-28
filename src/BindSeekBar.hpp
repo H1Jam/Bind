@@ -38,6 +38,17 @@ public:
     int16_t maxValue = 100; ///< Maximum value of the SeekBar.
     int16_t width = 200;    ///< Width of the SeekBar.
 
+    /**
+     * @brief Set the Callback function for the SeekBar.
+     * 
+     * This callback function is called when the SeekBar value is changed.
+     * The signature of the callback function should be like:
+     * @code {.cpp}
+     * void callback(int16_t value)
+     * @endcode
+     * 
+     * @param callback 
+     */
     void setCallback(void (*callback)(int16_t))
     {
         changeCallback = callback;
