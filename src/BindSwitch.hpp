@@ -80,6 +80,17 @@ public:
         setLabel(cstr);
     }
 
+    /**
+     * @brief Set the Callback function for the toggle switch.
+     * 
+     * This callback function is called when the toggle switch value is changed.
+     * The signature of the callback function should be like:
+     * @code {.cpp}
+     * void callback(bool value)
+     * @endcode
+     * 
+     * @param callback 
+     */
     void setCallback(void (*callback)(bool))
     {
         this->changeCallback = callback;
