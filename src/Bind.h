@@ -74,6 +74,7 @@ public:
     joystickObjects = new BindJoystick*[MAX_HANDLERS];
     colorPickerObjects = new BindColorPicker*[MAX_HANDLERS];
     textInputObjects = new BindTextInput*[MAX_HANDLERS];
+    dialogObjects = new BindDialog*[MAX_HANDLERS];
 
     for (int i = 0; i < MAX_HANDLERS; ++i)
     {
@@ -85,6 +86,7 @@ public:
       joystickObjects[i] = nullptr;
       colorPickerObjects[i] = nullptr;
       textInputObjects[i] = nullptr;
+      dialogObjects[i] = nullptr;
     }
   }
 
@@ -287,6 +289,21 @@ public:
    */
   void sync(BindTextInput &obj);
 
+  /**
+   * @brief Synchronizes the BindDialog object with the BindCanvas screen.
+   *
+   * This function synchronizes the BindDialog object with the BindCanvas screen.
+   * It shows the dialog box Imeadiatly. 
+   * 
+   * @note The dialog box will be shown only once and will be removed after the user interaction.
+   *  to show the dialog again you need to call this function again, it can be the same dialog box object or a new one.
+   * @note You can only have 5 dialog boxes at the same time. So if you burst dialog boxes, only the first 5 will be shown and
+   *  the rest will be ignored. You can show as many dialog boxes as you want but until the other dialog boxes are closed.
+   * 
+   * @param obj A reference to the 'BindDialog' object for data synchronization.
+   */
+  void sync(BindDialog &obj);
+
 private:
   // Private member variables and functions...
   uint8_t bufFrame[MAX_DATA_LENGHT];
@@ -304,6 +321,7 @@ private:
   BindJoystick** joystickObjects;
   BindColorPicker** colorPickerObjects;
   BindTextInput** textInputObjects;
+  BindDialog** dialogObjects;
   DataParser dataParser;
   uint8_t buttonIndex = 1;
   uint8_t dialKnobIndex = 1;
@@ -327,6 +345,7 @@ private:
   void clickButton(uint8_t tag);
   void updateSwitch(uint8_t tag, bool val);
   void updateTextInput(uint8_t tag, const char *val, uint8_t length);
+  void dialogResult(uint8_t tag, bool result, const char *text, uint8_t length);
   void internalSync(BindView *obj);
 };
 
