@@ -1,6 +1,5 @@
 #include "Bind.h"
 #include "Arduino.h"
-
 // Set the initial value of tagIndexes to 1.
 int16_t BindSeekBar::tagIndex = 1;
 int16_t BindSwitch::tagIndex = 1;
@@ -19,6 +18,7 @@ int16_t BindGaugeCompact::tagIndex = 1;
 int16_t BindHeadingIndicator::tagIndex = 1;
 int16_t BindMapMarker::tagIndex = 1;
 int16_t BindRectangle::tagIndex = 1;
+int16_t BindDialog::tagIndex = 1;
 
 bool Bind::init(Stream &stream, void (&_setupCallback)(int16_t, int16_t))
 {
@@ -118,6 +118,13 @@ void Bind::sync(BindTextInput &obj)
   internalSync(&obj);
 }
 
+void Bind::sync(BindDialog &obj)
+{
+  obj.hasResult = false;
+  dialogObjects[obj.tag] = &obj;
+  internalSync(&obj);
+}
+
 void Bind::sync(const uint8_t *buffer, size_t size)
 {
   while (size > 0)
@@ -201,6 +208,9 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
   case BIND_ID_TEXTINPUT:
     updateTextInput(dataFrame[3], (const char *)&dataFrame[6], dataFrame[5]);
     break;
+  case BIND_ID_DIALOG:
+    dialogResult(dataFrame[3], dataFrame[5] == 1, (const char *)&dataFrame[7], dataFrame[6]);
+    break;
   default:
     return 0;
     break;
@@ -274,5 +284,24 @@ void Bind::updateTextInput(uint8_t tag, const char *val, uint8_t length)
     strncpy((char*)value, val, length);
     value[length] = '\0';
     textInputObjects[tag]->invokeCallback(value, length);
+  }
+}
+
+void Bind::dialogResult(uint8_t tag, bool result, const char *text, uint8_t length)
+{
+
+#ifdef DEBUG_MSG
+    Serial.print("Bind::dialogResult");
+    Serial.print(tag);
+    Serial.print(" ");
+    Serial.println(result);
+#endif
+
+  if (tag < MAX_HANDLERS && dialogObjects[tag] != nullptr)
+  {
+    char value[length +1];
+    strncpy((char*)value, text, length);
+    value[length] = '\0';
+    dialogObjects[tag]->invokeCallback(result, value);
   }
 }
