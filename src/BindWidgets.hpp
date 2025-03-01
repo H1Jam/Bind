@@ -16,16 +16,11 @@
 #include "BindRectangle.hpp"
 #include "BindTerminal.hpp"
 #include "BindCanvasSettings.hpp"
-// #include "BindButtonHandler.hpp"
-// #include "BindDialKnobHandler.hpp"
-// #include "BindSwitchHandler.hpp"
-// #include "BindSeekBarHandler.hpp"
-// #include "BindJoystickHandler.hpp"
-// #include "BindColorPickerHandler.hpp"
 #include "BindButton.hpp"
 #include "BindKnob.hpp"
 #include "BindTextLabel.hpp"
 #include "BindTextInput.hpp"
-// #include "BindTextInputHandler.hpp"
+#include "BindDialog.hpp"
+
 
 #endif /* __BINDWIDGETS_H */
