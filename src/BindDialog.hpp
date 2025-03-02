@@ -19,7 +19,10 @@ enum DialogType {
 
 /**
  * @brief BindDialog class represents a dialog box for use with BindCanvas app.
- *
+ * 
+ * \image html BindDialog.jpg "BindDialog"
+ * \image html Dialog_singleButton.jpg "BindDialog Single Button"
+ * \image html DialogPassword.jpg "Password Dialog"
  * BindDialog defines a popup dialog that can be shown with one or two buttons,
  * optionally allowing text or password input. The user can set a title, message,
  * button labels, and a callback to handle interaction.
