@@ -1,6 +1,7 @@
 var class_bind_joystick =
 [
     [ "getBytes", "class_bind_joystick.html#ae8e10936d99e279ca0984947c3a9cc64", null ],
+    [ "setCallback", "class_bind_joystick.html#acc9ee845abc5a76a46dbd68350cb0624", null ],
     [ "cmdId", "class_bind_joystick.html#a5b561bf0d0f6f07aea10c9ad724896de", null ],
     [ "dimSize", "class_bind_joystick.html#a5521957f82e20204e3ae30e91632fc9d", null ],
     [ "springed", "class_bind_joystick.html#ac5ae4475e144d0a1a81f7173f226ed8b", null ],

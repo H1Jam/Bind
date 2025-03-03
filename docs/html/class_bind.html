@@ -161,6 +161,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sync</b> (<a class="e
 <tr class="memitem:ac0ba3ec428236c0b126b21399dd7ffda" id="r_ac0ba3ec428236c0b126b21399dd7ffda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#ac0ba3ec428236c0b126b21399dd7ffda">sync</a> (<a class="el" href="class_bind_text_input.html">BindTextInput</a> &amp;obj)</td></tr>
 <tr class="memdesc:ac0ba3ec428236c0b126b21399dd7ffda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the <a class="el" href="class_bind_text_input.html" title="The BindTextInput class represents a text input UI element for use with BindCanvas.">BindTextInput</a> object with the BindCanvas screen.  <br /></td></tr>
 <tr class="separator:ac0ba3ec428236c0b126b21399dd7ffda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf8ff028eaa1c7722673754f45f8853e" id="r_abf8ff028eaa1c7722673754f45f8853e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind.html#abf8ff028eaa1c7722673754f45f8853e">sync</a> (<a class="el" href="class_bind_dialog.html">BindDialog</a> &amp;obj)</td></tr>
+<tr class="memdesc:abf8ff028eaa1c7722673754f45f8853e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the <a class="el" href="class_bind_dialog.html" title="BindDialog class represents a dialog box for use with BindCanvas app.">BindDialog</a> object with the BindCanvas screen.  <br /></td></tr>
+<tr class="separator:abf8ff028eaa1c7722673754f45f8853e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_bind.html" title="The Bind class provides a framework for creating interactive applications with BindCanvas.">Bind</a> class provides a framework for creating interactive applications with BindCanvas. </p>
@@ -289,7 +292,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="ada2b21bda8d982949f0de94b1877bed3" name="ada2b21bda8d982949f0de94b1877bed3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada2b21bda8d982949f0de94b1877bed3">&#9670;&#160;</a></span>sync() <span class="overload">[1/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ada2b21bda8d982949f0de94b1877bed3">&#9670;&#160;</a></span>sync() <span class="overload">[1/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,7 +313,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a4a6a185d85cd3f585aadf95fbf9fc4cb" name="a4a6a185d85cd3f585aadf95fbf9fc4cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a6a185d85cd3f585aadf95fbf9fc4cb">&#9670;&#160;</a></span>sync() <span class="overload">[2/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6a185d85cd3f585aadf95fbf9fc4cb">&#9670;&#160;</a></span>sync() <span class="overload">[2/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -337,7 +340,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a32f30ce88c898c30f08bd9f802b5b97d" name="a32f30ce88c898c30f08bd9f802b5b97d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32f30ce88c898c30f08bd9f802b5b97d">&#9670;&#160;</a></span>sync() <span class="overload">[3/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f30ce88c898c30f08bd9f802b5b97d">&#9670;&#160;</a></span>sync() <span class="overload">[3/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -363,8 +366,38 @@ Sample app created by Bind</div></div>
 
 </div>
 </div>
+<a id="abf8ff028eaa1c7722673754f45f8853e" name="abf8ff028eaa1c7722673754f45f8853e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf8ff028eaa1c7722673754f45f8853e">&#9670;&#160;</a></span>sync() <span class="overload">[4/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bind::sync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_bind_dialog.html">BindDialog</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Synchronizes the <a class="el" href="class_bind_dialog.html" title="BindDialog class represents a dialog box for use with BindCanvas app.">BindDialog</a> object with the BindCanvas screen. </p>
+<p>This function synchronizes the <a class="el" href="class_bind_dialog.html" title="BindDialog class represents a dialog box for use with BindCanvas app.">BindDialog</a> object with the BindCanvas screen. It shows the dialog box Imeadiatly.</p>
+<dl class="section note"><dt>Note</dt><dd>The dialog box will be shown only once and will be removed after the user interaction. to show the dialog again you need to call this function again, it can be the same dialog box object or a new one. </dd>
+<dd>
+You can only have 5 dialog boxes at the same time. So if you burst dialog boxes, only the first 5 will be shown and the rest will be ignored. You can show as many dialog boxes as you want but until the other dialog boxes are closed.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>A reference to the '<a class="el" href="class_bind_dialog.html" title="BindDialog class represents a dialog box for use with BindCanvas app.">BindDialog</a>' object for data synchronization. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a2a98c3ffb0cf1fe0184ff6531527bd73" name="a2a98c3ffb0cf1fe0184ff6531527bd73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a98c3ffb0cf1fe0184ff6531527bd73">&#9670;&#160;</a></span>sync() <span class="overload">[4/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a98c3ffb0cf1fe0184ff6531527bd73">&#9670;&#160;</a></span>sync() <span class="overload">[5/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -391,7 +424,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a83f108de7c020b7a2e4dcc6d4e84ca89" name="a83f108de7c020b7a2e4dcc6d4e84ca89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83f108de7c020b7a2e4dcc6d4e84ca89">&#9670;&#160;</a></span>sync() <span class="overload">[5/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f108de7c020b7a2e4dcc6d4e84ca89">&#9670;&#160;</a></span>sync() <span class="overload">[6/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +451,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a0ac7d7ffcd3938794b827489541b999f" name="a0ac7d7ffcd3938794b827489541b999f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ac7d7ffcd3938794b827489541b999f">&#9670;&#160;</a></span>sync() <span class="overload">[6/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac7d7ffcd3938794b827489541b999f">&#9670;&#160;</a></span>sync() <span class="overload">[7/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -445,7 +478,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="aa6e7900710d176e54192ccfd3ad864d5" name="aa6e7900710d176e54192ccfd3ad864d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6e7900710d176e54192ccfd3ad864d5">&#9670;&#160;</a></span>sync() <span class="overload">[7/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e7900710d176e54192ccfd3ad864d5">&#9670;&#160;</a></span>sync() <span class="overload">[8/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -472,7 +505,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="ac0ba3ec428236c0b126b21399dd7ffda" name="ac0ba3ec428236c0b126b21399dd7ffda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0ba3ec428236c0b126b21399dd7ffda">&#9670;&#160;</a></span>sync() <span class="overload">[8/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0ba3ec428236c0b126b21399dd7ffda">&#9670;&#160;</a></span>sync() <span class="overload">[9/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -499,7 +532,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="aa41b7fbed8b4621d141f8ba71415fec5" name="aa41b7fbed8b4621d141f8ba71415fec5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa41b7fbed8b4621d141f8ba71415fec5">&#9670;&#160;</a></span>sync() <span class="overload">[9/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41b7fbed8b4621d141f8ba71415fec5">&#9670;&#160;</a></span>sync() <span class="overload">[10/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -537,7 +570,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a8d7445fcfe17448b1e5f95386f9c8638" name="a8d7445fcfe17448b1e5f95386f9c8638"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d7445fcfe17448b1e5f95386f9c8638">&#9670;&#160;</a></span>sync() <span class="overload">[10/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d7445fcfe17448b1e5f95386f9c8638">&#9670;&#160;</a></span>sync() <span class="overload">[11/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -610,7 +643,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a1df82dcb0b03a33f8ec96893b0edd619" name="a1df82dcb0b03a33f8ec96893b0edd619"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1df82dcb0b03a33f8ec96893b0edd619">&#9670;&#160;</a></span>sync() <span class="overload">[11/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df82dcb0b03a33f8ec96893b0edd619">&#9670;&#160;</a></span>sync() <span class="overload">[12/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -648,7 +681,7 @@ Sample app created by Bind</div></div>
 </div>
 </div>
 <a id="a2875fc428d46a8bcd0972755dd6148e7" name="a2875fc428d46a8bcd0972755dd6148e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2875fc428d46a8bcd0972755dd6148e7">&#9670;&#160;</a></span>sync() <span class="overload">[12/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2875fc428d46a8bcd0972755dd6148e7">&#9670;&#160;</a></span>sync() <span class="overload">[13/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

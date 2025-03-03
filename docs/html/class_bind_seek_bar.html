@@ -126,8 +126,8 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BindSeekBar</b> ()</td></tr>
 <tr class="memdesc:aa384590f6368076a70007a4d4442007e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor to create a <code><a class="el" href="class_bind_seek_bar.html" title="Represents a SeekBar object in the Bind framework.">BindSeekBar</a></code> with default properties. <br /></td></tr>
 <tr class="separator:aa384590f6368076a70007a4d4442007e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a928dc2e3ed0598f32e7d95e7f56a6623" id="r_a928dc2e3ed0598f32e7d95e7f56a6623"><td class="memItemLeft" align="right" valign="top"><a id="a928dc2e3ed0598f32e7d95e7f56a6623" name="a928dc2e3ed0598f32e7d95e7f56a6623"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(int16_t))</td></tr>
+<tr class="memitem:a928dc2e3ed0598f32e7d95e7f56a6623" id="r_a928dc2e3ed0598f32e7d95e7f56a6623"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_seek_bar.html#a928dc2e3ed0598f32e7d95e7f56a6623">setCallback</a> (void(*callback)(int16_t))</td></tr>
+<tr class="memdesc:a928dc2e3ed0598f32e7d95e7f56a6623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Callback function for the SeekBar.  <br /></td></tr>
 <tr class="separator:a928dc2e3ed0598f32e7d95e7f56a6623"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5093d803228fe5c024127cb48ee83ab1" id="r_a5093d803228fe5c024127cb48ee83ab1"><td class="memItemLeft" align="right" valign="top"><a id="a5093d803228fe5c024127cb48ee83ab1" name="a5093d803228fe5c024127cb48ee83ab1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCallback</b> (int16_t valueIn)</td></tr>
@@ -220,6 +220,42 @@ BindSeekBar</div></div>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes written to the output array. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView</a>.</p>
+
+</div>
+</div>
+<a id="a928dc2e3ed0598f32e7d95e7f56a6623" name="a928dc2e3ed0598f32e7d95e7f56a6623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a928dc2e3ed0598f32e7d95e7f56a6623">&#9670;&#160;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BindSeekBar::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(int16_t)&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Callback function for the SeekBar. </p>
+<p>This callback function is called when the SeekBar value is changed. The signature of the callback function should be like: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> callback(int16_t <a class="code hl_variable" href="class_bind_seek_bar.html#a7ccc195e9d64b2aa8bb2adc878ad88fe">value</a>)</div>
+<div class="ttc" id="aclass_bind_seek_bar_html_a7ccc195e9d64b2aa8bb2adc878ad88fe"><div class="ttname"><a href="class_bind_seek_bar.html#a7ccc195e9d64b2aa8bb2adc878ad88fe">BindSeekBar::value</a></div><div class="ttdeci">int16_t value</div><div class="ttdoc">Current value selected on the SeekBar.</div><div class="ttdef"><b>Definition</b> BindSeekBar.hpp:37</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

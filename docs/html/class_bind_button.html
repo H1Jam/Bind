@@ -131,8 +131,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setlabel</b> (const c
 <tr class="memitem:ad3d95ddcbb28bf8029d03ec6434c24c0" id="r_ad3d95ddcbb28bf8029d03ec6434c24c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_button.html#ad3d95ddcbb28bf8029d03ec6434c24c0">setLabel</a> (const char *cstr)</td></tr>
 <tr class="memdesc:ad3d95ddcbb28bf8029d03ec6434c24c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for the button.  <br /></td></tr>
 <tr class="separator:ad3d95ddcbb28bf8029d03ec6434c24c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee842be5451ea3f155192671572e61bd" id="r_aee842be5451ea3f155192671572e61bd"><td class="memItemLeft" align="right" valign="top"><a id="aee842be5451ea3f155192671572e61bd" name="aee842be5451ea3f155192671572e61bd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(void))</td></tr>
+<tr class="memitem:aee842be5451ea3f155192671572e61bd" id="r_aee842be5451ea3f155192671572e61bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">setCallback</a> (void(*callback)(void))</td></tr>
+<tr class="memdesc:aee842be5451ea3f155192671572e61bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the press callback function for the button.  <br /></td></tr>
 <tr class="separator:aee842be5451ea3f155192671572e61bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19aaae804ac3e4d9119da2132ec8efaa" id="r_a19aaae804ac3e4d9119da2132ec8efaa"><td class="memItemLeft" align="right" valign="top"><a id="a19aaae804ac3e4d9119da2132ec8efaa" name="a19aaae804ac3e4d9119da2132ec8efaa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCallback</b> ()</td></tr>
@@ -261,6 +261,41 @@ BindButton</div></div>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes written to the output buffer. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView</a>.</p>
+
+</div>
+</div>
+<a id="aee842be5451ea3f155192671572e61bd" name="aee842be5451ea3f155192671572e61bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee842be5451ea3f155192671572e61bd">&#9670;&#160;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BindButton::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the press callback function for the button. </p>
+<p>This callback function is called when the button is pressed. The signature of the callback function should be like:backColor </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> callback()</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

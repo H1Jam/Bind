@@ -122,8 +122,8 @@ Inheritance diagram for BindJoystick:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acc9ee845abc5a76a46dbd68350cb0624" id="r_acc9ee845abc5a76a46dbd68350cb0624"><td class="memItemLeft" align="right" valign="top"><a id="acc9ee845abc5a76a46dbd68350cb0624" name="acc9ee845abc5a76a46dbd68350cb0624"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(int16_t, int16_t))</td></tr>
+<tr class="memitem:acc9ee845abc5a76a46dbd68350cb0624" id="r_acc9ee845abc5a76a46dbd68350cb0624"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_joystick.html#acc9ee845abc5a76a46dbd68350cb0624">setCallback</a> (void(*callback)(int16_t, int16_t))</td></tr>
+<tr class="memdesc:acc9ee845abc5a76a46dbd68350cb0624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Callback function for the joystick.  <br /></td></tr>
 <tr class="separator:acc9ee845abc5a76a46dbd68350cb0624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab86865f60110d232463feb8e8ec40a0b" id="r_ab86865f60110d232463feb8e8ec40a0b"><td class="memItemLeft" align="right" valign="top"><a id="ab86865f60110d232463feb8e8ec40a0b" name="ab86865f60110d232463feb8e8ec40a0b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCallback</b> (int16_t xIn, int16_t yIn)</td></tr>
@@ -196,7 +196,7 @@ Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</
 <div class="line">joystick.<a class="code hl_variable" href="class_bind_joystick.html#a5521957f82e20204e3ae30e91632fc9d">dimSize</a> = 200;</div>
 <div class="line">joystick.<a class="code hl_variable" href="class_bind_joystick.html#ac5ae4475e144d0a1a81f7173f226ed8b">springed</a> = <span class="keyword">true</span>;</div>
 <div class="line">joystick.<a class="code hl_variable" href="class_bind_joystick.html#a5b561bf0d0f6f07aea10c9ad724896de">cmdId</a> = BIND_ADD_OR_REFRESH_CMD;</div>
-<div class="line">joystick.setCallback(joystick1_onChange);</div>
+<div class="line">joystick.<a class="code hl_function" href="class_bind_joystick.html#acc9ee845abc5a76a46dbd68350cb0624">setCallback</a>(joystick1_onChange);</div>
 <div class="line">bind.sync(joystick);</div>
 <div class="line">...</div>
 <div class="line">void joystick1_onChange(int16_t <a class="code hl_variable" href="class_bind_joystick.html#a2a423b1bd0d5e7f3da887b2e07e022ce">x</a>, int16_t <a class="code hl_variable" href="class_bind_joystick.html#a279e9c4f4fc0a41fe792b5e2f7ff01b4">y</a>) {</div>
@@ -211,6 +211,7 @@ Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</
 <div class="ttc" id="aclass_bind_joystick_html_a5521957f82e20204e3ae30e91632fc9d"><div class="ttname"><a href="class_bind_joystick.html#a5521957f82e20204e3ae30e91632fc9d">BindJoystick::dimSize</a></div><div class="ttdeci">int16_t dimSize</div><div class="ttdoc">The dimensions (size) of the joystick.</div><div class="ttdef"><b>Definition</b> BindJoystick.hpp:69</div></div>
 <div class="ttc" id="aclass_bind_joystick_html_a5b561bf0d0f6f07aea10c9ad724896de"><div class="ttname"><a href="class_bind_joystick.html#a5b561bf0d0f6f07aea10c9ad724896de">BindJoystick::cmdId</a></div><div class="ttdeci">uint8_t cmdId</div><div class="ttdoc">Command identifier to add or refresh the joystick. See the notes for possible cmdId values.</div><div class="ttdef"><b>Definition</b> BindJoystick.hpp:68</div></div>
 <div class="ttc" id="aclass_bind_joystick_html_ac5ae4475e144d0a1a81f7173f226ed8b"><div class="ttname"><a href="class_bind_joystick.html#ac5ae4475e144d0a1a81f7173f226ed8b">BindJoystick::springed</a></div><div class="ttdeci">bool springed</div><div class="ttdoc">Indicates whether the joystick returns to the center automatically when released.</div><div class="ttdef"><b>Definition</b> BindJoystick.hpp:72</div></div>
+<div class="ttc" id="aclass_bind_joystick_html_acc9ee845abc5a76a46dbd68350cb0624"><div class="ttname"><a href="class_bind_joystick.html#acc9ee845abc5a76a46dbd68350cb0624">BindJoystick::setCallback</a></div><div class="ttdeci">void setCallback(void(*callback)(int16_t, int16_t))</div><div class="ttdoc">Set the Callback function for the joystick.</div><div class="ttdef"><b>Definition</b> BindJoystick.hpp:85</div></div>
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>check the examples for more information. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae8e10936d99e279ca0984947c3a9cc64" name="ae8e10936d99e279ca0984947c3a9cc64"></a>
@@ -248,6 +249,41 @@ Possible cmdId values for a <a class="el" href="class_bind_view.html">BindView</
 <dl class="section return"><dt>Returns</dt><dd>The offset representing the length of the serialized data. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView</a>.</p>
+
+</div>
+</div>
+<a id="acc9ee845abc5a76a46dbd68350cb0624" name="acc9ee845abc5a76a46dbd68350cb0624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9ee845abc5a76a46dbd68350cb0624">&#9670;&#160;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BindJoystick::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(int16_t, int16_t)&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Callback function for the joystick. </p>
+<p>This callback function is called when the joystick is moved. The signature of the callback function should be like: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> callback(int16_t <a class="code hl_variable" href="class_bind_joystick.html#a2a423b1bd0d5e7f3da887b2e07e022ce">x</a>, int16_t <a class="code hl_variable" href="class_bind_joystick.html#a279e9c4f4fc0a41fe792b5e2f7ff01b4">y</a>)</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

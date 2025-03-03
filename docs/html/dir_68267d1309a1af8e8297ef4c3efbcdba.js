@@ -7,6 +7,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "BindCanvasSettings.hpp", "_bind_canvas_settings_8hpp_source.html", null ],
     [ "BindChart.hpp", "_bind_chart_8hpp_source.html", null ],
     [ "BindColorPicker.hpp", "_bind_color_picker_8hpp_source.html", null ],
+    [ "BindDialog.hpp", "_bind_dialog_8hpp_source.html", null ],
     [ "BindGauge.hpp", "_bind_gauge_8hpp_source.html", null ],
     [ "BindGaugeCompact.hpp", "_bind_gauge_compact_8hpp_source.html", null ],
     [ "BindGaugeSimple.hpp", "_bind_gauge_simple_8hpp_source.html", null ],

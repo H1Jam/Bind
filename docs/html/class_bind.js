@@ -6,6 +6,7 @@ var class_bind =
     [ "sync", "class_bind.html#ada2b21bda8d982949f0de94b1877bed3", null ],
     [ "sync", "class_bind.html#a4a6a185d85cd3f585aadf95fbf9fc4cb", null ],
     [ "sync", "class_bind.html#a32f30ce88c898c30f08bd9f802b5b97d", null ],
+    [ "sync", "class_bind.html#abf8ff028eaa1c7722673754f45f8853e", null ],
     [ "sync", "class_bind.html#a2a98c3ffb0cf1fe0184ff6531527bd73", null ],
     [ "sync", "class_bind.html#a83f108de7c020b7a2e4dcc6d4e84ca89", null ],
     [ "sync", "class_bind.html#a0ac7d7ffcd3938794b827489541b999f", null ],

@@ -3,6 +3,7 @@ var class_bind_switch =
     [ "BindSwitch", "class_bind_switch.html#af252a5152999058de346c6bff8183fc6", null ],
     [ "BindSwitch", "class_bind_switch.html#a450bb1b4c5856fe056fcbd0ee43f3341", null ],
     [ "getBytes", "class_bind_switch.html#a55812d55dff7caa28bc8b82907904ac4", null ],
+    [ "setCallback", "class_bind_switch.html#a853067383dbb836198ca9327c11bf959", null ],
     [ "setLabel", "class_bind_switch.html#a77970556e5610095a9883cab8cf3eddd", null ],
     [ "cmdId", "class_bind_switch.html#a6f14f1ba15a341681259246fd310779b", null ],
     [ "fontSize", "class_bind_switch.html#ab61d2ed2b2e198d895406726f3e917a2", null ],

@@ -6,6 +6,7 @@ var annotated_dup =
     [ "BindCanvasSettings", "class_bind_canvas_settings.html", "class_bind_canvas_settings" ],
     [ "BindChart", "class_bind_chart.html", "class_bind_chart" ],
     [ "BindColorPicker", "class_bind_color_picker.html", "class_bind_color_picker" ],
+    [ "BindDialog", "class_bind_dialog.html", "class_bind_dialog" ],
     [ "BindGauge", "class_bind_gauge.html", "class_bind_gauge" ],
     [ "BindGaugeCompact", "class_bind_gauge_compact.html", "class_bind_gauge_compact" ],
     [ "BindGaugeSimple", "class_bind_gauge_simple.html", "class_bind_gauge_simple" ],

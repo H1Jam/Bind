@@ -171,7 +171,7 @@ UI Elements</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter"><img src="BindRectangle.jpg" alt="" class="inline" title="BindRectangle"/>      </td><td class="markdownTableBodyCenter">Represents a panel UI element   </td><td class="markdownTableBodyCenter"><a href="https://h1jam.github.io/Bind/class_bind_rectangle.html">BindRectangle</a>   </td><td class="markdownTableBodyCenter"><a href="https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/DrawBox/DrawBox.ino">DrawBox.ino</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter"><img src="BindDialog.jpg" alt="" class="inline" title="BindDialog"/>      </td><td class="markdownTableBodyCenter">(Soon) A customizable dialog box   </td><td class="markdownTableBodyCenter">TBA   </td><td class="markdownTableBodyCenter">TBA    </td></tr>
+<td class="markdownTableBodyCenter"><img src="BindDialog.jpg" alt="" class="inline" title="BindDialog"/>     <img src="DialogPassword.jpg" alt="" class="inline" title="DialogPassword"/>      </td><td class="markdownTableBodyCenter">(Soon) A customizable dialog box   </td><td class="markdownTableBodyCenter">TBA   </td><td class="markdownTableBodyCenter">TBA    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">Screen Configs   </td><td class="markdownTableBodyCenter">Configuration settings for a BindCanvas application screen.   </td><td class="markdownTableBodyCenter"><a href="https://h1jam.github.io/Bind/class_bind_canvas_settings.html">BindCanvasSettings</a>   </td><td class="markdownTableBodyCenter"><a href="https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/ScreenConfigs/ScreenConfigs.ino">ScreenConfigs.ino</a>   </td></tr>
 </table>
@@ -228,7 +228,7 @@ Example Usage 1 (Using Serial port over USB for all boards)</h2>
 <div class="line">  myButton.setlabel(<span class="stringliteral">&quot;Toggle LED&quot;</span>);</div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527">cmdId</a> = BIND_ADD_OR_REFRESH_CMD;</div>
 <div class="line">  <span class="comment">// Setting the click callback</span></div>
-<div class="line">  myButton.setCallback(myButtonClicked);</div>
+<div class="line">  myButton.<a class="code hl_function" href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">setCallback</a>(myButtonClicked);</div>
 <div class="line">  <span class="comment">// Synchronize the myButton object with BindCanvas.</span></div>
 <div class="line">  bind.<a class="code hl_function" href="class_bind.html#a499a45edadc5ff67b847943b8d77b936">sync</a>(myButton);</div>
 <div class="line">}</div>
@@ -249,6 +249,7 @@ Example Usage 1 (Using Serial port over USB for all boards)</h2>
 <div class="ttc" id="aclass_bind_button_html_a47f602034ad63678262d05c2d9e2f8ec"><div class="ttname"><a href="class_bind_button.html#a47f602034ad63678262d05c2d9e2f8ec">BindButton::x</a></div><div class="ttdeci">int16_t x</div><div class="ttdoc">X-coordinate position of the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:50</div></div>
 <div class="ttc" id="aclass_bind_button_html_a617988e924c832c49259cee2fb689ec4"><div class="ttname"><a href="class_bind_button.html#a617988e924c832c49259cee2fb689ec4">BindButton::y</a></div><div class="ttdeci">int16_t y</div><div class="ttdoc">Y-coordinate position of the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:51</div></div>
 <div class="ttc" id="aclass_bind_button_html_a8e5678dde2f7cc849fd218c916f06527"><div class="ttname"><a href="class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527">BindButton::cmdId</a></div><div class="ttdeci">uint8_t cmdId</div><div class="ttdoc">Command ID for the button. See the notes for possible cmdId values.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:52</div></div>
+<div class="ttc" id="aclass_bind_button_html_aee842be5451ea3f155192671572e61bd"><div class="ttname"><a href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">BindButton::setCallback</a></div><div class="ttdeci">void setCallback(void(*callback)(void))</div><div class="ttdoc">Set the press callback function for the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:89</div></div>
 <div class="ttc" id="aclass_bind_html"><div class="ttname"><a href="class_bind.html">Bind</a></div><div class="ttdoc">The Bind class provides a framework for creating interactive applications with BindCanvas.</div><div class="ttdef"><b>Definition</b> Bind.h:62</div></div>
 <div class="ttc" id="aclass_bind_html_a499a45edadc5ff67b847943b8d77b936"><div class="ttname"><a href="class_bind.html#a499a45edadc5ff67b847943b8d77b936">Bind::sync</a></div><div class="ttdeci">void sync(BindView &amp;obj)</div><div class="ttdoc">Synchronizes a BindView object with the BindCanvas screen. Same as sync(BindView *obj) but uses the o...</div><div class="ttdef"><b>Definition</b> Bind.cpp:74</div></div>
 <div class="ttc" id="aclass_bind_html_a726c8026427ca83550690596fd53a4fa"><div class="ttname"><a href="class_bind.html#a726c8026427ca83550690596fd53a4fa">Bind::init</a></div><div class="ttdeci">bool init(Stream &amp;stream, void(&amp;setupCallback)(int16_t, int16_t))</div><div class="ttdoc">Initializes the Bind framework with communication and screen setup.</div><div class="ttdef"><b>Definition</b> Bind.cpp:23</div></div>
@@ -285,7 +286,7 @@ Example Usage 2 (Using Bluetooth for ESP32)</h2>
 <div class="line">  myButton.setlabel(<span class="stringliteral">&quot;Toggle LED&quot;</span>);</div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527">cmdId</a> = BIND_ADD_OR_REFRESH_CMD;</div>
 <div class="line">  <span class="comment">// Setting the click callback</span></div>
-<div class="line">  myButton.setCallback(myButtonClicked);</div>
+<div class="line">  myButton.<a class="code hl_function" href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">setCallback</a>(myButtonClicked);</div>
 <div class="line">  <span class="comment">// Synchronize the myButton object with BindCanvas.</span></div>
 <div class="line">  bind.<a class="code hl_function" href="class_bind.html#a499a45edadc5ff67b847943b8d77b936">sync</a>(myButton);</div>
 <div class="line">}</div>

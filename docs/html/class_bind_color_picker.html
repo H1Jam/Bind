@@ -122,8 +122,8 @@ Inheritance diagram for BindColorPicker:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a763aade65fee3ab79af790c7a64db221" id="r_a763aade65fee3ab79af790c7a64db221"><td class="memItemLeft" align="right" valign="top"><a id="a763aade65fee3ab79af790c7a64db221" name="a763aade65fee3ab79af790c7a64db221"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(uint8_t, uint8_t, uint8_t))</td></tr>
+<tr class="memitem:a763aade65fee3ab79af790c7a64db221" id="r_a763aade65fee3ab79af790c7a64db221"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_color_picker.html#a763aade65fee3ab79af790c7a64db221">setCallback</a> (void(*callback)(uint8_t, uint8_t, uint8_t))</td></tr>
+<tr class="memdesc:a763aade65fee3ab79af790c7a64db221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Callback function for the color picker.  <br /></td></tr>
 <tr class="separator:a763aade65fee3ab79af790c7a64db221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf278cfcd3b84ac10e7c8b5678959bd2" id="r_aaf278cfcd3b84ac10e7c8b5678959bd2"><td class="memItemLeft" align="right" valign="top"><a id="aaf278cfcd3b84ac10e7c8b5678959bd2" name="aaf278cfcd3b84ac10e7c8b5678959bd2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCallback</b> (uint8_t redIn, uint8_t greenIn, uint8_t blueIn)</td></tr>
@@ -200,13 +200,14 @@ BindColorPicker</div></div>
 <div class="line">colorPicker.<a class="code hl_variable" href="class_bind_color_picker.html#a4339be0a91a5ec39c703d4ef973523d9">green</a> = 0;</div>
 <div class="line">colorPicker.<a class="code hl_variable" href="class_bind_color_picker.html#a3e5df0041a59f1c136a64356c9c4b763">blue</a> = 0;</div>
 <div class="line">colorPicker.<a class="code hl_variable" href="class_bind_color_picker.html#a13fa0f23c7dce27a1cd439b7ed311ea5">cmdId</a> = BIND_ADD_OR_REFRESH_CMD;</div>
-<div class="line">colorPicker.setCallback(colorPicker_changed);</div>
+<div class="line">colorPicker.<a class="code hl_function" href="class_bind_color_picker.html#a763aade65fee3ab79af790c7a64db221">setCallback</a>(colorPicker_changed);</div>
 <div class="line">bind.sync(colorPicker);</div>
 <div class="ttc" id="aclass_bind_color_picker_html"><div class="ttname"><a href="class_bind_color_picker.html">BindColorPicker</a></div><div class="ttdoc">BindColorPicker Class.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:56</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_a11f720d7434206e9dfc0c89343930b8a"><div class="ttname"><a href="class_bind_color_picker.html#a11f720d7434206e9dfc0c89343930b8a">BindColorPicker::dimSize</a></div><div class="ttdeci">int16_t dimSize</div><div class="ttdoc">The dimensions (size) of the color picker.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:68</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_a13fa0f23c7dce27a1cd439b7ed311ea5"><div class="ttname"><a href="class_bind_color_picker.html#a13fa0f23c7dce27a1cd439b7ed311ea5">BindColorPicker::cmdId</a></div><div class="ttdeci">uint8_t cmdId</div><div class="ttdoc">Command identifier to add or refresh the color picker. See the notes for possible cmdId values.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:67</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_a3e5df0041a59f1c136a64356c9c4b763"><div class="ttname"><a href="class_bind_color_picker.html#a3e5df0041a59f1c136a64356c9c4b763">BindColorPicker::blue</a></div><div class="ttdeci">uint8_t blue</div><div class="ttdoc">The initial value for the blue component of the selected color (0-255).</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:71</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_a4339be0a91a5ec39c703d4ef973523d9"><div class="ttname"><a href="class_bind_color_picker.html#a4339be0a91a5ec39c703d4ef973523d9">BindColorPicker::green</a></div><div class="ttdeci">uint8_t green</div><div class="ttdoc">The initial value for the green component of the selected color (0-255).</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:70</div></div>
+<div class="ttc" id="aclass_bind_color_picker_html_a763aade65fee3ab79af790c7a64db221"><div class="ttname"><a href="class_bind_color_picker.html#a763aade65fee3ab79af790c7a64db221">BindColorPicker::setCallback</a></div><div class="ttdeci">void setCallback(void(*callback)(uint8_t, uint8_t, uint8_t))</div><div class="ttdoc">Set the Callback function for the color picker.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:84</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_aa55c6761cb2a6f2dcb4e68ace2a091d8"><div class="ttname"><a href="class_bind_color_picker.html#aa55c6761cb2a6f2dcb4e68ace2a091d8">BindColorPicker::y</a></div><div class="ttdeci">int16_t y</div><div class="ttdoc">The y-coordinate position of the color picker on the screen.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:66</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_ac3ad75c56c995042c751e66345abfed8"><div class="ttname"><a href="class_bind_color_picker.html#ac3ad75c56c995042c751e66345abfed8">BindColorPicker::red</a></div><div class="ttdeci">uint8_t red</div><div class="ttdoc">The initial value for the red component of the selected color (0-255).</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:69</div></div>
 <div class="ttc" id="aclass_bind_color_picker_html_ad9e0365f96f50a914559467e52850dab"><div class="ttname"><a href="class_bind_color_picker.html#ad9e0365f96f50a914559467e52850dab">BindColorPicker::x</a></div><div class="ttdeci">int16_t x</div><div class="ttdoc">The x-coordinate position of the color picker on the screen.</div><div class="ttdef"><b>Definition</b> BindColorPicker.hpp:65</div></div>
@@ -247,6 +248,41 @@ BindColorPicker</div></div>
 <dl class="section return"><dt>Returns</dt><dd>The offset representing the length of the serialized data. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView</a>.</p>
+
+</div>
+</div>
+<a id="a763aade65fee3ab79af790c7a64db221" name="a763aade65fee3ab79af790c7a64db221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a763aade65fee3ab79af790c7a64db221">&#9670;&#160;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BindColorPicker::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(uint8_t, uint8_t, uint8_t)&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Callback function for the color picker. </p>
+<p>This callback function is called when the color picker value is changed. The signature of the callback function should be like: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> callback(uint8_t <a class="code hl_variable" href="class_bind_color_picker.html#ac3ad75c56c995042c751e66345abfed8">red</a>, uint8_t <a class="code hl_variable" href="class_bind_color_picker.html#a4339be0a91a5ec39c703d4ef973523d9">green</a>, uint8_t <a class="code hl_variable" href="class_bind_color_picker.html#a3e5df0041a59f1c136a64356c9c4b763">blue</a>)</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

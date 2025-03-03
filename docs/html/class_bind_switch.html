@@ -135,8 +135,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab087d9db980154400c524457ade32d29" id="r_ab087d9db980154400c524457ade32d29"><td class="memItemLeft" align="right" valign="top"><a id="ab087d9db980154400c524457ade32d29" name="ab087d9db980154400c524457ade32d29"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setlabel</b> (const char *cstr)</td></tr>
 <tr class="separator:ab087d9db980154400c524457ade32d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a853067383dbb836198ca9327c11bf959" id="r_a853067383dbb836198ca9327c11bf959"><td class="memItemLeft" align="right" valign="top"><a id="a853067383dbb836198ca9327c11bf959" name="a853067383dbb836198ca9327c11bf959"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (void(*callback)(bool))</td></tr>
+<tr class="memitem:a853067383dbb836198ca9327c11bf959" id="r_a853067383dbb836198ca9327c11bf959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bind_switch.html#a853067383dbb836198ca9327c11bf959">setCallback</a> (void(*callback)(bool))</td></tr>
+<tr class="memdesc:a853067383dbb836198ca9327c11bf959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Callback function for the toggle switch.  <br /></td></tr>
 <tr class="separator:a853067383dbb836198ca9327c11bf959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d0fbc2dfb30b7d36f3e5244a41108ed" id="r_a2d0fbc2dfb30b7d36f3e5244a41108ed"><td class="memItemLeft" align="right" valign="top"><a id="a2d0fbc2dfb30b7d36f3e5244a41108ed" name="a2d0fbc2dfb30b7d36f3e5244a41108ed"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCallback</b> (bool val)</td></tr>
@@ -272,6 +272,42 @@ BindSwitch</div></div>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes written to the output array. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView</a>.</p>
+
+</div>
+</div>
+<a id="a853067383dbb836198ca9327c11bf959" name="a853067383dbb836198ca9327c11bf959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853067383dbb836198ca9327c11bf959">&#9670;&#160;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BindSwitch::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(bool)&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Callback function for the toggle switch. </p>
+<p>This callback function is called when the toggle switch value is changed. The signature of the callback function should be like: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> callback(<span class="keywordtype">bool</span> <a class="code hl_variable" href="class_bind_switch.html#a16a7b97839fca75f7c1a79cca7426276">value</a>)</div>
+<div class="ttc" id="aclass_bind_switch_html_a16a7b97839fca75f7c1a79cca7426276"><div class="ttname"><a href="class_bind_switch.html#a16a7b97839fca75f7c1a79cca7426276">BindSwitch::value</a></div><div class="ttdeci">bool value</div><div class="ttdoc">The current state (ON/OFF) of the toggle switch.</div><div class="ttdef"><b>Definition</b> BindSwitch.hpp:63</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

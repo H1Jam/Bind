@@ -7,6 +7,7 @@ var hierarchy =
       [ "BindCanvasSettings", "class_bind_canvas_settings.html", null ],
       [ "BindChart", "class_bind_chart.html", null ],
       [ "BindColorPicker", "class_bind_color_picker.html", null ],
+      [ "BindDialog", "class_bind_dialog.html", null ],
       [ "BindGauge", "class_bind_gauge.html", null ],
       [ "BindGaugeCompact", "class_bind_gauge_compact.html", null ],
       [ "BindGaugeSimple", "class_bind_gauge_simple.html", null ],

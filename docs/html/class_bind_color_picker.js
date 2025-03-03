@@ -1,6 +1,7 @@
 var class_bind_color_picker =
 [
     [ "getBytes", "class_bind_color_picker.html#a4f7c67ff73e689090fb4d20d382482a0", null ],
+    [ "setCallback", "class_bind_color_picker.html#a763aade65fee3ab79af790c7a64db221", null ],
     [ "blue", "class_bind_color_picker.html#a3e5df0041a59f1c136a64356c9c4b763", null ],
     [ "cmdId", "class_bind_color_picker.html#a13fa0f23c7dce27a1cd439b7ed311ea5", null ],
     [ "dimSize", "class_bind_color_picker.html#a11f720d7434206e9dfc0c89343930b8a", null ],
