@@ -145,13 +145,13 @@ void Bind::sync()
   }
 }
 
-int Bind::updateScreen(uint8_t inp)
+void Bind::updateScreen(uint8_t inp)
 {
-  if (dataParser.update(inp) > 0)
+  uint16_t res = dataParser.update(inp);
+  if (res > 0)
   {
-    return updateScreenInternal(dataParser.buf);
+    updateScreenInternal(dataParser.buf, res);
   }
-  return 0;
 }
 
 void Bind::updateScreen(Stream *stream)
@@ -162,7 +162,7 @@ void Bind::updateScreen(Stream *stream)
   }
 }
 
-int Bind::updateScreenInternal(uint8_t *dataFrame)
+void Bind::updateScreenInternal(uint8_t *dataFrame, uint16_t dataLen)
 {
   if ((millis() - lastMs) < 5)
   {
@@ -178,6 +178,7 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
   case BIND_ID_SETUP_CMD:
     valTmp1 = ((0xFFFF & dataFrame[4]) << 8) | (dataFrame[3] & 0xFF);
     valTmp2 = ((0xFFFF & dataFrame[6]) << 8) | (dataFrame[5] & 0xFF);
+    // dataLen is 9 for BIND_ID_SETUP_CMD without timestamp
     screenInit(valTmp1, valTmp2);
     break;
   case BIND_ID_BUTTON:
@@ -212,14 +213,14 @@ int Bind::updateScreenInternal(uint8_t *dataFrame)
     dialogResult(dataFrame[3], dataFrame[5] == 1, (const char *)&dataFrame[7], dataFrame[6]);
     break;
   default:
-    return 0;
     break;
   }
-  return dataFrame[2];
 }
 
 void Bind::screenInit(int16_t w, int16_t h)
 {
+  screenWidth = w;
+  screenHeight = h;
   if (*setupCallback != NULL)
   {
     setupCallback(w, h);
