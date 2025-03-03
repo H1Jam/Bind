@@ -62,6 +62,8 @@ class Bind
 {
 public:
   // Constructors and setup functions...
+  int16_t screenWidth = 0;
+  int16_t screenHeight = 0;
 
   Bind()
   {
@@ -335,9 +337,9 @@ private:
   bool internalInit(Stream *stream, void (*setupCallback)(int16_t, int16_t));
   void screenInit(int16_t w, int16_t h);
   Stream *bindStream = NULL;
-  int updateScreen(uint8_t inp);
+  void updateScreen(uint8_t inp);
   void updateScreen(Stream *stream);
-  int updateScreenInternal(uint8_t *dataFrame);
+  void updateScreenInternal(uint8_t *dataFrame, uint16_t dataLen);
   void updateJoystick(uint8_t tag, int16_t valX, int16_t valY);
   void updateColorPicker(uint8_t tag, uint8_t r, uint8_t g, uint8_t b);
   void updateSeekBar(uint8_t tag, int16_t val);
