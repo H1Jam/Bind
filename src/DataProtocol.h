@@ -23,7 +23,7 @@ public:
   static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len);
   static size_t sendFrame(uint8_t *destBuffer, uint8_t const *buffer, size_t len, Stream *stream);
   uint8_t *buf = slPacker.buf;
-  int update(uint8_t inp);
+  uint16_t update(uint8_t inp);
 };
 
 #endif /* __DATAPROTOCOL_H */
