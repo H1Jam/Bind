@@ -8,7 +8,7 @@ uint16_t crcRcv;
 unsigned long mLastDigitTimeStamp = 0;
 void printArray(uint8_t const *buffer, size_t len);
 
-int DataParser::update(uint8_t inp)
+uint16_t DataParser::update(uint8_t inp)
 {
   #ifdef DEBUG_MSG
   Serial.print(inp, HEX);
