@@ -50,9 +50,9 @@ public:
   int16_t x;         ///< X-coordinate position of the button
   int16_t y;         ///< Y-coordinate position of the button
   uint8_t cmdId = 0; ///< Command ID for the button. See the notes for possible cmdId values.
-  int16_t fontSize;  ///< Font size of the button's label
-  int32_t textColor; ///< Text color of the button
-  int32_t backColor; ///< Background color of the button
+  int16_t fontSize = 16;  ///< Font size of the button's label
+  int32_t textColor = WHITE; ///< Text color of the button
+  int32_t backColor = BLUE; ///< Background color of the button
 
   [[deprecated("Use setLabel instead")]]
   void setlabel(const char *cstr)
