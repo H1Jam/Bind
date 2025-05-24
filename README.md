@@ -74,7 +74,7 @@ Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) 
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | N/A | Works OK but has a very limited RAM. |
 | ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. (Use The Arduino ESP32 v3.0.1 or higher) |
-| Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | No example code is avaliable yet | Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare). |
+| Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Soon | Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare). |
 | ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A | No example code is avaliable yet |  |
 | Other Boards | :heavy_check_mark: | :heavy_check_mark: | N/A | TBD | USB serial port and external Bluetooth dongle should work with all boards. |
 
