@@ -1,6 +1,7 @@
-#ifdef ARDUINO_ARCH_ESP32
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
 #ifndef BL_ONLY_BIND
 #include "BindOverWifi.h"
+
 uint8_t UDPStream::discoveryMsg[6] = { 0x42, 0X69, 0X6E, 0X64, 0X44, 0X43 };   // BindDC
 uint8_t UDPStream::connectMsg[6] = { 0x42, 0X69, 0X6E, 0X64, 0X43, 0X4E };     // BindCN
 uint8_t UDPStream::stopMsg[6] = { 0x42, 0X69, 0X6E, 0X64, 0X53, 0X54 };        // BindST
@@ -125,4 +126,4 @@ void UDPStream::handleUDP(UDPStream& udpStream, AsyncUDPPacket& packet) {
   }
 }
 #endif // BL_ONLY_BIND
-#endif // ARDUINO_ARCH_ESP32
+#endif // defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
