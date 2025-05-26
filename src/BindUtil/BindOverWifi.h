@@ -1,11 +1,12 @@
 #ifndef BINDOVERUDP_H
 #define BINDOVERUDP_H
-#ifdef ARDUINO_ARCH_ESP32
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
 #ifndef BL_ONLY_BIND
 #include "Bind.h"
 #include <Arduino.h>
 #include <Stream.h>
-#include <AsyncUDP.h>
+#include <WiFi.h>
+#include <AsyncUDP.h> // Both ESP32 and RP2040 support AsyncUDP
 
 #define UDP_DEBUG_MSG 0 // Set to 1 to enable debug messages
 
@@ -29,6 +30,7 @@ private:
     uint32_t lastHeartbeat = 0;
     const char* bindname;
 public:
+    UDPStream() : canvasIP(IPAddress(0, 0, 0, 0)), sendPackets(false), _bind(nullptr) {}
     bool begin(const char* bindname, Bind &bind);
     bool begin(Bind &bind, const char* bindname);
     size_t write(const uint8_t *buffer, size_t size) override;
@@ -39,5 +41,5 @@ public:
     size_t write(uint8_t) override { return 0; }
 };
 #endif // BL_ONLY_BIND
-#endif // ARDUINO_ARCH_ESP32
+#endif // defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
 #endif // BINDOVERUDP_H
