@@ -63,7 +63,7 @@ public:
      */
     BindCanvasSettings()
     {
-        setlabel("BindApp");
+        setLabel("BindApp");
     }
 
     int8_t screenOrientation = 0; ///< Screen orientation value.
@@ -77,9 +77,15 @@ public:
      *
      * @param cstr The label text for the screen.
      */
-    void setlabel(const char *cstr)
+    void setLabel(const char *cstr)
     {
         str = cstr;
+    }
+
+    [[deprecated("Use setLabel instead")]]
+    void setlabel(const char *cstr)
+    {
+        setLabel(cstr);
     }
 
     /**
