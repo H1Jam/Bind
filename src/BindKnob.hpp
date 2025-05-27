@@ -41,7 +41,7 @@ public:
   BindKnob(const char *cstr)
   {
     this->tag = tagIndex++;
-    setlabel(cstr);
+    setLabel(cstr);
   }
 
   /**
@@ -69,9 +69,15 @@ public:
    *
    * @param cstr A pointer to the character array representing the label text.
    */
-  void setlabel(const char *cstr)
+  void setLabel(const char *cstr)
   {
     str = cstr;
+  }
+
+  [[deprecated("Use setLabel instead")]]
+  void setlabel(const char *cstr)
+  {
+    setLabel(cstr);
   }
 
   /**
