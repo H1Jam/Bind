@@ -1,4 +1,4 @@
-#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_RASPBERRY_PI_PICO_2W) || defined(ARDUINO_ARCH_ESP8266)
 #ifndef BL_ONLY_BIND
 #include "BindOverWifi.h"
 
