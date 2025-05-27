@@ -37,13 +37,13 @@ public:
    */
   BindButton(const char *cstr)
   {
-    setlabel(cstr);
+    setLabel(cstr);
     this->tag = tagIndex++;
   }
 
   BindButton()
   {
-    setlabel("Button");
+    setLabel("Button");
     this->tag = tagIndex++;
   }
 
