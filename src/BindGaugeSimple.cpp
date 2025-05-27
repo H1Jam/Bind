@@ -5,7 +5,7 @@
 BindGaugeSimple::BindGaugeSimple(const char *cstr)
 {
     this->tag = tagIndex++;
-    setlabel(cstr);
+    setLabel(cstr);
 }
 
 uint16_t BindGaugeSimple::getBytes(uint8_t *out) 
