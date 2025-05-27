@@ -1,12 +1,17 @@
 #ifndef BINDOVERUDP_H
 #define BINDOVERUDP_H
-#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_RASPBERRY_PI_PICO_2W) || defined(ARDUINO_ARCH_ESP8266)
 #ifndef BL_ONLY_BIND
 #include "Bind.h"
 #include <Arduino.h>
 #include <Stream.h>
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_RASPBERRY_PI_PICO_2W)
 #include <WiFi.h>
 #include <AsyncUDP.h> // Both ESP32 and RP2040 support AsyncUDP
+#elif defined(ARDUINO_ARCH_ESP8266)
+#include <ESP8266WiFi.h>
+#include <BindUtil/BindAsyncUDP.h> // ESP8266 uses ESPAsyncUDP
+#endif
 
 #define UDP_DEBUG_MSG 0 // Set to 1 to enable debug messages
 
