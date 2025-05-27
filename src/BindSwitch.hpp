@@ -74,7 +74,7 @@ public:
         str = cstr;
     }
 
-    //backwards compatibility
+    [[deprecated("Use setLabel instead")]]
     void setlabel(const char *cstr)
     {
         setLabel(cstr);
