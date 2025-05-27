@@ -85,9 +85,15 @@ public:
      *
      * @param cstr A pointer to the label text.
      */
-    void setlabel(const char *cstr)
+    void setLabel(const char *cstr)
     {
         str = cstr;
+    }
+
+    [[deprecated("Use setLabel instead")]]
+    void setlabel(const char *cstr)
+    {
+        setLabel(cstr);
     }
 
     /**
