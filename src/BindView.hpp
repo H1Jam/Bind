@@ -2,6 +2,10 @@
 #define __BINDVIEW_HPP
 #include <stdint.h>
 
+#if defined(ARDUINO_ARCH_ESP8266)
+#include <cstdio>  //for sprintf
+#endif
+
 #define BLACK 0xFF000000
 #define DKGRAY 0xFF444444
 #define GRAY 0xFF888888
