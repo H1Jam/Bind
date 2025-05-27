@@ -5,5 +5,5 @@
 BindGauge::BindGauge(const char *cstr)
 {
     this->tag = tagIndex++;
-    setlabel(cstr);
+    setLabel(cstr);
 }
