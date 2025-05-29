@@ -73,9 +73,9 @@ Check the library [documentation](https://h1jam.github.io/Bind/class_bind.html) 
 | Board | USB | Bluetooth dongle (HC-06, HM-10, or similar) | Built-in Bluetooth| Wifi | Note |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | Avr Arduino (Uno, Pro Micro,...)| :heavy_check_mark: | :heavy_check_mark: | N/A | N/A | Works OK but has a very limited RAM. |
-| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. (Use The Arduino ESP32 v3.0.1 or higher) |
-| Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Soon | Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare). |
-| ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A | Soon |  |
+| ESP32 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Board of choice. Use The Arduino ESP32 v3.0.1 or higher |
+| Raspberry Pi Pico W | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Is great with Wifi but Pico's Bluetooth driver is not perfect yet. Use arduino-pico v4.5.4 or higher |
+| ESP8266 | :heavy_check_mark: | :heavy_check_mark: | N/A | :heavy_check_mark: |  |
 | Other Boards | :heavy_check_mark: | :heavy_check_mark: | N/A | TBD | USB serial port and external Bluetooth dongle should work with all boards. |
 
 
