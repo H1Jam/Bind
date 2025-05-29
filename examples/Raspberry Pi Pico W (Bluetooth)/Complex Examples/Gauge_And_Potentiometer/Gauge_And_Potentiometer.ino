@@ -44,7 +44,7 @@ void addSpeedGauge(int16_t screenHeight) {
   speedGauge.arcGreenMaxVal = 100.0f;
   speedGauge.arcYellowMaxVal = 150.0f;
   speedGauge.arcRedMaxVal = 180.0f;
-  speedGauge.setlabel("Speed Km/h");
+  speedGauge.setLabel("Speed Km/h");
   speedGauge.cmdId = BIND_ADD_OR_REFRESH_CMD;
   bind.sync(speedGauge);
 }

@@ -46,7 +46,7 @@ void addKnobs() {
   knob1.minValue = 0;
   knob1.maxValue = 100;
   knob1.value = 50;  // Initial value
-  knob1.setlabel("knob1");
+  knob1.setLabel("knob1");
   knob1.setCallback(knob1_changed); // Set the callback function for the knob1 object.
   bind.sync(knob1);
 
@@ -58,7 +58,7 @@ void addKnobs() {
   knob2.minValue = 0;
   knob2.maxValue = 100;
   knob2.value = 25;  // Initial value
-  knob2.setlabel("knob2");
+  knob2.setLabel("knob2");
   knob2.setCallback(knob2_changed); // Set the callback function for the knob2 object.
   bind.sync(knob2);
 }

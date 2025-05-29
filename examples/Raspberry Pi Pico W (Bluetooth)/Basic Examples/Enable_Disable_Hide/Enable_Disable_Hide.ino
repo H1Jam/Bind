@@ -72,7 +72,7 @@ void addButton1() {
   button1.x = 100;
   button1.y = 300;
   // Set the Button's text label.
-  button1.setlabel("Toggle LED");          // button label
+  button1.setLabel("Toggle LED");          // button label
   button1.fontSize = 23;                   // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
   button1.textColor = BLACK;               // Text color
   button1.backColor = RGB(153, 204, 255);  // button color
@@ -90,7 +90,7 @@ void addButtonShowHide() {
   buttonShowHide.x = 100;
   buttonShowHide.y = 150;
   // Set the Button's text label.
-  buttonShowHide.setlabel("Show/Hide");  // button label
+  buttonShowHide.setLabel("Show/Hide");  // button label
   buttonShowHide.fontSize = 23;          // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
   buttonShowHide.textColor = BLACK;      // Text color
   buttonShowHide.backColor = YELLOW;     // button color
@@ -107,7 +107,7 @@ void addButtonDisableEnable() {
   buttonDisableEnable.x = 80;
   buttonDisableEnable.y = 100;
   // Set the Button's text label.
-  buttonDisableEnable.setlabel("Enable/Disable");  // button label
+  buttonDisableEnable.setLabel("Enable/Disable");  // button label
   buttonDisableEnable.fontSize = 23;               // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
   buttonDisableEnable.textColor = BLACK;           // Text color
   buttonDisableEnable.backColor = YELLOW;          // button color

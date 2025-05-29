@@ -35,10 +35,10 @@ void switch1_changed(bool state) {
   // Implement your custom actions here:
   if (state) {
     digitalWrite(ledPin, HIGH); // Turn on the LED
-    switch1.setlabel("ON");
+    switch1.setLabel("ON");
   } else {
     digitalWrite(ledPin, LOW); // Turn off the LED
-    switch1.setlabel("OFF");
+    switch1.setLabel("OFF");
   }
   bind.sync(switch1);
 }
@@ -48,9 +48,9 @@ void switch1_changed(bool state) {
  */
 void switch2_changed(bool state) {
   if (state){
-    switch2.setlabel("Enable");
+    switch2.setLabel("Enable");
   }else{
-    switch2.setlabel("Disable");
+    switch2.setLabel("Disable");
   }
   switch2.cmdId = BIND_DATA_ONLY_CMD;
   bind.sync(switch2);
@@ -72,7 +72,7 @@ void addSwitches() {
   switch1.y = 100;
   switch1.fontSize = 16;
   switch1.textColor = YELLOW;
-  switch1.setlabel("OFF");
+  switch1.setLabel("OFF");
   // Set the initial state of the Switch (true for ON, false for OFF).
   switch1.value = false;
   // Specify the command to either add the object to the BindCanvas screen or refresh the existing one.
@@ -87,7 +87,7 @@ void addSwitches() {
   switch2.y = 150;
   switch2.fontSize = 16;
   switch2.textColor = YELLOW;
-  switch2.setlabel("Enable");
+  switch2.setLabel("Enable");
   switch2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   switch2.value = true;
   switch2.setCallback(switch2_changed);

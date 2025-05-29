@@ -25,7 +25,7 @@ void addGauge() {
   gauge1.arcGreenMaxVal = 100.0f;
   gauge1.arcYellowMaxVal = 150.0f;
   gauge1.arcRedMaxVal = 180.0f;
-  gauge1.setlabel("Speed mph");
+  gauge1.setLabel("Speed mph");
   gauge1.cmdId = BIND_ADD_OR_REFRESH_CMD;
   bind.sync(gauge1);
 }
@@ -47,7 +47,7 @@ void addGaugeCompact() {
   gauge2.arcGreenMaxVal = 100.0f;
   gauge2.arcYellowMaxVal = 150.0f;
   gauge2.arcRedMaxVal = 180.0f;
-  gauge2.setlabel("Speed Km/h");
+  gauge2.setLabel("Speed Km/h");
   gauge2.cmdId = BIND_ADD_OR_REFRESH_CMD;
   bind.sync(gauge2);
 }
@@ -68,7 +68,7 @@ void addGaugeSimple() {
   gauge3.style = 0;
   gauge3.isSymmetrical = true;
   gauge3.color = BLUE;
-  gauge3.setlabel("Simple Gauge");
+  gauge3.setLabel("Simple Gauge");
   gauge3.cmdId = BIND_ADD_OR_REFRESH_CMD;
   bind.sync(gauge3);
 }

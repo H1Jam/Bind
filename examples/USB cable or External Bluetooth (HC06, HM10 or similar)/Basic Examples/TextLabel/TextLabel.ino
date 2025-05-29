@@ -21,7 +21,7 @@ char buffer[10];
 void addtTextlabel() {
   textLabel1.x = 20;
   textLabel1.y = 200;
-  textLabel1.setlabel("Hello Android!");
+  textLabel1.setLabel("Hello Android!");
   textLabel1.color = WHITE;
   textLabel1.fontSize = 28;
   textLabel1.cmdId = BIND_ADD_OR_REFRESH_CMD;
@@ -29,7 +29,7 @@ void addtTextlabel() {
 
   textLabel2.x = 20;
   textLabel2.y = 230;
-  textLabel2.setlabel("Second caption");
+  textLabel2.setLabel("Second caption");
   textLabel2.color = YELLOW;
   textLabel2.fontSize = 18;
   textLabel2.cmdId = BIND_ADD_OR_REFRESH_CMD;
@@ -77,7 +77,7 @@ void loop() {
   if (counter > 100) {
     counter = 0;
     snprintf(buffer, 10, "%d", millis());
-    textLabel2.setlabel(buffer);
+    textLabel2.setLabel(buffer);
     textLabel2.cmdId = BIND_DATA_ONLY_CMD;
     bind.sync(textLabel2);
   }
