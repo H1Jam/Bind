@@ -1,15 +1,20 @@
 #ifndef BINDOVERUDP_H
 #define BINDOVERUDP_H
 #if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_RASPBERRY_PI_PICO_2W) || defined(ARDUINO_ARCH_ESP8266)
-#ifndef BL_ONLY_BIND
+#if __has_include("BindUserConfig.h")
+#include "BindUserConfig.h"
+#endif
+#ifndef BIND_DISABLE_WIFI
 #include "Bind.h"
 #include <Arduino.h>
 #include <Stream.h>
 #if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_RASPBERRY_PI_PICO_2W)
-#include <WiFi.h>
+// This takes too much memory on boards with limited memory, so we let the user include it if needed
+//#include <WiFi.h> // For ESP32 and RP2040 with WiFi support
 #include <AsyncUDP.h> // Both ESP32 and RP2040 support AsyncUDP
 #elif defined(ARDUINO_ARCH_ESP8266)
-#include <ESP8266WiFi.h>
+// This takes too much memory on boards with limited memory, so we let the user include it if needed
+//#include <ESP8266WiFi.h>
 #include <BindUtil/BindAsyncUDP.h> // ESP8266 uses ESPAsyncUDP
 #endif
 
@@ -45,6 +50,6 @@ public:
     void flush() override {}
     size_t write(uint8_t) override { return 0; }
 };
-#endif // BL_ONLY_BIND
+#endif // BIND_DISABLE_WIFI
 #endif // defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
 #endif // BINDOVERUDP_H
