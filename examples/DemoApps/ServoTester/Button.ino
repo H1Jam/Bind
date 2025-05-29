@@ -6,7 +6,7 @@ void addButton1() {
   button1.x = 135;
   button1.y = 300;
   // Set the Button's text label.
-  button1.setlabel("Center");     // button label
+  button1.setLabel("Center");     // button label
   button1.fontSize = 23;      // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
   button1.textColor = BLACK;  // Text color
   button1.backColor = GREEN;  // button color
