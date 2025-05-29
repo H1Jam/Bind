@@ -2,7 +2,19 @@
 #define __BINDDIALOG_HPP
 #include "BindView.hpp"
 #include "BindUtils.hpp"
-
+#define DIALOG_TEXT_BUFFER_SIZE 64
+#if defined(__AVR__)
+#include <avr/pgmspace.h>
+const char DEFAULT_TITLE[] PROGMEM = "Confirmation";
+const char DEFAULT_MESSAGE[] PROGMEM = "Are you sure?";
+const char DEFAULT_OK[] PROGMEM = "OK";
+const char DEFAULT_CANCEL[] PROGMEM = "Cancel";
+#else
+const char DEFAULT_TITLE[] = "Confirmation";
+const char DEFAULT_MESSAGE[] = "Are you sure?";
+const char DEFAULT_OK[] = "OK";
+const char DEFAULT_CANCEL[] = "Cancel";
+#endif
 /**
  * @brief The type of dialog.
  * 
@@ -39,21 +51,25 @@ class BindDialog : public BindView
 public:
 
     BindDialog(DialogType type = NO_INPUT_TEXT)
-    : dialogType(type), title(nullptr), message(nullptr), primaryButton("OK"), secondaryButton("Cancel"), resultText(nullptr)
+    : dialogType(type), title(nullptr), message(nullptr), primaryButton("OK"), secondaryButton("Cancel")
     {
         this->tag = tagIndex++;
-        setTitle("Confirmation");
-        setMessage("Are you sure?");
-        setPrimaryButton("OK");
-        setSecondaryButton("Cancel");
-        setTextResult("", 0);
-    }
-
-    ~BindDialog()
-    {
-        if (resultText != nullptr) {
-            delete[] resultText;
-        }
+        #if defined(__AVR__)
+        char buffer[16];
+        strcpy_P(buffer, DEFAULT_TITLE);
+        setTitle(buffer);
+        strcpy_P(buffer, DEFAULT_MESSAGE);
+        setMessage(buffer);
+        strcpy_P(buffer, DEFAULT_OK);
+        setPrimaryButton(buffer);
+        strcpy_P(buffer, DEFAULT_CANCEL);
+        setSecondaryButton(buffer);
+        #else
+        setTitle(DEFAULT_TITLE);
+        setMessage(DEFAULT_MESSAGE);
+        setPrimaryButton(DEFAULT_OK);
+        setSecondaryButton(DEFAULT_CANCEL);
+        #endif
     }
 
     /**
@@ -112,7 +128,8 @@ public:
      */
     void setCallback(void (*callback)(bool))
     {
-        this->callback = callback;
+        this->callback.simple = callback;
+        isTextCallback = false;
     }
 
     /** 
@@ -133,7 +150,8 @@ public:
      */
     void setCallback(void (*callback)(bool, const char *))
     {
-        this->callbackWithText = callback;
+        this->callback.withText = callback;
+        isTextCallback = true;
     }
 
     void invokeCallback(bool result, const char *text)
@@ -141,17 +159,18 @@ public:
         this->hasResult = true;
         this->accepted = result;
 
-        if (dialogType == TEXT_INPUT || dialogType == PASSWORD_INPUT){
+        if ((dialogType == TEXT_INPUT || dialogType == PASSWORD_INPUT) && isTextCallback){
             setTextResult(text, strlen(text));
-            if (callbackWithText != nullptr)
+            if (callback.withText != nullptr)
             {
-                callbackWithText(result, text);
+                callback.withText(result, text);
+                return;
             }
-        }
-
-        if (callback != nullptr)
-        {
-            callback(result);
+        }else{
+            if (callback.simple != nullptr)
+            {
+                callback.simple(result);
+            }
         }
         
     }
@@ -160,9 +179,8 @@ public:
     {
         this->hasResult = true;
         this->accepted = result;
-        if (callback != nullptr)
-        {
-            callback(result);
+        if (dialogType == NO_INPUT_TEXT && callback.simple != nullptr){
+            callback.simple(result);
         }
     }
 
@@ -174,13 +192,8 @@ public:
      * 
      * @return const char* The result text entered by the user.
      */
-    const char* getResultText() const
-    {
-        if (resultText != nullptr) {
-            return resultText;
-        }else{
-            return "";
-        }
+    const char* getResultText() const {
+        return resultTextBuffer; // Always return the buffer
     }
 
     uint16_t getBytes(uint8_t *out) override
@@ -207,6 +220,7 @@ public:
     bool singleButton = false; ///< Flag to indicate if the dialog has a single button.
 
 private:
+    char resultTextBuffer[DIALOG_TEXT_BUFFER_SIZE];
     uint8_t objID = BIND_ID_DIALOG;
     uint16_t offset = 0; ///< Offset for the byte array.
     int strLength = 0; ///< Length of the text string.
@@ -216,23 +230,17 @@ private:
     const char *secondaryButton = "Cancel"; ///< Secondary button text for the dialog
     DialogType dialogType; ///< Type of the dialog
     static int16_t tagIndex; ///< Tag index for the dialog.
-    void (*callback)(bool) = nullptr;
-    void (*callbackWithText)(bool, const char *) = nullptr;
-    char *resultText = nullptr;
+    typedef union {
+        void (*simple)(bool);
+        void (*withText)(bool, const char *);
+    } DialogCallback;
+    DialogCallback callback;
+    bool isTextCallback = false;
 
-    void setTextResult(const char *cstr, int length)
-    {
-        if (cstr == resultText || length < 0) {
-            return; // Handle self-assignment
-        }
-        
-        // Allocate memory for the new text
-        if (resultText != nullptr) {
-            delete[] resultText;
-        }
-        resultText = new char[length + 1];
-        strncpy(resultText, cstr, length);
-        resultText[length] = '\0'; // Null-terminate the string
+    void setTextResult(const char *cstr, int length) {
+        length = min(length, DIALOG_TEXT_BUFFER_SIZE - 1);
+        strncpy(resultTextBuffer, cstr, length);
+        resultTextBuffer[length] = '\0';
     }
 };
 
