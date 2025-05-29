@@ -4,7 +4,7 @@
     * By me-no-dev <https://github.com/me-no-dev/ESPAsyncUDP>
     * Modified by H1Jam <https://github.com/H1jam/Bind>
 */
-#if defined(ARDUINO_ARCH_ESP8266)
+#if defined(ARDUINO_ARCH_ESP8266) && !defined(BIND_DISABLE_WIFI)
 #include "Arduino.h"
 #include "BindAsyncUDP.h"
 
