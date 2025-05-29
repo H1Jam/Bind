@@ -36,7 +36,7 @@ void addButton1() {
   button1.x = 30;
   button1.y = 150;
   // Set the Button's text label.
-  button1.setlabel("ON");     // button label
+  button1.setLabel("ON");     // button label
   button1.fontSize = 23;      // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
   button1.textColor = BLACK;  // Text color
   button1.backColor = GREEN;  // button color
@@ -54,7 +54,7 @@ void addButton2() {
   button2.x = 30;
   button2.y = 200;
   // Set the Button's text label.
-  button2.setlabel("OFF");     // button label
+  button2.setLabel("OFF");     // button label
   button2.fontSize = 23;       // The dimensions(width and height) of the Button on the screen are determined relative to the Font size.
   button2.textColor = BLACK;   // Text color
   button2.backColor = YELLOW;  // button color
