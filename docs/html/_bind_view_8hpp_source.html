@@ -35,7 +35,7 @@
   <td id="projectalign">
    <div id="projectname">Bind
    </div>
-   <div id="projectbrief">C++ UI toolkit for Arduino</div>
+   <div id="projectbrief">C++ UI framework for Arduino</div>
   </td>
  </tr>
    <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -105,34 +105,38 @@ $(document).ready(function(){initNavTree('_bind_view_8hpp_source.html',''); init
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __BINDVIEW_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define BLACK 0xFF000000</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define DKGRAY 0xFF444444</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define GRAY 0xFF888888</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define LTGRAY 0xFFCCCCCC</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define WHITE 0xFFFFFFFF</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define RED 0xFFFF0000</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define GREEN 0xFF00FF00</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define BLUE 0xFF0000FF</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define YELLOW 0xFFFFFF00</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define CYAN 0xFF00FFFF</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define MAGENTA 0xFFFF00FF</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define UBUNTU 0xFF300A24</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define AVOCADO 0xFF95986B</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define TRANSPARENT 0</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define MAX_STRING_LENGTH_TERMINAL 64</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_bind_view.html">   21</a></span><span class="keyword">class </span><a class="code hl_class" href="class_bind_view.html">BindView</a></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">   33</a></span>  <span class="keyword">virtual</span> uint16_t <a class="code hl_function" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">getBytes</a>(uint8_t *out) { <span class="keywordflow">return</span> 0; };</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  int16_t tag;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if defined(ARDUINO_ARCH_ESP8266)</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;cstdio&gt;</span>  <span class="comment">//for sprintf</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define BLACK 0xFF000000</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define DKGRAY 0xFF444444</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define GRAY 0xFF888888</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define LTGRAY 0xFFCCCCCC</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define WHITE 0xFFFFFFFF</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define RED 0xFFFF0000</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define GREEN 0xFF00FF00</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define BLUE 0xFF0000FF</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define YELLOW 0xFFFFFF00</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define CYAN 0xFF00FFFF</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define MAGENTA 0xFFFF00FF</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define UBUNTU 0xFF300A24</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define AVOCADO 0xFF95986B</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define TRANSPARENT 0</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define MAX_STRING_LENGTH_TERMINAL 64</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_bind_view.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="class_bind_view.html">BindView</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">   37</a></span>  <span class="keyword">virtual</span> uint16_t <a class="code hl_function" href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">getBytes</a>(uint8_t *out) { <span class="keywordflow">return</span> 0; };</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  int16_t tag;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
 </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">/* __BINDVIEW_HPP */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclass_bind_view_html"><div class="ttname"><a href="class_bind_view.html">BindView</a></div><div class="ttdef"><b>Definition</b> BindView.hpp:22</div></div>
-<div class="ttc" id="aclass_bind_view_html_af85d65c30bc414fe54429e6fce0d377f"><div class="ttname"><a href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView::getBytes</a></div><div class="ttdeci">virtual uint16_t getBytes(uint8_t *out)</div><div class="ttdoc">Retrieves the bytes representing the BindView for synchronization.</div><div class="ttdef"><b>Definition</b> BindView.hpp:33</div></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">/* __BINDVIEW_HPP */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclass_bind_view_html"><div class="ttname"><a href="class_bind_view.html">BindView</a></div><div class="ttdef"><b>Definition</b> BindView.hpp:26</div></div>
+<div class="ttc" id="aclass_bind_view_html_af85d65c30bc414fe54429e6fce0d377f"><div class="ttname"><a href="class_bind_view.html#af85d65c30bc414fe54429e6fce0d377f">BindView::getBytes</a></div><div class="ttdeci">virtual uint16_t getBytes(uint8_t *out)</div><div class="ttdoc">Retrieves the bytes representing the BindView for synchronization.</div><div class="ttdef"><b>Definition</b> BindView.hpp:37</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

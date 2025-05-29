@@ -3,7 +3,7 @@ var class_bind_gauge_simple =
     [ "BindGaugeSimple", "class_bind_gauge_simple.html#a77e675415dcba699bd0035de3ed31d89", null ],
     [ "BindGaugeSimple", "class_bind_gauge_simple.html#aa1609d30425bbcabb716e02237ff929c", null ],
     [ "getBytes", "class_bind_gauge_simple.html#ab673d6bd2934375a5b7953b8ccbf5a7c", null ],
-    [ "setlabel", "class_bind_gauge_simple.html#aa80c8cdcccaf42e3aa2d7817bde1843c", null ],
+    [ "setLabel", "class_bind_gauge_simple.html#a50c217ff137360edbff3c92e4a45d7be", null ],
     [ "cmdId", "class_bind_gauge_simple.html#a9b4db2656fc01333e5d1a93b275c6e9a", null ],
     [ "color", "class_bind_gauge_simple.html#ad7e7f1c1a20fd12e5361796ca0549aa7", null ],
     [ "dimSize", "class_bind_gauge_simple.html#a938df009051993908bc6614dd23a0530", null ],

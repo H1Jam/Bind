@@ -35,7 +35,7 @@
   <td id="projectalign">
    <div id="projectname">Bind
    </div>
-   <div id="projectbrief">C++ UI toolkit for Arduino</div>
+   <div id="projectbrief">C++ UI framework for Arduino</div>
   </td>
  </tr>
    <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -171,7 +171,7 @@ UI Elements</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter"><img src="BindRectangle.jpg" alt="" class="inline" title="BindRectangle"/>      </td><td class="markdownTableBodyCenter">Represents a panel UI element   </td><td class="markdownTableBodyCenter"><a href="https://h1jam.github.io/Bind/class_bind_rectangle.html">BindRectangle</a>   </td><td class="markdownTableBodyCenter"><a href="https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/DrawBox/DrawBox.ino">DrawBox.ino</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter"><img src="BindDialog.jpg" alt="" class="inline" title="BindDialog"/>     <img src="DialogPassword.jpg" alt="" class="inline" title="DialogPassword"/>      </td><td class="markdownTableBodyCenter">(Soon) A customizable dialog box   </td><td class="markdownTableBodyCenter">TBA   </td><td class="markdownTableBodyCenter">TBA    </td></tr>
+<td class="markdownTableBodyCenter"><img src="BindDialog.jpg" alt="" class="inline" title="BindDialog"/>     <img src="DialogPassword.jpg" alt="" class="inline" title="DialogPassword"/>      </td><td class="markdownTableBodyCenter">A customizable dialog box   </td><td class="markdownTableBodyCenter"><a href="https://h1jam.github.io/Bind/class_bind_dialog.html">BindDialog</a>   </td><td class="markdownTableBodyCenter"><a href="https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/Dialog/Dialog.ino">Dialog.ino</a>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">Screen Configs   </td><td class="markdownTableBodyCenter">Configuration settings for a BindCanvas application screen.   </td><td class="markdownTableBodyCenter"><a href="https://h1jam.github.io/Bind/class_bind_canvas_settings.html">BindCanvasSettings</a>   </td><td class="markdownTableBodyCenter"><a href="https://github.com/H1Jam/Bind/blob/main/examples/ESP32%20(Bluetooth)/Basic%20Examples/ScreenConfigs/ScreenConfigs.ino">ScreenConfigs.ino</a>   </td></tr>
 </table>
@@ -189,9 +189,9 @@ Compatibility</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyCenter">ESP32   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Board of choice. (Use The Arduino ESP32 v3.0.1 or higher)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">Raspberry Pi Pico W   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">No example code is avaliable yet   </td><td class="markdownTableBodyCenter">Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare).    </td></tr>
+<td class="markdownTableBodyCenter">Raspberry Pi Pico W   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">Soon   </td><td class="markdownTableBodyCenter">Works OK but Pico Bluetooth driver is not perfect yet. Pairing problems and some crash has been observed occasionally (very rare).    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">ESP8266   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">No example code is avaliable yet   </td><td class="markdownTableBodyCenter"></td></tr>
+<td class="markdownTableBodyCenter">ESP8266   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">Soon   </td><td class="markdownTableBodyCenter"></td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">Other Boards   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">:heavy_check_mark:   </td><td class="markdownTableBodyCenter">N/A   </td><td class="markdownTableBodyCenter">TBD   </td><td class="markdownTableBodyCenter">USB serial port and external Bluetooth dongle should work with all boards.   </td></tr>
 </table>
@@ -225,7 +225,7 @@ Example Usage 1 (Using Serial port over USB for all boards)</h2>
 <div class="line">  <span class="comment">// Set the Button&#39;s position on the screen.</span></div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a47f602034ad63678262d05c2d9e2f8ec">x</a> = 30;</div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a617988e924c832c49259cee2fb689ec4">y</a> = 150;</div>
-<div class="line">  myButton.setlabel(<span class="stringliteral">&quot;Toggle LED&quot;</span>);</div>
+<div class="line">  myButton.<a class="code hl_function" href="class_bind_button.html#ad3d95ddcbb28bf8029d03ec6434c24c0">setLabel</a>(<span class="stringliteral">&quot;Toggle LED&quot;</span>);</div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527">cmdId</a> = BIND_ADD_OR_REFRESH_CMD;</div>
 <div class="line">  <span class="comment">// Setting the click callback</span></div>
 <div class="line">  myButton.<a class="code hl_function" href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">setCallback</a>(myButtonClicked);</div>
@@ -249,6 +249,7 @@ Example Usage 1 (Using Serial port over USB for all boards)</h2>
 <div class="ttc" id="aclass_bind_button_html_a47f602034ad63678262d05c2d9e2f8ec"><div class="ttname"><a href="class_bind_button.html#a47f602034ad63678262d05c2d9e2f8ec">BindButton::x</a></div><div class="ttdeci">int16_t x</div><div class="ttdoc">X-coordinate position of the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:50</div></div>
 <div class="ttc" id="aclass_bind_button_html_a617988e924c832c49259cee2fb689ec4"><div class="ttname"><a href="class_bind_button.html#a617988e924c832c49259cee2fb689ec4">BindButton::y</a></div><div class="ttdeci">int16_t y</div><div class="ttdoc">Y-coordinate position of the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:51</div></div>
 <div class="ttc" id="aclass_bind_button_html_a8e5678dde2f7cc849fd218c916f06527"><div class="ttname"><a href="class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527">BindButton::cmdId</a></div><div class="ttdeci">uint8_t cmdId</div><div class="ttdoc">Command ID for the button. See the notes for possible cmdId values.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:52</div></div>
+<div class="ttc" id="aclass_bind_button_html_ad3d95ddcbb28bf8029d03ec6434c24c0"><div class="ttname"><a href="class_bind_button.html#ad3d95ddcbb28bf8029d03ec6434c24c0">BindButton::setLabel</a></div><div class="ttdeci">void setLabel(const char *cstr)</div><div class="ttdoc">Sets the callback function for the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:72</div></div>
 <div class="ttc" id="aclass_bind_button_html_aee842be5451ea3f155192671572e61bd"><div class="ttname"><a href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">BindButton::setCallback</a></div><div class="ttdeci">void setCallback(void(*callback)(void))</div><div class="ttdoc">Set the press callback function for the button.</div><div class="ttdef"><b>Definition</b> BindButton.hpp:89</div></div>
 <div class="ttc" id="aclass_bind_html"><div class="ttname"><a href="class_bind.html">Bind</a></div><div class="ttdoc">The Bind class provides a framework for creating interactive applications with BindCanvas.</div><div class="ttdef"><b>Definition</b> Bind.h:62</div></div>
 <div class="ttc" id="aclass_bind_html_a499a45edadc5ff67b847943b8d77b936"><div class="ttname"><a href="class_bind.html#a499a45edadc5ff67b847943b8d77b936">Bind::sync</a></div><div class="ttdeci">void sync(BindView &amp;obj)</div><div class="ttdoc">Synchronizes a BindView object with the BindCanvas screen. Same as sync(BindView *obj) but uses the o...</div><div class="ttdef"><b>Definition</b> Bind.cpp:74</div></div>
@@ -283,7 +284,7 @@ Example Usage 2 (Using Bluetooth for ESP32)</h2>
 <div class="line">  <span class="comment">// Set the Button&#39;s position on the screen.</span></div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a47f602034ad63678262d05c2d9e2f8ec">x</a> = 30;</div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a617988e924c832c49259cee2fb689ec4">y</a> = 150;</div>
-<div class="line">  myButton.setlabel(<span class="stringliteral">&quot;Toggle LED&quot;</span>);</div>
+<div class="line">  myButton.<a class="code hl_function" href="class_bind_button.html#ad3d95ddcbb28bf8029d03ec6434c24c0">setLabel</a>(<span class="stringliteral">&quot;Toggle LED&quot;</span>);</div>
 <div class="line">  myButton.<a class="code hl_variable" href="class_bind_button.html#a8e5678dde2f7cc849fd218c916f06527">cmdId</a> = BIND_ADD_OR_REFRESH_CMD;</div>
 <div class="line">  <span class="comment">// Setting the click callback</span></div>
 <div class="line">  myButton.<a class="code hl_function" href="class_bind_button.html#aee842be5451ea3f155192671572e61bd">setCallback</a>(myButtonClicked);</div>

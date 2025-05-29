@@ -3,7 +3,7 @@ var class_bind_gauge =
     [ "BindGauge", "class_bind_gauge.html#a97c8de93feb82557f99993bf6544ec3e", null ],
     [ "BindGauge", "class_bind_gauge.html#ac79f5007c767557d2d6d8ac0c94f9c79", null ],
     [ "getBytes", "class_bind_gauge.html#a2cc0f2d02b2033415a451a7bd31607b4", null ],
-    [ "setlabel", "class_bind_gauge.html#a249188b59a2748f76a416990710f0933", null ],
+    [ "setLabel", "class_bind_gauge.html#a1b48774c572615b35a941b3273a554db", null ],
     [ "arcGreenMaxVal", "class_bind_gauge.html#aeb3d53067504ccecae48dfe7375c2e92", null ],
     [ "arcRedMaxVal", "class_bind_gauge.html#ab384fa1086f6f0c2d9be11ea869d26c8", null ],
     [ "arcYellowMaxVal", "class_bind_gauge.html#ad8315b3016728bbc7ce47f6755839a6e", null ],

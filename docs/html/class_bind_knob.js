@@ -4,7 +4,7 @@ var class_bind_knob =
     [ "BindKnob", "class_bind_knob.html#afdeaddfc6bec9312dff56237188ad568", null ],
     [ "getBytes", "class_bind_knob.html#a74d0d0bd2203e4cd36e8919e47636601", null ],
     [ "setCallback", "class_bind_knob.html#a5b49960e67ce03a603cb8d29779c548f", null ],
-    [ "setlabel", "class_bind_knob.html#a2f39b8fafd62bc875553bbfcee9359df", null ],
+    [ "setLabel", "class_bind_knob.html#a12b735077698991a73aca56dde7aac97", null ],
     [ "cmdId", "class_bind_knob.html#ac15f34c61eb4768a909049c294a6be18", null ],
     [ "dimSize", "class_bind_knob.html#a8ec8e3374f7ee3a7b65462d894b06af1", null ],
     [ "maxValue", "class_bind_knob.html#aa5846056f0d3c566bdf8fd48ec19e9dd", null ],

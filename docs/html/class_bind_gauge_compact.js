@@ -3,7 +3,7 @@ var class_bind_gauge_compact =
     [ "BindGaugeCompact", "class_bind_gauge_compact.html#a473ff7bef7dabad7da8d567fa9e2b8d3", null ],
     [ "BindGaugeCompact", "class_bind_gauge_compact.html#a118db001f13c1cade6e8091db5f279b1", null ],
     [ "getBytes", "class_bind_gauge_compact.html#a4f6e37ba6d8ff2deaab457d1e6f917c0", null ],
-    [ "setlabel", "class_bind_gauge_compact.html#ab567734f2b0d2085cabe45b400d6d0f0", null ],
+    [ "setLabel", "class_bind_gauge_compact.html#a195d8468a18a6a320df76fdf1cce4206", null ],
     [ "arcGreenMaxVal", "class_bind_gauge_compact.html#aa25ea0cbcd0be42495fd647d76c67ca5", null ],
     [ "arcRedMaxVal", "class_bind_gauge_compact.html#a4450d21d556a1f391c2e3e9b9a8c99cb", null ],
     [ "arcYellowMaxVal", "class_bind_gauge_compact.html#af58372bf0a5e092b23e8cb766b076761", null ],
