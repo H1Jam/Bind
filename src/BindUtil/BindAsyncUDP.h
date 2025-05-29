@@ -6,7 +6,12 @@
 */
 #ifndef ESPASYNCUDP_H
 #define ESPASYNCUDP_H
-#if defined(ARDUINO_ARCH_ESP8266)
+
+#if __has_include("BindUserConfig.h")
+#include "BindUserConfig.h"
+#endif
+
+#if defined(ARDUINO_ARCH_ESP8266) && !defined(BIND_DISABLE_WIFI)
 #include "IPAddress.h"
 #include "Print.h"
 #include <functional>
